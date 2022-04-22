@@ -12,7 +12,7 @@
 
 <div class="row justify-content-center">
     <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
-        <h1 class="mb-5 text-uppercase text-center">
+        <h1 class="h4 mb-5 text-uppercase text-center">
             <?= $h1 ?>
         </h1>
         <div id="page-content">
