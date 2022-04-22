@@ -510,7 +510,7 @@
         
         <div id="menu" class="modal side p-0 fade" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 right-0 left-0 vw-100 mt-6 mx-0 border-0">
-                <div class="modal-content m-0 border-0 vh-100 vw-100 bg-gray-900 rounded-0">
+                <div class="modal-content m-0 border-0 vw-100 bg-gray-900 rounded-0">
                     <div class="modal-body p-0 rounded-0">
                         <div class="container-lg container-xl container-xxl">
                             <div class="row justify-content-center">
