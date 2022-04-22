@@ -5,20 +5,20 @@ namespace frontend\controllers;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use backend\models\BlogCategories;
-use backend\models\Blog;
+use backend\models\NewsCategories;
+use backend\models\News;
 use backend\models\Langs;
 
-class BlogController extends \yii\web\Controller
+class NewsController extends Controller
 {
     
     public function actionIndex()
     {
-        $categories = BlogCategories::findAll([
+        $categories = NewsCategories::findAll([
             'active' => 1
         ]);
         
-        $posts = Blog::find()
+        $posts = News::find()
             ->where([
                 'active' => 1
             ])
@@ -35,7 +35,7 @@ class BlogController extends \yii\web\Controller
     
     public function actionPost($slug)
     {
-        $post = Blog::find()
+        $post = News::find()
             ->where('slug = :slug', [
                 ':slug' => $slug
             ])
@@ -44,8 +44,19 @@ class BlogController extends \yii\web\Controller
             ])
             ->one();
             
+        $posts = News::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'date_published' => SORT_DESC
+            ])
+            ->limit(3)
+            ->all();
+            
         return $this->render('post', [
             'post' => $post,
+            'posts' => $posts
         ]);
     }
     

@@ -116,20 +116,20 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                 ],
                 
-                [
-                    'attribute' => 'publisher',
-                    'format' => 'raw',
-                    'value' => function ($model) {
-                        return json_decode($model->publisher)->{Yii::$app->language};
-                    },
-                    'filterInputOptions' => [
-                        'class' => 'form-control text-center',
-                        'placeholder' => 'Поиск...'
-                    ],
-                    'headerOptions' => [
-                        'class' => 'text-center'
-                    ],
-                ],
+                // [
+                    // 'attribute' => 'publisher',
+                    // 'format' => 'raw',
+                    // 'value' => function ($model) {
+                        // return json_decode($model->publisher)->{Yii::$app->language};
+                    // },
+                    // 'filterInputOptions' => [
+                        // 'class' => 'form-control text-center',
+                        // 'placeholder' => 'Поиск...'
+                    // ],
+                    // 'headerOptions' => [
+                        // 'class' => 'text-center'
+                    // ],
+                // ],
                 
                 [
                     'attribute' => 'date_published',

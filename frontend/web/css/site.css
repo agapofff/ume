@@ -303,7 +303,60 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     display: none;
 }
 
-
+.news-post:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    background: url('../images/news_arrow.svg') 0 0 no-repeat;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.news-post:hover:after {
+    opacity: 0;
+}
+.news-post .card-img {
+    position: relative;
+    opacity: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.news-post .card-img-overlay {
+    z-index: 4;
+}
+.news-post .card-img-overlay:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(71, 79, 115, 0.8);
+    opacity: 0;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+.news-post:hover .card-img {
+    opacity: 1;
+}
+.news-post:hover .card-img-overlay:before {
+    opacity: 1;
+}
+.news-post:hover .card-img-overlay * {
+    color: #fff !important;
+}
+.news-back {
+    width: 84px;
+    height: 84px;
+    background: url('../images/arrow_news_back.svg') center center no-repeat;
+    margin-left: -0.5rem;
+}
 .btn-wishlist div:last-child,
 .btn-wishlist[data-action="add"] div:last-child,
 .btn-wishlist[data-action="remove"] div:first-child {
