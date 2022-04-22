@@ -440,7 +440,7 @@
         </div>
 
 
-        <footer class="bg-gray-900 text-white pt-4 pb-1">
+        <footer class="bg-gray-900 text-white pt-4 pb-1 mt-5">
             <div class="container-lg container-xl container-xxl">
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-7 col-lg-7 col-xl-8 col-xxl-9 mb-1">
