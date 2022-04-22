@@ -636,7 +636,13 @@ $store_types = Yii::$app->params['store_types'];
                                             'previewSize' => '300x300',
                                             'fileInputPluginOptions' => [
                                                 'showPreview' => false,
-                                            ]
+                                            ],
+                                            'containerClass' => 'row',
+                                            'elementClass' => 'col-xs-6',
+                                            // 'deleteButtonClass' => 'btn btn-sm btn-danger position-absolute top-0 right-0',
+                                            'deleteButtonText' => Html::tag('i', '', ['class' => 'fa fa-trash']),
+                                            // 'editButtonClass' => 'btn btn-sm btn-info position-absolute bottom-0 right-0',
+                                            'editButtonText' => Html::tag('i', '', ['class' => 'fa fa-edit']),
                                         ]);
                                     ?>
                                 <?php Pjax::end(); ?>
