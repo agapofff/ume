@@ -527,7 +527,7 @@ return [
 
                 // 'orders' => 'orders/index',
                 // 'orders/<id>' => 'orders/view',
-                
+                'blog' => 'site/blog',
                 'news' => 'news/index',
                 'news/<slug>' => 'news/post',
                 

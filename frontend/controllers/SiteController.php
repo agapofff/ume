@@ -20,6 +20,8 @@ use frontend\models\Pages;
 use backend\models\Countries;
 use backend\models\Cities;
 use backend\models\Addresses;
+use backend\models\NewsCategories;
+use backend\models\News;
 
 
 /**
@@ -105,6 +107,27 @@ class SiteController extends Controller
             'prices_old' => $modificationsOldPrices,
         ]);
         
+    }
+    
+    public function actionBlog()
+    {
+        $categories = NewsCategories::findAll([
+            'active' => 1
+        ]);
+        
+        $posts = News::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'date_published' => SORT_DESC
+            ])
+            ->all();
+        
+        return $this->render('blog', [
+            'categories' => $categories,
+            'posts' => $posts,
+        ]);
     }
     
     
