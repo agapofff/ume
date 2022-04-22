@@ -499,8 +499,6 @@ return [
                 'account' => 'user/settings/account',
                 'request' => 'user/recovery/request',
                 
-                // 'product/<id>' => 'product/view',
-                
                 // 'catalog' => 'catalog/index',
                 // 'catalog/<slug>' => 'catalog/index',
                 // 'catalog/<slug>/<collection>' => 'catalog/index',
@@ -511,48 +509,27 @@ return [
                     'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
                     'route' => 'catalog',
                     'defaults' => [
-                        'collectionSlug' => null, // 'aw-2022',
+                        'collectionSlug' => null,
                         'categorySlug' => null,
                     ],
                 ],
                 
                 'product/<slug>' => 'product/index',
                 
-                'checkout' => 'checkout/index',
-                'checkout/pay' => 'checkout/pay',
-                'checkout/error' => 'checkout/error',
-                'checkout/success' => 'checkout/success',
-                // 'cart' => 'checkout/index',
-                // 'cart/<action>' => 'cart/<action>',
+                // 'checkout' => 'checkout/index',
+                // 'checkout/pay' => 'checkout/pay',
+                // 'checkout/error' => 'checkout/error',
+                // 'checkout/success' => 'checkout/success',
                 
                 'cookies-notification-shown' => 'site/cookies-notification-shown',
-                // 'fashion-show' => 'site/fashion-show',
-                // 'register-to-show' => 'site/register-to-show',
+
                 'about' => 'site/about',
-                'vote' => 'site/vote',
-                // 'expedition' => 'site/mars-form',
-                // 'gps' => 'site/gps',
-                // 'lookbook' => 'site/lookbook',
-                // 'about-mars' => 'site/about-mars',
-                // 'contacts/<slug>' => 'site/boutiques',
+
+                // 'orders' => 'orders/index',
+                // 'orders/<id>' => 'orders/view',
                 
-                'contacts' => 'contacts/index',
-                'contacts/<slug>' => 'contacts/index',
-                
-                'help' => 'site/help',
-                
-                // 'test/<slug>' => 'test/index',
-                // 'test/<slug>/<action>' => 'test/<action>',
-                
-                // 'scan-to-win' => 'scan-to-win/index',
-                // 'scan-to-win/choose-winner' => 'scan-to-win/choose-winner',
-                'scan-to-win' => 'site/index',
-                
-                'orders' => 'orders/index',
-                'orders/<id>' => 'orders/view',
-                
-                'news' => 'blog/index',
-                'news/<slug>' => 'blog/post',
+                'news' => 'news/index',
+                'news/<slug>' => 'news/post',
                 
                 'synchro' => 'synchro/index', // !!!!!!!!!!!!!!!!!!!!!!!!!
                 
@@ -562,7 +539,7 @@ return [
                 
                 'curl' => 'curl/index',
                 
-                'wishlist' => 'wishlist/index',
+                // 'wishlist' => 'wishlist/index',
 
                 // '<controller>/<action>' => '<controller>/<action>',
                 '<slug>' => 'pages/index',
