@@ -55,28 +55,6 @@ $store_types = Yii::$app->params['store_types'];
                 ]);
             ?>
             
-                <div class="form-group text-center hidden-xs hidden-sm hidden-md" style="
-                    position: fixed;
-                    top: 3px;
-                    z-index: 9999;
-                ">
-                    <?= Html::submitButton(Html::tag('span', '', [
-                        'class' => 'glyphicon glyphicon-floppy-saved'
-                    ]) . '&nbsp;' . Yii::t('back', 'Сохранить'), [
-                        'class' => 'btn btn-success btn-lg'
-                    ]) ?>
-                    
-                    <?php if ($model->id){ ?>
-                        <?= Html::submitButton(Html::tag('span', '', [
-                            'class' => 'glyphicon glyphicon-floppy-remove'
-                        ]) . '&nbsp;' . Yii::t('back', 'Сохранить и закрыть'), [
-                            'class' => 'btn btn-default btn-lg saveAndExit'
-                        ]) ?>
-                    <?php } ?>
-                </div>
-            
-                <br>
-                
                 <div class="row">
                     <div class="col-sm-6 col-md-2">
                         <?= $form
