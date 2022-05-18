@@ -13,12 +13,12 @@ $postName = $this->title;
 
     <div class="row">
         <div class="col-md-8">
-            <div class="news-header position-relative pl-xl-7">
+            <div class="news-header position-relative pl-xl-5">
                 <a href="<?= Url::to(['/news']) ?>" class="news-back d-block position-absolute top-0 left-0"></a>
                 <p class="blog-post-date mb-1 opacity-50">
                     <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
                 </p>
-                <h1 class="h2 mb-3">
+                <h1 class="h2 mb-3 text-uppercase font-weight-600">
                     <?= $postName ?>
                 </h1>
             </div>

@@ -12,11 +12,11 @@ $this->title = Yii::t('front', 'Блог');
 
 <div class="container-lg container-xl container-xxl">
 
-    <h1 class="mb-3 text-uppercase">
+    <h1 class="mb-2 text-uppercase">
         <?= Yii::t('front', 'Блог') ?>
     </h1>
     
-    <h2 class="mb-4 ml-md-7 text-uppercase">
+    <h2 class="mb-3 ml-md-5 text-uppercase">
         <?= Yii::t('front', 'Новости') ?>
     </h2>
 
@@ -31,12 +31,14 @@ $this->title = Yii::t('front', 'Блог');
                 <img src="<?= $image->getUrl('500x500') ?>" alt="<?= $image->alt ?: $name ?>" class="card-img transition">
                 <div class="card-img-overlay p-1_5">
                     <p class="blog-post-date mb-2 opacity-50">
-                        <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
+                        <small>
+                            <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
+                        </small>
                     </p>
-                    <h5 class="font-weight-light mb-3">
+                    <h5 class="font-weight-500 mb-3">
                         <?= $name ?>
                     </h5>
-                    <p class="mb-0">
+                    <p class="mb-0 lead">
                         <?= json_decode($post->description)->{Yii::$app->language} ?>
                     </p>
                 </div>

@@ -311,7 +311,7 @@
             
         <nav id="nav" class="navbar navbar-light bg-white px-lg-0 py-0 transition">
         
-            <div id="nav-container" class="container-lg container-xl container-xxl py-1_5 px-xxl-0 border-bottom border-gray-800">
+            <div id="nav-container" class="container-lg container-xl container-xxl py-1_5 px-xxl-0">
 
                 <div id="logo" class="navbar-brand">
                     <a href="<?= Url::home(true) ?><?= Yii::$app->language ?>">
@@ -326,7 +326,7 @@
                     </a>
                 </div>
                     
-                <div class="d-flex ml-auto">
+                <div class="d-flex ml-auto align-items-center">
                     <div id="nav-lang-select" class="d-none d-md-flex align-items-center ml-auto mr-2 mr-sm-3">
                         <?php
                             if ($langs) {
@@ -400,10 +400,13 @@
                     </button>
                 
                 </div>
+                
+                <hr class="border-bottom border-gray-800 py-0 w-100">
+                
             </div>
         </nav>
 
-        <div id="pagecontent" class="container-xxl mt-4">
+        <div id="pagecontent" class="container-xxl">
 
             <?php 
                 // echo Breadcrumbs::widget([
@@ -445,7 +448,10 @@
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-7 col-lg-7 col-xl-8 col-xxl-9 mb-1">
                         <div class="mb-2">
-                            <?= Html::img('/images/logo/small_light.svg') ?>
+                            <?= Html::img('/images/logo/small_light.svg', [
+                                    'id' => 'logo-small',
+                                ])
+                            ?>
                         </div>
                         <h5 class="mb-2 text-uppercase font-weight-light">
                             <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
@@ -456,7 +462,7 @@
                         <?php
                             foreach ($footerMenuItems as $menuItem) {   
                         ?>
-                                <div class="col-6 mb-2">
+                                <div class="col-6 mb-1_5">
                                     <a href="<?= $menuItem['url'] ?>" class="text-decoration-none text-nowrap text-white">
                                         <?= $menuItem['label'] ?>
                                     </a>
@@ -467,7 +473,7 @@
                         </div>
                     </div>
                 </div>
-                <hr class="mt-1 mt-md-2 mb-2 border-gray-400">
+                <hr class="mb-2 border-gray-400">
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-7 col-lg-7 col-xl-8 col-xxl-9">
                         <div class="row">
@@ -489,7 +495,9 @@
                             <div class="col-12 col-lg-6 mb-2">
                                 <?php
                                     foreach (Yii::$app->params['socials'] as $socialName => $socialUrl) {
-                                        echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg'), $socialUrl, [
+                                        echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
+                                            'class' => 'footer-social-icon',
+                                        ]), $socialUrl, [
                                             'class' => 'mr-1'
                                         ]);
                                     }
@@ -515,8 +523,8 @@
                         <div class="container-lg container-xl container-xxl">
                             <div class="row justify-content-center">
                                 <div class="col-xl-11 col-xxl-10 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7">
-                                    <div class="row h-100 justify-content-between">
-                                        <div class="col-auto h-100">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto">
                                             <ul class="nav flex-column my-auto">
                                                 <?php                            
                                                     foreach ($menuItems as $menuItem) {
@@ -529,7 +537,7 @@
                                                         <?php
                                                             if (isset($menuItem['url'])) {
                                                         ?>
-                                                                <a href="<?= $menuItem['url'] ?>" class="nav-link main-menu-item d-inline-block position-relative h4 font-weight-light text-uppercase text-white p-0 mb-1 mb-sm-1_5 mb-md-2 mb-lg-3 mb-xl-4 border-white <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
+                                                                <a href="<?= $menuItem['url'] ?>" class="nav-link main-menu-item d-inline-block position-relative h4 font-weight-light text-uppercase text-white p-0 mb-1 mb-md-1_5 mb-lg-3 border-white <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
                                                                     <?php 
                                                                         if (isset($menuItem['options'])) {
                                                                             foreach ($menuItem['options'] as $optionKey => $optionVal) {
@@ -561,14 +569,16 @@
                                             <div class="mb-3">
                                             <?php
                                                 foreach (Yii::$app->params['socials'] as $socialName => $socialUrl) {
-                                                    echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg'), $socialUrl, [
-                                                        'class' => 'mr-1'
+                                                    echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
+                                                        'class' => 'menu-social-icon',
+                                                    ]), $socialUrl, [
+                                                        'class' => 'mr-1',
                                                     ]);
                                                 }
                                             ?>
                                             </div>
-                                            <div class="mb-5">
-                                                <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-white">
+                                            <div id="menu-contacts" class="mb-4">
+                                                <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-white" style="text-decoration: underline">
                                                     <?= Yii::$app->params['supportEmail'] ?>
                                                 </a>
                                                 <br>
@@ -577,14 +587,23 @@
                                                 </a>
                                             </div>
                                             <div class="mb-3">
-                                                <?= Html::img('/images/logo/big.svg') ?>
+                                                <?= Html::img('/images/logo/big.svg', [
+                                                        'id' => 'logo-big',
+                                                    ])
+                                                ?>
                                             </div>
-                                            <div class="row">
+                                            <div class="row mb-2">
                                                 <div class="col my-1">
-                                                    <?= Html::img('/images/apple_store.png') ?>
+                                                    <?= Html::img('/images/apple_store.png', [
+                                                            'id' => 'apple-store',
+                                                        ])
+                                                    ?>
                                                 </div>
                                                 <div class="col my-1">
-                                                    <?= Html::img('/images/google_play.png') ?>
+                                                    <?= Html::img('/images/google_play.png', [
+                                                            'id' => 'google-play',
+                                                        ])
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
