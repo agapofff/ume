@@ -18,7 +18,7 @@ class News extends \yii\db\ActiveRecord
             'images' => [
                 'class' => 'agapofff\gallery\behaviors\AttachImages',
                 'mode' => 'gallery',
-                'quality' => 60,
+                'quality' => 80,
                 'galleryId' => 'news',
                 'allowExtensions' => ['jpg', 'jpeg', 'png'],
             ],

@@ -29,7 +29,7 @@ class Actions extends \yii\db\ActiveRecord
             'images' => [
                 'class' => 'agapofff\gallery\behaviors\AttachImages',
                 'mode' => 'gallery',
-                'quality' => 60,
+                'quality' => 80,
                 'galleryId' => 'actions',
                 'allowExtensions' => ['jpg', 'jpeg', 'png'],
             ],
@@ -53,7 +53,7 @@ class Actions extends \yii\db\ActiveRecord
             [['active', 'type', 'saveAndExit'], 'integer'],
             [['published'], 'required'],
             [['published'], 'safe'],
-            [['name', 'title', 'description', 'text'], 'string'],
+            [['name', 'title', 'description', 'text', 'slug'], 'string'],
         ];
     }
 
@@ -68,6 +68,7 @@ class Actions extends \yii\db\ActiveRecord
             'published' => Yii::t('back', 'Дата публикации'),
             'type' => Yii::t('back', 'Тип акции'),
             'name' => Yii::t('back', 'Название'),
+            'slug' => Yii::t('back', 'Алиас'),
             'title' => Yii::t('back', 'Заголовок'),
             'description' => Yii::t('back', 'Описание'),
             'text' => Yii::t('back', 'Контент'),
