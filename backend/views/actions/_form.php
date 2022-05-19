@@ -85,7 +85,7 @@ use agapofff\gallery\widgets\Gallery;
                             'class' => 'is_json'
                         ])
                 ?>
-                <ul class="nav nav-pills nav-justified">
+                <ul class="nav nav-pills">
             <?php
                 foreach ($languages as $key => $lang) {
             ?>
@@ -156,7 +156,7 @@ use agapofff\gallery\widgets\Gallery;
                             'class' => 'is_json'
                         ])
                 ?>
-                <ul class="nav nav-pills nav-justified">
+                <ul class="nav nav-pills">
             <?php
                 foreach ($languages as $key => $lang) {
             ?>
@@ -204,7 +204,7 @@ use agapofff\gallery\widgets\Gallery;
                             'class' => 'is_json'
                         ])
                 ?>
-                <ul class="nav nav-pills nav-justified">
+                <ul class="nav nav-pills">
             <?php
                 foreach ($languages as $key => $lang) {
             ?>
@@ -252,7 +252,7 @@ use agapofff\gallery\widgets\Gallery;
                             'class' => 'is_json hidden'
                         ])
                 ?>
-                <ul class="nav nav-pills nav-justified">
+                <ul class="nav nav-pills">
             <?php
                 foreach ($languages as $key => $lang) {
             ?>

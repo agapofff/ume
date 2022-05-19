@@ -47,7 +47,7 @@ use kartik\switchinput\SwitchInput;
                     'class' => 'is_json'
                 ])
         ?>
-        <ul class="nav nav-pills nav-justified">
+        <ul class="nav nav-pills">
     <?php
         foreach ($languages as $key => $lang) {
     ?>
@@ -101,7 +101,7 @@ use kartik\switchinput\SwitchInput;
                     'class' => 'is_json hidden'
                 ])
         ?>
-        <ul class="nav nav-pills nav-justified">
+        <ul class="nav nav-pills">
     <?php
         foreach ($languages as $key => $lang) {
     ?>
