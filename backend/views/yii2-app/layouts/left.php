@@ -191,27 +191,6 @@
                 ];
             }
             
-            
-            if (
-                Yii::$app->user->can('/meta-tags/*')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Мета-теги'),
-                    'icon' => 'tags',
-                    'url' => ['/meta-tags'],
-                ];
-            }
-            
-            if (
-                Yii::$app->user->can('/redirects/*')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Редиректы'),
-                    'icon' => 'share-square-o',
-                    'url' => ['/redirects'],
-                ];
-            }
-            
             if (
                 Yii::$app->user->can('/news/*')
                 && Yii::$app->user->can('/news-categories/*')
@@ -235,12 +214,42 @@
             }
             
             if (
+                Yii::$app->user->can('/actions/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Акции'),
+                    'icon' => 'gift',
+                    'url' => ['/actions'],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/pages/*')
             ) {
                 $menuItems[] = [
                     'label' => Yii::t('back', 'Страницы'),
                     'icon' => 'files-o',
                     'url' => ['/pages'],
+                ];
+            }
+            
+            if (
+                Yii::$app->user->can('/meta-tags/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Мета-теги'),
+                    'icon' => 'tags',
+                    'url' => ['/meta-tags'],
+                ];
+            }
+            
+            if (
+                Yii::$app->user->can('/redirects/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Редиректы'),
+                    'icon' => 'share-square-o',
+                    'url' => ['/redirects'],
                 ];
             }
             
