@@ -70,7 +70,7 @@ use agapofff\gallery\widgets\Gallery;
             ?>
 
             <?= $form
-                    ->field($model, 'category_id')
+                    ->field($model, 'type')
                     ->dropDownList(Yii::$app->params['actionsTypes'])
             ?>
 

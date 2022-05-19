@@ -61,24 +61,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ),
                     'value' => function ($data) {
-                        if (Yii::$app->user->can('/langs/active')) {
-                            return Html::a(
-                                Html::tag('big', 
-                                    Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
-                                    ])
-                                ),
-                                [
-                                    'active',
-                                    'id' => $data->id
-                                ], [
-                                    'class' => 'pjax'
-                                ]);
-                        } else {
-                            return Html::tag('big', Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
-                                    ]));
-                        }
+                        return Html::a(
+                            Html::tag('big', 
+                                Html::tag('span', '', [
+                                    'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                ])
+                            ),
+                            [
+                                'active',
+                                'id' => $data->id
+                            ], [
+                                'class' => 'pjax'
+                            ]);
                     },
                     'headerOptions' => [
                         'class' => 'text-center'
