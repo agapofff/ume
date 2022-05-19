@@ -132,6 +132,10 @@ use kartik\switchinput\SwitchInput;
                             'imageDelete' => Url::toRoute(['/site/image-delete']),
                             'imageManagerJson' => Url::to(['/site/images-get']),
                             'plugins' => [
+                                'fontsize',
+                                'fontcolor',
+                                'table',
+                                'video',
                                 'fullscreen',
                             ],
                         ],

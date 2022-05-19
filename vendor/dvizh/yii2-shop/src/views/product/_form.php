@@ -821,24 +821,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'text_'.$lang->code,
+                            'name' => 'text_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->text)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-text',
@@ -881,24 +887,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="short_text_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'short_text_'.$lang->code,
+                            'name' => 'short_text_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->short_text)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-short_text',
@@ -941,24 +953,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="components_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'components_'.$lang->code,
+                            'name' => 'components_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->components)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-components',
@@ -1001,24 +1019,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="additives_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'additives_'.$lang->code,
+                            'name' => 'additives_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->additives)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-additives',
@@ -1061,24 +1085,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="howtouse_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'howtouse_'.$lang->code,
+                            'name' => 'howtouse_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->howtouse)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-howtouse',
@@ -1121,24 +1151,30 @@ $store_types = Yii::$app->params['store_types'];
             foreach ($languages as $key => $lang){
         ?>
                 <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="feeding_<?= $lang->code ?>_tab">
-                    <?= \yii\imperavi\Widget::widget([
+                    <?= \vova07\imperavi\Widget::widget([
                             'id' => 'feeding_'.$lang->code,
+                            'name' => 'feeding_'.$lang->code,
                             'value' => ($model->id ? json_decode($model->feeding)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
                             'plugins' => [
-                                'fontcolor',
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
                             ],
                             'options' => [
-                                'lang' => Yii::$app->language,
-                                'buttonsHide' => [
-                                    // 'html',
-                                    'image',
-                                    'file',
-                                ],
-                                'minHeight' => 100,
-                                'maxHeight' => 200,
-                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                            ],
-                            'htmlOptions' => [
                                 'class' => 'json_field',
                                 'data' => [
                                     'field' => 'product-feeding',

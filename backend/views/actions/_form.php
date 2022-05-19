@@ -132,8 +132,8 @@ use agapofff\gallery\widgets\Gallery;
             <div class="form-group">
                 <?= Gallery::widget([
                         'model' => $model,
-                        'label' => Yii::t('back', 'Главное изображение'),
-                        'previewSize' => '800x400',
+                        'label' => Yii::t('back', 'Изображение'),
+                        'previewSize' => '300x150',
                         'fileInputPluginOptions' => [
                             'showPreview' => false,
                         ],
@@ -144,54 +144,6 @@ use agapofff\gallery\widgets\Gallery;
                     ]);
                 ?>
             </div>  
-
-            <div class="form-group-json">
-                <?= $form
-                        ->field($model, 'title', [
-                            'labelOptions' => [
-                                'style' => 'text-align: left; margin-bottom: 0;',
-                            ]
-                        ])
-                        ->hiddenInput([
-                            'class' => 'is_json'
-                        ])
-                ?>
-                <ul class="nav nav-pills">
-            <?php
-                foreach ($languages as $key => $lang) {
-            ?>
-                    <li <?php if ($lang->code == Yii::$app->language) { ?>class="active"<?php } ?>>
-                        <a href="#title_<?= $lang->code ?>_tab" aria-controls="title_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-                    </li>
-            <?php
-                }
-            ?>
-                </ul>
-                <div class="tab-content">
-            <?php
-                foreach ($languages as $key => $lang) {
-            ?>
-                    <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language) { ?>active<?php } ?>" id="title_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
-                        <?= Html::input(
-                                'text',
-                                'title_'.$lang->code,
-                                json_decode($model->description)->{$lang->code},
-                                [
-                                    'id' => 'actions_title_'.$lang->code,
-                                    'class' => 'form-control json_field',
-                                    'data' => [
-                                        'field' => 'actions-title',
-                                        'lang' => $lang->code,
-                                    ]
-                                ]
-                            )
-                        ?>
-                    </div>
-            <?php
-                }
-            ?>
-                </div>
-            </div>
 
             <div class="form-group-json">
                 <?= $form
@@ -283,6 +235,10 @@ use agapofff\gallery\widgets\Gallery;
                                     'imageDelete' => Url::toRoute(['/site/image-delete']),
                                     'imageManagerJson' => Url::to(['/site/images-get']),
                                     'plugins' => [
+                                        'fontsize',
+                                        'fontcolor',
+                                        'table',
+                                        'video',
                                         'fullscreen',
                                     ],
                                     'replaceDivs' => false,
