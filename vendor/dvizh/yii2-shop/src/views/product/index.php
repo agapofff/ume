@@ -372,42 +372,42 @@ $this->params['breadcrumbs'][] = $this->title;
                     },
                 ],
 				
-                [
-                    'attribute' => 'is_promo',
-                    'format' => 'raw',
-                    'contentOptions' => [
-                        'class' => 'text-center'
-                    ],
-                    'headerOptions' => [
-                        'class' => 'text-center',
-                        'style' => 'min-width: 90px'
-                    ],
-                    'filter' => Html::activeDropDownList(
-                        $searchModel,
-                        'is_promo',
-                        [
-                            0 => Yii::t('back', 'Нет'),
-                            1 => Yii::t('back', 'Да'),
-                        ], [
-                            'class' => 'form-control',
-                            'prompt' => Yii::t('back', 'Все'),
-                        ]
-                    ),
-                    'value' => function($data){
-                        return Html::a(
-                            Html::tag('big', 
-                                Html::tag('span', '', [
-                                    'class' => 'glyphicon ' . ( $data->is_promo ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
-                                ])
-                            ), [
-                                'promo',
-                                'id' => $data->id
-                            ], [
-                                'class' => 'pjax'
-                            ]
-                        );
-                    },
-                ],
+                // [
+                    // 'attribute' => 'is_promo',
+                    // 'format' => 'raw',
+                    // 'contentOptions' => [
+                        // 'class' => 'text-center'
+                    // ],
+                    // 'headerOptions' => [
+                        // 'class' => 'text-center',
+                        // 'style' => 'min-width: 90px'
+                    // ],
+                    // 'filter' => Html::activeDropDownList(
+                        // $searchModel,
+                        // 'is_promo',
+                        // [
+                            // 0 => Yii::t('back', 'Нет'),
+                            // 1 => Yii::t('back', 'Да'),
+                        // ], [
+                            // 'class' => 'form-control',
+                            // 'prompt' => Yii::t('back', 'Все'),
+                        // ]
+                    // ),
+                    // 'value' => function($data){
+                        // return Html::a(
+                            // Html::tag('big', 
+                                // Html::tag('span', '', [
+                                    // 'class' => 'glyphicon ' . ( $data->is_promo ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                // ])
+                            // ), [
+                                // 'promo',
+                                // 'id' => $data->id
+                            // ], [
+                                // 'class' => 'pjax'
+                            // ]
+                        // );
+                    // },
+                // ],
                 
                 [
                     'attribute' => 'category_id',
