@@ -181,6 +181,16 @@
                 ];
             }
             
+            if (
+                Yii::$app->user->can('/shop/price-type/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Типы цен'),
+                    'icon' => 'usd',
+                    'url' => ['/shop/price-type'],
+                ];
+            }
+            
             
             if (
                 Yii::$app->user->can('/meta-tags/*')

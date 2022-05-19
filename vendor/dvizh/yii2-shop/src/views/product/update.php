@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = Yii::t('back', 'Обновить');
 ?>
 
 <div class="row">
-    <div class="col-xs-12 ">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
         <div class="product-update">
 
             <ul class="nav nav-tabs hidden">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = Yii::t('back', 'Обновить');
                         <?= Yii::t('back', 'Инфо') ?>
                     </a>
                 </li>
-                <li class="options-tab-label">
+                <li class="options-tab-label hidden">
                     <a href="#product-modifications" data-toggle="tab">
                         <?= Yii::t('back', 'Опции') ?>
                     </a>
@@ -54,11 +54,13 @@ $this->params['breadcrumbs'][] = Yii::t('back', 'Обновить');
                             'modificationDataProvider' => $modificationDataProvider,
                             'searchModificationModel' => $searchModificationModel,                        
                             'languages' => $languages,
+                            'priceModel' => $priceModel,
+                            'dataProvider' => $dataProvider,
                         ])
                     ?>
                 </div>
 
-                <div class="tab-pane" id="product-modifications">
+                <div class="tab-pane hidden" id="product-modifications">
                     <?php if (Yii::$app->session->hasFlash('modification-success-added')){ ?>
                         <div class="alert alert-success" role="alert">
                             <?= Yii::$app->session->getFlash('modification-success-added') ?>
@@ -157,91 +159,126 @@ $this->params['breadcrumbs'][] = Yii::t('back', 'Обновить');
                 </div>
 
                 <div class="tab-pane" id="product-prices">
-                    <?php if($dataProvider->getCount()) { ?>
+                    <?php if ($dataProvider->getCount()) { ?>
                         <?php 
-                            // echo GridView::widget([
-                                // 'dataProvider' => $dataProvider,
-                                // 'filterModel' => $searchModel,
-                                // 'columns' => [
+                            echo GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'filterModel' => null,
+                                'summary' => false,
+                                'columns' => [
                                     // ['class' => 'yii\grid\SerialColumn', 'options' => ['style' => 'width: 20px;']],
                                     // ['attribute' => 'id', 'filter' => false, 'options' => ['style' => 'width: 25px;']],
-                                    // [
+                                    [
                                         // 'class' => EditableColumn::className(),
-                                        // 'attribute' => 'name',
+                                        'attribute' => 'name',
                                         // 'url' => ['price/edit-field'],
                                         // 'type' => 'text',
+                                        'filter' => false,
+                                        // 'editableOptions' => [
+                                            // 'mode' => 'inline',
+                                        // ],
+                                        'headerOptions' => [
+                                            'class' => 'text-center',
+                                        ],
+                                        'contentOptions' => [
+                                            'class' => 'text-center text-nowrap',
+                                        ],
+                                    ],
+                                    [
+                                        'class' => EditableColumn::className(),
+                                        'attribute' => 'code',
+                                        'url' => ['price/edit-field'],
+                                        'type' => 'text',
+                                        'filter' => false,
+                                        'editableOptions' => [
+                                            'mode' => 'inline',
+                                        ],
+                                        'headerOptions' => [
+                                            'class' => 'text-center',
+                                        ],
+                                        'contentOptions' => [
+                                            'class' => 'text-center text-nowrap',
+                                        ],
+                                    ],
+                                    [
+                                        'attribute' => 'available',
+                                        'format' => 'raw',
+                                        'filter' => false,
+                                        'value' => function ($price) {
+                                            return Html::tag('big', 
+                                                Html::tag('span', '', [
+                                                    'class' => 'glyphicon ' . ($price->available == 'yes' ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                                ])
+                                            );
+                                        },
+                                        'headerOptions' => [
+                                            'class' => 'text-center',
+                                        ],
+                                        'contentOptions' => [
+                                            'class' => 'text-center text-nowrap',
+                                        ],
+                                    ],
+                                    [
+                                        // 'class' => EditableColumn::className(),
+                                        'attribute' => 'price',
+                                        // 'url' => ['price/edit-field'],
+                                        // 'type' => 'text',
+                                        'filter' => false,
+                                        // 'editableOptions' => [
+                                            // 'mode' => 'inline',
+                                        // ],
+                                        'headerOptions' => [
+                                            'class' => 'text-center',
+                                        ],
+                                        'contentOptions' => [
+                                            'class' => 'text-center text-nowrap',
+                                        ],
+                                    ],
+                                    [
+                                        // 'class' => EditableColumn::className(),
+                                        'attribute' => 'price_old',
+                                        // 'url' => ['price/edit-field'],
+                                        // 'type' => 'text',
+                                        'filter' => false,
+                                        // 'editableOptions' => [
+                                            // 'mode' => 'inline',
+                                        // ],
+                                        'headerOptions' => [
+                                            'class' => 'text-center',
+                                        ],
+                                        'contentOptions' => [
+                                            'class' => 'text-center text-nowrap',
+                                        ],
+                                    ],
+                                    [
+                                        'class' => 'yii\grid\ActionColumn', 
+                                        'controller' => 'price', 
                                         // 'filter' => false,
-                                        // 'editableOptions' => [
-                                            // 'mode' => 'inline',
-                                        // ],
-                                        // 'options' => ['style' => 'width: 75px;']
-                                    // ],
-                                    // [
-                                        // 'class' => EditableColumn::className(),
-                                        // 'attribute' => 'sort',
-                                        // 'url' => ['price/edit-field'],
-                                        // 'type' => 'text',
-                                        // 'editableOptions' => [
-                                            // 'mode' => 'inline',
-                                        // ],
-                                        // 'options' => ['style' => 'width: 49px;']
-                                    // ],
-                                    // [
-                                        // 'class' => EditableColumn::className(),
-                                        // 'attribute' => 'available',
-                                        // 'url' => ['price/edit-field'],
-                                        // 'type' => 'select',
-                                        // 'editableOptions' => [
-                                            // 'mode' => 'inline',
-                                            // 'source' => ['yes', 'no'],
-                                        // ],
-                                        // 'filter' => Html::activeDropDownList(
-                                            // $searchModel,
-                                            // 'available',
-                                            // ['no' => 'Нет', 'yes' => 'Да'],
-                                            // ['class' => 'form-control', 'prompt' => 'Наличие']
-                                        // ),
-                                        // 'contentOptions' => ['style' => 'width: 27px;']
-                                    // ],
-                                    // [
-                                        // 'class' => EditableColumn::className(),
-                                        // 'attribute' => 'price',
-                                        // 'url' => ['price/edit-field'],
-                                        // 'type' => 'text',
-                                        // 'editableOptions' => [
-                                            // 'mode' => 'inline',
-                                        // ],
-                                        // 'options' => ['style' => 'width: 40px;']
-                                    // ],
-                                    // [
-                                        // 'class' => EditableColumn::className(),
-                                        // 'attribute' => 'price_old',
-                                        // 'url' => ['price/edit-field'],
-                                        // 'type' => 'text',
-                                        // 'editableOptions' => [
-                                            // 'mode' => 'inline',
-                                        // ],
-                                        // 'options' => ['style' => 'width: 40px;']
-                                    // ],
-                                    // ['class' => 'yii\grid\ActionColumn', 'controller' => 'price', 'template' => '{delete}',  'buttonOptions' => ['class' => 'btn btn-default'], 'options' => ['style' => 'width: 30px;']],
-                                // ],
-                            // ]);
+                                        'template' => '{delete}',
+                                        'buttonOptions' => [
+                                            'class' => 'btn btn-sm btn-danger'
+                                        ], 
+                                    ],
+                                ],
+                            ]);
                         ?>
                     <?php } else { ?>
                         <p style="color: red;">У товара нет цен.</p>
                     <?php } ?>
                     <?php
-                        // echo $this->render('price/_form', [
-                            // 'model' => $priceModel,
-                            // 'productModel' => $model,
-                        // ])
+                        echo $this->render('price/_form', [
+                            'model' => $priceModel,
+                            'productModel' => $model,
+                        ])
                     ?> 
                 </div>
 
                 <div class="tab-pane" id="product-filters">
-                    <?php if($filterPanel = \dvizh\filter\widgets\Choice::widget(['model' => $model])) { ?>
-                        <?php // echo $filterPanel;?>
-                    <?php } else { ?>
+                    <?php 
+                        if ($filterPanel = \dvizh\filter\widgets\Choice::widget(['model' => $model])) {
+                            echo $filterPanel;
+                        } else {
+                    ?>
                         <p>В настоящий момент к категории данного товара не привязан ни один фильтр. Управлять фильтрами можно <?=Html::a('здесь', ['/filter/filter/index']);?>.</p>
                     <?php } ?>
                 </div>

@@ -141,9 +141,9 @@ $('form').on('beforeValidate', function(event){
         $('.json_field[data-field="' + id + '"]').each(function(){
             var lang = $(this).attr('data-lang'),
                 text = $(this).val();
-            if (!text && required){
-                isCorrect = false;
-            }
+            // if (!text && required){
+                // isCorrect = false;
+            // }
             fields[lang] = text;
         });
         $field.val(isCorrect ? JSON.stringify(fields) : '');

@@ -162,7 +162,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ],
                 */
-                
+                /*
                 [
                     'attribute' => 'code',
                     'format' => 'raw',
@@ -178,7 +178,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'placeholder' => Yii::t('back', 'Поиск...'),
                     ],
                 ],
-                
+                */
                 /*
                 [
                     'attribute' => 'amount',

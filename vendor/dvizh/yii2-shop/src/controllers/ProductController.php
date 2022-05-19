@@ -70,17 +70,23 @@ class ProductController extends Controller
         $model = new Product;
         $priceModel = new Price;
 
-        $priceTypes = PriceType::find()->orderBy('sort DESC')->all();
+        $priceTypes = PriceType::find()->all();
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'publish' => 1
+        ]);
 
         if ($model->load(Yii::$app->request->post())) {
             
             if ($model->save()){
-                if($prices = Yii::$app->request->post('Price')) {
-                    foreach($prices as $typeId => $price) {
-                        $model->setPrice($price['price'], $typeId);
-                    }
+                // if($prices = Yii::$app->request->post('Price')) {
+                    // foreach($prices as $typeId => $price) {
+                        // $model->setPrice($price['price'], $typeId);
+                    // }
+                // }
+                
+                foreach ($priceTypes as $priceType) {
+                    $model->setPrice(0, $priceType->id);
                 }
 
                 $module = $this->module;
@@ -189,7 +195,9 @@ class ProductController extends Controller
         $modificationDataProvider = $searchModificationModel->search($typeParams);
         $modificationModel = new Modification;
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'publish' => 1
+        ]);
 
         if ($model->load(Yii::$app->request->post())) {
             
