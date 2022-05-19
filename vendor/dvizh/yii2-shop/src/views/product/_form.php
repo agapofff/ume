@@ -147,7 +147,7 @@ $store_types = Yii::$app->params['store_types'];
                 $model->category_ids = [Yii::$app->request->get('category_id')];
             }
         ?>
-        <br>
+
         <?= $form->field($model, 'category_ids')
                 ->label(Yii::t('back', 'Категории'))
                 ->widget(Select2::classname(), [
@@ -165,54 +165,54 @@ $store_types = Yii::$app->params['store_types'];
                 ]);
         ?>
         
-        <br>
-        <?= $form
-                ->field($model, 'name', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->hiddenInput([
-                    'class' => 'is_json'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
-                <?= Html::input(
-                        'text',
-                        'name_'.$lang->code,
-                        $model->id ? json_decode($model->name)->{$lang->code} : '',
-                        [
-                            'id' => 'product-name_'.$lang->code,
-                            'class' => 'form-control json_field',
-                            'data' => [
-                                'field' => 'product-name',
-                                'lang' => $lang->code,
-                            ]
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'name', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    )
-                ?>
+                    ])
+                    ->hiddenInput([
+                        'class' => 'is_json'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#name_<?= $lang->code ?>_tab" aria-controls="name_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="name_<?= $lang->code ?>_tab" style="padding-left: 0; padding-right: 0;">
+                    <?= Html::input(
+                            'text',
+                            'name_'.$lang->code,
+                            $model->id ? json_decode($model->name)->{$lang->code} : '',
+                            [
+                                'id' => 'product-name_'.$lang->code,
+                                'class' => 'form-control json_field',
+                                'data' => [
+                                    'field' => 'product-name',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        )
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
         
-        <br>
         <?= $form
                 ->field($model, 'slug')
                 ->textInput()
@@ -238,7 +238,7 @@ $store_types = Yii::$app->params['store_types'];
         
                         
 <?php if (!$model->isNewRecord){ ?>
-        <br>
+        
         <label><?= Yii::t('back', 'Изображения') ?></label>
         <?php Pjax::begin(); ?>
             <?= Gallery::widget([
@@ -259,7 +259,6 @@ $store_types = Yii::$app->params['store_types'];
     
     
         <div class="hidden">
-            <br>
             <?= $form
                     ->field($model, 'sku', [
                         'labelOptions' => [
@@ -347,11 +346,8 @@ $store_types = Yii::$app->params['store_types'];
         ?>
             </div>
         </div>      
-                
 
         <div class="hidden">
-            <br>
-            <br>
             <label>Модификации</label>
             <?php
                 Pjax::begin([
@@ -611,10 +607,7 @@ $store_types = Yii::$app->params['store_types'];
             <?php Pjax::end() ?>
         </div>
     
-    
         <div class="hidden"> 
-            <br>
-            <br>
         <?php if ($model->video){ ?>
             <div id="product-video-embed" class="form-group" style="width:300px;">
                 <label class="control-label" for="product-videofile">
@@ -660,10 +653,8 @@ $store_types = Yii::$app->params['store_types'];
         ?>
         </div>
         
-
-        <br>
         <hr>
-        <br>
+
         <label><?= Yii::t('back', 'Цены и наличие в магазинах') ?></label>
         <?php if ($dataProvider->getCount()) { ?>
             <?php 
@@ -801,365 +792,370 @@ $store_types = Yii::$app->params['store_types'];
             </button>
         </div>
         
-        <br>
         <hr>
-        <br>
-        
-        <?= $form
-                ->field($model, 'text', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#text_<?= $lang->code ?>_tab" aria-controls="text_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'text_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->text)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-text',
-                                'lang' => $lang->code,
-                            ]
+            
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'text', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    ]);
-                ?>
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#text_<?= $lang->code ?>_tab" aria-controls="text_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="text_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'text_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->text)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
+                            ],
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-text',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
         
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'short_text', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
+                        ]
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#short_text_<?= $lang->code ?>_tab" aria-controls="short_text_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="short_text_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'short_text_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->short_text)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
+                            ],
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-short_text',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
+            </div>
+        </div>
 
-        <?= $form
-                ->field($model, 'short_text', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#short_text_<?= $lang->code ?>_tab" aria-controls="short_text_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="short_text_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'short_text_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->short_text)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-short_text',
-                                'lang' => $lang->code,
-                            ]
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'components', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    ]);
-                ?>
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#components_<?= $lang->code ?>_tab" aria-controls="components_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="components_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'components_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->components)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
+                            ],
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-components',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
-
-
-        <?= $form
-                ->field($model, 'components', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#components_<?= $lang->code ?>_tab" aria-controls="components_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="components_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'components_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->components)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-components',
-                                'lang' => $lang->code,
-                            ]
+            
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'additives', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    ]);
-                ?>
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#additives_<?= $lang->code ?>_tab" aria-controls="additives_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="additives_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'additives_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->additives)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
+                            ],
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-additives',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
-        
-
-        <?= $form
-                ->field($model, 'additives', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#additives_<?= $lang->code ?>_tab" aria-controls="additives_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="additives_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'additives_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->additives)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-additives',
-                                'lang' => $lang->code,
-                            ]
+            
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'howtouse', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    ]);
-                ?>
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#howtouse_<?= $lang->code ?>_tab" aria-controls="howtouse_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="howtouse_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'howtouse_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->howtouse)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
+                            ],
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-howtouse',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
-        
-        
-        <?= $form
-                ->field($model, 'howtouse', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
-        ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#howtouse_<?= $lang->code ?>_tab" aria-controls="howtouse_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="howtouse_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'howtouse_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->howtouse)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
-                            ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-howtouse',
-                                'lang' => $lang->code,
-                            ]
+            
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'feeding', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
                         ]
-                    ]);
-                ?>
-            </div>
-    <?php
-        }
-    ?>
-        </div>
-        
-        
-        <?= $form
-                ->field($model, 'feeding', [
-                    'labelOptions' => [
-                        'style' => 'text-align: left; margin-bottom: 0;',
-                    ]
-                ])
-                ->textarea([
-                    'class' => 'is_json hidden'
-                ])
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
         ?>
-        <ul class="nav nav-pills">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                <a href="#feeding_<?= $lang->code ?>_tab" aria-controls="feeding_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-            </li>
-    <?php
-        }
-    ?>
-        </ul>
-        <div class="tab-content">
-    <?php
-        foreach ($languages as $key => $lang){
-    ?>
-            <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="feeding_<?= $lang->code ?>_tab">
-                <?= \yii\imperavi\Widget::widget([
-                        'id' => 'feeding_'.$lang->code,
-                        'value' => ($model->id ? json_decode($model->feeding)->{$lang->code} : ''),
-                        'plugins' => [
-                            'fontcolor',
-                        ],
-                        'options' => [
-                            'lang' => Yii::$app->language,
-                            'buttonsHide' => [
-                                // 'html',
-                                'image',
-                                'file',
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#feeding_<?= $lang->code ?>_tab" aria-controls="feeding_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="feeding_<?= $lang->code ?>_tab">
+                    <?= \yii\imperavi\Widget::widget([
+                            'id' => 'feeding_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->feeding)->{$lang->code} : ''),
+                            'plugins' => [
+                                'fontcolor',
                             ],
-                            'minHeight' => 100,
-                            'maxHeight' => 200,
-                            // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
-                        ],
-                        'htmlOptions' => [
-                            'class' => 'json_field',
-                            'data' => [
-                                'field' => 'product-feeding',
-                                'lang' => $lang->code,
+                            'options' => [
+                                'lang' => Yii::$app->language,
+                                'buttonsHide' => [
+                                    // 'html',
+                                    'image',
+                                    'file',
+                                ],
+                                'minHeight' => 100,
+                                'maxHeight' => 200,
+                                // 'imageUpload' => Url::toRoute(['tools/upload-imperavi'])
+                            ],
+                            'htmlOptions' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-feeding',
+                                    'lang' => $lang->code,
+                                ]
                             ]
-                        ]
-                    ]);
-                ?>
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
             </div>
-    <?php
-        }
-    ?>
         </div>
                 
         <hr>
-        <br>
+        
         
         <?php
             echo Html::tag('p', Yii::t('back', 'Фильтры'), [
@@ -1180,11 +1176,9 @@ $store_types = Yii::$app->params['store_types'];
             }
         ?>
         
-        <br>
         <hr>
-        <br>
         
-        <label>Связанные продукты</strong></label>
+        <label>Связанные продукты</label>
         <div class="related-products-block">
             <?=\dvizh\relations\widgets\Constructor::widget(['model' => $model]);?>
         </div>
@@ -1209,7 +1203,6 @@ $store_types = Yii::$app->params['store_types'];
     
 
 
-        <br>
         <br>
         <br>
         

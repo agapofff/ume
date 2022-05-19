@@ -57,7 +57,9 @@ class PagesController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('create', [
             'model' => $model,
@@ -81,7 +83,9 @@ class PagesController extends Controller
             }
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('update', [
             'model' => $model,

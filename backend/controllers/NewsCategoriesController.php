@@ -30,7 +30,9 @@ class NewsCategoriesController extends Controller
         $searchModel = new NewsCategoriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -60,7 +62,9 @@ class NewsCategoriesController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('create', [
             'model' => $model,
@@ -84,7 +88,9 @@ class NewsCategoriesController extends Controller
             }
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('update', [
             'model' => $model,

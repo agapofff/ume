@@ -46,12 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 // 'id',
                 
                 [
-                    'attribute' => 'publish',
+                    'attribute' => 'active',
                     'label' => Yii::t('back', 'Активно'),
                     'format' => 'html',
                     'filter' => Html::activeDropDownList(
                         $searchModel,
-                        'publish',
+                        'active',
                         [
                             0 => Yii::t('back', 'Нет'),
                             1 => Yii::t('back', 'Да'),
@@ -61,22 +61,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ),
                     'value' => function ($data) {
-                        if (Yii::$app->user->can('/langs/publish')) {
+                        if (Yii::$app->user->can('/langs/active')) {
                             return Html::a(
                                 Html::tag('big', 
                                     Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->publish ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
                                     ])
                                 ),
                                 [
-                                    'publish',
+                                    'active',
                                     'id' => $data->id
                                 ], [
                                     'class' => 'pjax'
                                 ]);
                         } else {
                             return Html::tag('big', Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->publish ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
                                     ]));
                         }
                     },

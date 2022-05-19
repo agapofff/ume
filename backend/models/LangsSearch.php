@@ -12,7 +12,7 @@ class LangsSearch extends Langs
     public function rules()
     {
         return [
-            [['id', 'publish'], 'integer'],
+            [['id', 'active'], 'integer'],
             [['name', 'code', 'currency'], 'safe'],
         ];
     }
@@ -44,7 +44,7 @@ class LangsSearch extends Langs
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'publish' => $this->publish,
+            'active' => $this->active,
         ]);
 
         $query

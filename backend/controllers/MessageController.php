@@ -39,7 +39,9 @@ class MessageController extends Controller
             $message = SourceMessage::findOne(['id' => Yii::$app->request->queryParams['MessageSearch']['id']])->message;
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -64,7 +66,9 @@ class MessageController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('create', [
             'model' => $model,
@@ -93,7 +97,9 @@ class MessageController extends Controller
             }
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('update', [
             'model' => $model,

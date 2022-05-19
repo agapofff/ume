@@ -101,13 +101,20 @@ class LangsController extends Controller
         throw new NotFoundHttpException(Yii::t('back', 'The requested page does not exist.'));
     }
     
-    public function actionPublish($id)
+    public function actionActive($id)
     {
         $model = $this->findModel($id);
-        $model->publish = $model->publish ? 0 : 1;
-        $model->save();
+        $model->active = $model->active ? 0 : 1;
         
-        if (!Yii::$app->request->isAjax) {
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
+        } else {
+            Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
+        }
+
+        if (Yii::$app->request->isAjax) {
+            $this->actionIndex();
+        } else {
             return $this->redirect(['index']);
         }
     }

@@ -32,7 +32,9 @@ class StoresController extends Controller
         
         $currency = Stores::find()->select('currency')->asArray()->all();
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -62,7 +64,9 @@ class StoresController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('create', [
             'model' => $model,
@@ -86,7 +90,9 @@ class StoresController extends Controller
             }
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('update', [
             'model' => $model,

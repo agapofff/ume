@@ -32,7 +32,7 @@ class NewsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
         
         $categories = NewsCategories::find()->all();
@@ -61,7 +61,7 @@ class NewsController extends Controller
         }
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
         
         $categories = NewsCategories::find()->all();
@@ -90,7 +90,7 @@ class NewsController extends Controller
         }
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
         
         $categories = NewsCategories::find()->all();

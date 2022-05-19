@@ -41,7 +41,9 @@ class CategoryController extends Controller
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -64,7 +66,9 @@ class CategoryController extends Controller
             return $this->redirect(['index']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('create', [
             'model' => $model,
@@ -88,7 +92,9 @@ class CategoryController extends Controller
             }
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('update', [
             'model' => $model,
@@ -133,11 +139,13 @@ class CategoryController extends Controller
     {
         $model = Category::findOne($id);
         $model->active = $model->active ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {

@@ -163,6 +163,9 @@ section.content h1 {
     padding-top: 20vh
 }
 
+.redactor-box {
+    margin-bottom: 0 !important;
+}
 
 .redactor-toolbar {
     position: relative !important;

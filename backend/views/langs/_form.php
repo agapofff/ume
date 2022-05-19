@@ -27,7 +27,7 @@ use kartik\alert\AlertBlock;
     <?php $form = ActiveForm::begin(); ?>
     
         <?= $form
-                ->field($model, 'publish')
+                ->field($model, 'active')
                 ->widget(SwitchInput::classname(), [
                     'pluginOptions' => [
                         'onText' => Yii::t('back', 'Да'),

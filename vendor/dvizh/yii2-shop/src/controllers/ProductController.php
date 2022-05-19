@@ -53,7 +53,9 @@ class ProductController extends Controller
         $filters = \dvizh\filter\models\Filter::find()->all();
         $ignoreAttribute =  ['amount_in_stock', 'images'];
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -73,7 +75,7 @@ class ProductController extends Controller
         $priceTypes = PriceType::find()->all();
         
         $languages = Langs::findAll([
-            'publish' => 1
+            'active' => 1
         ]);
 
         if ($model->load(Yii::$app->request->post())) {
@@ -168,7 +170,9 @@ class ProductController extends Controller
             $models = Product::findAll($allEntities['modelsId']);
         }
         
-        $languages = Langs::find()->all();
+        $languages = Langs::findAll([
+            'active' => 1
+        ]);
 
         return $this->render('_form-mass-update', [
             'models' => $models,
@@ -196,7 +200,7 @@ class ProductController extends Controller
         $modificationModel = new Modification;
         
         $languages = Langs::findAll([
-            'publish' => 1
+            'active' => 1
         ]);
 
         if ($model->load(Yii::$app->request->post())) {
@@ -319,11 +323,13 @@ class ProductController extends Controller
     {
         $model = Product::findOne($id);
         $model->available = $model->available ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {
@@ -335,11 +341,13 @@ class ProductController extends Controller
     {
         $model = Product::findOne($id);
         $model->active = $model->active ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {
@@ -351,11 +359,13 @@ class ProductController extends Controller
     {
         $model = Product::findOne($id);
         $model->is_new = $model->is_new ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {
@@ -367,11 +377,13 @@ class ProductController extends Controller
     {
         $model = Product::findOne($id);
         $model->is_popular = $model->is_popular ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {
@@ -383,11 +395,13 @@ class ProductController extends Controller
     {
         $model = Product::findOne($id);
         $model->is_promo = $model->is_promo ? 0 : 1;
+        
         if ($model->save()){
             Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
         } else {
             Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
         }
+        
         if (Yii::$app->request->isAjax){
             $this->actionIndex();
         } else {

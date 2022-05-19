@@ -41,7 +41,7 @@ class ActionsController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
 
         return $this->render('index', [
@@ -72,7 +72,7 @@ class ActionsController extends Controller
         }
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
 
         return $this->render('create', [
@@ -105,7 +105,7 @@ class ActionsController extends Controller
         }
         
         $languages = Langs::findAll([
-            'published' => 1
+            'active' => 1
         ]);
 
         return $this->render('update', [

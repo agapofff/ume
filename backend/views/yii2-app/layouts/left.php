@@ -126,72 +126,6 @@
             // }
             
             if (
-                Yii::$app->user->can('/shop/*')
-                || Yii::$app->user->can('/order/shipping-type/*')
-                || Yii::$app->user->can('/order/shipping-type/index')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Способы доставки'),
-                    'icon' => 'truck',
-                    'url' => ['/order/shipping-type'],
-                ];
-            }
-            
-            if (
-                Yii::$app->user->can('/shop/*')
-                || Yii::$app->user->can('/order/payment-type/*')
-                || Yii::$app->user->can('/order/payment-type/index')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Способы оплаты'),
-                    'icon' => 'credit-card',
-                    'url' => ['/order/payment-type'],
-                ];
-            }
-            
-            if (
-                Yii::$app->user->can('/shop/*')
-                || Yii::$app->user->can('/filter/*')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Фильтры'),
-                    'icon' => 'filter',
-                    'url' => ['/filter/filter'],
-                ];
-            }
-            
-            // if (
-                // Yii::$app->user->can('/shop/*')
-                // || Yii::$app->user->can('/field/*')
-            // ) {
-                // $menuItems[] = [
-                    // 'label' => Yii::t('back', 'Доп.поля'),
-                    // 'icon' => 'pencil-square-o',
-                    // 'url' => ['/field'],
-                // ];
-            // }
-            
-            if (
-                Yii::$app->user->can('/order/field/*')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Доп.поля заказа'),
-                    'icon' => 'pencil-square',
-                    'url' => ['/order/field'],
-                ];
-            }
-            
-            if (
-                Yii::$app->user->can('/shop/price-type/*')
-            ) {
-                $menuItems[] = [
-                    'label' => Yii::t('back', 'Типы цен'),
-                    'icon' => 'usd',
-                    'url' => ['/shop/price-type'],
-                ];
-            }
-            
-            if (
                 Yii::$app->user->can('/news/*')
                 && Yii::$app->user->can('/news-categories/*')
             ) {
@@ -404,6 +338,72 @@
                     // 'url' => ['/boutiques'],
                 // ];
             // }            
+            
+            if (
+                Yii::$app->user->can('/shop/*')
+                || Yii::$app->user->can('/order/shipping-type/*')
+                || Yii::$app->user->can('/order/shipping-type/index')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Способы доставки'),
+                    'icon' => 'truck',
+                    'url' => ['/order/shipping-type'],
+                ];
+            }
+            
+            if (
+                Yii::$app->user->can('/shop/*')
+                || Yii::$app->user->can('/order/payment-type/*')
+                || Yii::$app->user->can('/order/payment-type/index')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Способы оплаты'),
+                    'icon' => 'credit-card',
+                    'url' => ['/order/payment-type'],
+                ];
+            }
+            
+            if (
+                Yii::$app->user->can('/shop/*')
+                || Yii::$app->user->can('/filter/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Фильтры'),
+                    'icon' => 'filter',
+                    'url' => ['/filter/filter'],
+                ];
+            }
+            
+            // if (
+                // Yii::$app->user->can('/shop/*')
+                // || Yii::$app->user->can('/field/*')
+            // ) {
+                // $menuItems[] = [
+                    // 'label' => Yii::t('back', 'Доп.поля'),
+                    // 'icon' => 'pencil-square-o',
+                    // 'url' => ['/field'],
+                // ];
+            // }
+            
+            if (
+                Yii::$app->user->can('/order/field/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Доп.поля заказа'),
+                    'icon' => 'pencil-square',
+                    'url' => ['/order/field'],
+                ];
+            }
+            
+            if (
+                Yii::$app->user->can('/shop/price-type/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Типы цен'),
+                    'icon' => 'usd',
+                    'url' => ['/shop/price-type'],
+                ];
+            }
             
             if (Yii::$app->user->can('/user/admin/*')) {
                 $menuItems[] = [
