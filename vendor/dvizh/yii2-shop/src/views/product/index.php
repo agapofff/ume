@@ -495,16 +495,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'data-pjax' => 0,
                             ]);
                         },
-                        'copy' => function($url, $model){
-                            return Html::a('', [
-								'copy',
-								'id' => $model->id,
-							], [
-                                'class' => 'glyphicon glyphicon-duplicate btn btn-info btn-xs',
-                                'title' => Yii::t('back', 'Копировать'),
-                                'data-pjax' => 0,
-                            ]);
-                        },
+                        // 'copy' => function($url, $model){
+                            // return Html::a('', [
+								// 'copy',
+								// 'id' => $model->id,
+							// ], [
+                                // 'class' => 'glyphicon glyphicon-duplicate btn btn-info btn-xs',
+                                // 'title' => Yii::t('back', 'Копировать'),
+                                // 'data-pjax' => 0,
+                            // ]);
+                        // },
                         'delete' => function($url, $model){
                             return Html::a('', $url, [
                                 'class' => 'glyphicon glyphicon-trash btn btn-danger btn-xs',
