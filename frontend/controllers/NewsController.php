@@ -7,7 +7,6 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\NewsCategories;
 use backend\models\News;
-use backend\models\Langs;
 
 class NewsController extends Controller
 {
@@ -54,7 +53,7 @@ class NewsController extends Controller
             ->limit(3)
             ->all();
             
-        return $this->render('post', [
+        return $this->render('view', [
             'post' => $post,
             'posts' => $posts
         ]);

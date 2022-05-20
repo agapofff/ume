@@ -99,6 +99,6 @@ class ImageHelper
         
         $contrast = (round($rgb[0] * 299) + round($rgb[1] * 587) + round($rgb[2] * 114)) / 1000;
         
-        return ($contrast >= 125) ? false : true;
+        return $contrast >= 170 ? false : true;
     }
 }

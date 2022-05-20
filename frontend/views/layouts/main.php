@@ -309,7 +309,7 @@
 
     <?php $this->beginBody() ?>
             
-        <nav id="nav" class="navbar navbar-light bg-white px-lg-0 py-0 transition">
+        <nav id="nav" class="navbar navbar-light bg-white px-0 py-0 transition">
         
             <div id="nav-container" class="container-lg container-xl container-xxl py-1_5 px-xxl-0">
 

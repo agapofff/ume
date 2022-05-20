@@ -133,16 +133,17 @@ use agapofff\gallery\widgets\Gallery;
                 <?= Gallery::widget([
                         'model' => $model,
                         'label' => Yii::t('back', 'Изображение'),
-                        'previewSize' => '300x150',
+                        'previewSize' => '400x200',
                         'fileInputPluginOptions' => [
                             'showPreview' => false,
                         ],
                         'containerClass' => 'row',
-                        'elementClass' => 'col-xs-12',
+                        'elementClass' => 'col-xs-6',
                         'deleteButtonText' => Html::tag('i', '', ['class' => 'fa fa-trash']),
                         'editButtonText' => Html::tag('i', '', ['class' => 'fa fa-edit']),
                     ]);
                 ?>
+                <p>Первое изображение - превью (2:1, макс. 800*400 px). Второе изображение будет показано перед описанием на странице акции (оптимально - 1000px по длинной стороне)</p>
             </div>  
 
             <div class="form-group-json">

@@ -208,18 +208,31 @@ section.content h1 {
     margin-bottom: 7px;
 }
 
+.yii2gallery.row {
+    margin: 0 -5px;
+}
 .yii2gallery-item {
     position: relative;
+    padding: 0 5px !important;
+    margin-bottom: 5px !important;
 }
 .yii2gallery-item .btn {
     position: absolute;
-    left: 1.5em;
+    left: 1em;
 }
 .yii2gallery-item .delete {
     top: 0.5em;
 }
 .yii2gallery-item .write {
     bottom: 0.5em;
+}
+
+
+.field-image-title,
+.field-image-description,
+.field-image-url,
+.field-image-newpage {
+    display: none !important;
 }
 
 

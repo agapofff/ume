@@ -37,7 +37,7 @@ class ActionsController extends Controller
             ->one();
             
         return $this->render('view', [
-            'model' => $action,
+            'action' => $action,
         ]);
     }
 }

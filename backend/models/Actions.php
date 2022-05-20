@@ -71,7 +71,7 @@ class Actions extends \yii\db\ActiveRecord
             'slug' => Yii::t('back', 'Алиас'),
             'title' => Yii::t('back', 'Заголовок'),
             'description' => Yii::t('back', 'Описание'),
-            'text' => Yii::t('back', 'Контент'),
+            'text' => Yii::t('back', 'Условия'),
         ];
     }
 }

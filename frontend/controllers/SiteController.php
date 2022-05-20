@@ -22,6 +22,7 @@ use backend\models\Cities;
 use backend\models\Addresses;
 use backend\models\NewsCategories;
 use backend\models\News;
+use backend\models\Actions;
 
 
 /**
@@ -122,11 +123,23 @@ class SiteController extends Controller
             ->orderBy([
                 'date_published' => SORT_DESC
             ])
+            ->limit(6)
+            ->all();
+            
+        $actions = Actions::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'published' => SORT_DESC
+            ])
+            ->limit(4)
             ->all();
         
         return $this->render('blog', [
             'categories' => $categories,
             'posts' => $posts,
+            'actions' => $actions,
         ]);
     }
     

@@ -336,6 +336,16 @@ form .help-block {
     opacity: .7;
 }
 
+.btn-wishlist div:last-child,
+.btn-wishlist[data-action="add"] div:last-child,
+.btn-wishlist[data-action="remove"] div:first-child {
+	display: none;
+}
+.btn-wishlist[data-action="add"] div:first-child,
+.btn-wishlist[data-action="remove"] div:last-child {
+	display: inline;
+}
+
 .news-post:after {
     content: '';
     position: absolute;
@@ -347,6 +357,7 @@ form .help-block {
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
+    z-index: 4;
 }
 .news-post:hover:after {
     opacity: 0;
@@ -388,17 +399,28 @@ form .help-block {
     width: 56px;
     height: 56px;
     background: url('../images/arrow_news_back.svg') -40px -40px no-repeat;
-    margin-left: -0.5rem;
 }
 
-.btn-wishlist div:last-child,
-.btn-wishlist[data-action="add"] div:last-child,
-.btn-wishlist[data-action="remove"] div:first-child {
-	display: none;
+#action-description h2:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 56px;
+    height: 56px;
+    background: url('../images/arrow_news_back.svg') -40px -40px no-repeat;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
-.btn-wishlist[data-action="add"] div:first-child,
-.btn-wishlist[data-action="remove"] div:last-child {
-	display: inline;
+#action-description ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+#action-description ul li {
+    margin-bottom: 1rem;
+    padding-left: 3rem;
+    background: url('../images/check_circle.svg') 0 0.6rem no-repeat;
 }
 
 
