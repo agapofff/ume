@@ -46,7 +46,7 @@ $this->title = $postName;
         if ($posts) {
             foreach ($posts as $post) {
     ?>
-                <div class="col-12 col-sm-6 col-md-12 mb-2">
+                <div class="col-12 col-sm-6 col-md-12">
                     <?= $this->render('_post', [
                             'post' => $post
                         ])

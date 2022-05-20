@@ -47,6 +47,9 @@ class NewsController extends Controller
             ->where([
                 'active' => 1
             ])
+            ->andWhere([
+                '<>', 'id', $post->id
+            ])
             ->orderBy([
                 'date_published' => SORT_DESC
             ])
