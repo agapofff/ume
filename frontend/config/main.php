@@ -33,7 +33,7 @@ return [
         
         // кладём активные языки в параметры
         $languages = backend\models\Langs::findAll([
-            'publish' => 1
+            'active' => 1
         ]);
         Yii::$app->params['languages'] = yii\helpers\ArrayHelper::map($languages, 'code', 'code');
         
@@ -530,6 +530,9 @@ return [
                 'blog' => 'site/blog',
                 'news' => 'news/index',
                 'news/<slug>' => 'news/post',
+                
+                'actions' => 'actions/index',
+                'actions/<slug>' => 'actions/view',
                 
                 'synchro' => 'synchro/index', // !!!!!!!!!!!!!!!!!!!!!!!!!
                 
