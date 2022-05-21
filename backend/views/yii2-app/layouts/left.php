@@ -168,6 +168,16 @@
             }
             
             if (
+                Yii::$app->user->can('/breeds/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Породы'),
+                    'icon' => 'paw',
+                    'url' => ['/breeds'],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/meta-tags/*')
             ) {
                 $menuItems[] = [
