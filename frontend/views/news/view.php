@@ -24,7 +24,7 @@ $this->title = $postName;
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-xl-8">
     <?php
         if ($image = $post->getImage()){
     ?>
@@ -40,13 +40,13 @@ $this->title = $postName;
                 <?= str_replace('<img ', '<img class="img-fluid mx-auto" loading="lazy" ', json_decode($post->text)->{Yii::$app->language}) ?>
             </div>
         </div>
-        <div class="col-md-4 pl-md-2 mt-3 mt-md-0">
+        <div class="col-xl-4 pl-xl-2 mt-3 mt-md-0">
             <div class="row">
     <?php
         if ($posts) {
             foreach ($posts as $post) {
     ?>
-                <div class="col-12 col-sm-6 col-md-12">
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-12">
                     <?= $this->render('_post', [
                             'post' => $post
                         ])
