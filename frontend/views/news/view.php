@@ -11,9 +11,9 @@ $this->title = $postName;
 
 <div class="container-lg container-xl container-xxl">
     <div class="row">
-        <div class="col-md-8">
-            <div class="news-header position-relative pl-xl-5">
-                <a href="<?= Url::to(['/news']) ?>" class="news-back d-none d-xl-block position-absolute top-0 left-0"></a>
+        <div class="col-md-10 col-lg-8">
+            <div class="news-header position-relative pl-md-5">
+                <a href="<?= Url::to(['/news']) ?>" class="arrow-back d-none d-md-block position-absolute top-0 left-0"></a>
                 <p class="blog-post-date mb-1 opacity-50">
                     <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
                 </p>
