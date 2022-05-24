@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
     // индикатор загрузки
-    NProgress.start();
+    // NProgress.start();
     $(document).on('pjax:start', function () {
         NProgress.start();
     });
@@ -12,13 +12,13 @@ jQuery(document).ready(function ($) {
         NProgress.done();
     });
     $(window).on('beforeunload', function () {
-        NProgress.start();
+        // NProgress.start();
         $('#fade').fadeIn('fast');
         $('.modal').modal('hide');
     });
-    $(window).on('load', function () {
+    // $(window).on('load', function () {
         NProgress.done();
-    });
+    // });
     $(document).on('click', '.loading', function () {
         NProgress.done();
     });
