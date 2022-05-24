@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+    new WOW().init();
 
     // индикатор загрузки
     // NProgress.start();

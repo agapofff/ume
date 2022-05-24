@@ -22,7 +22,7 @@ class AppAsset extends AssetBundle
         'css/owl.theme.default.css',
         'css/bootstrap-select.min.css',
         'css/toastr.css',
-        // 'css/animate.min.css',
+        'css/animate.min.css',
         'css/nprogress.css',
         // 'css/ekko-lightbox.css',
         'css/fancybox.css',
@@ -45,7 +45,7 @@ class AppAsset extends AssetBundle
         // 'js/owl.autoplay.js',
         // 'js/owl.lazyload.js',
         // 'js/ekko-lightbox.min.js',
-        // 'js/wow.min.js',
+        'js/wow.min.js',
         
         // 'js/ScrollMagic.min.js',
         // 'js/skrollr.min.js',
