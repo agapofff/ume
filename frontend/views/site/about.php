@@ -7,7 +7,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
 ?>
 
-<div id="about1" class="container-lg container-xl container-xxl mb-4">
+<div id="about-main" class="container-lg container-xl container-xxl mb-4">
 
     <h1 class="mb-2 text-uppercase wow fadeInUp">
         <?= Yii::t('front', 'Преимущества UME') ?>
@@ -87,7 +87,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
     </div>    
 </div>
 
-<div id="about2">
+<div id="about-innovations">
     <div class="container-lg container-xl container-xxl">
         <div class="row mt-lg-5 mb-2 mb-lg-4 pt-2">
             <div class="col-md-11 offset-md-1">
@@ -129,7 +129,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
     </div>
 </div>
 
-<div id="about3" class="container-lg container-xl container-xxl pt-7 mb-5 mb-lg-7 position-relative">
+<div id="about-alternatives" class="container-lg container-xl container-xxl pt-7 mb-5 mb-lg-7 position-relative">
     <div class="row position-absolute top-0 right-0 left-0">
         <div class="col-md-10 offset-md-1 pl-md-1_5">
             <img src="/images/about/bg2.svg" class="d-block w-100">
@@ -172,7 +172,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
     </div>
 </div>
 
-<div id="about4" class="position-relative mb-4 mb-lg-7">
+<div id="about-ginseng" class="position-relative mb-4 mb-lg-7">
     <div class="container-lg container-xl container-xxl">
         <div class="row mb-2">
             <div class="col-md-10 col-lg-9 col-xl-8 offset-md-1">
@@ -185,10 +185,10 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
     <div class="container-fluid pl-lg-0">
         <div class="row position-relative align-items-center">
             <div class="col-lg-6 mb-2 mb-lg-3 mb-lg-0 px-0 px-lg-1 pr-xl-3 text-center text-lg-right wow fadeIn">
-                <video autoplay loop muted playsinline style="width:100%">
-                    <source src="/video/ume-ginseng-4_PrUCFPe2.mp4" type="video/mp4">
-                    <source src="/video/ume-ginseng-4_PrUCFPe2.ogv" type="video/ogv">
-                    <source src="/video/ume-ginseng-4_PrUCFPe2.webm" type="video/webm">
+                <video autoplay loop muted playsinline class="d-block w-100">
+                    <source src="/video/ginseng_small.mp4" type="video/mp4">
+                    <source src="/video/ginseng_small.ogv" type="video/ogv">
+                    <source src="/video/ginseng_small.webm" type="video/webm">
                 </video>
             </div>
             <div class="position-absolute top-0 left-0 right-0 bottom-0">
@@ -236,7 +236,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
     </div>
 </div>
 
-<div id="about5" class="mb-4">
+<div id="about-hypoallergenic" class="mb-4">
     <div class="container-lg container-xl container-xxl">
         <div class="row mb-2">
             <div class="col-md-10 col-lg-11 col-xl-10 offset-md-1">
@@ -308,3 +308,4 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             <img src="/images/about/bg2.svg" class="d-block w-100">
         </div>
     </div>
+</div>

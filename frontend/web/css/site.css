@@ -381,8 +381,20 @@ form .help-block {
 .accordion .arrow {
     background: url('/images/arrow_mainline.svg') 0 center repeat-x;
 }
+.accordion a[data-toggle="collapse"][aria-expanded="true"] .arrow {
+    flex-grow: 1 !important;
+}
+.accordion a[data-toggle="collapse"] {
+    opacity: .5;
+}
+.accordion a[data-toggle="collapse"]:hover {
+    opacity: .75;
+}
+.accordion a[data-toggle="collapse"][aria-expanded="true"] {
+    opacity: 1;
+}
 .arrow-corner {
-    height: 2.375rem;
+    height: 1.34em;
 }
 
 /* .accordion-arrow:after { */
@@ -479,17 +491,17 @@ ul.check-circle li:before {
     width: 2.5rem;
     height: 2.5rem;
 }
-#about3 h2.arrow-down-right:after {
+#about-alternatives h2.arrow-down-right:after {
     bottom: 20%;
 }
 @media (min-width: 992px) {
-    video {
+    #about-ginseng video {
         max-width: 650px;
     }
 }
 @media (max-width: 991px) {
-    #about2 .position-absolute,
-    #about4 .position-absolute    {
+    #about-innovations .position-absolute,
+    #about-ginseng .position-absolute    {
         position: relative !important;
     }
 }
