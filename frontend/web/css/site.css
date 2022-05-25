@@ -340,42 +340,8 @@ form .help-block {
 	display: inline;
 }
 
-.arrow-back {
-    width: 56px;
-    height: 56px;
-    background: url('../images/arrow_news_back.svg') -40px -40px no-repeat;
-}
-
-.arrow-up-left:after,
-.arrow-up-right:after,
-.arrow-down-left:after,
-.arrow-down-right:after {
-    content: '';
-    position: absolute;
-    bottom: 25%;
-    right: 0;
-    width: 56px;
-    height: 56px;
-    background: url('../images/arrow_news_back.svg') -40px -40px no-repeat;
-}
-
-.arrow-down-left:after {
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    transform: rotate(-90deg);    
-}
-.arrow-down-right:after {
-    -webkit-transform: rotate(-180deg);
-    -moz-transform: rotate(-180deg);
-    transform: rotate(-180deg);   
-}
-@media (max-width: 765px) {
-    .arrow-up-right:after,
-    .arrow-up-left:after,
-    .arrow-down-right:after,
-    .arrow-down-left:after {
-        display: none;
-    }
+.arrow-icon {
+    width: 4.5em;
 }
 
 .accordion .arrow {

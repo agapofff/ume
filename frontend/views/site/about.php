@@ -89,15 +89,23 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
 <div id="about-innovations">
     <div class="container-lg container-xl container-xxl">
-        <div class="row mt-lg-5 mb-2 mb-lg-4 pt-2">
+        <div class="row mt-lg-5 mb-2 mb-lg-4 pt-2 position-relative">
             <div class="col-md-11 offset-md-1">
-                <h2 class="text-uppercase font-weight-bolder position-relative arrow-down-left mb-2 wow fadeInUp">
+                <h2 class="text-uppercase font-weight-bolder position-relativemb-2 wow fadeInUp">
                     <?= Yii::t('front', 'Инновации и ИИ') ?>
                 </h2>
                 <p class="h5 pr-md-15 pr-lg-17 pr-xl-19 wow fadeInUp">
                     <?= Yii::t('front', 'С помощью систем видеомониторинга и искусственного интеллекта мы изучаем пищевые предпочтения наших питомцев и подбираем идеальный рацион') ?>.
                 </p>
             </div>
+            <?= Html::img('/images/arrow.svg', [
+                    'class' => 'position-absolute top-0 right-0 arrow d-none d-md-block mt-2 wow fadeIn',
+                    'style' => '
+                        width: 4.5em;
+                        transform: rotate(135deg);
+                    ',
+                ])
+            ?>
         </div>
     </div>
     <div class="row position-relative align-items-center">
@@ -135,11 +143,19 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             <img src="/images/about/bg2.svg" class="d-block w-100">
         </div>
     </div>
-    <div class="row">
+    <div class="row position-relative">
         <div class="col-md-11 offset-md-1">
-            <h2 class="text-uppercase font-weight-bolder position-relative arrow-down-right mb-2 wow fadeInUp">
+            <h2 class="d-inline-block text-uppercase font-weight-bolder position-relative mb-2 wow fadeInUp">
                 <?= Yii::t('front', 'Алтернативные<br>источники белка') ?>
             </h2>
+            <?= Html::img('/images/arrow.svg', [
+                    'class' => 'd-none d-md-inline-block mb-3 ml-4 wow fadeIn',
+                    'style' => '
+                        width: 4.5em;
+                        transform: rotate(45deg);
+                    ',
+                ])
+            ?>            
             <div class="row mb-2 mb-lg-3">
                 <div class="col-md-10 col-lg-9 col-xl-8">
                     <p class="h5 wow fadeInUp">
@@ -239,10 +255,18 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 <div id="about-hypoallergenic" class="mb-4">
     <div class="container-lg container-xl container-xxl">
         <div class="row mb-2">
-            <div class="col-md-10 col-lg-11 col-xl-10 offset-md-1">
-                <h2 class="text-uppercase font-weight-bolder position-relative arrow-up-left wow fadeInUp">
+            <div class="col-md-10 col-lg-11 col-xl-10 offset-md-1 position-relative">
+                <h2 class="text-uppercase font-weight-bolder position-relative  wow fadeInUp">
                     <?= Yii::t('front', 'Гипоаллергенная беззерновая формула') ?>
                 </h2>
+                <?= Html::img('/images/arrow.svg', [
+                        'class' => 'position-absolute top-0 right-0 arrow d-none d-md-block mt-2 wow fadeIn',
+                        'style' => '
+                            width: 4.5em;
+                            transform: rotate(-135deg);
+                        ',
+                    ])
+                ?>
             </div>
         </div>
         <div class="row mb-2">

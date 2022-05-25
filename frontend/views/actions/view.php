@@ -12,14 +12,28 @@ $actionName = $this->title;
 <div class="container-lg container-xl container-xxl">
     <div class="row">
         <div class="col-md-10 col-lg-8">
-            <div class="position-relative pl-md-5">
-                <a href="<?= Url::to(['/actions']) ?>" class="arrow-back d-none d-md-block position-absolute top-0 left-0"></a>
-                <p class="blog-post-date mb-1 opacity-50">
-                    <?= Yii::$app->formatter->asDatetime($action->published, 'php:d.m.Y') ?>
-                </p>
-                <h1 class="h2 mb-3 text-uppercase font-weight-600 text-orange">
-                    <?= $actionName ?>
-                </h1>
+            <div class="row">
+                <div class="col-auto d-none d-md-block pl-0_5 pr-0">
+                    <a href="<?= Url::to(['/actions']) ?>">
+                        <?= Html::img('/images/arrow.svg', [
+                                'class' => 'wow fadeIn',
+                                'style' => '
+                                    width: 4.5em;
+                                    transform: rotate(-135deg);
+                                    margin-top: -0.5em;
+                                ',
+                            ])
+                        ?>
+                    </a>
+                </div>
+                <div class="col">
+                    <p class="blog-post-date mb-1 opacity-50">
+                        <?= Yii::$app->formatter->asDatetime($action->published, 'php:d.m.Y') ?>
+                    </p>
+                    <h1 class="h2 mb-3 text-uppercase font-weight-600 text-orange">
+                        <?= $actionName ?>
+                    </h1>
+                </div>
             </div>
         </div>
     </div>
