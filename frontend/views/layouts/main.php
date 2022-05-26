@@ -327,7 +327,7 @@
                 </div>
                     
                 <div class="d-flex ml-auto align-items-center">
-                    <div id="nav-lang-select" class="d-none d-md-flex align-items-center ml-auto mr-2 mr-sm-3">
+                    <div id="nav-lang-select" class="d-none d-sm-flex align-items-center ml-auto mr-2 mr-sm-3">
                         <?php
                             if ($langs) {
                                 foreach ($langs as $key => $lang) {
@@ -442,7 +442,7 @@
         </div>
 
 
-        <footer class="bg-gray-900 text-white pt-4 pb-1 mt-5">
+        <footer class="bg-gray-900 text-white pt-4 pb-2 mt-5">
             <div class="container-lg container-xl container-xxl">
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-7 col-lg-7 col-xl-8 col-xxl-9 mb-1">
@@ -521,6 +521,17 @@
                 <div class="modal-content m-0 border-0 vw-100 bg-gray-900 rounded-0">
                     <div class="modal-body p-0 rounded-0">
                         <div class="container-lg container-xl container-xxl">
+                            <div class="d-sm-none mt-2">
+                                <?php
+                                    if ($langs) {
+                                        foreach ($langs as $key => $lang) {
+                                            echo Html::a($lang['label'], $lang['url'], [
+                                                'class' => 'text-uppercase text-white mr-1 ' . ($lang['active'] ? 'text-underline' : 'text-decoration-none')
+                                            ]);
+                                        }
+                                    }
+                                ?>
+                            </div>
                             <div class="row justify-content-center">
                                 <div class="col-xl-11 col-xxl-10 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7">
                                     <div class="row justify-content-between">
