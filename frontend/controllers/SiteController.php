@@ -95,35 +95,37 @@ class SiteController extends Controller
                 'active' => 1
             ])
             ->orderBy(new Expression('rand()'))
-            // ->limit(16)
+            ->limit(8)
             ->all();
             
         $priceType = Price::findOne([
             'name' => Yii::$app->language
         ])->type_id;
-// echo VarDumper::dump($priceType, 99, true);
             
         foreach ($promoProducts as $product) {
             $priceModel = $product->getPriceModel($priceType);
             if ($priceModel->available && $priceModel->price){
                 $products[] = $product;
             }
-// echo VarDumper::dump($priceModel, 99, true);
         }
-            
-        // $modifications = Product::getAllProductsPrices($collectionProductsIDs);
-
-        // $modificationsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
-        // $modificationsOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
             
         Yii::$app->params['currency'] = Langs::findOne([
             'code' => Yii::$app->language
         ])->currency;
+        
+        $news = News::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'date_published' => SORT_DESC
+            ])
+            ->limit(3)
+            ->all();
             
         return $this->render('index', [
             'products' => $products,
-            // 'prices' => $modificationsPrices,
-            // 'prices_old' => $modificationsOldPrices,
+            'news' => $news,
         ]);
         
     }
