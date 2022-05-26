@@ -401,8 +401,7 @@
                 
                 </div>
                 
-                <hr class="border-bottom border-gray-800 py-0 w-100">
-                
+                <hr class="border-gray-800 py-0 w-100" style="border-width: 2px">                
             </div>
         </nav>
 
