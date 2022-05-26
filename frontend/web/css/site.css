@@ -457,19 +457,29 @@ ul.check-circle li:before {
     width: 2.5rem;
     height: 2.5rem;
 }
-#about-alternatives h2.arrow-down-right:after {
+#about #alternatives h2.arrow-down-right:after {
     bottom: 20%;
 }
 @media (min-width: 992px) {
-    #about-ginseng video {
+    #about #ginseng video {
         max-width: 650px;
     }
 }
 @media (max-width: 991px) {
-    #about-innovations .position-absolute,
-    #about-ginseng .position-absolute    {
+    #about #innovations .position-absolute,
+    #about #ginseng .position-absolute    {
         position: relative !important;
     }
+}
+
+#index3 .display-1 {
+    text-shadow: 1px 0 1px #0B2142, 
+                0 1px 1px #0B2142, 
+                -1px 0 1px #0B2142, 
+                0 -1px 1px #0B2142;
+}
+#index3 a:hover .display-1 {
+    color: #0B2142 !important;
 }
 
 

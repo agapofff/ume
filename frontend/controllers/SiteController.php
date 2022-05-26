@@ -10,10 +10,12 @@ use yii\web\Controller;
 use yii\db\Expression;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\Product;
+use dvizh\shop\models\Price;
+use dvizh\shop\models\Product;
 use dvizh\shop\models\product\ProductSearch;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 use dektrium\user\models\Profile;
 use dektrium\user\models\User;
 use frontend\models\Pages;
@@ -23,6 +25,7 @@ use backend\models\Addresses;
 use backend\models\NewsCategories;
 use backend\models\News;
 use backend\models\Actions;
+use backend\models\Langs;
 
 
 /**
@@ -84,7 +87,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = Product::find()
+        $products = [];
+        
+        $promoProducts = Product::find()
             ->where([
                 'is_promo' => 1,
                 'active' => 1
@@ -93,19 +98,32 @@ class SiteController extends Controller
             // ->limit(16)
             ->all();
             
-        $modifications = Product::getAllProductsPrices($collectionProductsIDs);
-
-        $modificationsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
-        $modificationsOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
+        $priceType = Price::findOne([
+            'name' => Yii::$app->language
+        ])->type_id;
+// echo VarDumper::dump($priceType, 99, true);
             
-        Yii::$app->params['currency'] = \backend\models\Langs::findOne([
+        foreach ($promoProducts as $product) {
+            $priceModel = $product->getPriceModel($priceType);
+            if ($priceModel->available && $priceModel->price){
+                $products[] = $product;
+            }
+// echo VarDumper::dump($priceModel, 99, true);
+        }
+            
+        // $modifications = Product::getAllProductsPrices($collectionProductsIDs);
+
+        // $modificationsPrices = ArrayHelper::map($modifications, 'product_id', 'price');
+        // $modificationsOldPrices = ArrayHelper::map($modifications, 'product_id', 'price_old');
+            
+        Yii::$app->params['currency'] = Langs::findOne([
             'code' => Yii::$app->language
         ])->currency;
             
         return $this->render('index', [
             'products' => $products,
-            'prices' => $modificationsPrices,
-            'prices_old' => $modificationsOldPrices,
+            // 'prices' => $modificationsPrices,
+            // 'prices_old' => $modificationsOldPrices,
         ]);
         
     }
