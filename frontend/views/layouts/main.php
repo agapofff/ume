@@ -474,37 +474,38 @@
                 </div>
                 <hr class="mb-2 border-gray-400">
                 <div class="row justify-content-between">
-                    <div class="col-12 col-md-7 col-lg-7 col-xl-8 col-xxl-9">
-                        <div class="row">
-                            <div class="col-12 col-xl-6 mb-2">
-                                <?= Html::a(Yii::t('front', 'Политика конфиденциальности'), [
-                                        '/privacy-policy'
-                                    ], [
-                                        'class' => 'text-decoration-none text-white font-weight-light'
-                                    ])
-                                ?>
-                            </div>
-                            <div class="col-12 col-xl-6 mb-2 font-weight-light text-white">
-                                © Copyright ume.tech <?= date('Y') ?>
-                            </div>
-                        </div>
+                    <div class="col-auto mb-1">
+                        <?= Html::a(Yii::t('front', 'Политика конфиденциальности'), [
+                                '/privacy-policy'
+                            ], [
+                                'class' => 'text-decoration-none text-white font-weight-light'
+                            ])
+                        ?>
                     </div>
-                    <div class="col-12 col-md-5 col-lg-5 col-xl-4 col-xxl-3">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-lg-6 mb-2">
-                                <?php
-                                    foreach (Yii::$app->params['socials'] as $socialName => $socialUrl) {
-                                        echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
-                                            'class' => 'footer-social-icon',
-                                        ]), $socialUrl, [
-                                            'class' => 'mr-1'
-                                        ]);
-                                    }
-                                ?>
-                            </div>
-                            <div class="col-12 col-lg-6 mb-2 text-lg-right">
-                                <a href="tel:+<?= preg_replace('/[^0-9]/', '', Yii::$app->params['phone']) ?>" class="text-white font-weight-light text-nowrap text-decoration-none">
+                    <div class="col-auto mb-1 font-weight-light text-white">
+                        © Copyright ume.tech <?= date('Y') ?>
+                    </div>
+                    <div class="col-auto mb-1">
+                        <?php
+                            foreach (Yii::$app->params['socials'] as $socialName => $socialUrl) {
+                                echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
+                                    'class' => 'footer-social-icon',
+                                ]), $socialUrl, [
+                                    'class' => 'mr-1'
+                                ]);
+                            }
+                        ?>
+                    </div>
+                    <div class="col-auto">
+                        <div class="row justify-content-xl-between">
+                            <div class="col-auto mb-1">
+                                <a href="tel:+7<?= mb_substr(preg_replace('/[^0-9]/', '', Yii::$app->params['phone']), 1) ?>" class="text-white font-weight-light text-nowrap text-decoration-none">
                                     <?= Yii::$app->params['phone'] ?>
+                                </a>
+                            </div>
+                            <div class="col-auto mb-1">
+                                <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-white font-weight-light text-nowrap text-decoration-none">
+                                    <?= Yii::$app->params['supportEmail'] ?>
                                 </a>
                             </div>
                         </div>

@@ -4,7 +4,7 @@ return [
     'supportEmail' => 'info@ume.tech',
     'senderEmail' => 'info@ume.tech',
     'senderName' => 'UME',
-    'phone' => '+7 911 234 56 78',
+    'phone' => '8 800 555 27 21',
     'user.passwordResetTokenExpire' => 3600,
     'user.passwordMinLength' => 8,
     // 'languages' => [
