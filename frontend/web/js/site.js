@@ -265,6 +265,57 @@ jQuery(document).ready(function ($) {
     }
 
     generateOwlCarousel();
+    
+
+    // $('.reviews-carousel').on('changed.owl.carousel', function (event) {
+        // setTimeout(function(){
+            // $('.reviews-carousel').trigger('refresh.owl.carousel');
+        // }, 100);
+    // });
+    
+    $('.reviews-carousel').slick({
+        arrows: false,
+        centerMode: true,
+        infinite: true,
+        variableWidth: true,
+        adaptiveHeight: true,
+        // cssEase: false,
+        draggable: false,
+        lazyLoad: 'progressive',
+        centerPadding: '60px',
+        speed: 0,
+        slidesToShow: 7,
+        responsive: [
+            {
+                breakpoint: 576,
+                settings: {
+                    draggable: true,
+                    slidesToShow: 1,
+                    centerPadding: '60px',
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    draggable: true,
+                    slidesToShow: 3,
+                    centerPadding: '60px',
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    draggable: false,
+                    slidesToShow: 5,
+                    centerPadding: '60px',
+                }
+            }
+        ]
+    });
+    $(document).on('click', '.slick-slide:not(.slick-current)', function () {
+        var goTo = $(this).attr('data-slick-index');
+        $('.reviews-carousel').slick('slickGoTo', goTo);
+    })
 
 
     // выпадающее меню

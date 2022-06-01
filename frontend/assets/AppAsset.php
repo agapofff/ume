@@ -26,6 +26,7 @@ class AppAsset extends AssetBundle
         'css/nprogress.css',
         // 'css/ekko-lightbox.css',
         'css/fancybox.css',
+        'css/slick.css',
         'css/site.css',
     ];
     public $js = [
@@ -55,6 +56,7 @@ class AppAsset extends AssetBundle
         'js/ekko-lightbox.js',
         'js/fancybox.umd.js',
         'js/nprogress.js',
+        'js/slick.js',
         // 'js/jquery.marquee.min.js',
         // 'js/headroom.min.js',
         // 'js/jQuery.headroom.js',

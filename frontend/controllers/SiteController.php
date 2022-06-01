@@ -26,6 +26,7 @@ use backend\models\NewsCategories;
 use backend\models\News;
 use backend\models\Actions;
 use backend\models\Langs;
+use backend\models\Reviews;
 
 
 /**
@@ -123,9 +124,21 @@ class SiteController extends Controller
             ->limit(3)
             ->all();
             
+        $reviews = Reviews::find()
+            ->where([
+                'active' => 1,
+                'language' => Yii::$app->language,
+            ])
+            ->orderBy([
+                'created' => SORT_DESC
+            ])
+            ->limit(10)
+            ->all();
+            
         return $this->render('index', [
             'products' => $products,
             'news' => $news,
+            'reviews' => $reviews,
         ]);
         
     }

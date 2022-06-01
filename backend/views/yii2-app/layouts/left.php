@@ -158,6 +158,16 @@
             }
             
             if (
+                Yii::$app->user->can('/reviews/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Отзывы'),
+                    'icon' => 'commenting',
+                    'url' => ['/reviews'],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/pages/*')
             ) {
                 $menuItems[] = [
@@ -176,6 +186,7 @@
                     'url' => ['/breeds'],
                 ];
             }
+            
             
             if (
                 Yii::$app->user->can('/meta-tags/*')
