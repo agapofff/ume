@@ -23,62 +23,29 @@ use yii\web\View;
 $this->title = Yii::t('front', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="container-lg container-xl container-xxl">
 
-<div class="row justify-content-center">
+    <div class="row justify-content-center">
 
-    <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
-    
-        <h1 class="h2 text-center text-uppercase mb-5">
-            <?= $this->title ?>
-        </h1>
-
-        <?php
-            $form = ActiveForm::begin([
-                'id' => 'registration-form',
-                // 'action' => '/register',
-                'enableAjaxValidation' => true,
-                'enableClientValidation' => false,
-            ]);
-        ?>
-
-            <?= $form
-                    ->field($model, 'email', [
-                        'inputOptions' => [
-                            'autofocus' => 'autofocus',
-                            'class' => 'form-control form-control-lg',
-                            'tabindex' => '2',
-                            'required' => true,
-                            'autocomplete' => rand(),
-                            'placeholder' => ' ',
-                        ],
-                        'options' => [
-                            'class' => 'form-group row align-items-center mb-2',
-                        ],
-                        'labelOptions' => [
-                            'class' => 'col-md-3 mb-md-0 font-weight-bold'
-                        ],
-                        'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
-                    ])
-                    ->input('email')
-            ?>
-
-            <?= $form
-                    ->field($model, 'username', [
-                        'template' => '{input}',
-                        'options' => [
-                            'class' => 'd-none',
-                        ],
-                    ])
-                    ->hiddenInput()
-                    ->label(false)
-            ?>
+        <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
+        
+            <h1 class="h2 text-center text-uppercase mb-5">
+                <?= $this->title ?>
+            </h1>
 
             <?php
-                if ($module->enableGeneratingPassword == false) {
+                $form = ActiveForm::begin([
+                    'id' => 'registration-form',
+                    // 'action' => '/register',
+                    'enableAjaxValidation' => true,
+                    'enableClientValidation' => false,
+                ]);
             ?>
+
                 <?= $form
-                        ->field($model, 'password', [
+                        ->field($model, 'email', [
                             'inputOptions' => [
+                                'autofocus' => 'autofocus',
                                 'class' => 'form-control form-control-lg',
                                 'tabindex' => '2',
                                 'required' => true,
@@ -88,62 +55,98 @@ $this->params['breadcrumbs'][] = $this->title;
                             'options' => [
                                 'class' => 'form-group row align-items-center mb-2',
                             ],
-                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
                             'labelOptions' => [
                                 'class' => 'col-md-3 mb-md-0 font-weight-bold'
-                            ]
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
                         ])
-                        ->passwordInput()
-                        ->label(Yii::t('front', 'Пароль'))
+                        ->input('email')
                 ?>
-            <?php } ?>
-            
-            <div class="form-group row justify-content-end mt-2 mb-0">
-                <div class="col-md-9">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="agree" name="agree">
-                        <label class="custom-control-label" for="agree">
-                            <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
-                                    '/privacy-policy'
-                                ], [
-                                    'target' => '_blank',
-                                ]) ?>...
-                        </label>
+
+                <?= $form
+                        ->field($model, 'username', [
+                            'template' => '{input}',
+                            'options' => [
+                                'class' => 'd-none',
+                            ],
+                        ])
+                        ->hiddenInput()
+                        ->label(false)
+                ?>
+
+                <?php
+                    if ($module->enableGeneratingPassword == false) {
+                ?>
+                    <?= $form
+                            ->field($model, 'password', [
+                                'inputOptions' => [
+                                    'class' => 'form-control form-control-lg',
+                                    'tabindex' => '2',
+                                    'required' => true,
+                                    'autocomplete' => rand(),
+                                    'placeholder' => ' ',
+                                ],
+                                'options' => [
+                                    'class' => 'form-group row align-items-center mb-2',
+                                ],
+                                'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                                'labelOptions' => [
+                                    'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                                ]
+                            ])
+                            ->passwordInput()
+                            ->label(Yii::t('front', 'Пароль'))
+                    ?>
+                <?php } ?>
+                
+                <div class="form-group row justify-content-end mt-2 mb-0">
+                    <div class="col-md-9">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="agree" name="agree">
+                            <label class="custom-control-label" for="agree">
+                                <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
+                                        '/privacy-policy'
+                                    ], [
+                                        'target' => '_blank',
+                                    ]) ?>...
+                            </label>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <?= Html::hiddenInput('lang', Yii::$app->language) ?>
-            
-            <div class="row justify-content-center mt-2 mt-md-4 mb-3">
-                <div class="col-auto mb-1">
-                    <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Регистрация'),
-                        [
-                            'class' => 'btn btn-lg btn-secondary rounded-pill',
-                            'tabindex' => '4',
-                            'title' => Yii::t('front', 'Регистрация')
-                        ]
-                    ) ?>
+                
+                <?= Html::hiddenInput('lang', Yii::$app->language) ?>
+                
+                <div class="row justify-content-center mt-2 mt-md-4 mb-3">
+                    <div class="col-auto mb-1">
+                        <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Регистрация'),
+                            [
+                                'class' => 'btn btn-lg btn-secondary rounded-pill',
+                                'tabindex' => '4',
+                                'title' => Yii::t('front', 'Регистрация')
+                            ]
+                        ) ?>
+                    </div>
+                    <div class="col-auto mb-1">
+                        <?= Html::a(Yii::t('front', 'Авторизация'), ['/login'], [
+                                'class' => 'btn btn-lg btn-outline-secondary rounded-pill',
+                            ])
+                        ?>
+                    </div>
                 </div>
-                <div class="col-auto mb-1">
-                    <?= Html::a(Yii::t('front', 'Авторизация'), ['/login'], [
-                            'class' => 'btn btn-lg btn-outline-secondary rounded-pill',
+
+                <p class="text-center">
+                    <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
+                            '/resend'
                         ])
                     ?>
-                </div>
-            </div>
+                </p>            
 
-            <p class="text-center">
-                <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
-                        '/resend'
-                    ])
-                ?>
-            </p>            
+            <?php ActiveForm::end(); ?>
+            
+        </div>
 
-        <?php ActiveForm::end(); ?>
-        
     </div>
-
+    
 </div>
 
 <?php

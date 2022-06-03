@@ -11,7 +11,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
     <div id="main" class="container-lg container-xl container-xxl mb-4">
 
-        <h1 class="mb-2 text-uppercase wow fadeInUp">
+        <h1 class="mb-2 text-uppercase wow fadeInUp" data-wow-duration="0.5s">
             <?= Yii::t('front', 'Преимущества UME') ?>
         </h1>
 
@@ -24,17 +24,17 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             </div>
             <div class="col-12 position-absolute top-0 left-0 right-0 bottom-0">
                 <div class="row h-100 align-items-center">
-                    <div class="col-sm-7 col-lg-4 pl-2 pl-xl-5 pr-0 d-none d-sm-block wow fadeInLeft">
+                    <div class="col-sm-7 col-lg-4 pl-2 pl-xl-5 pr-0 d-none d-sm-block wow fadeInUp">
                         <p class="mb-0 font-weight-bold text-uppercase lead">
                             <?= Yii::t('front', 'Чтобы лучше понимать животных и заботиться об их здоровье, мы соединили современные технологии и тысячелетние традиции применения женьшеня') ?>.
                         </p>
                     </div>
-                    <div class="col-12 col-sm-5 col-lg-4 h-100 px-0 pt-1 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="col-12 col-sm-5 col-lg-4 h-100 px-0 pt-1 wow fadeIn">
                         <img src="/images/about/booster1.png" class="d-block h-100 mx-auto">
                     </div>
                     <div class="col-lg-4 pl-lg-5 pr-md-2 py-1 py-md-0">
-                        <div class="row align-items-center justify-content-center">
-                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1 wow fadeInRight" data-wow-delay="1s">
+                        <div class="row align-items-center justify-content-center wow fadeInRight" data-wow-duration="0.7s">
+                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1">
                                 <div class="row align-items-center flex-nowrap">
                                     <div class="col-auto pr-0">
                                         <img src="/images/about/grain-free.svg" class="about-cover-icons" loading="lazy" alt="<?= $title ?> grain-free">
@@ -46,7 +46,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1 wow fadeInRight" data-wow-delay="1.5s">
+                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1">
                                 <div class="row align-items-center flex-nowrap">
                                     <div class="col-auto pr-0">
                                         <img src="/images/about/insect-protein.svg" class="about-cover-icons" loading="lazy" alt="<?= $title ?> insect protein">
@@ -58,7 +58,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1 wow fadeInRight" data-wow-delay="2s">
+                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1">
                                 <div class="row align-items-center flex-nowrap">
                                     <div class="col-auto pr-0">
                                         <img src="/images/about/white-imperial-ginseng.svg" class="about-cover-icons" loading="lazy" alt="<?= $title ?> white imperial ginseng">
@@ -70,7 +70,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1 wow fadeInRight" data-wow-delay="2.5s">
+                            <div class="col-8 col-sm-6 col-md-5 col-lg-12 mt-1 mb-1">
                                 <div class="row align-items-center flex-nowrap">
                                     <div class="col-auto pr-0">
                                         <img src="/images/about/7-ginsensenosides.svg" class="about-cover-icons" loading="lazy" alt="<?= $title ?> 7 Ginsensenosides">
@@ -118,17 +118,17 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                 <div class="container-lg container-xl container-xxl h-100">
                     <div class="row h-100 align-items-center justify-content-center">
                         <div class="col-11 col-lg-4 col-xl-3 offset-lg-8 offset-xl-9 px-xl-0 pl-lg-2 pr-lg-0">
-                            <ul class="check-circle">
-                                <li class="wow fadeInRight" data-wow-delay="0.5s">
+                            <ul class="check-circle wow fadeInRight" data-wow-duration="0.7s">
+                                <li>
                                     <?= Yii::t('front', 'Видеонаблюдение за собаками в режиме 24/7') ?>.
                                 </li>
-                                <li class="wow fadeInRight" data-wow-delay="1s">
+                                <li>
                                     <?= Yii::t('front', 'Анализ полученных данных на основе возможностей искусственного интеллекта') ?>.
                                 </li>
-                                <li class="wow fadeInRight" data-wow-delay="1.5s">
+                                <li>
                                     <?= Yii::t('front', 'Создание индивидуальных карт оптимального и сбалансированного питания') ?>.
                                 </li>
-                                <li class="wow fadeInRight" data-wow-delay="2s">
+                                <li>
                                     <?= Yii::t('front', 'Европейское производство, сертифицированное сырье') ?>.
                                 </li>
                             </ul>
@@ -167,17 +167,17 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                 </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-11 col-md-6 col-xl-5 mb-3 mb-md-0">
-                        <ul class="check-circle mb-0">
-                            <li class="wow fadeInLeft" data-wow-delay="0.5s">
+                        <ul class="check-circle mb-0 wow fadeInRight" data-wow-duration="0.7s">
+                            <li>
                                 <?= Yii::t('front', 'Протеин насекомых богат аминокислотами, является отличным источником таурина и витаминов') ?>.
                             </li>
-                            <li class="wow fadeInLeft" data-wow-delay="1s">
+                            <li>
                                 <?= Yii::t('front', 'Насекомые очень питательны: они состоят в среднем на 70% из белка') ?>.
                             </li>
-                            <li class="wow fadeInLeft" data-wow-delay="1.5s">
+                            <li>
                                 <?= Yii::t('front', 'При производстве сырья из насекомых выбрасывается до 98% меньше парниковых газов, чем при переработке продуктов животноводства') ?>.
                             </li>
-                            <li class="mb-0 wow fadeInLeft" data-wow-delay="2s">
+                            <li>
                                 <?= Yii::t('front', 'До 2025 года рынок белка из насекомых будет расти в среднем на 37,5%*') ?>.
                             </li>
                         </ul>
@@ -216,29 +216,29 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                                 <p class="h5 mb-2 wow fadeInUp">
                                     <?= Yii::t('front', 'Выращивая женьшень 6 лет в экологически чистых условиях горы Чанбайшань, мы сохраняем в его корне максимум полезных веществ, включая 37 видов гинзенозидов') ?>.
                                 </p>
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay="0.5s">
+                                <div class="row wow fadeInRight" data-wow-duration="0.7s">
+                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                         <ul class="check-circle mb-0">
                                             <li class="mb-1">
                                                 <?= Yii::t('front', 'Является сильным природным адаптогеном и эффективно влияет на здоровье питомцев') ?>.
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay="1s">
+                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                         <ul class="check-circle mb-0">
                                             <li class="mb-1">
                                                 <?= Yii::t('front', 'Улучшает работу сердечно-сосудистой системы и ЖКТ') ?>.
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay="1.5s">
+                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                         <ul class="check-circle mb-0">
                                             <li class="mb-1">
                                                 <?= Yii::t('front', 'Повышает выносливость и стрессоустойчивость') ?>.
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6 wow fadeInRight" data-wow-delay="2s">
+                                    <div class="col-sm-6 col-md-12 col-lg-12 col-xl-6">
                                         <ul class="check-circle mb-0">
                                             <li class="mb-1">
                                                 <?= Yii::t('front', 'Стимулирует иммунную систему') ?>.
@@ -281,29 +281,29 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                     <p class="h5 mb-2 wow fadeInUp">
                         <?= Yii::t('front', 'Мы сознательно избегаем использования глютена, сои, искусственных красителей, ароматизаторов и консервантов — они вредны как человеку, так и животным') ?>.
                     </p>
-                    <div class="row">
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay="0.5s">
+                    <div class="row wow fadeInRight" data-wow-duration="0.7s">
+                        <div class="col-sm-6">
                             <ul class="check-circle mb-1">
                                 <li class="mb-1">
                                     <?= Yii::t('front', 'Изготовлены без использования кукурузы и пшеницы') ?>.
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay="1s">
+                        <div class="col-sm-6">
                             <ul class="check-circle mb-1">
                                 <li class="mb-1">
                                     <?= Yii::t('front', 'Способствуют активному долголетию') ?>.
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay="1.5s">
+                        <div class="col-sm-6">
                             <ul class="check-circle mb-1">
                                 <li class="mb-1">
                                     <?= Yii::t('front', 'Не содержат ГМО') ?>.
                                 </li>
                             </ul>
                         </div>
-                        <div class="col-sm-6 wow fadeInRight" data-wow-delay="2s">
+                        <div class="col-sm-6">
                             <ul class="check-circle mb-1">
                                 <li class="mb-1">
                                     <?= Yii::t('front', 'Поддерживают блеск шерсти и чистоту кожи') ?>.
@@ -328,6 +328,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         </div>
     </div>
 
+    <!-- 
     <div class="container-lg container-xl container-xxl pt-4 mt-5 position-relative">
         <div class="row position-absolute top-0 right-0 left-0" style="z-index: -1">
             <div class="col-md-10">
@@ -335,5 +336,6 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             </div>
         </div>
     </div>
+    -->
 
 </div>

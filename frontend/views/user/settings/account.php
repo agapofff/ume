@@ -18,7 +18,7 @@
     
 ?>
 
-<div class="container-fluid mt-13 px-lg-2 px-xl-3 px-xxl-5 d-none">
+<div class="container-lg container-xl container-xxl mt-13 px-lg-2 px-xl-3 px-xxl-5 d-none">
     <div class="row justify-content-center">
         <div class="col-lg-6 mb-4 d-none d-lg-block">
             <?= $this->render('_menu') ?>

@@ -131,8 +131,8 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'О UME'),
-            'url' => Url::to(['/about']),
+            'label' => Yii::t('front', 'Корма'),
+            'url' => Url::to(['/catalog']),
             'class' => '',
         ],
         [
@@ -141,8 +141,8 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Корма'),
-            'url' => Url::to(['/catalog']),
+            'label' => Yii::t('front', 'Преимущества'),
+            'url' => Url::to(['/about']),
             'class' => '',
         ],
     ];

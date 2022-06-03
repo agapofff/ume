@@ -8,14 +8,14 @@ $this->title = Yii::$app->name;
 ?>
 
 <div id="index1" class="container-lg container-xl container-xxl mb-5">
-    <div class="row align-items-center mb-2">
+    <div class="row align-items-center mb-2 wow fadeInUp" data-wow-duration="0.5s">
         <div class="col-auto">
-            <h1 class="text-uppercase wow fadeInLeft">
+            <h1 class="text-uppercase">
                 <?= Yii::t('front', 'Just like you') ?>!
             </h1>
         </div>
         <div class="col-auto">
-            <h5 class="text-uppercase wow fadeInRight">
+            <h5 class="text-uppercase">
                 <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
             </h5>
         </div>
@@ -35,9 +35,9 @@ $this->title = Yii::$app->name;
     <div class="row">
         <div class="col-lg-6 col-xl-5 offset-xl-1 mb-3 mb-lg-0">
             <div id="about" class="accordion">
-                <div class="wow fadeInLeft" data-wow-delay="0.5s">
+                <div class="wow fadeInUp">
                     <h4 id="us-label" class="d-flex mb-1 mr-1 text-uppercase">
-                        <a href="#us" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="true" aria-controls="us">
+                        <a href="#us" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="true" aria-controls="us" onclick="owlGoTo('#about-slider', 0);">
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <?= Yii::t('front', 'Мы') ?>
@@ -54,10 +54,10 @@ $this->title = Yii::$app->name;
                         </p>
                     </div>
                 </div>
-                <div class="wow fadeInLeft" data-wow-delay="1s">
+                <div class="wow fadeInUp">
                     <hr class="my-0">
                     <h4 id="philosophy-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#philosophy" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="philosophy">
+                        <a href="#philosophy" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="philosophy" onclick="owlGoTo('#about-slider', 1);">
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <?= Yii::t('front', 'Философия') ?>
@@ -74,10 +74,10 @@ $this->title = Yii::$app->name;
                         </p>
                     </div>
                 </div>
-                <div class="wow fadeInLeft" data-wow-delay="1.5s">
+                <div class="wow fadeInUp">
                     <hr class="my-0">
                     <h4 id="target-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#target" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="target">
+                        <a href="#target" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="target" onclick="owlGoTo('#about-slider', 2);">
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <?= Yii::t('front', 'Цель') ?>
@@ -94,10 +94,10 @@ $this->title = Yii::$app->name;
                         </p>
                     </div>
                 </div>
-                <div class="wow fadeInLeft" data-wow-delay="2s">
+                <div class="wow fadeInUp">
                     <hr class="my-0">
                     <h4 id="mission-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#mission" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="mission">
+                        <a href="#mission" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="mission" onclick="owlGoTo('#about-slider', 3);">
                             <div class="row align-items-center">
                                 <div class="col-auto">
                                     <?= Yii::t('front', 'Миссия') ?>
@@ -117,7 +117,12 @@ $this->title = Yii::$app->name;
             </div>
         </div>
         <div class="col-lg-6 wow fadeIn">
-            <img src="/images/main/banner3.jpg" class="img-fluid" alt="<?= $title ?>">
+            <div id="about-slider" class="owl-carousel owl-theme owl-fade">
+                <img src="/images/main/banner2.jpg" class="img-fluid" alt="<?= $title ?>">
+                <img src="/images/main/banner3.jpg" class="img-fluid" alt="<?= $title ?>">
+                <img src="/images/main/banner5.jpg" class="img-fluid" alt="<?= $title ?>">
+                <img src="/images/main/banner7.jpg" class="img-fluid" alt="<?= $title ?>">
+            </div>
         </div>
     </div>
 </div>
@@ -130,7 +135,7 @@ $this->title = Yii::$app->name;
             </h2>
             <div class="row position-relative">
                 <div class="col-md-9 col-lg-8 col-xl-7 offset-lg-1 offset-xl-2">
-                    <h5 class="text-uppercase wow fadeInLeft">
+                    <h5 class="text-uppercase wow fadeInUp">
                         <?= Yii::t('front', 'Мы знаем, какую важную роль в жизни домашних питомцев играет правильное питание, и используем революционные идеи, чтобы достичь максимальной пользы и безопасности наших кормов.') ?>
                     </h5>
                 </div>
@@ -148,12 +153,12 @@ $this->title = Yii::$app->name;
         </div>
     </div>
     
-    <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none wow fadeInRight">
+    <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
         <div class="row">
             <div class="col-lg-11 offset-lg-1">
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="display-1 text-white transition wow flipInY">
+                        <div class="display-1 text-white">
                             01
                         </div>
                     </div>
@@ -183,12 +188,12 @@ $this->title = Yii::$app->name;
         </div>
     </a>
     
-    <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-2 text-dark text-decoration-none wow fadeInRight">
+    <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-2 text-dark text-decoration-none">
         <div class="row">
             <div class="col-lg-11 offset-lg-1">
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="display-1 text-white transition wow flipInY">
+                        <div class="display-1 text-white">
                             02
                         </div>
                     </div>
@@ -218,12 +223,12 @@ $this->title = Yii::$app->name;
         </div>
     </a>
     
-    <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-2 text-dark text-decoration-none wow fadeInRight">
+    <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-2 text-dark text-decoration-none">
         <div class="row">
             <div class="col-lg-11 offset-lg-1">
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="display-1 text-white transition wow flipInY">
+                        <div class="display-1 text-white">
                             03
                         </div>
                     </div>
@@ -257,12 +262,12 @@ $this->title = Yii::$app->name;
         </div>
     </a>
     
-    <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-2 text-dark text-decoration-none wow fadeInRight">
+    <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-2 text-dark text-decoration-none">
         <div class="row">
             <div class="col-lg-11 offset-lg-1">
                 <div class="row">
                     <div class="col-sm-2">
-                        <div class="display-1 text-white transition wow flipInY">
+                        <div class="display-1 text-white">
                             04
                         </div>
                     </div>

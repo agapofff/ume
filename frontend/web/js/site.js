@@ -266,12 +266,166 @@ jQuery(document).ready(function ($) {
 
     generateOwlCarousel();
     
+    owlGoTo = function (id, slide, speed = 300) {
+        $(id).trigger('to.owl.carousel', [slide, speed]);
+    }
+    
 
-    // $('.reviews-carousel').on('changed.owl.carousel', function (event) {
-        // setTimeout(function(){
-            // $('.reviews-carousel').trigger('refresh.owl.carousel');
-        // }, 100);
-    // });
+    /*
+    parseDataAttr = function (data) {
+        if (data == 'true') {
+            return [true, true, true, true, true];
+        } else if (data == 'false') {
+            return [false, false, false, false, false];
+        } else {
+            return data.split(',');
+        }
+    }
+    
+    
+    sliderInit = function (item) {
+        var trueArr = [true, true, true, true, true],
+            falseArr = [false, false, false, false, false],
+            accessibility = $(item).is('[data-accessibility]') ? parseDataAttr($(item).data('accessibility')) : trueArr,
+            adaptiveHeight = $(item).is('[data-adaptive-height]') ? parseDataAttr($(item).data('adaptive-height')) : falseArr,
+            autoplay = $(item).is('[data-autoplay]') ? parseDataAttr($(item).data('autoplay')) : falseArr,
+            autoplaySpeed = $(item).is('[data-autoplay-speed]') ? parseDataAttr($(item).data('autoplay-speed')) : [3000, 3000, 3000, 3000, 3000],
+            arrows = $(item).is('[data-arrows]') ? parseDataAttr($(item).data('arrows')) : falseArr,
+            asNavFor = $(item).data('as-nav-for') ? $(item).data('as-nav-for') : null,
+            appendArrows = $(item).data('append-arrows') ? $(item).data('append-arrows') : $(element),
+            appendDots = $(item).data('append-dots') ? $(item).data('append-dots') : $(element),
+            prevArrow = '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/></svg></button>', 
+            nextArrow = '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg></button>',
+            centerMode = $(item).is('[data-center-mode]') ? parseDataAttr($(item).data('center-mode')) : falseArr,
+            centerPadding = $(item).is('[data-center-padding]') ? parseDataAttr($(item).data('center-padding')) : [60, 60, 60, 60, 60],
+            cssEase = $(item).data('css-ease') ? $(item).data('css-ease') : 'ease',
+            dots = $(item).data('dots') ? true : false,
+            dotsClass = $(item).data('dots-class') ? $(item).data('dots-class') : 'slick-dots',
+            draggable = $(item).data('draggable') ? true : false,
+            fade = $(item).data('fade') ? true : false,
+            focusOnSelect = $(item).data('focus-on-select') ? true : false,
+            easing = $(item).data('easing') ? $(item).data('easing') : 'linear',
+            edgeFriction = $(item).data('edge-friction') ? parseFloat($(item).data('edge-friction')) : 0.15,
+            infinite = $(item).data('infinite') ? true : false,
+            initialSlide = $(item).data('initial-slide') ? parseFloat($(item).data('initial-slide')) : 0,
+            lazyLoad = $(item).data('lazy-load') ? $(item).data('lazy-load') : 'ondemand',
+            mobileFirst = $('item').data('mobile-first') ? true : false,
+            pauseOnFocus = $('item').data('pause-on-focus') ? true : false,
+            pauseOnHover = $('item').data('pause-on-hover') ? true : false,
+            pauseOnDotsHover = $('item').data('pause-on-dots-hover') ? true : false,
+            respondTo = $(item).data('respond-to') ? $(item).data('respond-to') : 'window',
+            rows = $(item).data('rows') ? parseFloat($(item).data('rows')) : 0,
+            slide = $(item).data('slide') ? $(item).data('slide') : '',
+            slidesToShow = $(item).data('slides-to-show') ? $(item).data('slides-to-show').split(',') : [1,1,1,1,1],,
+            slidesToScroll = $(item).data('slides-to-scroll') ? parseFloat($(item).data('slides-to-scroll')) : 1,
+            speed = $(item).data('speed') ? parseFloat($(item).data('speed')) : 300,
+            swipe = $(item).data('swipe') ? true : false,
+            swipeToSlide = $(item).data('swipe-to-slide') ? true : false,
+            touchMove = $(item).data('touch-move') ? true : false,
+            touchThreshold = $(item).data('touch-threshold') ? parseFloat($(item).data('touch-threshold')) : 5,
+            useCSS = $(item).data('use-css') ? true : false,
+            useTransform = $(item).data('use-transform') ? true : false,
+            variableWidth = $(item).data('variable-width') ? true : false,
+            vertical = $(item).data('vertical') ? true : false,
+            verticalSwiping = $(item).data('vertical-swiping') ? true : false,
+            rtl = $(item).data('rtl') ? true : false,
+            waitForAnimate = $(item).data('wait-for-fnimate') ? false : true,
+            zIndex = $(item).data('z-index') ? parseFloat($(item).data('z-index')) : 1000;
+            
+        $(item).slick({
+            accessibility: accessibility,
+            adaptiveHeight: adaptiveHeight,
+            autoplay: autoplay,
+            autoplaySpeed: autoplaySpeed,
+            arrows: arrows,
+            asNavFor: asNavFor,
+            appendArrows: appendArrows,
+            appendDots: appendDots,
+            prevArrow: prevArrow, 
+            nextArrow: nextArrow,
+            centerMode: centerMode,
+            centerPadding: centerPadding,
+            cssEase: cssEase,
+            dots: dots,
+            dotsClass: dotsClass
+            draggable: draggable,
+            fade: fade,
+            focusOnSelect: focusOnSelect,
+            easing: easing,
+            edgeFriction: edgeFriction,
+            infinite: infinite,
+            initialSlide: initialSlide,
+            lazyLoad: lazyLoad,
+            mobileFirst: mobileFirst,
+            pauseOnFocus: pauseOnFocus,
+            pauseOnHover: pauseOnHover,
+            pauseOnDotsHover: pauseOnDotsHover,
+            respondTo: respondTo,
+            rows: rows,
+            slide: slide,
+            slidesToShow: slidesToShow[4],
+            slidesToScroll: slidesToScroll,
+            speed: speed,
+            swipe: swipe,
+            swipeToSlide: swipeToSlide,
+            touchMove: touchMove,
+            touchThreshold: touchThreshold,
+            useCSS: useCSS,
+            useTransform: useTransform,
+            variableWidth: variableWidth,
+            vertical: vertical,
+            verticalSwiping: verticalSwiping,
+            rtl: rtl,
+            waitForAnimate: waitForAnimate,
+            zIndex: zIndex,
+            responsive: [
+                {
+                    breakpoint: 576,
+                    settings: {
+                        draggable: true,
+                        slidesToShow: parseFloat(slidesToShow[0]),
+                        centerPadding: centerPadding,
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        draggable: true,
+                        slidesToShow: parseFloat(slidesToShow[1]),
+                        centerPadding: centerPadding,
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        draggable: draggable,
+                        slidesToShow: parseFloat(slidesToShow[2]),
+                        centerPadding: centerPadding,
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        draggable: draggable,
+                        slidesToShow: parseFloat(slidesToShow[3]),
+                        centerPadding: centerPadding,
+                    }
+                }
+            ]
+        });
+    }
+
+    initSliders = function () {
+        $('.owl-carousel').each(function () {
+            sliderInit($(this));
+        });
+    }
+
+    initSliders();
+    */
+    
+
+    
     
     $('.reviews-carousel').slick({
         arrows: false,
@@ -279,7 +433,6 @@ jQuery(document).ready(function ($) {
         infinite: true,
         variableWidth: true,
         adaptiveHeight: true,
-        // cssEase: false,
         draggable: false,
         lazyLoad: 'progressive',
         centerPadding: '60px',
