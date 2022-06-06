@@ -47,6 +47,7 @@ class AppAsset extends AssetBundle
         // 'js/owl.lazyload.js',
         // 'js/ekko-lightbox.min.js',
         'js/wow.min.js',
+        'js/jquery.sticky-kit.min.js',
         
         // 'js/ScrollMagic.min.js',
         // 'js/skrollr.min.js',

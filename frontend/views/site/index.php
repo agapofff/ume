@@ -127,7 +127,7 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
-<div id="index3" class="container-lg container-xl container-xxl mb-3">
+<div id="index3" class="container-lg container-xl container-xxl sticky-top-">
     <div class="row mb-2">
         <div class="col-lg-12 col-xl-11 offset-xl-1">
             <h2 class="text-uppercase mb-2 wow fadeInUp">
@@ -152,151 +152,155 @@ $this->title = Yii::$app->name;
             </div>
         </div>
     </div>
-    
-    <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
-        <div class="row">
-            <div class="col-lg-11 offset-lg-1">
+</div>
+<div class="position-relative">
+    <div class="container-lg container-xl container-xxl mb-3">
+        <div class="position-relative">
+            <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none sticky-top-" style="top: 260px">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <div class="display-1 text-white">
-                            01
-                        </div>
-                    </div>
-                    <div class="col-sm-10 pt-1_5">
-                        <hr class="m-0 border-dark">
-                        <div class="row pt-2">
-                            <div class="col-md-4">
-                                <h5 class="mb-1">
-                                    <?= Yii::t('front', 'Инновации и ИИ') ?>
-                                </h5>
-                                <?= Html::img('/images/arrow_small.svg', [
-                                        'class' => 'd-none d-md-block wow rotateIn',
-                                        'style' => '
-                                            width: 3em;
-                                            margin-left: -0.5em;
-                                        ',
-                                    ])
-                                ?>
+                    <div class="col-lg-11 offset-lg-1">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="display-1 text-white">
+                                    01
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <img src="/images/main/banner4.jpg" class="img-fluid" alt="<?= $title ?>">
+                            <div class="col-sm-10 pt-1_5">
+                                <hr class="m-0 border-dark">
+                                <div class="row pt-2">
+                                    <div class="col-md-4">
+                                        <h5 class="mb-1">
+                                            <?= Yii::t('front', 'Инновации и ИИ') ?>
+                                        </h5>
+                                        <?= Html::img('/images/arrow_small.svg', [
+                                                'class' => 'd-none d-md-block wow rotateIn',
+                                                'style' => '
+                                                    width: 3em;
+                                                    margin-left: -0.5em;
+                                                ',
+                                            ])
+                                        ?>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <img src="/images/main/banner4.jpg" class="img-fluid" alt="<?= $title ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </a>
-    
-    <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-2 text-dark text-decoration-none">
-        <div class="row">
-            <div class="col-lg-11 offset-lg-1">
+            </a>
+            
+            <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-2 text-dark text-decoration-none sticky-top-" style="top: 260px;>
                 <div class="row">
-                    <div class="col-sm-2">
-                        <div class="display-1 text-white">
-                            02
-                        </div>
-                    </div>
-                    <div class="col-sm-10 pt-1_5">
-                        <hr class="m-0 border-dark">
-                        <div class="row pt-2">
-                            <div class="col-md-4">
-                                <h5 class="mb-1">
-                                    <?= Yii::t('front', 'Альтернативные источники белка') ?>
-                                </h5>
-                                <?= Html::img('/images/arrow_small.svg', [
-                                        'class' => 'd-none d-md-block wow rotateIn',
-                                        'style' => '
-                                            width: 3em;
-                                            margin-left: -0.5em;
-                                        ',
-                                    ])
-                                ?>
+                    <div class="col-lg-11 offset-lg-1">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="display-1 text-white">
+                                    02
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <img src="/images/main/banner5.jpg" class="img-fluid" alt="<?= $title ?>">
+                            <div class="col-sm-10 pt-1_5">
+                                <hr class="m-0 border-dark">
+                                <div class="row pt-2">
+                                    <div class="col-md-4">
+                                        <h5 class="mb-1">
+                                            <?= Yii::t('front', 'Альтернативные источники белка') ?>
+                                        </h5>
+                                        <?= Html::img('/images/arrow_small.svg', [
+                                                'class' => 'd-none d-md-block wow rotateIn',
+                                                'style' => '
+                                                    width: 3em;
+                                                    margin-left: -0.5em;
+                                                ',
+                                            ])
+                                        ?>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <img src="/images/main/banner5.jpg" class="img-fluid" alt="<?= $title ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </a>
-    
-    <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-2 text-dark text-decoration-none">
-        <div class="row">
-            <div class="col-lg-11 offset-lg-1">
+            </a>
+            
+            <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-2 text-dark text-decoration-none" style="top: 260px;">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <div class="display-1 text-white">
-                            03
-                        </div>
-                    </div>
-                    <div class="col-sm-10 pt-1_5">
-                        <hr class="m-0 border-dark">
-                        <div class="row pt-2">
-                            <div class="col-md-4">
-                                <h5 class="mb-1">
-                                    <?= Yii::t('front', 'Белый императорский женьшень') ?>
-                                </h5>
-                                <?= Html::img('/images/arrow_small.svg', [
-                                        'class' => 'd-none d-md-block wow rotateIn',
-                                        'style' => '
-                                            width: 3em;
-                                            margin-left: -0.5em;
-                                        ',
-                                    ])
-                                ?>
+                    <div class="col-lg-11 offset-lg-1">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="display-1 text-white">
+                                    03
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <video autoplay loop muted playsinline class="d-block w-100">
-                                    <source src="/video/ginseng_small.mp4" type="video/mp4">
-                                    <source src="/video/ginseng_small.ogv" type="video/ogv">
-                                    <source src="/video/ginseng_small.webm" type="video/webm">
-                                </video>
+                            <div class="col-sm-10 pt-1_5">
+                                <hr class="m-0 border-dark">
+                                <div class="row pt-2">
+                                    <div class="col-md-4">
+                                        <h5 class="mb-1">
+                                            <?= Yii::t('front', 'Белый императорский женьшень') ?>
+                                        </h5>
+                                        <?= Html::img('/images/arrow_small.svg', [
+                                                'class' => 'd-none d-md-block wow rotateIn',
+                                                'style' => '
+                                                    width: 3em;
+                                                    margin-left: -0.5em;
+                                                ',
+                                            ])
+                                        ?>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <video autoplay loop muted playsinline class="d-block w-100">
+                                            <source src="/video/ginseng_small.mp4" type="video/mp4">
+                                            <source src="/video/ginseng_small.ogv" type="video/ogv">
+                                            <source src="/video/ginseng_small.webm" type="video/webm">
+                                        </video>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </a>
-    
-    <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-2 text-dark text-decoration-none">
-        <div class="row">
-            <div class="col-lg-11 offset-lg-1">
+            </a>
+            
+            <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-2 text-dark text-decoration-none" style="top: 260px;">
                 <div class="row">
-                    <div class="col-sm-2">
-                        <div class="display-1 text-white">
-                            04
-                        </div>
-                    </div>
-                    <div class="col-sm-10 pt-1_5">
-                        <hr class="m-0 border-dark">
-                        <div class="row pt-2">
-                            <div class="col-md-4">
-                                <h5 class="mb-1">
-                                    <?= Yii::t('front', 'Гипоаллергенная беззерновая формула') ?>
-                                </h5>
-                                <?= Html::img('/images/arrow_small.svg', [
-                                        'class' => 'd-none d-md-block wow rotateIn',
-                                        'style' => '
-                                            width: 3em;
-                                            margin-left: -0.5em;
-                                        ',
-                                    ])
-                                ?>
+                    <div class="col-lg-11 offset-lg-1">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <div class="display-1 text-white">
+                                    04
+                                </div>
                             </div>
-                            <div class="col-md-8">
-                                <img src="/images/main/banner7.jpg" class="img-fluid" alt="<?= $title ?>">
+                            <div class="col-sm-10 pt-1_5">
+                                <hr class="m-0 border-dark">
+                                <div class="row pt-2">
+                                    <div class="col-md-4">
+                                        <h5 class="mb-1">
+                                            <?= Yii::t('front', 'Гипоаллергенная беззерновая формула') ?>
+                                        </h5>
+                                        <?= Html::img('/images/arrow_small.svg', [
+                                                'class' => 'd-none d-md-block wow rotateIn',
+                                                'style' => '
+                                                    width: 3em;
+                                                    margin-left: -0.5em;
+                                                ',
+                                            ])
+                                        ?>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <img src="/images/main/banner7.jpg" class="img-fluid" alt="<?= $title ?>">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-    </a>
-    
+    </div>
 </div>
 
 <div id="index4" class="container-lg container-xl container-xxl mt-3 mt-lg-5 mb-3 wow fadeIn">

@@ -478,16 +478,23 @@ jQuery(document).ready(function ($) {
     
     
     $('#menu')
-        .on('show.bs.modal', function () {
-            $('#nav')
-                .removeClass('navbar-light bg-white')
-                .addClass('navbar-dark bg-gray-900');
+        .on('show.bs.modal', function (event) {
+            if (event.target.id) {
+                $('#nav')
+                    .removeClass('navbar-light bg-white')
+                    .addClass('navbar-dark bg-gray-900');
+            }
         })
-        .on('hide.bs.modal', function () {
-            $('#nav')
-                .removeClass('navbar-dark bg-gray-900')
-                .addClass('navbar-light bg-white');
-        })    
+        .on('hide.bs.modal', function (event) {
+            if (event.target.id == 'menu') {
+                $('#nav')
+                    .removeClass('navbar-dark bg-gray-900')
+                    .addClass('navbar-light bg-white');
+            }
+        });
+        
+        
+    $('#index3-stick').stick_in_parent();
     
     
     

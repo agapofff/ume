@@ -401,7 +401,8 @@
                 
                 </div>
                 
-                <hr class="border-gray-800 py-0 w-100" style="border-width: 2px">                
+                <hr class="border-gray-800 py-0 w-100 light" style="border-width: 2px">                
+                <hr class="border-gray-200 py-0 w-100 dark" style="border-width: 2px">                
             </div>
         </nav>
 
@@ -518,7 +519,7 @@
         
         <div id="menu" class="modal side p-0 fade" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 right-0 left-0 vw-100 mt-6 mx-0 border-0">
-                <div class="modal-content m-0 border-0 vw-100 bg-gray-900 rounded-0">
+                <div class="modal-content m-0 border-0 vw-100 min-vh-100 bg-gray-900 rounded-0">
                     <div class="modal-body p-0 rounded-0">
                         <div class="container-lg container-xl container-xxl">
                             <div class="d-sm-none mt-2">
@@ -571,7 +572,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-auto">
-                                            <p class="h4 text-gray-800 font-weight-light text-uppercase mb-2">
+                                            <p class="h4 text-white font-weight-light text-uppercase mb-2">
                                                 <?= Yii::t('front', 'Just like you') ?>
                                             </p>
                                             <p class="h5 text-white text-uppercase font-weight-light mb-3">
