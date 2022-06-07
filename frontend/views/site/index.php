@@ -127,9 +127,9 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
-<div id="index3" class="position-relative mb-10">
+<div id="index3" class="position-relative mb-5">
 
-    <div class="container-lg container-xl container-xxl sticky-top- description- pb-2">
+    <div class="container-lg container-xl container-xxl sticky-top description pb-2">
         <div class="row">
             <div class="col-lg-12 col-xl-11 offset-xl-1">
                 <h2 class="text-uppercase mb-2 wow fadeInUp">
@@ -156,7 +156,7 @@ $this->title = Yii::$app->name;
         </div>
     </div>
 
-    <div class="container-lg container-xl container-xxl sticky-top- advantages-" style="top: 260px">
+    <div class="container-lg container-xl container-xxl sticky-top advantages">
         <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -193,7 +193,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
         
-    <div class="container-lg container-xl container-xxl sticky-top- advantages-" style="top: 260px">
+    <div class="container-lg container-xl container-xxl sticky-top advantages">
         <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -230,7 +230,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
     
-    <div class="container-lg container-xl container-xxl sticky-top- advantages-" style="top: 260px">    
+    <div class="container-lg container-xl container-xxl sticky-top advantages">    
         <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -271,7 +271,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
         
-    <div class="container-lg container-xl container-xxl sticky-top- advantages-" style="top: 260px">
+    <div class="container-lg container-xl container-xxl sticky-top advantages">
         <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
