@@ -20,7 +20,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         </p>    
         <div class="row align-items-center position-relative mb-20 mb-sm-12 mb-lg-4">
             <div id="about-cover" class="col-12 px-0 px-lg-1 wow fadeIn">
-                <img src="/images/about/bg1.jpg" class="img-fluid" alt="<?= $title ?>">
+                <img src="/images/about/bg1.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
             </div>
             <div class="col-12 position-absolute top-0 left-0 right-0 bottom-0">
                 <div class="row h-100 align-items-center">
@@ -109,29 +109,31 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                     ])
                 ?>
             </div>
-        </div>
-        <div class="row position-relative align-items-center">
-            <div class="col-lg-6 col-lg-8 mb-3 mb-lg-0 wow fadeIn">
-                <img src="/images/about/innovations.jpg" alt="<?= $title ?>" class="d-block w-100">
-            </div>
-            <div class="position-absolute top-0 left-0 right-0 bottom-0">
-                <div class="container-lg container-xl container-xxl h-100">
-                    <div class="row h-100 align-items-center justify-content-center">
-                        <div class="col-11 col-lg-4 col-xl-3 offset-lg-8 offset-xl-9 px-xl-0 pl-lg-2 pr-lg-0">
-                            <ul class="check-circle wow fadeInRight" data-wow-duration="0.7s">
-                                <li>
-                                    <?= Yii::t('front', 'Видеонаблюдение за собаками в режиме 24/7') ?>.
-                                </li>
-                                <li>
-                                    <?= Yii::t('front', 'Анализ полученных данных на основе возможностей искусственного интеллекта') ?>.
-                                </li>
-                                <li>
-                                    <?= Yii::t('front', 'Создание индивидуальных карт оптимального и сбалансированного питания') ?>.
-                                </li>
-                                <li>
-                                    <?= Yii::t('front', 'Европейское производство, сертифицированное сырье') ?>.
-                                </li>
-                            </ul>
+        </div>       
+        <div class="container-fluid pl-lg-0">
+            <div class="row position-relative align-items-center">
+                <div class="col-lg-6 col-xl-8 mb-2 mb-lg-3 mb-lg-0 px-0 px-lg-1 pr-xl-5 d-flex justify-content-center justify-content-lg-end wow fadeIn">
+                    <img src="/images/about/innovations.jpg" alt="<?= $title ?>" class="d-block w-100 border border-gray-500" style="max-width: 1100px;">
+                </div>
+                <div class="position-absolute top-0 left-0 right-0 bottom-0">
+                    <div class="container-lg container-xl container-xxl h-100">
+                        <div class="row align-items-center justify-content-center h-100">
+                            <div class="col-11 col-lg-6 col-xl-3 offset-lg-6 offset-xl-9 px-xl-0">
+                                <ul class="check-circle wow fadeInRight" data-wow-duration="0.7s">
+                                    <li>
+                                        <?= Yii::t('front', 'Видеонаблюдение за собаками в режиме 24/7') ?>.
+                                    </li>
+                                    <li>
+                                        <?= Yii::t('front', 'Анализ полученных данных на основе возможностей искусственного интеллекта') ?>.
+                                    </li>
+                                    <li>
+                                        <?= Yii::t('front', 'Создание индивидуальных карт оптимального и сбалансированного питания') ?>.
+                                    </li>
+                                    <li>
+                                        <?= Yii::t('front', 'Европейское производство, сертифицированное сырье') ?>.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,7 +185,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                         </ul>
                     </div>
                     <div class="col-md-6 offset-xl-1 px-0 px-md-1 wow fadeIn">
-                        <img src="/images/about/alternatives.jpg" class="img-fluid" alt="<?= $title ?>">
+                        <img src="/images/about/alternatives.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                     </div>
                 </div>
             </div>
@@ -202,7 +204,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         </div>
         <div class="container-fluid pl-lg-0">
             <div class="row position-relative align-items-center">
-                <div class="col-lg-6 mb-2 mb-lg-3 mb-lg-0 px-0 px-lg-1 pr-xl-3 text-center text-lg-right wow fadeIn">
+                <div class="col-lg-6 mb-2 mb-lg-3 mb-lg-0 px-0 px-lg-1 pr-xl-3 d-flex justify-content-center justify-content-lg-end wow fadeIn">
                     <video autoplay loop muted playsinline class="d-block w-100">
                         <source src="/video/ginseng_small.mp4" type="video/mp4">
                         <source src="/video/ginseng_small.ogv" type="video/ogv">
@@ -273,7 +275,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             </div>
             <div class="row mb-2">
                 <div class="col-lg-9 col-xl-8 offset-lg-3 offset-xl-3 px-0 px-lg-1">
-                    <img src="/images/about/noallergens.jpg" class="img-fluid wow fadeIn" alt="<?= $title ?>">
+                    <img src="/images/about/noallergens.jpg" class="img-fluid border border-gray-500 wow fadeIn" alt="<?= $title ?>">
                 </div>
             </div>
             <div class="row">

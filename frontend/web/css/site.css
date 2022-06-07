@@ -472,13 +472,13 @@ ul.check-circle li:before {
     }
 }
 
-#index3 .display-1 {
+#index3 .advantages .display-1 {
     text-shadow: 1px 0 1px #0B2142, 
                 0 1px 1px #0B2142, 
                 -1px 0 1px #0B2142, 
                 0 -1px 1px #0B2142;
 }
-#index3 a:hover .display-1 {
+#index3 .advantages.is-visible .display-1 {
     color: #0B2142 !important;
 }
 

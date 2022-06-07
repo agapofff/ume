@@ -494,9 +494,39 @@ jQuery(document).ready(function ($) {
         });
         
         
-    $('#index3-stick').stick_in_parent();
+    $.fn.isInViewport = function(offset = 0) {
+        var elementTop = $(this).offset().top,
+            elementBottom = elementTop + $(this).outerHeight(),
+            viewportTop = $(window).scrollTop() - offset,
+            viewportBottom = viewportTop + $(window).height();
+
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
     
+    $(window).on('load', function () {
+        $('#index3 .advantages').css('top', $('#index3 .description').outerHeight());
+        $('#index3 .description').data('height', $('#index3 .description').height());
+        $('#index3 .advantages').each(function () {
+            $(this).data('height', $(this).height());
+        });
+        // var lastAdvHeight = $('.advantages:last-child').height();
+        // $('.advantages:last-child').css('height', 0);
+        // $('#index3').css('paddingBottom', lastAdvHeight);
+    });
     
+    $(window).on('scroll', function (event) {
+        $('#index3 .advantages').each(function (k, item) {
+            var offset = $(this).offset().top - $(window).scrollTop() - $('#index3 .description').outerHeight(),
+                percent = offset / ($(this).prev('.advantages').height() * 1.2);
+                
+            $(this).prev('.advantages').css('opacity', percent > 1 ? 1 : percent);
+            $(this).toggleClass('is-visible', $(this).isInViewport($(this).height()));
+            
+            if ($(this).is(':last-child')) {
+                $('#index3 .description').css('top', offset > 0 ? 0 : offset);
+            }
+        });
+    });
     
     Fancybox.bind('.fancybox', {
         Image: {

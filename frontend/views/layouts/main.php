@@ -88,7 +88,7 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Корма'),
+            'label' => Yii::t('front', 'Каталог'),
             'url' => Url::to(['/catalog']),
             'class' => '',
         ],
@@ -131,7 +131,7 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Корма'),
+            'label' => Yii::t('front', 'Каталог'),
             'url' => Url::to(['/catalog']),
             'class' => '',
         ],
