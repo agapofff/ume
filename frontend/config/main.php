@@ -504,15 +504,15 @@ return [
                 // 'catalog/<slug>/<collection>' => 'catalog/index',
                 // '<catalog:(slug)>' => 'catalog/index',
                 
-                'catalog' => 'catalog/index',
-                [
-                    'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
-                    'route' => 'catalog',
-                    'defaults' => [
-                        'collectionSlug' => null,
-                        'categorySlug' => null,
-                    ],
-                ],
+                // 'catalog' => 'catalog/index',
+                // [
+                    // 'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
+                    // 'route' => 'catalog',
+                    // 'defaults' => [
+                        // 'collectionSlug' => null,
+                        // 'categorySlug' => null,
+                    // ],
+                // ],
                 
                 'product/<slug>' => 'product/index',
                 

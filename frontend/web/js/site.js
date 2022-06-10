@@ -436,7 +436,7 @@ jQuery(document).ready(function ($) {
         draggable: false,
         lazyLoad: 'progressive',
         centerPadding: '60px',
-        speed: 0,
+        speed: 300,
         slidesToShow: 5,
         responsive: [
             {
