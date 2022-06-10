@@ -24,11 +24,11 @@
 }
 
 ::selection {
-	background: #D6751C;
+	background: #1C202D;
 	color: #fff;
 }
 ::-webkit-selection {
-	background: #D6751C;
+	background: #1C202D;
 	color: #fff;
 }
 
