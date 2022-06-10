@@ -442,7 +442,7 @@ $this->title = Yii::$app->name;
 <?php
     if ($news) {
 ?>
-        <div class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-3">
+        <div class="container-lg container-xl container-xxl mt-5 mb-3">
             <div class="row">
                 <div class="col-lg-12 col-xl-11 offset-xl-1 mb-2">
                     <h2 class="text-uppercase wow fadeInUp">

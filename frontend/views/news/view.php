@@ -26,7 +26,7 @@ $this->title = $postName;
                         ?>
                     </a>
                 </div>
-                <div class="col">
+                <div class="col pl-1">
                     <p class="blog-post-date mb-1 opacity-50">
                         <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
                     </p>
