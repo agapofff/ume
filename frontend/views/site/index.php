@@ -8,7 +8,7 @@ $this->title = Yii::$app->name;
 ?>
 
 <div id="index1" class="container-lg container-xl container-xxl mb-5">
-    <div class="row align-items-center mb-2 wow fadeInUp" data-wow-duration="0.5s">
+    <div class="row align-items-center mb-2 wow fadeIn" data-wow-duration="0.5s">
         <div class="col-auto">
             <h1 class="text-uppercase">
                 <?= Yii::t('front', 'Just like you') ?>!
@@ -129,12 +129,19 @@ $this->title = Yii::$app->name;
 
 <div id="index3" class="position-relative mb-5">
 
-    <div class="container-lg container-xl container-xxl sticky-top description pb-2">
+    <div class="container-lg container-xl container-xxl sticky-top title">
         <div class="row">
             <div class="col-lg-12 col-xl-11 offset-xl-1">
                 <h2 class="text-uppercase mb-2 wow fadeInUp">
                     <?= Yii::t('front', 'Преимущества') ?>
                 </h2>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-lg container-xl container-xxl description transition pb-2">
+        <div class="row">
+            <div class="col-lg-12 col-xl-11 offset-xl-1">
                 <div class="row position-relative">
                     <div class="col-md-9 col-lg-8 col-xl-7 offset-lg-1 offset-xl-2">
                         <h5 class="text-uppercase wow fadeInUp">
@@ -378,7 +385,7 @@ $this->title = Yii::$app->name;
 <?php
     if ($reviews) {
 ?>
-        <div class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-3">
+        <div class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-3 overflow-x-hidden">
             <div class="row">
                 <div class="col-lg-12 col-xl-11 offset-xl-1 position-relative">
                     <h2 class="text-uppercase text-teal wow fadeInUp">
@@ -387,53 +394,46 @@ $this->title = Yii::$app->name;
                     <p class="wow fadeInUp">
                         <?= Yii::t('front', 'Посмотрите, что говорят наши собаки о корме') ?> <span class="text-uppercase font-weight-bold"><?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', [' ', ' ']) ?></span>
                     </p>
-                    <?= Html::img('/images/arrow.svg', [
-                            'class' => 'position-absolute left-0 bottom-0 d-none d-xl-block wow fadeIn',
-                            'style' => '
-                                width: 4.5em;
-                                margin-top: -100%;
-                                transform: rotate(45deg) translate(-20%, 130%);
-                            ',
-                        ])
-                    ?>                    
                 </div>
-            </div>
-        </div>
-        <div class="reviews-carousel mt-5 mt-lg-7">
-    <?php
-        foreach ($reviews as $r => $review) {
-            $petPhoto = $review->getImage();
-            $cachedImage = $petPhoto ? '/images/cache/Reviews/Reviews' . $petPhoto->itemId . '/' . $petPhoto->urlAlias . '_300x300.' . $petPhoto->getExtension() : '/images/placeholder.png';
-            
-            $age = $review->pet_birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($review->pet_birthday)), ',', ''))[0] : null;
-    ?>
-            <div class="review mx-1" data-id="<?= $r ?>">
-                <div class="row">
-                    <div class="col-12 col-sm-auto pet-photo position-relative text-teal ">
-                        <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $petPhoto->getUrl('300x300') ?>" class="img-fluid border-teal rounded-pill mt-3 mx-1" alt="<?= $review->pet_name ?>" loading="lazy">
-                    </div>
-                    <div class="col-12 col-sm p-0 overflow-hidden content position-relative">
-                        <div class="mt-1 mr-2 ml-0_5 mb-0">
-                            <p class="font-weight-light">
-                                <?= $review->text ?>
-                            </p>
-                            <p class="font-weight-bold">
-                                <?= $review->pet_name ?>, <?= json_decode($review->breed->name)->{Yii::$app->language} ?><?= $age ? ', ' . $age : '' ?>
-                            </p>
-                            <div class="rating">
-                            <?php
-                                for ($i = 0; $i <= $review->rating; $i++) {
-                                    echo Html::img('/images/rating_star_mini.svg');
-                                }
-                            ?>
+                <div class="col-12 mt-5 mt-lg-7">
+                    <div class="reviews-carousel">
+                <?php
+                    foreach ($reviews as $r => $review) {
+                        $petPhoto = $review->getImage();
+                        $cachedImage = $petPhoto ? '/images/cache/Reviews/Reviews' . $petPhoto->itemId . '/' . $petPhoto->urlAlias . '_300x300.' . $petPhoto->getExtension() : '/images/placeholder.png';
+                        
+                        $age = $review->pet_birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($review->pet_birthday)), ',', ''))[0] : null;
+                ?>
+                        <div class="review mx-1" data-id="<?= $r ?>">
+                            <div class="row">
+                                <div class="col-12 col-sm-auto pet-photo position-relative text-teal ">
+                                    <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $petPhoto->getUrl('300x300') ?>" class="img-fluid border-teal rounded-pill mt-3 mx-1" alt="<?= $review->pet_name ?>" loading="lazy">
+                                </div>
+                                <div class="col-12 col-sm p-0 overflow-hidden content position-relative">
+                                    <div class="mt-1 mr-2 ml-0_5 mb-0">
+                                        <p class="font-weight-light">
+                                            <?= $review->text ?>
+                                        </p>
+                                        <p class="font-weight-bold">
+                                            <?= $review->pet_name ?>, <?= json_decode($review->breed->name)->{Yii::$app->language} ?><?= $age ? ', ' . $age : '' ?>
+                                        </p>
+                                        <div class="rating">
+                                        <?php
+                                            for ($i = 0; $i <= $review->rating; $i++) {
+                                                echo Html::img('/images/rating_star_mini.svg');
+                                            }
+                                        ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                <?php
+                    }
+                ?>
                     </div>
                 </div>
             </div>
-    <?php
-        }
-    ?>
         </div>
 <?php
     }
@@ -466,7 +466,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-12">
-                    <p class="mt-2 mb-3 text-center">
+                    <p class="mt-2 text-center">
                         <a href="<?= Url::to(['/news']) ?>">
                             <?= Yii::t('front', 'Все новости') ?>
                         </a>

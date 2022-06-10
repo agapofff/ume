@@ -436,9 +436,8 @@ ul.check-circle {
 }
 #action-description ul li,
 ul.check-circle li {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     padding-left: 3rem;
-    line-height: 1;
 }
 #action-description ul li:before,
 ul.check-circle li:before {
@@ -447,7 +446,8 @@ ul.check-circle li:before {
     height: 16px;
     background: url('../images/check_circle.svg') 0 0 no-repeat;
     float: left;
-    margin-left: -2.5em;
+    margin-left: -2.5rem;
+    margin-top: 0.2rem;
 }
 #action-description ul li:before {
     margin-top: 0.2em;
@@ -459,17 +459,6 @@ ul.check-circle li:before {
 }
 #about #alternatives h2.arrow-down-right:after {
     bottom: 20%;
-}
-@media (min-width: 992px) {
-    #about #ginseng video {
-        max-width: 650px;
-    }
-}
-@media (max-width: 991px) {
-    #about #innovations .position-absolute,
-    #about #ginseng .position-absolute    {
-        position: relative !important;
-    }
 }
 
 #index3 .advantages .display-1 {

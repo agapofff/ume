@@ -437,7 +437,7 @@ jQuery(document).ready(function ($) {
         lazyLoad: 'progressive',
         centerPadding: '60px',
         speed: 0,
-        slidesToShow: 7,
+        slidesToShow: 5,
         responsive: [
             {
                 breakpoint: 576,
@@ -504,8 +504,8 @@ jQuery(document).ready(function ($) {
     };
     
     $(window).on('load', function () {
-        $('#index3 .advantages').css('top', $('#index3 .description').outerHeight());
-        $('#index3 .description').data('height', $('#index3 .description').height());
+        $('#index3 .advantages').css('top', $('#index3 .title').outerHeight());
+        $('#index3 .title').data('height', $('#index3 .title').height());
         $('#index3 .advantages').each(function () {
             $(this).data('height', $(this).height());
         });
@@ -515,15 +515,21 @@ jQuery(document).ready(function ($) {
     });
     
     $(window).on('scroll', function (event) {
+        $('#index3 .description').toggleClass('fade', $(window).scrollTop() > $('#index3 .description').offset().top - $('#index3 .title').outerHeight());
+        
         $('#index3 .advantages').each(function (k, item) {
-            var offset = $(this).offset().top - $(window).scrollTop() - $('#index3 .description').outerHeight(),
-                percent = offset / ($(this).prev('.advantages').height() * 1.2);
-                
-            $(this).prev('.advantages').css('opacity', percent > 1 ? 1 : percent);
+            var offset = $(this).offset().top - $(window).scrollTop() - $('#index3 .title').outerHeight(),
+                percent = offset / ($(this).height() * 1.2);
+
             $(this).toggleClass('is-visible', $(this).isInViewport($(this).height()));
             
+            if ($(this).hasClass('is-visible')) {
+                $(this).prev('.advantages').css('opacity', percent > 1 ? 1 : percent);
+                $(this).next('.advantages').css('opacity', percent > 1 && percent < 2 ? 0 : 1 - percent);
+            }
+            
             if ($(this).is(':last-child')) {
-                $('#index3 .description').css('top', offset > 0 ? 0 : offset);
+                $('#index3 .title').css('top', offset > 0 ? 0 : offset);
             }
         });
     });

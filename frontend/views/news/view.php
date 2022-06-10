@@ -50,7 +50,7 @@ $this->title = $postName;
     <?php
         }
     ?>
-            <div class="px-xl-7">
+            <div class="px-xl-5">
                 <?= str_replace('<img ', '<img class="img-fluid mx-auto" loading="lazy" ', json_decode($post->text)->{Yii::$app->language}) ?>
             </div>
         </div>

@@ -357,7 +357,7 @@
                     </div>
                     -->
                     <div id="nav-cart-icon" class="ml-auto mr-2 mr-sm-3">
-                        <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart" aria-label="<?= Yii::t('front', 'Корзина') ?>">
+                        <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart-" aria-label="<?= Yii::t('front', 'Корзина') ?>">
                             <?= Html::img('/images/cart_dark.svg', [
                                     'class' => 'light',
                                 ])
@@ -388,7 +388,7 @@
                         </a>
                     </div>
 
-                    <button id="nav-menu-button" class="btn btn-link text-decoration-none transition p-0" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
+                    <button id="nav-menu-button" class="btn btn-link text-decoration-none rounded-0 transition p-0" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
                         <?= Html::img('/images/btn_menu_dark.svg', [
                                 'class' => 'light',
                             ])
