@@ -87,6 +87,9 @@ class Profile extends ActiveRecord
             'agree'                 => ['agree', 'string'],
             'lottery'                 => ['lottery', 'string'],
             'phone'                 => ['phone', 'string'],
+            'breed'                   => ['breed', 'integer'],
+            'weight'                   => ['weight', 'integer'],
+            'activity'                   => ['activity', 'integer'],
         ];
     }
 

@@ -407,9 +407,9 @@ $this->title = Yii::$app->name;
                         <div class="review mx-1" data-id="<?= $r ?>">
                             <div class="row">
                                 <div class="col-12 col-sm-auto pet-photo position-relative text-teal ">
-                                    <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $petPhoto->getUrl('300x300') ?>" class="img-fluid border-teal rounded-pill mt-3 mx-1" alt="<?= $review->pet_name ?>" loading="lazy">
+                                    <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $petPhoto->getUrl('300x300') ?>" class="img-fluid border-teal rounded-pill mt-3 mx-1 transition" alt="<?= $review->pet_name ?>" loading="lazy">
                                 </div>
-                                <div class="col-12 col-sm p-0 overflow-hidden content position-relative">
+                                <div class="col-12 col-sm p-0 overflow-hidden content position-relative transition">
                                     <div class="mt-1 mr-2 ml-0_5 mb-0">
                                         <p class="font-weight-light">
                                             <?= $review->text ?>

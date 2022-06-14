@@ -199,7 +199,7 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at'        => Yii::t('front', 'Дата регистрации'),
             'last_login_at'     => Yii::t('front', 'Последний вход'),
             'confirmed_at'      => Yii::t('front', 'Дата подтверждения'),
-            'lang'      => Yii::t('front', 'Язык'),
+            'lang'              => Yii::t('front', 'Язык'),
         ];
     }
 
