@@ -163,7 +163,7 @@ $this->title = Yii::$app->name;
         </div>
     </div>
 
-    <div class="container-lg container-xl container-xxl sticky-top advantages">
+    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
         <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -200,7 +200,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
         
-    <div class="container-lg container-xl container-xxl sticky-top advantages">
+    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
         <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -237,7 +237,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
     
-    <div class="container-lg container-xl container-xxl sticky-top advantages">    
+    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">    
         <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">
@@ -278,7 +278,7 @@ $this->title = Yii::$app->name;
         </a>
     </div>
         
-    <div class="container-lg container-xl container-xxl sticky-top advantages">
+    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
         <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
             <div class="row">
                 <div class="col-lg-11 offset-lg-1">

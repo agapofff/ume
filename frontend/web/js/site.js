@@ -522,7 +522,7 @@ jQuery(document).ready(function ($) {
             var offset = $(this).offset().top - $(window).scrollTop() - $('#index3 .title').outerHeight(),
                 percent = offset / ($(this).height() * 1.2);
 
-            $(this).toggleClass('is-visible', $(this).isInViewport($(this).height()));
+            $(this).toggleClass('is-visible', $(window).scrollTop() > (Math.round($(this).offset().top) - $(window).height()/2));
             
             if ($(this).hasClass('is-visible')) {
                 $(this).prev('.advantages').css('opacity', percent > 1 ? 1 : percent);
