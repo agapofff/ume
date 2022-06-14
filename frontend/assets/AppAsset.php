@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
         // 'css/ekko-lightbox.css',
         'css/fancybox.css',
         'css/slick.css',
+        'css/slick-theme.css',
         'css/site.css',
     ];
     public $js = [
