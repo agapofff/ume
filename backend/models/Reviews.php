@@ -33,7 +33,7 @@ class Reviews extends \yii\db\ActiveRecord
         return [
             'images' => [
                 'class' => 'agapofff\gallery\behaviors\AttachImages',
-                'mode' => 'gallery',
+                'mode' => 'single',
                 'quality' => 80,
                 'galleryId' => 'reviews',
                 'allowExtensions' => ['jpg', 'jpeg', 'png'],

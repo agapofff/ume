@@ -330,7 +330,7 @@ $this->title = Yii::$app->name;
 </div>
 
 <?php
-    if ($products) {
+    if ($banners) {
 ?>
         <div id="index5" class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-1">
             <div class="row">
@@ -342,41 +342,47 @@ $this->title = Yii::$app->name;
                         <?= Yii::t('front', 'Ознакомьтесь с нашими кормами') ?>
                     </p>
                 </div>
-            </div>
-        </div>
-        <div class="owl-carousel owl-theme" data-items="1-1-2-2-2-4" data-loop="true" data-dots="true" data-center="true" data-margin="30">
-    <?php
-        foreach ($products as $product) {
-    ?>
-            <a href="<?= '#' // Url::to(['/product/' . $product->slug]) ?>" class="card bg-gray-200 rounded-0 text-dark text-decoration-none">
-                <div class="row">
-                    <div class="col-6 py-2">
-                    <?php
-                        $productName = json_decode($product->name)->{Yii::$app->language};
-                        $image = $product->getImage();
-                        $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x300.' . $image->getExtension();
-                    ?>
-                        <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x300') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
-                    </div>
-                    <div class="col-6 pt-3 pb-2">
-                        <div class="row h-100">
-                            <div class="col-12 align-self-start">
-                                <h5>
-                                    <?= $productName ?>
-                                </h5>
+                <div class="col-12 mt-2">
+                    <div class="owl-carousel owl-theme" data-items="1-2-2-3-3-3" data-loop="true" data-dots="true" data-margin="30">
+                <?php
+                    foreach ($banners as $banner) {
+                        $bannerText = json_decode($banner->text)->{Yii::$app->language};
+                        $image = $banner->getImage();
+                        $cachedImage = '/images/cache/Banners/Banners' . $image->itemId . '/' . $image->urlAlias . '_500x500.' . $image->getExtension();
+                ?>
+                        <<?php if ($banner->link) { ?>a href="<?= $banner->link == '#' ? '#' : Url::to([$banner->link]) ?>"<?php } else { ?>div<?php } ?> class="mainpage-banner card border-0 rounded-0 text-dark text-decoration-none">
+                            <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('500x500') ?>" class="card-img rounded-0 img-fluid" alt="<?= $image->alt ? $image->alt : $bannerText ?>" loading="lazy">
+                            <div class="card-img-overlay border border-gray-800">
+                                <div class="row <?= $banner->content_align == 2 ? 'justify-content-end' : '' ?> h-100">
+                                    <div class="col-<?= in_array($banner->content_align, [0, 2]) ? '7' : '12' ?> py-0_5">
+                                        <div class="row h-100">
+                                            <div class="col-12 align-self-start">
+                                                <h5 class="title">
+                                                    <?= $bannerText ?>
+                                                </h5>
+                                            </div>
+                                    <?php
+                                        if ($banner->show_button) {
+                                    ?>
+                                            <div class="col-12 align-self-end">
+                                                <button type="button" class="btn btn-secondary btn-lg rounded-pill">
+                                                    <?= Yii::t('front', $banner->button_text ?: 'Купить') ?>
+                                                </button>
+                                            </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-12 align-self-end">
-                                <p class="m-0">
-                                    <?= Yii::t('front', 'Подробнее') ?>
-                                </p>
-                            </div>
-                        </div>
+                        </<?= $banner->link ? 'a' : 'div' ?>>
+                <?php
+                    }
+                ?>
                     </div>
                 </div>
-            </a>
-    <?php
-        }
-    ?>
+            </div>
         </div>
 <?php
     }

@@ -472,6 +472,19 @@ ul.check-circle li:before {
 }
 
 
+.mainpage-banner .title {
+    overflow-wrap: normal;
+    word-wrap: normal;
+    word-break: normal;
+    line-break: auto;
+    hyphens: manual;
+}
+.mainpage-banner:hover button.btn-secondary {
+    background-color: #999079 !important;
+    border-color: #999079 !important;
+}
+
+
 /* REVIEWS */
 .reviews-carousel .slick-list {
     overflow: visible !important;

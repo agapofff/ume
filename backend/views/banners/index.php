@@ -6,13 +6,13 @@ use yii\widgets\Pjax;
 use kartik\alert\AlertBlock;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\BreedsSearch */
+/* @var $searchModel backend\models\BannersSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('back', 'Породы');
+$this->title = Yii::t('back', 'Баннеры');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="breeds-index">
+<div class="banners-index">
 
     <?= Html::a(Html::tag('span', '', [
             'class' => 'glyphicon glyphicon-plus'
@@ -42,15 +42,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'prompt' => Yii::t('back', 'Все'),
                             ]
                         ),
-                        'value' => function ($data) {
+                        'value' => function ($model) {
                             return Html::a(
                                 Html::tag('big', 
                                     Html::tag('span', '', [
-                                        'class' => 'glyphicon ' . ( $data->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                        'class' => 'glyphicon ' . ( $model->active ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
                                     ])
                                 ), [
                                     'active',
-                                    'id' => $data->id
+                                    'id' => $model->id
                                 ], [
                                     'class' => 'pjax'
                                 ]);
@@ -63,10 +63,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ],
                     [
-                        'attribute' => 'name',
+                        'attribute' => 'category',
+                        'filterInputOptions' => [
+                            'class' => 'form-control text-center',
+                            'placeholder' => 'Поиск...'
+                        ],
+                        'headerOptions' => [
+                            'class' => 'text-center'
+                        ],
+                    ],
+                    [
+                        'attribute' => 'text',
                         'format' => 'raw',
                         'value' => function ($model) {
-                            return Html::a(json_decode($model->name)->{Yii::$app->language}, [
+                            return Html::a(json_decode($model->text)->{Yii::$app->language}, [
                                 'update',
                                 'id' => $model->id,
                             ], [

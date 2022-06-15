@@ -535,6 +535,9 @@ jQuery(document).ready(function ($) {
         });
     });
     
+    
+    
+    
     Fancybox.bind('.fancybox', {
         Image: {
             fit: 'cover',

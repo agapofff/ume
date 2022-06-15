@@ -168,6 +168,16 @@
             }
             
             if (
+                Yii::$app->user->can('/banners/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Баннеры'),
+                    'icon' => 'image',
+                    'url' => ['/banners'],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/pages/*')
             ) {
                 $menuItems[] = [

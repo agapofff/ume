@@ -27,6 +27,7 @@ use backend\models\News;
 use backend\models\Actions;
 use backend\models\Langs;
 use backend\models\Reviews;
+use backend\models\Banners;
 
 
 /**
@@ -135,10 +136,16 @@ class SiteController extends Controller
             ->limit(10)
             ->all();
             
+        $banners = Banners::findAll([
+            'active' => 1,
+            'category' => 'Каталог на Главной',
+        ]);
+            
         return $this->render('index', [
             'products' => $products,
             'news' => $news,
             'reviews' => $reviews,
+            'banners' => $banners,
         ]);
         
     }
