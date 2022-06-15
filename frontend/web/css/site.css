@@ -567,16 +567,21 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
 
 
 /* OWL */
+.owl-dots {
+    margin-top: 2em !important;
+}
 .owl-dot {
     background: transparent;
     border: none;
+    padding: 0;
 }
 .owl-dot span {
     width: 0.8em !important;
     height: 0.8em !important;
+    background: #E8EBEF !important;
 }
 .owl-dot.active span {
-    background: #000 !important;
+    background: #978F76 !important;
 }
 .owl-nav {
 	position: absolute;
