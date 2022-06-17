@@ -37,6 +37,12 @@ class RegistrationForm extends Model
      * @var string Password
      */
     public $password;
+    
+    
+    public $first_name;
+    public $last_name;
+    public $name;
+    public $phone;
 
     /**
      * @inheritdoc
@@ -70,6 +76,25 @@ class RegistrationForm extends Model
             // password rules
             'passwordRequired' => ['password', 'required', 'skipOnEmpty' => $this->module->enableGeneratingPassword],
             'passwordLength'   => ['password', 'string', 'min' => 6, 'max' => 72],
+            
+            // fisrt name rules
+            'firstNameTrim'     => ['first_name', 'trim'],
+            'firstNameLength'   => ['first_name', 'string', 'max' => 255],
+            'firstNameRequired' => ['first_name', 'required'],
+            
+            // last name rules
+            'lastNameTrim'     => ['last_name', 'trim'],
+            'lastNameLength'   => ['last_name', 'string', 'max' => 255],
+            'lastNameRequired' => ['last_name', 'required'],
+            
+            // phone 
+            'phone' => ['phone', 'string'],
+            'phoneUnique'   => [
+                'phone',
+                'unique',
+                'targetClass' => $user,
+                'message' => Yii::t('front', 'Этот номер телефона уже занят')
+            ],
         ];
     }
 
@@ -82,6 +107,9 @@ class RegistrationForm extends Model
             'email'    => Yii::t('front', 'E-mail'),
             'username' => Yii::t('front', 'Логин'),
             'password' => Yii::t('front', 'Пароль'),
+            'first_name' => Yii::t('front', 'Имя'),
+            'last_name' => Yii::t('front', 'Фамилия'),
+            'phone' => Yii::t('front', 'Телефон'),
         ];
     }
 

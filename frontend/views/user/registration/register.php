@@ -41,16 +41,52 @@ $this->params['breadcrumbs'][] = $this->title;
                     'enableClientValidation' => false,
                 ]);
             ?>
-
+            
                 <?= $form
-                        ->field($model, 'email', [
+                        ->field($model, 'first_name', [
+                            'inputOptions' => [
+                                'autofocus' => 'autofocus',
+                                'class' => 'form-control form-control-lg',
+                                'tabindex' => '1',
+                                'required' => true,
+                                'autocomplete' => rand(),
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                        ])
+                ?>
+                
+                <?= $form
+                        ->field($model, 'last_name', [
                             'inputOptions' => [
                                 'autofocus' => 'autofocus',
                                 'class' => 'form-control form-control-lg',
                                 'tabindex' => '2',
                                 'required' => true,
                                 'autocomplete' => rand(),
-                                'placeholder' => ' ',
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                        ])
+                ?>
+
+                <?= $form
+                        ->field($model, 'email', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg',
+                                'tabindex' => '3',
+                                'required' => true,
+                                'autocomplete' => rand(),
                             ],
                             'options' => [
                                 'class' => 'form-group row align-items-center mb-2',
@@ -61,6 +97,24 @@ $this->params['breadcrumbs'][] = $this->title;
                             'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
                         ])
                         ->input('email')
+                ?>
+                
+                <?= $form
+                        ->field($model, 'phone', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg phone-mask',
+                                'tabindex' => '4',
+                                'required' => true,
+                                'autocomplete' => rand(),
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                        ])
                 ?>
 
                 <?= $form
@@ -81,10 +135,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             ->field($model, 'password', [
                                 'inputOptions' => [
                                     'class' => 'form-control form-control-lg',
-                                    'tabindex' => '2',
+                                    'tabindex' => '5',
                                     'required' => true,
                                     'autocomplete' => rand(),
-                                    'placeholder' => ' ',
                                 ],
                                 'options' => [
                                     'class' => 'form-group row align-items-center mb-2',

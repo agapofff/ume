@@ -15,6 +15,7 @@ use dektrium\user\Finder;
 use dektrium\user\models\RegistrationForm;
 use dektrium\user\models\ResendForm;
 use dektrium\user\models\User;
+use dektrium\user\models\Profile;
 use dektrium\user\traits\AjaxValidationTrait;
 use dektrium\user\traits\EventTrait;
 use yii\filters\AccessControl;
@@ -143,12 +144,28 @@ class RegistrationController extends Controller
         if ($model->load(\Yii::$app->request->post()) && $model->register()) {
             $this->trigger(self::EVENT_AFTER_REGISTER, $event);
 
+            $user = User::findOne([
+                'username' => $model->username
+            ]);
+            
+            $profile = Profile::findOne([
+                'user_id' => $user->id
+            ]);
+            
+            $profile->first_name = $model->first_name;
+            $profile->last_name = $model->last_name;
+            $profile->phone = $model->phone;
+            $profile->public_email = $model->email;
+            $profile->save();
+
+
             // return $this->render('/message', [
                 // 'title'  => \Yii::t('user', 'Your account has been created'),
                 // 'module' => $this->module,
             // ]);
             
             // Yii::$app->session->setFlash('success', Yii::t('user', 'Your account has been created'));
+
             return $this->redirect(['/login']);
         }
 
@@ -228,11 +245,16 @@ class RegistrationController extends Controller
         $user->attemptConfirmation($code);
 
         $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
+        
+        Yii::$app->session->setFlash('success', Yii::t('user', 'Your account has been created'));
+        
+        return $this->redirect(['/account']);
 
-        return $this->render('/message', [
-            'title'  => Yii::t('front', 'Подтверждение учётной записи'),
-            'module' => $this->module,
-        ]);
+        // return $this->render('/message', [
+            // 'title'  => Yii::t('front', 'Подтверждение учётной записи'),
+            // 'module' => $this->module,
+            // 'redirect' => Url::to(['/login'], true),
+        // ]);
     }
 
     /**

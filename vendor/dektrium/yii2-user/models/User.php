@@ -79,6 +79,8 @@ class User extends ActiveRecord implements IdentityInterface
     
     public $language_code;
 
+    
+
     /** @var Profile|null */
     private $_profile;
 

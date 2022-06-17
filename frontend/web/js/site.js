@@ -36,6 +36,12 @@ jQuery(document).ready(function ($) {
 
     // маски
     $.mask.definitions['_'] = "[0-9]";
+    setPhoneMask = function (countryCode = '+7', phoneMask = '(___) ___-__-__') {
+        $('.phone-mask').mask((countryCode + ' ' + phoneMask), {
+            autoclear: false
+        });
+    }
+    setPhoneMask();
     
     
     // клики по хэш-ссылкам
