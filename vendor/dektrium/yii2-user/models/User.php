@@ -210,6 +210,13 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             TimestampBehavior::className(),
+            'images' => [
+                'class' => 'agapofff\gallery\behaviors\AttachImages',
+                'mode' => 'single',
+                'quality' => 80,
+                'galleryId' => 'user',
+                'allowExtensions' => ['jpg', 'jpeg', 'png'],
+            ],
         ];
     }
 

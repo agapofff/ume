@@ -16,6 +16,17 @@ $config = [
     ],
 
     'modules' => [
+        'gallery' => [
+            'class' => 'agapofff\gallery\Module',
+            'imagesStorePath' => dirname(dirname(__DIR__)).'/frontend/web/images/store',
+            'imagesCachePath' => dirname(dirname(__DIR__)).'/frontend/web/images/cache',
+            'graphicsLibrary' => 'GD',
+            'placeHolderPath' => dirname(dirname(__DIR__)).'/frontend/web/images/placeholder.png',
+            'adminRoles' => [
+                'admin',
+                'manager',
+            ],
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin'],
@@ -81,17 +92,6 @@ $config = [
         'relations' => [
             'class' => 'dvizh\relations\Module',
             'fields' => ['code'],
-        ],
-        'gallery' => [
-            'class' => 'agapofff\gallery\Module',
-            'imagesStorePath' => dirname(dirname(__DIR__)).'/frontend/web/images/store',
-            'imagesCachePath' => dirname(dirname(__DIR__)).'/frontend/web/images/cache',
-            'graphicsLibrary' => 'GD',
-            'placeHolderPath' => dirname(dirname(__DIR__)).'/frontend/web/images/placeholder.png',
-            'adminRoles' => [
-                'admin',
-                'manager',
-            ],
         ],
         'cart' => [
             'class' => 'dvizh\cart\Module',

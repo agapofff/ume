@@ -11,7 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
         'assetsAutoCompress',
-        'log',
+        // 'log',
         'languagesDispatcher',
         'devicedetect',
     ],
@@ -329,15 +329,15 @@ return [
             'name' => 'ume-frontend',
         ],
         
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
+        // 'log' => [
+            // 'traceLevel' => YII_DEBUG ? 3 : 0,
+            // 'targets' => [
+                // [
+                    // 'class' => 'yii\log\FileTarget',
+                    // 'levels' => ['error', 'warning'],
+                // ],
+            // ],
+        // ],
         
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -496,8 +496,11 @@ return [
                 'resend' => 'user/registration/resend',
                 // 'pass' => 'user/settings/account',
                 // 'profile' => 'user/settings/profile',
-                'account' => 'user/settings/account',
+                // 'account' => 'user/settings/account',
                 'request' => 'user/recovery/request',
+                
+                'account' => 'site/account',
+                'account/edit' => 'user/settings/profile',
                 
                 // 'catalog' => 'catalog/index',
                 // 'catalog/<slug>' => 'catalog/index',

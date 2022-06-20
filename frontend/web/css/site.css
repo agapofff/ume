@@ -537,6 +537,21 @@ ul.check-circle li:before {
 }
 
 
+/* ACCOUNT */
+#account.accordion a[data-toggle="collapse"] img {
+    width: 1.5em;
+    margin: -0.2em -0.2em 0 0;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+#account.accordion a[data-toggle="collapse"][aria-expanded="true"] img {
+    -webkit-transform: rotate(-45deg) !important;
+    -moz-transform: rotate(-45deg) !important;
+    transform: rotate(-45deg) !important;
+}
+
+
 /* GIFT */
 body[data-gift] .cart-product[data-price="0"] .dvizh-change-count,
 body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {

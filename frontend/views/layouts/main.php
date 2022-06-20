@@ -296,8 +296,7 @@
         
     </head>
     <body 
-        data-c="<?= $controllerID ?>" 
-        data-a="<?= $actionID ?>" 
+        data-page="<?= base64_encode($controllerID . '/' . $actionID) ?>"
 <?php
     if ($giftData) {
 ?>

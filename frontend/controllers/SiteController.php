@@ -6,6 +6,8 @@ namespace frontend\controllers;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\Controller;
 use yii\db\Expression;
 use yii\filters\VerbFilter;
@@ -28,6 +30,7 @@ use backend\models\Actions;
 use backend\models\Langs;
 use backend\models\Reviews;
 use backend\models\Banners;
+use backend\models\Breeds;
 
 
 /**
@@ -180,6 +183,23 @@ class SiteController extends Controller
             'categories' => $categories,
             'posts' => $posts,
             'actions' => $actions,
+        ]);
+    }
+    
+    public function actionAccount()
+    {
+        $user = User::findOne(Yii::$app->user->id);
+        
+        $profile = Profile::findOne([
+            'user_id' => Yii::$app->user->id
+        ]);
+        
+        $breed = $model->breed ? Breeds::findOne($model->breed)->name : 0;
+        
+        return $this->render('account', [
+            'user' => $user,
+            'profile' => $profile,
+            'breed' => $breed,
         ]);
     }
     

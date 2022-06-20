@@ -188,4 +188,5 @@ class Profile extends ActiveRecord
     {
         return '{{%profile}}';
     }
+    
 }

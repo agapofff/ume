@@ -18,7 +18,53 @@
     
 ?>
 
-<div class="container-lg container-xl container-xxl mt-13 px-lg-2 px-xl-3 px-xxl-5 d-none">
+<div class="container-lg container-xl container-xxl">
+    <h1 class="text-uppercase mb-2">
+        <?= Yii::t('front', 'Личный кабинет') ?>
+    </h1>
+    <h5 class="text-uppercase">
+        <?= Yii::t('front', 'Профиль') ?>
+    </h5>
+    <p>
+        <a href="<?= Url::to(['/profile']) ?>" class="text-gray-400">
+            <?= Yii::t('front', 'Редактировать') ?>
+        </a>
+    </p>
+    
+    <div class="row">
+        <div class="col-md-3">
+            <a href="<?= Url::to(['/profile']) ?>" class="rounded-pill border border-teal">
+                <img src="<?= $image = $model->getImage() ? $image->getUrl('500') : '/images/placeholder.png' ?>" class="img-fluid" class="rounded-pill">
+            </a>
+        </div>
+        <div class="col-md-9">
+            <h2 class="mb-2">
+                <?= $profile->name ?: Yii::t('front', 'Кличка') ?>
+            </h2>
+            <div class="row">
+                <div class="col-4">
+                    <strong>
+                        <?= Yii::t('front', 'Пол') ?>
+                    </strong>
+                </div>
+                <div class="col-8">
+                    <?= Yii::t('front', $profile->sex ? 'Мальчик' : 'Девочка') ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <strong>
+                        <?= Yii::t('front', 'Порода') ?>
+                    </strong>
+                </div>
+                <div class="col-8">
+                    <?= json_decode(Breeds::findOne($profile->breed)->name)->{Yii::$app->language} ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row justify-content-center">
         <div class="col-lg-6 mb-4 d-none d-lg-block">
             <?= $this->render('_menu') ?>

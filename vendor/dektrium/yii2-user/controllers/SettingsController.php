@@ -24,6 +24,8 @@ use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 
+use backend\models\Breeds;
+
 use Yii;
 
 /**
@@ -162,7 +164,7 @@ class SettingsController extends Controller
             $model = \Yii::createObject(Profile::className());
             $model->link('user', \Yii::$app->user->identity);
         }
-
+/*
         $event = $this->getProfileEvent($model);
 
         $this->performAjaxValidation($model);
@@ -173,9 +175,16 @@ class SettingsController extends Controller
             // $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
             // return $this->refresh();
         }
+*/
 
+        $user = User::findOne($model->user_id);
+        
+        $breed = $model->breed ? Breeds::findOne($model->breed)->name : 0;
+        
         return $this->render('profile', [
             'model' => $model,
+            'user' => $user,
+            'breed' => $breed,
         ]);
     }
 
@@ -217,6 +226,11 @@ class SettingsController extends Controller
                 $profile->comment = $model->comment;
                 $profile->agree = $model->agree;
                 $profile->lottery = $model->lottery;
+                $profile->name = $model->name;
+                $profile->public_email = $model->email;
+                $profile->breed = $model->breed;
+                $profile->weight = $model->weight;
+                $profile->activity = $model->activity;
 
                 $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
 
