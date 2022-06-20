@@ -196,10 +196,21 @@ class SiteController extends Controller
         
         $breed = $model->breed ? Breeds::findOne($model->breed)->name : 0;
         
+        $actions = Actions::find()
+            ->where([
+                'active' => 1
+            ])
+            ->orderBy([
+                'published' => SORT_DESC
+            ])
+            ->limit(4)
+            ->all();
+        
         return $this->render('account', [
             'user' => $user,
             'profile' => $profile,
             'breed' => $breed,
+            'actions' => $actions,
         ]);
     }
     

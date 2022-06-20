@@ -544,6 +544,9 @@ ul.check-circle li:before {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 #account.accordion a[data-toggle="collapse"][aria-expanded="true"] img {
     -webkit-transform: rotate(-45deg) !important;

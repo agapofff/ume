@@ -42,13 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
         </a>
         <div id="profile" class="collapse show" data-parent="#account">
             <p>
-                <a href="<?= Url::to(['/account']) ?>" class="text-gray-400">
+                <a href="<?= '#' // Url::to(['/account/edit']) ?>" class="text-gray-400">
                     <?= Yii::t('front', 'Редактировать') ?>
                 </a>
             </p>
             <div class="row">
                 <div class="col-md-3 pt-4">
-                    <a href="<?= Url::to(['/profile']) ?>" class="rounded-pill border border-teal d-block" style="border-width: 3px !important">
+                    <a href="<?= '#' // Url::to(['/account/edit']) ?>" class="rounded-pill border border-teal d-block" style="border-width: 3px !important">
                         <img src="<?= $user->getImage()->getUrl('400') ?>" class="img-fluid" class="rounded-pill">
                     </a>
                 </div>
@@ -147,5 +147,63 @@ $this->params['breadcrumbs'][] = $this->title;
         
         <hr>
         
+        <a href="#bonus" class="h4 position-relative d-block text-uppercase text-decoration-none font-weight-normal text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="bonus">
+            <?= Yii::t('front', 'Кошелек') ?>
+            <?= Html::img('/images/arrow_lk_active.svg', [
+                    'class' => 'position-absolute top-0 right-0 d-none d-md-block transition',
+                ])
+            ?>
+        </a>
+        <div id="bonus" class="collapse" data-parent="#account">
+            <p>&nbsp;</p>
+        </div>
+        
+        <hr>
+        
+        <a href="#friends" class="h4 position-relative d-block text-uppercase text-decoration-none font-weight-normal text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="friends">
+            <?= Yii::t('front', 'Друзья') ?>
+            <?= Html::img('/images/arrow_lk_active.svg', [
+                    'class' => 'position-absolute top-0 right-0 d-none d-md-block transition',
+                ])
+            ?>
+        </a>
+        <div id="friends" class="collapse" data-parent="#account">
+            <p>&nbsp;</p>
+        </div>
+        
+        <hr>
+        
+        <a href="#actions" class="h4 position-relative d-block text-uppercase text-decoration-none font-weight-normal text-dark" data-toggle="collapse" aria-expanded="false" aria-controls="actions">
+            <?= Yii::t('front', 'Акции') ?>
+            <?= Html::img('/images/arrow_lk_active.svg', [
+                    'class' => 'position-absolute top-0 right-0 d-none d-md-block transition',
+                ])
+            ?>
+        </a>
+        <div id="actions" class="collapse" data-parent="#account">
+            <div class="row mb-4 mt-3 px-xl-5">
+        <?php
+            foreach ($actions as $action) {
+        ?>
+                <div class="col-md-6">
+                    <?= $this->render('/actions/_post', [
+                            'action' => $action
+                        ])
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
+                <div class="col-12">
+                    <p class="lead my-1">
+                        <a href="<?= Url::to(['/actions']) ?>" class="text-dark">
+                            <?= Yii::t('front', 'Архив акций') ?>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
     </div>
 </div>
