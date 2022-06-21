@@ -276,6 +276,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 var sendCode = $.get('/" . Yii::$app->language . "/sms/get-code', {
                     phone: $('#register-form-phone').val()
                 });
+console.log(sendCode);
                 $('#register-form-sms_code').val('').focus();
                 setTimer();
             }
