@@ -182,6 +182,10 @@ class SiteController extends Controller
     
     public function actionAccount()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect(['/login']);
+        }
+        
         $user = User::findOne(Yii::$app->user->id);
         
         $profile = Profile::findOne([
