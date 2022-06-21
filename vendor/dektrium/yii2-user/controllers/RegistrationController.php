@@ -148,6 +148,11 @@ class RegistrationController extends Controller
                 'username' => $model->username
             ]);
             
+            $user->first_name = $model->first_name;
+            $user->last_name = $model->last_name;
+            $user->phone = $model->phone;
+            $user->save();
+            
             $profile = Profile::findOne([
                 'user_id' => $user->id
             ]);

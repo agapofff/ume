@@ -305,6 +305,14 @@
     }
 ?>
         class="position-relative">
+        
+        <div id="loader" class="fixed-top vw-100 vh-100 bg-white opacity-75">
+            <div class="d-flex vw-100 vh-100 align-items-center justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Загрузка...</span>
+                </div>
+            </div>
+        </div>
 
     <?php $this->beginBody() ?>
             
@@ -387,7 +395,7 @@
                         </a>
                     </div>
 
-                    <button id="nav-menu-button" class="btn btn-link text-decoration-none rounded-0 transition p-0" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
+                    <button id="nav-menu-button" class="btn btn-link text-decoration-none rounded-0 transition p-0" type="button" data-toggle="modal" data-target="#menu" data-backdrop="false" aria-label="<?= Yii::t('front', 'Меню') ?>">
                         <?= Html::img('/images/btn_menu_dark.svg', [
                                 'class' => 'light',
                             ])

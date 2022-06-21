@@ -14,24 +14,24 @@ jQuery(document).ready(function ($) {
     // индикатор загрузки
     // NProgress.start();
     $(document).on('pjax:start', function () {
-        NProgress.start();
+        $('#loader').show();
     });
     $(document).on('pjax:end', function () {
-        NProgress.done();
+        $('#loader').hide();
     });
     $('form').on('beforeSubmit', function () {
-        NProgress.done();
+        $('#loader').hide();
     });
     $(window).on('beforeunload', function () {
-        // NProgress.start();
+        $('#loader').show();
         $('#fade').fadeIn('fast');
         $('.modal').modal('hide');
     });
     // $(window).on('load', function () {
-        NProgress.done();
+        $('#loader').hide();
     // });
-    $(document).on('click', '.loading', function () {
-        NProgress.done();
+    $(document).on('click', '#loader', function () {
+        $('#loader').hide();
     });
     
     
@@ -66,7 +66,7 @@ jQuery(document).ready(function ($) {
         preventDuplicates: true,
         escapeHtml: false,
         iconClass: 'd-none',
-        timeOut: 100000,
+        timeOut: 3000,
     };
 
 

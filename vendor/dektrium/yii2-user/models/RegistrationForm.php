@@ -43,6 +43,8 @@ class RegistrationForm extends Model
     public $last_name;
     public $name;
     public $phone;
+    
+    public $sms_code;
 
     /**
      * @inheritdoc
@@ -95,6 +97,14 @@ class RegistrationForm extends Model
                 'targetClass' => $user,
                 'message' => Yii::t('front', 'Этот номер телефона уже занят')
             ],
+            
+            // sms code
+            'smsCode' => ['sms_code', 'string', 'min' => 4, 'max' => 4],
+            'checkSmsCode' => ['sms_code', function ($attribute, $params) {
+                if ($this->$attribute != Yii::$app->session->get('smsCode')) {
+                    $this->addError($attribute, Yii::t('front', 'Неправильный код!'));
+                }
+            }],
         ];
     }
 
@@ -110,6 +120,7 @@ class RegistrationForm extends Model
             'first_name' => Yii::t('front', 'Имя'),
             'last_name' => Yii::t('front', 'Фамилия'),
             'phone' => Yii::t('front', 'Телефон'),
+            'sms_code' => Yii::t('front', 'СМС-код'),
         ];
     }
 

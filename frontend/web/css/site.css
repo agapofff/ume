@@ -205,6 +205,14 @@ button,
     transition: all 0.5s ease;
 }
 
+#loader {
+    z-index: 1099;
+}
+#loader .spinner-border {
+    width: 3rem; 
+    height: 3rem;
+}
+
 .video {
     position: relative;
     overflow: hidden;
@@ -244,9 +252,17 @@ form .help-block {
     font-size: 80%;
     opacity: .85;
 }
+form .text-center > .help-block {
+    text-align: center;
+}
+
+.modal .close img {
+    width: 1em;
+    height: 1em;
+}
 
 #nav {
-    z-index: 1051;
+    z-index: 1040;
 }
 .navbar-light .dark,
 .navbar-dark .light {
@@ -270,6 +286,10 @@ form .help-block {
 
 #nav-menu-button img {
     width: 50px;
+}
+
+#menu {
+    z-index: 1039 !important;
 }
 
 .main-menu-item:before {

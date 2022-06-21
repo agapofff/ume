@@ -54,18 +54,12 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['account', 'logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
                 ],
             ],
-            // 'verbs' => [
-                // 'class' => VerbFilter::className(),
-                // 'actions' => [
-                    // 'logout' => ['post'],
-                // ],
-            // ],
         ];
     }
 
