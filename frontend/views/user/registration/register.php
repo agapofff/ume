@@ -60,25 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
                         ])
                 ?>
-                
-                <?= $form
-                        ->field($model, 'last_name', [
-                            'inputOptions' => [
-                                'autofocus' => 'autofocus',
-                                'class' => 'form-control form-control-lg',
-                                'tabindex' => '2',
-                                'required' => true,
-                                'autocomplete' => rand(),
-                            ],
-                            'options' => [
-                                'class' => 'form-group row align-items-center mb-2',
-                            ],
-                            'labelOptions' => [
-                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
-                            ],
-                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
-                        ])
-                ?>
 
                 <?= $form
                         ->field($model, 'email', [
@@ -282,6 +263,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     sendSmsCode();
                     return false;
                 }
+                
+                
             });
             
         $(document).on('click', '#sms-code-button', function () {

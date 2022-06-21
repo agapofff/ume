@@ -87,7 +87,7 @@ class RegistrationForm extends Model
             // last name rules
             'lastNameTrim'     => ['last_name', 'trim'],
             'lastNameLength'   => ['last_name', 'string', 'max' => 255],
-            'lastNameRequired' => ['last_name', 'required'],
+            // 'lastNameRequired' => ['last_name', 'required'],
             
             // phone 
             'phone' => ['phone', 'string'],
