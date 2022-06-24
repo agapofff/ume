@@ -149,6 +149,7 @@ class RegistrationController extends Controller
             ]);
             
             $user->first_name = $model->first_name;
+            // $user->last_name = $model->last_name;
             $user->phone = $model->phone;
             $user->save();
             
@@ -157,6 +158,7 @@ class RegistrationController extends Controller
             ]);
             
             $profile->first_name = $model->first_name;
+            // $profile->last_name = $model->last_name;
             $profile->phone = str_replace(['(', ')'], '', $model->phone);
             $profile->public_email = $model->email;
             $profile->save();

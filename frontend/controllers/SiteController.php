@@ -192,7 +192,7 @@ class SiteController extends Controller
             'user_id' => Yii::$app->user->id
         ]);
         
-        $breed = $model->breed ? Breeds::findOne($model->breed)->name : 0;
+        $breed = $profile->breed ? Breeds::findOne($profile->breed)->name : null;
         
         $actions = Actions::find()
             ->where([

@@ -42,14 +42,14 @@ $this->params['breadcrumbs'][] = $this->title;
         </a>
         <div id="profile" class="collapse show" data-parent="#account">
             <p>
-                <a href="<?= Url::to(['/account/edit']) ?>" class="text-gray-400">
+                <a href="<?= '#' // Url::to(['/account/edit']) ?>" class="text-gray-400">
                     <?= Yii::t('front', 'Редактировать') ?>
                 </a>
             </p>
             <div class="row">
                 <div class="col-md-3 pt-4">
-                    <a href="<?= Url::to(['/account/edit']) ?>">
-                        <img src="<?= $user->getImage()->getUrl('400x400') ?>" class="img-fluid rounded-pill border border-teal cursor-pointer file-upload-trigger" style="border-width: 3px !important">
+                    <a href="<?= '#' // Url::to(['/account/edit']) ?>" class="rounded-pill border border-teal d-block" style="border-width: 3px !important">
+                        <img src="<?= $user->getImage()->getUrl('400') ?>" class="img-fluid" class="rounded-pill">
                     </a>
                 </div>
                 <div class="col-md-8 offset-md-1">
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?= Yii::t('front', 'Пол') ?>
                         </div>
                         <div class="col-8">
-                            <?= Yii::t('front', !is_null($profile->sex) ? Yii::t('front', Yii::$app->params['sex'][$profile->sex]) : '') ?>
+                            <?= Yii::t('front', $profile->sex ? Yii::t('front', Yii::$app->params['sex'][$profile->sex]) : '') ?>
                         </div>
                     </div>
                     <div class="row mb-0_5">
@@ -142,9 +142,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </a>
         <div id="orders" class="collapse" data-parent="#account">
-            <p class="lead">
-                <?= Yii::t('front', 'Здесь пока пусто') ?>
-            </p>
+            <p>&nbsp;</p>
         </div>
         
         <hr>
@@ -157,9 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </a>
         <div id="bonus" class="collapse" data-parent="#account">
-            <p class="lead">
-                <?= Yii::t('front', 'Здесь пока пусто') ?>
-            </p>
+            <p>&nbsp;</p>
         </div>
         
         <hr>
@@ -172,9 +168,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </a>
         <div id="friends" class="collapse" data-parent="#account">
-            <p class="lead">
-                <?= Yii::t('front', 'Здесь пока пусто') ?>
-            </p>
+            <p>&nbsp;</p>
         </div>
         
         <hr>

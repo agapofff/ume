@@ -99,20 +99,23 @@ class Profile extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name'           => Yii::t('front', 'Name'),
-            'public_email'   => Yii::t('front', 'Email (public)'),
+            'name'           => Yii::t('front', 'Кличка'),
+            'public_email'   => Yii::t('front', 'Email'),
             'gravatar_email' => Yii::t('front', 'Gravatar email'),
             'location'       => Yii::t('front', 'Location'),
             'website'        => Yii::t('front', 'Website'),
             'bio'            => Yii::t('front', 'Bio'),
             'timezone'       => Yii::t('front', 'Time zone'),
-            'first_name'       => Yii::t('front', 'Имя'),
+            'first_name'       => Yii::t('front', 'ФИО'),
             'last_name'       => Yii::t('front', 'Фамилия'),
             'address'       => Yii::t('front', 'Адрес'),
             'birthday'       => Yii::t('front', 'Дата рождения'),
             'phone'       => Yii::t('front', 'Телефон'),
             'sex'       => Yii::t('front', 'Пол'),
+            'weight'       => Yii::t('front', 'Вес'),
             'comment'       => Yii::t('front', 'Комментарий'),
+            'breed'       => Yii::t('front', 'Порода'),
+            'activity'       => Yii::t('front', 'Активность'),
             'agree'       => Yii::t('front', 'Я хочу получать информационную рассылку'),
             'lottery'       => Yii::t('front', 'Я хочу участвовать в розыгрыше на показ'),
         ];

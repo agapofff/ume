@@ -205,6 +205,44 @@ button,
     transition: all 0.5s ease;
 }
 
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg width="20" height="10" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="30.168" y1="0.707107" x2="15.9355" y2="14.9396" stroke="black" stroke-linecap="round"/><line x1="15.2323" y1="15.2603" x2="0.999849" y2="1.02776" stroke="black" stroke-linecap="round"/></svg>') right 0.5em center no-repeat;
+}
+select::-ms-expand {
+    display: none;
+}
+
+.btn-group .btn {
+    font-size: 100%;
+}
+.btn-group .btn.active {
+    background: #fff;
+}
+
+#profile-sex .btn:before {
+    content: '';
+    margin-right: 0.5em;
+}
+#profile-sex .btn:first-child:before {
+    width: 1.87rem;
+    height: 2.2rem;
+    background: url('../images/dog_girl.svg') center center / cover no-repeat;
+}
+#profile-sex .btn:last-child:before {
+    width: 1.75rem;
+    height: 2.25rem;
+    background: url('../images/dog_boy.svg') center center / cover no-repeat;
+}
+
+.input-group .input-group-prepend select.form-control-lg {
+    border-radius: 0.65rem 0 0 0.65rem;
+}
+.input-group .input-group-append select.form-control-lg {
+    border-radius: 0 0.65rem 0.65rem 0;
+}
+
 #loader {
     z-index: 1099;
 }

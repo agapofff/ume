@@ -158,33 +158,45 @@ class SettingsController extends Controller
             Yii::$app->language = Yii::$app->request->post('lang');
         }
         
-        $model = $this->finder->findProfileById(\Yii::$app->user->identity->getId());
+        $model = $this->finder->findProfileById(Yii::$app->user->identity->getId());
 
         if ($model == null) {
-            $model = \Yii::createObject(Profile::className());
-            $model->link('user', \Yii::$app->user->identity);
+            $model = Yii::createObject(Profile::className());
+            $model->link('user', Yii::$app->user->identity);
         }
-/*
+        
+        $user = User::findOne($model->user_id);
+        
+        $breeds = Breeds::findAll([
+            'active' => 1
+        ]);
+        
+        $model->sex = $model->sex ?: 0;
+        $model->breed = $model->breed ?: 0;
+        $model->activity = $model->activity ?: 0;
+        $model->weight = $model->weight ?: 0;
+
         $event = $this->getProfileEvent($model);
 
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            \Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
-            // $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
-            // return $this->refresh();
+        
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $user->email = $model->public_email;
+            $user->phone = $model->phone;
+            $user->first_name = $model->first_name;
+            $user->save();
+            
+            Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
+            $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
+            return $this->refresh();
         }
-*/
 
-        $user = User::findOne($model->user_id);
-        
-        $breed = $model->breed ? Breeds::findOne($model->breed)->name : 0;
-        
         return $this->render('profile', [
             'model' => $model,
             'user' => $user,
-            'breed' => $breed,
+            'breeds' => $breeds,
         ]);
     }
 

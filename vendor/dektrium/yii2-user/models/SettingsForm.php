@@ -47,21 +47,18 @@ class SettingsForm extends Model
     /** @var User */
     private $_user;
     
+    public $name;
     public $first_name;
-    
     public $last_name;
-    
     public $birthday;
-    
     public $phone;
-    
     public $sex;
-    
     public $comment;
-    
     public $agree;
-    
     public $lottery;
+    public $breed;
+    public $weight;
+    public $activity;
 
     /** @return User */
     public function getUser()
@@ -99,21 +96,25 @@ class SettingsForm extends Model
                 return $this->user->$attribute != $model->$attribute;
             }, 'targetClass' => $this->module->modelMap['User']],
             'newPasswordLength' => ['new_password', 'string', 'max' => 72, 'min' => 6],
-            // 'currentPasswordRequired' => ['current_password', 'required'],
+            'currentPasswordRequired' => ['current_password', 'required'],
             'currentPasswordValidate' => ['current_password', function ($attr) {
                 if (!Password::validate($this->$attr, $this->user->password_hash)) {
                     $this->addError($attr, Yii::t('front', 'Текущий пароль неверен'));
                 }
             }],
-            'firstName'             => ['first_name', 'string', 'max' => 255],
-            'lastName'              => ['last_name', 'string', 'max' => 255],
-            // 'address'               => ['address', 'string', 'max' => 255],
-            'birthday'              => ['birthday', 'string'],
-            'sex'                   => ['sex', 'integer'],
-            'comment'               => ['comment', 'string', 'max' => 255],
-            'agree'                 => ['agree', 'string'],
-            'lottery'                 => ['lottery', 'string'],
-            'phone'                 => ['phone', 'string'],
+            'firstName' => ['first_name', 'string', 'max' => 255],
+            'lastName' => ['last_name', 'string', 'max' => 255],
+            'name' => ['name', 'string', 'max' => 255],
+            // 'address' => ['address', 'string', 'max' => 255],
+            'birthday' => ['birthday', 'string'],
+            'sex' => ['sex', 'integer'],
+            'comment' => ['comment', 'string', 'max' => 255],
+            'agree' => ['agree', 'string'],
+            'lottery' => ['lottery', 'string'],
+            'phone' => ['phone', 'string'],
+            'breed' => ['breed', 'integer'],
+            'weight' => ['weight', 'integer'],
+            'activity' => ['activity', 'integer'],
         ];
     }
 
@@ -121,19 +122,23 @@ class SettingsForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'            => Yii::t('front', 'E-mail'),
-            'username'         => Yii::t('front', 'Логин'),
-            'new_password'     => Yii::t('front', 'Новый пароль'),
+            'email' => Yii::t('front', 'E-mail'),
+            'username' => Yii::t('front', 'Логин'),
+            'new_password' => Yii::t('front', 'Новый пароль'),
             'current_password' => Yii::t('front', 'Текущий пароль'),
-            'first_name'       => Yii::t('front', 'Имя'),
-            'last_name'       => Yii::t('front', 'Фамилия'),
-            // 'address'       => Yii::t('front', 'Адрес'),
-            'birthday'       => Yii::t('front', 'Дата рождения'),
-            'phone'       => Yii::t('front', 'Телефон'),
-            'sex'       => Yii::t('front', 'Пол'),
-            'comment'       => Yii::t('front', 'Комментарий'),
-            'agree'       => Yii::t('front', 'Я хочу получать информационную рассылку'),
-            'lottery'       => Yii::t('front', 'Я хочу участвовать в розыгрыше на показ'),
+            'first_name' => Yii::t('front', 'Имя'),
+            'last_name' => Yii::t('front', 'Фамилия'),
+            'name' => Yii::t('front', 'Кличка'),
+            'address' => Yii::t('front', 'Адрес'),
+            'birthday' => Yii::t('front', 'Дата рождения'),
+            'phone' => Yii::t('front', 'Телефон'),
+            'sex' => Yii::t('front', 'Пол'),
+            'comment' => Yii::t('front', 'Комментарий'),
+            'agree' => Yii::t('front', 'Я хочу получать информационную рассылку'),
+            'breed' => Yii::t('front', 'Порода'),
+            'weight' => Yii::t('front', 'Вес'),
+            'activity' => Yii::t('front', 'Активность'),
+            'lottery' => Yii::t('front', 'Я хочу участвовать в розыгрыше'),
         ];
     }
 

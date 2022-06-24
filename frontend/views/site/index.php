@@ -118,10 +118,26 @@ $this->title = Yii::$app->name;
         </div>
         <div class="col-lg-6 wow fadeIn">
             <div id="about-slider" class="owl-carousel owl-theme owl-fade">
-                <img src="/images/main/banner3.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
-                <img src="/images/main/banner2.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
-                <img src="/images/main/banner5.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
-                <img src="/images/main/banner7.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                <div>
+                    <img src="/images/main/UME_drons.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                </div>
+                <div>
+                    <video autoplay loop muted playsinline class="d-block w-100">
+                        <source src="/video/UME_application_1.mp4" type="video/mp4">
+                        <source src="/video/UME_application_1.ogv" type="video/ogv">
+                        <source src="/video/UME_application_1.webm" type="video/webm">
+                    </video>
+                </div>
+                <div>
+                    <img src="/images/main/UME_products.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                </div>
+                <div>
+                    <video autoplay loop muted playsinline class="d-block w-100">
+                        <source src="/video/UME_molecule_v2_4_small.mp4" type="video/mp4">
+                        <source src="/video/UME_molecule_v2_4_small.ogv" type="video/ogv">
+                        <source src="/video/UME_molecule_v2_4_small.webm" type="video/webm">
+                    </video>
+                </div>
             </div>
         </div>
     </div>

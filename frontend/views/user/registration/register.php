@@ -144,13 +144,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <div class="row justify-content-center mt-2 mt-md-4 mb-3">
                     <div class="col-auto mb-1">
-                        <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Регистрация'),
-                            [
+                        <?= Html::submitButton(Yii::t('front', 'Регистрация'), [
                                 'class' => 'btn btn-lg btn-secondary rounded-pill',
                                 'tabindex' => '6',
                                 'title' => Yii::t('front', 'Регистрация')
-                            ]
-                        ) ?>
+                            ]) 
+                        ?>
                     </div>
                     <div class="col-auto mb-1">
                         <?= Html::a(Yii::t('front', 'Авторизация'), ['/login'], [
