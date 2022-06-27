@@ -401,9 +401,9 @@ jQuery(document).ready(function ($) {
             $('#profile-birthday').val($('#year').val() + '-' + $('#month').val() + '-' + $('#day').val());
         }
     });
-    
     // загрузка файлов
     $(document).on('change', 'input[type="file"]', function () {
+        $('input[name="saveAndExit"]').val(0);
         $(this).parents('form').submit();
     });
     

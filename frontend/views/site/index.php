@@ -119,13 +119,13 @@ $this->title = Yii::$app->name;
         <div class="col-lg-6 wow fadeIn">
             <div id="about-slider" class="owl-carousel owl-theme owl-fade">
                 <div>
-                    <img src="/images/main/UME_drons.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/UME_dog_001_v2_static_pic_02.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                 </div>
                 <div>
                     <video autoplay loop muted playsinline class="d-block w-100">
-                        <source src="/video/UME_application_1.mp4" type="video/mp4">
-                        <source src="/video/UME_application_1.ogv" type="video/ogv">
-                        <source src="/video/UME_application_1.webm" type="video/webm">
+                        <source src="/video/UME_planshet_00.mp4" type="video/mp4">
+                        <source src="/video/UME_planshet_00.ogv" type="video/ogv">
+                        <source src="/video/UME_planshet_00.webm" type="video/webm">
                     </video>
                 </div>
                 <div>

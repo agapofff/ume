@@ -263,7 +263,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div>
-    
+        
+        <?= Html::hiddenInput('saveAndExit', 1) ?>
+        
     <?php ActiveForm::end(); ?>
     
 </div>

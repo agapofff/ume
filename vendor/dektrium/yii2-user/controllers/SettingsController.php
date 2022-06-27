@@ -190,7 +190,7 @@ class SettingsController extends Controller
             
             Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
             $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
-            return $this->refresh();
+            return Yii::$app->request->post('saveAndExit') ? $this->redirect(['/account']) : $this->refresh();
         }
 
         return $this->render('profile', [
