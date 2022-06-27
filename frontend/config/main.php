@@ -494,11 +494,7 @@ return [
                 'logout' => 'user/security/logout',
                 'register' => 'user/registration/register',
                 'resend' => 'user/registration/resend',
-                // 'pass' => 'user/settings/account',
-                // 'profile' => 'user/settings/profile',
-                // 'account' => 'user/settings/account',
-                'request' => 'user/recovery/request',
-                
+                // 'request' => 'user/recovery/request',
                 'account' => 'site/account',
                 'account/edit' => 'user/settings/profile',
                 
