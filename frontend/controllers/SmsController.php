@@ -9,34 +9,17 @@ use linslin\yii2\curl;
 
 class SmsController extends Controller
 {
-    public function actionSend($phone, $text, $sender = 'Dadget', $wapurl = false)
+    public function actionSend($phone, $text)
     {
-        $host = Yii::$app->params['sms']['host'];
-        $port = Yii::$app->params['sms']['port'];
-        $login = Yii::$app->params['sms']['login'];
-        $password = Yii::$app->params['sms']['password'];
-
-        $params = [
-            'phone' => preg_replace('/[^0-9]/', '', $phone),
-            'text' => $text,
-        ];
-        
-        if ($sender) {
-            $params['sender'] = $sender;
-        }
-        
-        if ($wapurl) {
-            $params['wapurl'] = $wapurl;
-        }
-        
         $curl = new curl\Curl();
         
         $response = $curl
-            ->setGetParams($params)
-            ->setHeaders([
-                'Authorization' => base64_encode($login . ':' . $password)
+            ->setGetParams([
+                'api_id' => Yii::$app->params['sms']['apiKey'],
+                'to' => preg_replace('/[^0-9]/', '', $phone),
+                'msg' => $text,
             ])
-            ->get($host);
+            ->get(Yii::$app->params['sms']['host']);
 
         return $response;
     }
