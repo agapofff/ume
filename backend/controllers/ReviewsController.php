@@ -8,6 +8,7 @@ use backend\models\ReviewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use backend\models\Langs;
 use backend\models\Breeds;
 use dektrium\user\models\User;
@@ -24,6 +25,15 @@ class ReviewsController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -68,20 +78,7 @@ class ReviewsController extends Controller
             'breeds' => $breeds,
         ]);
     }
-
-    /**
-     * Displays a single Reviews model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    // public function actionView($id)
-    // {
-        // return $this->render('view', [
-            // 'model' => $this->findModel($id),
-        // ]);
-    // }
-
+    
     /**
      * Creates a new Reviews model.
      * If creation is successful, the browser will be redirected to the 'view' page.
