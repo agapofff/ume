@@ -158,45 +158,49 @@ class SettingsController extends Controller
             Yii::$app->language = Yii::$app->request->post('lang');
         }
         
-        $model = $this->finder->findProfileById(Yii::$app->user->identity->getId());
+        $profile = $this->finder->findProfileById(Yii::$app->user->identity->getId());
 
-        if ($model == null) {
-            $model = Yii::createObject(Profile::className());
-            $model->link('user', Yii::$app->user->identity);
+        if ($profile == null) {
+            $profile = Yii::createObject(Profile::className());
+            $profile->link('user', Yii::$app->user->identity);
         }
         
-        $user = User::findOne($model->user_id);
+        $user = User::findOne($profile->user_id);
         
         $breeds = Breeds::findAll([
             'active' => 1
         ]);
         
-        $model->sex = $model->sex ?: 0;
-        $model->breed = $model->breed ?: 0;
-        $model->activity = $model->activity ?: 0;
-        $model->weight = $model->weight ?: 0;
+        $profile->sex = $profile->sex ?: 0;
+        $profile->breed = $profile->breed ?: 0;
+        $profile->activity = $profile->activity ?: 0;
+        $profile->weight = $profile->weight ?: 0;
 
-        $event = $this->getProfileEvent($model);
-
-        $this->performAjaxValidation($model);
-
-        $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
+        $profileEvent = $this->getProfileEvent($profile);
+        $this->performAjaxValidation($profile);
+        $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $profileEvent);
         
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $user->email = $model->public_email;
-            $user->phone = $model->phone;
-            $user->first_name = $model->first_name;
-            $user->save();
+        $settings = \Yii::createObject(SettingsForm::className());
+        // $settingsEvent = $this->getFormEvent($settings);
+        // $this->performAjaxValidation($settings);
+        // $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $settingsEvent);
+        
+        if ($profile->load(Yii::$app->request->post()) && $profile->save()) {
+            // $user->email = $profile->public_email;
+            // $user->phone = $profile->phone;
+            // $user->first_name = $profile->first_name;
+            // $user->save();
             
             Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
-            $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
+            $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $profileEvent);
             return Yii::$app->request->post('saveAndExit') ? $this->redirect(['/account']) : $this->refresh();
         }
 
         return $this->render('profile', [
-            'model' => $model,
+            'profile' => $profile,
             'user' => $user,
             'breeds' => $breeds,
+            'settings' => $settings,
         ]);
     }
 
@@ -207,62 +211,23 @@ class SettingsController extends Controller
      */
     public function actionAccount()
     {
-        
         /** @var SettingsForm $model */
-        $model = Yii::createObject(SettingsForm::className());
-        
-        $profile = $this->finder->findProfileById(Yii::$app->user->identity->getId());
-        
+        $model = \Yii::createObject(SettingsForm::className());
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
-        
-        if ($model->load(Yii::$app->request->post())) {
-            
-            if ($model->save()){
-
-                if ($profile == null) {
-                    $profile = Yii::createObject(Profile::className());
-                    $profile->link('user', \Yii::$app->user->identity);
-                }
-
-                $event = $this->getProfileEvent($profile);
-                
-                $profile->first_name = $model->first_name;
-                $profile->last_name = $model->last_name;
-                $profile->phone = $model->phone;
-                $profile->birthday = $model->birthday;
-                $profile->sex = $model->sex;
-                $profile->comment = $model->comment;
-                $profile->agree = $model->agree;
-                $profile->lottery = $model->lottery;
-                $profile->name = $model->name;
-                $profile->public_email = $model->email;
-                $profile->breed = $model->breed;
-                $profile->weight = $model->weight;
-                $profile->activity = $model->activity;
-
-                $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
-
-                if ($profile->save()){
-                    Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
-                    // $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
-                    // return $this->refresh();
-                    return $this->redirect(['/account']);
-                }
-                
-                // Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш аккаунт был обновлён'));
-                // $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
-                // return $this->refresh();
-            }
+        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
+            $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
+            return $this->refresh();
         }
 
-        return $this->render('account', [
-            'model' => $model,
-            'profile' => $profile,
-        ]);
+        // return $this->render('account', [
+            // 'model' => $model
+        // ]);
+        return $this->redirect(['/account/edit']);
     }
 
     /**

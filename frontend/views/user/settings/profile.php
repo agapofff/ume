@@ -9,6 +9,7 @@
  * file that was distributed with this source code.
  */
 
+use yii\web\View;
 use yii\helpers\Url;
 use yii\helpers\Html;
 use dektrium\user\helpers\Timezone;
@@ -20,7 +21,7 @@ use agapofff\gallery\widgets\Gallery;
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var dektrium\user\models\Profile $model
+ * @var dektrium\user\models\Profile $profile
  */
 
 $this->title = Yii::t('front', 'Заполнить профиль');
@@ -38,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
     
     <?php 
         $form = ActiveForm::begin([
-            'id' => 'account-form',
+            'id' => 'profile-form',
             'enableAjaxValidation' => true,
             'enableClientValidation' => false,
             'validateOnBlur' => false,
@@ -90,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-md-8 offset-md-1">
                 <?= $form
-                        ->field($model, 'name', [
+                        ->field($profile, 'name', [
                             'inputOptions' => [
                                 'placeholder' => Yii::t('front', 'Мой питомец'),
                             ]
@@ -98,7 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                 
                 <?= $form
-                        ->field($model, 'sex', [
+                        ->field($profile, 'sex', [
                             'options' => []
                         ])
                         ->widget(ToggleButtonGroup::class, [
@@ -114,7 +115,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                 
                 <?= $form
-                        ->field($model, 'breed')
+                        ->field($profile, 'breed')
                         ->dropdownList(ArrayHelper::map($breeds, 'id', function ($breed) {
                             return json_decode($breed->name)->{Yii::$app->language};
                         }), [
@@ -123,7 +124,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ?>
                 
                 <?php
-                    $birthday = explode('-', $model->birthday);
+                    $birthday = explode('-', $profile->birthday);
                     
                     $days = [
                         '' => Yii::t('front', 'День')
@@ -173,7 +174,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <?= $form
-                        ->field($model, 'birthday', [
+                        ->field($profile, 'birthday', [
                             'options' => [
                                 'class' => 'd-none',
                             ]
@@ -189,14 +190,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ?>
                 <?= $form
-                        ->field($model, 'weight')
+                        ->field($profile, 'weight')
                         ->dropdownList($weights, [
                             'prompt' => Yii::t('front', 'Выберите')
                         ])
                 ?>
                 
                 <?= $form
-                        ->field($model, 'activity', [
+                        ->field($profile, 'activity', [
                             'options' => [
                                 'class' => 'form-group row mt-1_5 mb-1 field-profile-activity',
                             ],
@@ -206,45 +207,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return '<div class="custom-control custom-radio mb-1"><input type="radio" id="' . $name . $index . '" name="' . $name . '" class="custom-control-input" value="' . $value . '"' . ($checked ? ' checked' : '') . '><label class="custom-control-label" for="' . $name . $index . '">' . $label .'</label></div>';
                                 }
                         ])
-                ?>
-            </div>
-        </div>
-        
-        <h4 class="position-relative mb-3">
-            <?= Yii::t('front', 'Контактные данные хозяина') ?>
-        </h4>
-        
-        <div class="row">
-            <div class="col-md-8 offset-md-4">
-                <?= $form
-                        ->field($model, 'first_name', [
-                            'inputOptions' => [
-                                'placeholder' => Yii::t('front', 'Ваше имя'),
-                                'required' => true,
-                                'autocomplete' => rand(),
-                            ]
-                        ])
-                ?>
-                
-                <?= $form
-                        ->field($model, 'phone', [
-                            'inputOptions' => [
-                                'class' => 'form-control form-control-lg phone-mask',
-                                'required' => true,
-                                'autocomplete' => rand(),
-                            ]
-                        ])
-                ?>
-                
-                <?= $form
-                        ->field($model, 'public_email', [
-                            'inputOptions' => [
-                                'placeholder' => Yii::t('front', 'Ваш e-mail'),
-                                'required' => true,
-                                'autocomplete' => rand(),
-                            ]
-                        ])
-                        ->input('email')
                 ?>
                 
                 <div class="row mt-4 mb-3">
@@ -268,4 +230,228 @@ $this->params['breadcrumbs'][] = $this->title;
         
     <?php ActiveForm::end(); ?>
     
+    <?php 
+        $form = ActiveForm::begin([
+            'id' => 'account-form',
+            'action' => '/user/settings/account',
+            'enableAjaxValidation' => true,
+            'enableClientValidation' => true,
+            'validateOnBlur' => true,
+            'validateOnType' => true,
+            'validateOnChange' => true,
+            'fieldConfig' => [
+                'options' => [
+                    'class' => 'form-group row align-items-center mb-1',
+                ],
+                'labelOptions' => [
+                    'class' => 'col-md-4 mb-md-0 font-weight-bold'
+                ],
+                'template' => '{label}<div class="col-md-8">{input}</div>{hint}{error}',
+                'inputOptions' => [
+                    'class' => 'form-control form-control-lg',
+                    'autocomplete' => rand(),
+                ],
+            ],
+        ]);
+    ?>
+        
+        <h4 class="position-relative mb-3">
+            <?= Yii::t('front', 'Контактные данные хозяина') ?>
+        </h4>
+        
+        <div class="row">
+            <div class="col-md-8 offset-md-4">
+                <?= $form
+                        ->field($settings, 'first_name', [
+                            'inputOptions' => [
+                                'placeholder' => Yii::t('front', 'Ваше имя'),
+                                'required' => true,
+                            ]
+                        ])
+                ?>
+                
+                <?= $form
+                        ->field($settings, 'phone', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg phone-mask',
+                                'required' => true,
+                            ]
+                        ])
+                ?>
+                
+                <?= $form
+                        ->field($settings, 'email', [
+                            'inputOptions' => [
+                                'placeholder' => Yii::t('front', 'Ваш e-mail'),
+                                'required' => true,
+                            ]
+                        ])
+                        ->input('email')
+                ?>
+                
+                <hr>
+                
+                <?= $form
+                        ->field($settings, 'current_password', [
+                            'inputOptions' => [
+                                'required' => false,
+                            ]
+                        ])
+                        ->passwordInput()
+                ?>
+                
+                <?= $form
+                        ->field($settings, 'new_password')
+                        ->passwordInput()
+                ?>
+                
+                <div class="row mt-4 mb-3">
+                    <div class="col-auto mb-1">
+                        <?= Html::submitButton(Yii::t('front', 'Сохранить'), [
+                                'class' => 'btn btn-lg btn-secondary rounded-pill',
+                            ]) 
+                        ?>
+                    </div>
+                    <div class="col-auto mb-1">
+                        <?= Html::a(Yii::t('front', 'Отмена'), ['/account'], [
+                                'class' => 'btn btn-lg btn-outline-secondary rounded-pill',
+                            ])
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" id="sms-code-modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0 pb-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <img src="/images/modal_close.svg">
+                        </button>
+                    </div>
+                    <div class="modal-body pt-0">
+                        <h5 class="modal-title text-center mb-2">
+                            <?= Yii::t('front', 'Подтвердите Ваш номер телефона') ?>
+                        </h5>
+                        <p class="text-center mb-2">
+                            <?= Yii::t('front', 'Введите смс-код из сообщения, отправленного на указанный Вами номер телефона') ?>
+                        </p>
+                        <?= $form
+                                ->field($settings, 'sms_code', [
+                                    'inputOptions' => [
+                                        'autofocus' => 'autofocus',
+                                        'class' => 'form-control form-control-lg text-center',
+                                        'tabindex' => '7',
+                                        'autocomplete' => rand(),
+                                        'style' => '
+                                            font-family: monospace;
+                                            font-size: 250%;
+                                            padding: 0.1em;
+                                            height: auto;
+                                        ',
+                                        'oninput' => "this.value=this.value.replace(/[^\d]/,'')",
+                                    ],
+                                    'options' => [
+                                        'class' => 'form-group row align-items-center justify-content-center mb-2',
+                                    ],
+                                    'labelOptions' => [
+                                        'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                                    ],
+                                    'template' => '<div class="col-10 col-md-8 text-center">{input}{hint}{error}</div>',
+                                ])
+                                ->label(false)
+                        ?>
+                        <div class="text-center mb-0_5">
+                            <button type="submit" class="btn btn-secondary btn-lg rounded-pill">
+                                <?= Yii::t('front', 'Подтвердить') ?>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button id="sms-code-button" type="button" class="btn btn-outline-secondary btn-lg rounded-pill">
+                            <?= Yii::t('front', 'Отправить СМС-код') ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <?php ActiveForm::end(); ?>
+    
 </div>
+
+<?php
+    $this->registerJs("
+        // дата рождения
+        $(document).on('input', '.birthday', function () {
+            if ($('#year').val() && $('#month').val() && $('#day').val()) {
+                $('#profile-birthday').val($('#year').val() + '-' + $('#month').val() + '-' + $('#day').val());
+            }
+        });
+        
+        // загрузка файлов
+        $(document).on('change', 'input[type=\"file\"]', function () {
+            $('input[name=\"saveAndExit\"]').val(0);
+            $(this).parents('form').submit();
+        });
+        
+        
+        // SMS
+        
+        var time = 60;
+        
+        $('#account-form')
+            .on('beforeSubmit', function (event) {
+                event.preventDefault();
+                if ($('#settings-form-phone').val() != '" . $settings->phone . "' && !$('#settings-form-sms_code').val()) {
+                    $('#sms-code-modal').modal('show');
+                    sendSmsCode();
+                    return false;
+                }
+            });
+            
+        $(document).on('click', '#sms-code-button', function () {
+            sendSmsCode();
+        });
+        
+        sendSmsCode = function () {
+            if (time === 60) {
+                var sendCode = $.get('/" . Yii::$app->language . "/sms/get-code', {
+                    phone: $('#settings-form-phone').val()
+                });
+                $('#settings-form-sms_code').val('').focus();
+                setTimer();
+            }
+            return false;
+        }
+        
+        setTimer = function () {
+            var timer = setInterval(function () {
+                if (time === 0) {
+                    $('#sms-code-button')
+                        .removeAttr('disabled')
+                        .text('" . Yii::t('front', 'Отправить СМС-код') . "');
+                    time = 60;
+                    clearInterval(timer);
+                    return false;
+                } else if (time === 60) {
+                    $('#sms-code-button')
+                        .attr('disabled', true)
+                        .text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                } else {
+                    $('#sms-code-button').text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                }
+                time = time - 1;
+            }, 1000);
+        }
+        
+        $('#sms-code-modal').on('shown.bs.modal', function (event) {
+            $('#settings-form-sms_code').focus();
+        });
+        
+        $('#sms-code-modal').on('hidden.bs.modal', function (event) {
+            $('#settings-form-sms_code').val('');
+        });
+    ", View::POS_READY);
+?>

@@ -59,6 +59,7 @@ class SettingsForm extends Model
     public $breed;
     public $weight;
     public $activity;
+    public $sms_code;
 
     /** @return User */
     public function getUser()
@@ -77,6 +78,8 @@ class SettingsForm extends Model
         $this->setAttributes([
             'username' => $this->user->username,
             'email'    => $this->user->unconfirmed_email ?: $this->user->email,
+            'phone' => $this->user->phone,
+            'first_name' => $this->user->first_name,
         ], false);
         parent::__construct($config);
     }
@@ -96,7 +99,11 @@ class SettingsForm extends Model
                 return $this->user->$attribute != $model->$attribute;
             }, 'targetClass' => $this->module->modelMap['User']],
             'newPasswordLength' => ['new_password', 'string', 'max' => 72, 'min' => 6],
-            'currentPasswordRequired' => ['current_password', 'required'],
+            'currentPasswordRequired' => ['current_password', 'required', 'when' => function ($model) {
+                return $model->new_password != '';
+            }, 'whenClient' => "function (attribute, value) {
+                return $('#settings-form-new_password').val() !== '';
+            }"],
             'currentPasswordValidate' => ['current_password', function ($attr) {
                 if (!Password::validate($this->$attr, $this->user->password_hash)) {
                     $this->addError($attr, Yii::t('front', 'Текущий пароль неверен'));
@@ -115,6 +122,19 @@ class SettingsForm extends Model
             'breed' => ['breed', 'integer'],
             'weight' => ['weight', 'integer'],
             'activity' => ['activity', 'integer'],
+            
+            // sms code
+            'smsCode' => ['sms_code', 'string', 'min' => 4, 'max' => 4],
+            // 'smsCodeRequired' => ['sms_code', 'required', 'when' => function ($model) {
+                // return $model->phone != $this->user->phone;
+            // }, 'whenClient' => "function (attribute, value) {
+                // return $('#settings-form-phone').val() !== '" . $this->user->phone . "';
+            // }"],
+            'checkSmsCode' => ['sms_code', function ($attribute, $params) {
+                if ($this->$attribute != Yii::$app->session->get('smsCode')) {
+                    $this->addError($attribute, Yii::t('front', 'Неправильный код!'));
+                }
+            }],
         ];
     }
 
@@ -159,6 +179,8 @@ class SettingsForm extends Model
             // $this->user->scenario = 'settings';
             $this->user->username = $this->username;
             $this->user->password = $this->new_password;
+            $this->user->phone = $this->phone;
+            $this->user->first_name = $this->first_name;
             
             if ($this->email == $this->user->email && $this->user->unconfirmed_email != null) {
                 $this->user->unconfirmed_email = null;

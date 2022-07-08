@@ -394,20 +394,6 @@ jQuery(document).ready(function ($) {
     }
     
     
-    // ЛИЧНЫЙ КАБИНЕТ
-    // дата рождения
-    $(document).on('input', '.birthday', function () {
-        if ($('#year').val() && $('#month').val() && $('#day').val()) {
-            $('#profile-birthday').val($('#year').val() + '-' + $('#month').val() + '-' + $('#day').val());
-        }
-    });
-    // загрузка файлов
-    $(document).on('change', 'input[type="file"]', function () {
-        $('input[name="saveAndExit"]').val(0);
-        $(this).parents('form').submit();
-    });
-    
-    
     
     // FANCYBOX
     Fancybox.bind('.fancybox', {
