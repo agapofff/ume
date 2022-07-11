@@ -221,6 +221,8 @@ class SettingsController extends Controller
         if ($model->load(\Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
             $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
+            return $this->redirect(['/account']);
+        } else {
             return $this->refresh();
         }
 
