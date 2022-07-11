@@ -218,19 +218,20 @@ class SettingsController extends Controller
         $this->performAjaxValidation($model);
 
         $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
-        if ($model->load(\Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
-            $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
-            // return $this->redirect(['/account']);
-        } else {
-            return $this->refresh();
+        if ($model->load(\Yii::$app->request->post())) {
+            if ($model->save()) {
+                Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
+                $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
+                return $this->redirect(['/account']);
+            } else {
+                return $this->refresh();
+            }
         }
 
         // return $this->render('account', [
             // 'model' => $model
         // ]);
         // return $this->redirect(['/account']);
-        return $this->actionProfile();
     }
 
     /**
