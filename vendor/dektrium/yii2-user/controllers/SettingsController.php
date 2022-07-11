@@ -222,7 +222,6 @@ class SettingsController extends Controller
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
                 $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
-                return $this->redirect(['/account']);
             } else {
                 return $this->refresh();
             }
@@ -231,7 +230,7 @@ class SettingsController extends Controller
         // return $this->render('account', [
             // 'model' => $model
         // ]);
-        // return $this->redirect(['/account']);
+        return $this->redirect(['/account']);
     }
 
     /**
