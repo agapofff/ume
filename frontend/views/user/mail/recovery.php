@@ -24,7 +24,23 @@ use yii\helpers\Html;
     <?= Yii::t('front', 'Для завершения операции, пожалуйста, перейдите по ссылке ниже') ?>.
 </p>
 <p>
-    <?= Html::a(Html::encode($token->url), $token->url); ?>
+    <?= Html::a(Yii::t('front', 'Изменить пароль'), $token->url, [
+            'style' => '
+                display: inline-block;
+                padding: 24px 60px;
+                color: #ffffff !important;
+                background-color: #474F73;
+                border: 1px solid #474F73;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50px;
+                font-size: 24px;
+                font-weight: 400;
+                text-align: center;
+                text-decoration: none !important;
+            ',
+        ]);
+    ?>
 </p>
 <p>
     <?= Yii::t('front', 'Если у Вас не получается перейти по ссылке, скопируйте её в адресную строку браузера') ?>.
