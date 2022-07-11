@@ -229,7 +229,8 @@ class SettingsController extends Controller
         // return $this->render('account', [
             // 'model' => $model
         // ]);
-        return $this->redirect(['/account']);
+        // return $this->redirect(['/account']);
+        return $this->actionProfile();
     }
 
     /**
