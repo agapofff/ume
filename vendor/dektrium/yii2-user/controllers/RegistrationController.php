@@ -136,6 +136,8 @@ class RegistrationController extends Controller
         /** @var RegistrationForm $model */
         $model = \Yii::createObject(RegistrationForm::className());
         $event = $this->getFormEvent($model);
+        
+        $model->referal = Yii::$app->request->get('referal');
 
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
 

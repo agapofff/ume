@@ -1,5 +1,19 @@
 new WOW().init();
 
+// function copyToClipboard(content, successMsg = 'Скопировано', errorMsg = 'Ошибка') {
+    // var aux = document.createElement('input');
+    // aux.setAttribute('value', content);
+    // document.body.appendChild(aux);
+    // aux.select();
+    // if (document.execCommand('copy')) {
+        // toastr.success(successMsg);
+    // } else {
+        // toastr.error(errorMsg);
+    // }
+    // document.body.removeChild(aux);
+    // return false;
+// }
+
 jQuery(document).ready(function ($) {
     
     $.fn.isInViewport = function(offset = 0) {
@@ -691,5 +705,31 @@ jQuery(document).ready(function ($) {
             // ymRemove(id, name, price, variant, currency);
         // }
     // });
+    
+    $(document).on('click', '.copy', function () {
+        var content = $(this).data('copy'),
+            successMessage = $(this).data('success') ? $(this).data('success') : 'Скопировано',
+            errorMessage = $(this).data('error') ? $(this).data('error') : 'Ошибка копирования',
+            $txt = $('<textarea />');
+
+        $txt.val(content)
+            .css({
+                width: '1px', 
+                height: '1px' 
+            })
+            .appendTo('body');
+
+        $txt.select();
+
+        if (document.execCommand('copy')) {
+            toastr.success(successMessage);
+            // $txt.remove();
+        } else {
+            toastr.error(errorMessage);
+            // $txt.remove();
+        }
+        
+        return false;
+    });
     
 });

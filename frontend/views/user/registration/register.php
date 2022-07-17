@@ -231,6 +231,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                 </div>
+                
+                <?= $form
+                        ->field($model, 'referal', [
+                            'template' => '{input}',
+                            'options' => [
+                                'class' => 'd-none',
+                            ],
+                        ])
+                        ->hiddenInput()
+                        ->label(false)
+                ?>
 
             <?php ActiveForm::end(); ?>
             

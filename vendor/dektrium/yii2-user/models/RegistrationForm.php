@@ -45,6 +45,8 @@ class RegistrationForm extends Model
     public $phone;
     
     public $sms_code;
+    
+    public $referal;
 
     /**
      * @inheritdoc
@@ -105,6 +107,9 @@ class RegistrationForm extends Model
                     $this->addError($attribute, Yii::t('front', 'Неправильный код!'));
                 }
             }],
+            
+            // referal
+            'referal' => ['referal', 'string'],
         ];
     }
 

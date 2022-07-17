@@ -24,6 +24,8 @@ use yii\helpers\ArrayHelper;
 $this->title = Yii::t('front', 'Профиль');
 $this->params['breadcrumbs'][] = $this->title;
 
+$inviteLink = Url::to(['/register', 'referal' => base64_encode(Yii::$app->user->id)], true);
+
 ?>
 
 <div class="container-lg container-xl container-xxl">
@@ -172,9 +174,39 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
         </a>
         <div id="friends" class="collapse" data-parent="#account">
-            <p class="lead">
-                <?= Yii::t('front', 'Здесь пока пусто') ?>
-            </p>
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary btn-lg rounded-pill" data-toggle="modal" data-target="#invite">
+                    <?= Yii::t('front', 'Пригласить') ?>
+                </button>
+            </div>
+            
+            <div class="modal fade" id="invite" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header border-0 pb-0">
+                            <h5 class="modal-title text-center mb-2">
+                                <?= Yii::t('front', 'Пригласить') ?>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <img src="/images/modal_close.svg">
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="form-group">
+                                <label class="form-control-label">
+                                    <?= Yii::t('front', 'Отправьте эту ссылку Вашим друзьям и знакомым:') ?>
+                                </label>
+                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg copy" id="invite-input" data-copy="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Ошибка копирования') ?>">
+                                <div class="help text-right">
+                                    <a href="#" class="copy" data-copy="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Ошибка копирования') ?>">
+                                        <?= Yii::t('front', 'Скопировать ссылку') ?>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <hr>
