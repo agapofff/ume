@@ -203,7 +203,10 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     </a>
                                 </div>
                             </div>
-                            <div class="text-center my-1">
+                            <div class="text-center mt-1 mb-0_5">
+                                <p class="text-center lead m-0">
+                                    <?= Yii::t('front', 'Отправить') ?>
+                                </p>
                                 <script src="https://yastatic.net/share2/share.js"></script>
                                 <div class="ya-share2" 
                                     data-size="l" 
