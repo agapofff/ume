@@ -1,18 +1,19 @@
 new WOW().init();
 
-// function copyToClipboard(content, successMsg = 'Скопировано', errorMsg = 'Ошибка') {
-    // var aux = document.createElement('input');
-    // aux.setAttribute('value', content);
-    // document.body.appendChild(aux);
-    // aux.select();
-    // if (document.execCommand('copy')) {
-        // toastr.success(successMsg);
-    // } else {
-        // toastr.error(errorMsg);
-    // }
-    // document.body.removeChild(aux);
-    // return false;
-// }
+function copyToClipboard(content, successMsg = 'Скопировано', errorMsg = 'Ошибка') {
+    var aux = document.createElement('div');
+    aux.setAttribute('contentEditable', true);
+    aux.innerHTML = content;
+    aux.setAttribute('onfocus', "document.execCommand('selectAll',false,null)"); 
+    document.body.appendChild(aux);
+    aux.focus();
+    if (document.execCommand('copy')) {
+        toastr.success(successMsg);
+    } else {
+        toastr.error(errorMsg);
+    }
+    document.body.removeChild(aux);
+}
 
 jQuery(document).ready(function ($) {
     
@@ -705,31 +706,7 @@ jQuery(document).ready(function ($) {
             // ymRemove(id, name, price, variant, currency);
         // }
     // });
-    
-    $(document).on('click', '.copy', function () {
-        var content = $(this).data('copy'),
-            successMessage = $(this).data('success') ? $(this).data('success') : 'Скопировано',
-            errorMessage = $(this).data('error') ? $(this).data('error') : 'Ошибка копирования',
-            $txt = $('<textarea />');
 
-        $txt.val(content)
-            .css({
-                width: '1px', 
-                height: '1px' 
-            })
-            .appendTo('body');
 
-        $txt.select();
-
-        if (document.execCommand('copy')) {
-            toastr.success(successMessage);
-            // $txt.remove();
-        } else {
-            toastr.error(errorMessage);
-            // $txt.remove();
-        }
-        
-        return false;
-    });
     
 });

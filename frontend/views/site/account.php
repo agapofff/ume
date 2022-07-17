@@ -196,9 +196,9 @@ $inviteLink = Url::to(['/register', 'referal' => base64_encode(Yii::$app->user->
                                 <label class="form-control-label">
                                     <?= Yii::t('front', 'Отправьте эту ссылку Вашим друзьям и знакомым:') ?>
                                 </label>
-                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg copy" id="invite-input" data-copy="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Ошибка копирования') ?>">
+                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg copy" id="invite-input" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Ошибка копирования') ?>')" readonly>
                                 <div class="help text-right">
-                                    <a href="#" class="copy" data-copy="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Ошибка копирования') ?>">
+                                    <a href="#" class="copy" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Ошибка копирования') ?>')">
                                         <?= Yii::t('front', 'Скопировать ссылку') ?>
                                     </a>
                                 </div>
