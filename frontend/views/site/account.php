@@ -24,7 +24,7 @@ use yii\helpers\ArrayHelper;
 $this->title = Yii::t('front', 'Профиль');
 $this->params['breadcrumbs'][] = $this->title;
 
-$inviteLink = Url::to(['/register', 'referal' => base64_encode(Yii::$app->user->id)], true);
+$inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
 
 ?>
 
@@ -196,12 +196,27 @@ $inviteLink = Url::to(['/register', 'referal' => base64_encode(Yii::$app->user->
                                 <label class="form-control-label">
                                     <?= Yii::t('front', 'Отправьте эту ссылку Вашим друзьям и знакомым:') ?>
                                 </label>
-                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg copy" id="invite-input" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Ошибка копирования') ?>')" readonly>
+                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg" id="invite-input" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')" readonly>
                                 <div class="help text-right">
-                                    <a href="#" class="copy" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Ошибка копирования') ?>')">
+                                    <a href="#" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')">
                                         <?= Yii::t('front', 'Скопировать ссылку') ?>
                                     </a>
                                 </div>
+                            </div>
+                            <div class="text-center my-1">
+                                <script src="https://yastatic.net/share2/share.js"></script>
+                                <div class="ya-share2" 
+                                    data-size="l" 
+                                    data-shape="round" 
+                                    data-color-scheme="whiteblack" 
+                                    data-services="vkontakte,odnoklassniki,telegram,twitter,viber,whatsapp" 
+                                    data-copy="hidden" 
+                                    data-description="<?= Yii::t('front', 'Здравствуйте') ?>! <?= Yii::t('front', 'Приглашаю вас в {0}', [Yii::$app->name]) ?>: <?= $inviteLink ?>" 
+                                    data-image="<?= Url::to(['/images/share1.jpg'], true) ?>" 
+                                    data-lang="<?= Yii::$app->language ?>" 
+                                    data-title="<?= Yii::t('front', 'Приглашение в {0}', [Yii::$app->name]) ?>" 
+                                    data-url="<?= $inviteLink ?>"
+                                ></div>
                             </div>
                         </div>
                     </div>

@@ -498,6 +498,8 @@ return [
                 'account' => 'site/account',
                 'account/edit' => 'user/settings/profile',
                 
+                'join/<referal>' => 'site/join',
+                
                 // 'catalog' => 'catalog/index',
                 // 'catalog/<slug>' => 'catalog/index',
                 // 'catalog/<slug>/<collection>' => 'catalog/index',

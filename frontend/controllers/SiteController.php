@@ -233,5 +233,13 @@ class SiteController extends Controller
             'categories' => $categories,
         ]);
     }
+    
+    public function actionJoin()
+    {
+        return Yii::$app->response->redirect([
+            'register',
+            'referal' => Yii::$app->request->get('referal')
+        ]);
+    }
 
 }
