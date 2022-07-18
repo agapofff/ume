@@ -203,12 +203,21 @@ class SiteController extends Controller
             ])
             ->limit(4)
             ->all();
+            
+        $friends = User::find()
+            ->where([
+                'or',
+                'referal' => base64_encode(Yii::$app->user->id),
+                'id' => base64_decode(Yii::$app->user->identity->referal),
+            ])
+            ->all();
         
         return $this->render('account', [
             'user' => $user,
             'profile' => $profile,
             'breed' => $breed,
             'actions' => $actions,
+            'friends' => $friends,
         ]);
     }
     

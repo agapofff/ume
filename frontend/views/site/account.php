@@ -25,7 +25,7 @@ $this->title = Yii::t('front', 'Профиль');
 $this->params['breadcrumbs'][] = $this->title;
 
 $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
-
+echo Yii::$app->user->identity->referal;
 ?>
 
 <div class="container-lg container-xl container-xxl">
