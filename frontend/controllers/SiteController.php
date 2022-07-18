@@ -206,8 +206,9 @@ class SiteController extends Controller
             
         $friends = User::find()
             ->where([
-                'or',
-                'referal' => base64_encode(Yii::$app->user->id),
+                    'referal' => base64_encode(Yii::$app->user->id),
+            ])
+            ->orWhere([
                 'id' => base64_decode(Yii::$app->user->identity->referal),
             ])
             ->all();

@@ -25,7 +25,7 @@ $this->title = Yii::t('front', 'Профиль');
 $this->params['breadcrumbs'][] = $this->title;
 
 $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
-echo Yii::$app->user->identity->referal;
+
 ?>
 
 <div class="container-lg container-xl container-xxl">
@@ -174,10 +174,66 @@ echo Yii::$app->user->identity->referal;
             ?>
         </a>
         <div id="friends" class="collapse" data-parent="#account">
-            <div class="text-center">
-                <button type="button" class="btn btn-secondary btn-lg rounded-pill" data-toggle="modal" data-target="#invite">
-                    <?= Yii::t('front', 'Пригласить') ?>
-                </button>
+            <div class="mb-4 mt-3 px-xl-5">
+        <?php
+            if ($friends) {
+        ?>
+                <h2 class="mb-3 text-uppercase">
+                    <?= Yii::t('front', 'Оформите подарок другу') ?>
+                </h2>
+                <p class="lead font-weight-bold mb-3">
+                    <?= Yii::t('front', 'Выберите сумму для перевода') ?>
+                </p>
+                <div class="mb-1">
+            <?php
+                foreach ($friends as $f => $friend) {
+            ?>
+                    <div class="row my-2">
+                        <div class="col-auto">
+                            <img src="<?= $friend->getImage()->getUrl('100x100') ?>" class="rounded-pill">
+                        </div>
+                        <div class="col-auto">
+                            <div class="row align-items-baseline">
+                                <div class="col-auto">
+                                    <h4 class="d-inline mb-0 mr-1">
+                                        <?= $friend->profile->first_name ?: ($friend->profile->first_name ?: $friend->username) ?>
+                                    </h4>
+                                    <h6 class="d-inline">
+                                        <?= $friend->profile->breed ? Yii::$app->params['breeds'][$friend->profile->breed] : '' ?>
+                                        <?= $friend->profile->breed && $friend->profile->birthday ? ', ' : '' ?>
+                                        <?= $friend->profile->birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($friend->profile->birthday)), ',', ''))[0] : '' ?>
+                                    </h6>
+                                </div>
+                            </div>
+                            <div class="row d-none">
+                                <div class="col-auto">
+                                
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend">
+                                        <?= Yii::t('front', 'Подарить') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                    if ($f < count($friends)-1){
+                ?>
+                    <hr>
+            <?php
+                    }
+                }
+            ?>
+                </div>
+        <?php
+            }
+        ?>
+                <div class="text-center mt-3">
+                    <button type="button" class="btn btn-secondary btn-lg rounded-pill" data-toggle="modal" data-target="#invite">
+                        <?= Yii::t('front', 'Пригласить') ?>
+                    </button>
+                </div>
             </div>
             
             <div class="modal fade" id="invite" tabindex="-1" aria-hidden="true">
