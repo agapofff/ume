@@ -174,6 +174,8 @@ class RegistrationController extends Controller
 
             return $this->redirect(['/login']);
         }
+        
+        $model->referal = Yii::$app->request->get('referal');
 
         return $this->render('register', [
             'model'  => $model,
