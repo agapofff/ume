@@ -193,14 +193,14 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         <div class="media-body ml-2">
                             <div class="row align-items-baseline">
                                 <div class="col-auto">
-                                    <h4 class="d-inline mb-0 mr-1">
-                                        <?= $friend->profile->first_name ?: ($friend->profile->first_name ?: $friend->username) ?>
+                                    <h4 class="d-inline mb-0 mr-0_5">
+                                        <?= $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username) ?>
                                     </h4>
                             <?php
                                 if ($friend->profile->breed) {
                             ?>
                                     <h6 class="d-inline">
-                                        <?= $friend->profile->breed ? Yii::$app->params['breeds'][$friend->profile->breed] : '' ?>
+                                        <?= $friend->profile->breed ? json_decode(ArrayHelper::getValue($breeds, $friend->profile->breed.'.name'))->{Yii::$app->language} : '' ?>
                                         <?= $friend->profile->breed && $friend->profile->birthday ? ', ' : '' ?>
                                         <?= $friend->profile->birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($friend->profile->birthday)), ',', ''))[0] : '' ?>
                                     </h6>
@@ -231,7 +231,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     </div>
                                 </div>
                                 <div class="col-auto py-0_5">
-                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>">
+                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>" data-url="<?= Url::to(['/give-to-friend'], true) ?>">
                                         <?= Yii::t('front', 'Подарить') ?>
                                     </button>
                                 </div>

@@ -194,6 +194,14 @@ class SiteController extends Controller
         
         $breed = $profile->breed ? Breeds::findOne($profile->breed)->name : null;
         
+        $breeds = Breeds::find()
+        ->where([
+            'active' => 1
+        ])
+        ->indexBy('id')
+        ->asArray()
+        ->all();
+        
         $actions = Actions::find()
             ->where([
                 'active' => 1
@@ -217,6 +225,7 @@ class SiteController extends Controller
             'user' => $user,
             'profile' => $profile,
             'breed' => $breed,
+            'breeds' => $breeds,
             'actions' => $actions,
             'friends' => $friends,
         ]);
