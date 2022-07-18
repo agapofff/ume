@@ -270,6 +270,25 @@ select::-ms-expand {
     object-fit: cover;
 }
 
+.custom-radio-small {
+    padding-left: 2.5rem;
+}
+.custom-radio-small label:before {
+    top: 0;
+    left: -2.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.custom-radio-small label:after {
+    left: -2.5rem;
+}
+.custom-radio-secondary label:before {
+    border-color: #474F73 !important;
+}
+.custom-radio .custom-control-input:checked ~ .custom-control-label::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23474F73'/%3e%3c/svg%3e") !important;
+}
+
 .suggestions-suggestions a[href*="dadata"] {
 	display: none;
 }

@@ -188,29 +188,50 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
             <?php
                 foreach ($friends as $f => $friend) {
             ?>
-                    <div class="row my-2">
-                        <div class="col-auto">
-                            <img src="<?= $friend->getImage()->getUrl('100x100') ?>" class="rounded-pill">
-                        </div>
-                        <div class="col-auto">
+                    <div class="media my-2">
+                        <img src="<?= $friend->getImage()->getUrl('100x100') ?>" class="rounded-pill">
+                        <div class="media-body ml-2">
                             <div class="row align-items-baseline">
                                 <div class="col-auto">
                                     <h4 class="d-inline mb-0 mr-1">
                                         <?= $friend->profile->first_name ?: ($friend->profile->first_name ?: $friend->username) ?>
                                     </h4>
+                            <?php
+                                if ($friend->profile->breed) {
+                            ?>
                                     <h6 class="d-inline">
                                         <?= $friend->profile->breed ? Yii::$app->params['breeds'][$friend->profile->breed] : '' ?>
                                         <?= $friend->profile->breed && $friend->profile->birthday ? ', ' : '' ?>
                                         <?= $friend->profile->birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($friend->profile->birthday)), ',', ''))[0] : '' ?>
                                     </h6>
+                            <?php
+                                }
+                            ?>
                                 </div>
                             </div>
-                            <div class="row d-none">
+                            <div class="row align-items-center justify-content-between">
                                 <div class="col-auto">
-                                
+                                    <div class="row align-items-center">
+                                <?php
+                                    for ($i = 1; $i < 6; $i++) {
+                                ?>
+                                        <div class="col-12 col-sm-auto pr-0_5">
+                                            <div role="radiogroup">
+                                                <div class="custom-control custom-radio custom-radio-small custom-radio-secondary my-1">
+                                                    <input type="radio" id="give-to-friend-<?= $friend->id ?>-<?= $i ?>" name="give-to-friend-<?= $friend->id ?>" class="custom-control-input" value="<?= $i ?>" <?= $i == 1 ? 'checked' : '' ?>>
+                                                    <label class="custom-control-label h5 font-weight-bold text-secondary" for="give-to-friend-<?= $friend->id ?>-<?= $i ?>">
+                                                        <?= $i ?> <small class="text-uppercase font-weight-bold">ume</small>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                <?php
+                                    }
+                                ?>
+                                    </div>
                                 </div>
-                                <div class="col-auto">
-                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend">
+                                <div class="col-auto py-0_5">
+                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>">
                                         <?= Yii::t('front', 'Подарить') ?>
                                     </button>
                                 </div>
