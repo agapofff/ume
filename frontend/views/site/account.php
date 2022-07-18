@@ -12,6 +12,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use dektrium\user\helpers\Timezone;
+use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
@@ -177,82 +178,87 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
             <div class="mb-4 mt-3 px-xl-5">
         <?php
             if ($friends) {
+                Pjax::begin([
+                    'id' => 'pjax-friends',
+                    'enablePushState' => false,
+                ]);
         ?>
-                <h2 class="mb-3 text-uppercase">
-                    <?= Yii::t('front', 'Оформите подарок другу') ?>
-                </h2>
-                <p class="lead font-weight-bold mb-3">
-                    <?= Yii::t('front', 'Выберите сумму для перевода') ?>
-                </p>
-                <div class="mb-1">
-            <?php
-                foreach ($friends as $f => $friend) {
-            ?>
-                    <div class="media my-2">
-                        <img src="<?= $friend->getImage()->getUrl('100x100') ?>" class="rounded-pill">
-                        <div class="media-body ml-2">
-                            <div class="row align-items-baseline">
-                                <div class="col-auto">
-                                    <h4 class="d-inline mb-0 mr-0_5">
-                                        <?= $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username) ?>
-                                    </h4>
-                            <?php
-                                if ($friend->profile->breed) {
-                            ?>
-                                    <h6 class="d-inline">
-                                        <?= $friend->profile->breed ? json_decode(ArrayHelper::getValue($breeds, $friend->profile->breed.'.name'))->{Yii::$app->language} : '' ?>
-                                        <?= $friend->profile->breed && $friend->profile->birthday ? ', ' : '' ?>
-                                        <?= $friend->profile->birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($friend->profile->birthday)), ',', ''))[0] : '' ?>
-                                    </h6>
-                            <?php
-                                }
-                            ?>
-                                </div>
-                            </div>
-                            <div class="row align-items-center justify-content-between">
-                                <div class="col-auto">
-                                    <div class="row align-items-center">
+                    <h2 class="mb-3 text-uppercase">
+                        <?= Yii::t('front', 'Оформите подарок другу') ?>
+                    </h2>
+                    <p class="lead font-weight-bold mb-3">
+                        <?= Yii::t('front', 'Выберите сумму для перевода') ?>
+                    </p>
+                    <div class="mb-1">
+                <?php
+                    foreach ($friends as $f => $friend) {
+                ?>
+                        <div class="media my-2">
+                            <img src="<?= $friend->getImage()->getUrl('100x100') ?>" class="rounded-pill">
+                            <div class="media-body ml-2">
+                                <div class="row align-items-baseline">
+                                    <div class="col-auto">
+                                        <h4 class="d-inline mb-0 mr-0_5">
+                                            <?= $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username) ?>
+                                        </h4>
                                 <?php
-                                    for ($i = 1; $i < 6; $i++) {
+                                    if ($friend->profile->breed) {
                                 ?>
-                                        <div class="col-12 col-sm-auto pr-0_5">
-                                            <div role="radiogroup">
-                                                <div class="custom-control custom-radio custom-radio-small custom-radio-secondary my-1">
-                                                    <input type="radio" id="give-to-friend-<?= $friend->id ?>-<?= $i ?>" name="give-to-friend-<?= $friend->id ?>" class="custom-control-input" value="<?= $i ?>" <?= $i == 1 ? 'checked' : '' ?>>
-                                                    <label class="custom-control-label h5 font-weight-bold text-secondary" for="give-to-friend-<?= $friend->id ?>-<?= $i ?>">
-                                                        <?= $i ?> <small class="text-uppercase font-weight-bold">ume</small>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <h6 class="d-inline">
+                                            <?= $friend->profile->breed ? json_decode(ArrayHelper::getValue($breeds, $friend->profile->breed.'.name'))->{Yii::$app->language} : '' ?>
+                                            <?= $friend->profile->breed && $friend->profile->birthday ? ', ' : '' ?>
+                                            <?= $friend->profile->birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($friend->profile->birthday)), ',', ''))[0] : '' ?>
+                                        </h6>
                                 <?php
                                     }
                                 ?>
                                     </div>
                                 </div>
-                                <div class="col-auto py-0_5">
-                                    <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>" data-url="<?= Url::to(['/give-to-friend'], true) ?>">
-                                        <?= Yii::t('front', 'Подарить') ?>
-                                    </button>
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto">
+                                        <div class="row align-items-center">
+                                    <?php
+                                        for ($i = 1; $i < 6; $i++) {
+                                    ?>
+                                            <div class="col-12 col-sm-auto pr-0_5">
+                                                <div role="radiogroup">
+                                                    <div class="custom-control custom-radio custom-radio-small custom-radio-secondary my-1">
+                                                        <input type="radio" id="give-to-friend-<?= $friend->id ?>-<?= $i ?>" name="give-to-friend-<?= $friend->id ?>" class="custom-control-input" value="<?= $i ?>" <?= $i == 1 ? 'checked' : '' ?>>
+                                                        <label class="custom-control-label h5 font-weight-bold text-secondary" for="give-to-friend-<?= $friend->id ?>-<?= $i ?>">
+                                                            <?= $i ?> <small class="text-uppercase font-weight-bold">ume</small>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    <?php
+                                        }
+                                    ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto py-0_5">
+                                        <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>" data-url="<?= Url::to(['/give-to-friend'], true) ?>">
+                                            <?= Yii::t('front', 'Подарить') ?>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    <?php
+                        if ($f < count($friends)-1){
+                    ?>
+                        <hr>
                 <?php
-                    if ($f < count($friends)-1){
-                ?>
-                    <hr>
-            <?php
+                        }
                     }
-                }
-            ?>
-                </div>
+                ?>
+                    </div>
         <?php
+                Pjax::end();
             }
         ?>
                 <div class="text-center mt-3">
                     <button type="button" class="btn btn-secondary btn-lg rounded-pill" data-toggle="modal" data-target="#invite">
-                        <?= Yii::t('front', 'Пригласить') ?>
+                        <?= Yii::t('front', 'Пригласить друзей') ?>
                     </button>
                 </div>
             </div>
@@ -262,7 +268,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                     <div class="modal-content">
                         <div class="modal-header border-0 pb-0">
                             <h5 class="modal-title text-center mb-2">
-                                <?= Yii::t('front', 'Пригласить') ?>
+                                <?= Yii::t('front', 'Пригласить друзей') ?>
                             </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <img src="/images/modal_close.svg">
