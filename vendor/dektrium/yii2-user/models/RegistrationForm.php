@@ -126,6 +126,7 @@ class RegistrationForm extends Model
             'last_name' => Yii::t('front', 'Фамилия'),
             'phone' => Yii::t('front', 'Телефон'),
             'sms_code' => Yii::t('front', 'СМС-код'),
+            'referal' => Yii::t('front', 'Реферал'),
         ];
     }
 
