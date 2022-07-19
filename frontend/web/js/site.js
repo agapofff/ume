@@ -488,7 +488,7 @@ jQuery(document).ready(function ($) {
                 user: $(this).data('user'),
                 sum: $('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val()
             };
-            
+console.log(params);
         sendAjaxData($btn, url, params);
     });
     
