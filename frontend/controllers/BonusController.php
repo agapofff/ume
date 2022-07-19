@@ -50,6 +50,8 @@ class BonusController extends Controller
         ];
         
         if ($removeBonus->save() && $addBonus->save()) {
+            $friendName = $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username);
+            
             $html = Html::tag('h1', Yii::t('front', 'Поздравляем!'), [
                         'style' => '
                             text-align: center;
@@ -57,7 +59,7 @@ class BonusController extends Controller
                     ]) . 
                     Html::tag('p', Yii::t('front', 'Вы получили в подарок <b>{0} UME</b> от пользователя <b>{1}</b>', [
                         $sum,
-                        $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username)
+                        $friendName
                     ]), [
                         'style' => '
                             text-align: center;
@@ -95,7 +97,9 @@ class BonusController extends Controller
                 // ->setTo($friend->email)
                 ->setTo('agapofff@gmail.com')
                 ->setReplyTo(Yii::$app->params['senderEmail'])
-                ->setSubject(Yii::t('front', 'Вы получили подарок'))
+                ->setSubject(Yii::t('front', 'Вы получили подарок от {0}', [
+                    $friendName
+                ]))
                 ->send();
             
             return $this->asJson([
