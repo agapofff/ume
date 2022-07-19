@@ -182,7 +182,7 @@ jQuery(document).ready(function ($) {
             url: action,
             type: method,
             data: params,
-            success: function(data) {
+            success: function (data) {
                 switch (data.status) {
                     case 'warning': toastr.warning(data.message); break;
                     case 'danger': toastr.error(data.message); break;
@@ -197,8 +197,11 @@ jQuery(document).ready(function ($) {
                     $element.find('input[type="text"]').val('');
                     $('.modal').modal('hide');
                 }
+                if (data.error && data.error != '') {
+                    console.log(data.error);
+                }
             },
-            error: function(data) {
+            error: function (data) {
                 toastr.error('Ошибка! Попробуйте еще раз чуть позже');
                 console.log(data);
                 return false;
@@ -488,7 +491,7 @@ jQuery(document).ready(function ($) {
                 user: $(this).data('user'),
                 sum: parseFloat($('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val())
             };
-console.log(params);
+
         sendAjaxData($btn, url, params);
     });
     

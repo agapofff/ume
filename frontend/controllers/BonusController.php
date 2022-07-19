@@ -106,7 +106,7 @@ class BonusController extends Controller
             return $this->asJson([
                 'status' => 'error',
                 'message' => Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже'),
-                'errors' => [
+                'error' => [
                     $removeBonus->getErrors(),
                     $addBonus->getErrors(),
                 ]
