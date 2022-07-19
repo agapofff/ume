@@ -158,6 +158,16 @@
             }
             
             if (
+                Yii::$app->user->can('/bonus/*')
+            ) {
+                $menuItems[] = [
+                    'label' => Yii::t('back', 'Бонусы'),
+                    'icon' => 'star',
+                    'url' => ['/bonus'],
+                ];
+            }
+            
+            if (
                 Yii::$app->user->can('/reviews/*')
             ) {
                 $menuItems[] = [

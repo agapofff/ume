@@ -188,6 +188,8 @@ class SiteController extends Controller
         
         $user = User::findOne(Yii::$app->user->id);
         
+        $bonus = Bonus::getUserBonus(Yii::$app->user->id);
+        
         $profile = Profile::findOne([
             'user_id' => Yii::$app->user->id
         ]);
@@ -228,6 +230,7 @@ class SiteController extends Controller
             'breeds' => $breeds,
             'actions' => $actions,
             'friends' => $friends,
+            'bonus' => $bonus,
         ]);
     }
     

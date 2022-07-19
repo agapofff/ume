@@ -133,6 +133,56 @@ if (
         'url' => ['/redirects'],
     ];
 }
+
+if (
+    Yii::$app->user->can('/actions/*')
+) {
+    $menuItems[] = [
+        'label' => Yii::t('back', 'Акции'),
+        'icon' => 'gift',
+        'url' => ['/actions'],
+    ];
+}
+
+if (
+    Yii::$app->user->can('/bonus/*')
+) {
+    $menuItems[] = [
+        'label' => Yii::t('back', 'Бонусы'),
+        'icon' => 'star',
+        'url' => ['/bonus'],
+    ];
+}
+
+if (
+    Yii::$app->user->can('/banners/*')
+) {
+    $menuItems[] = [
+        'label' => Yii::t('back', 'Баннеры'),
+        'icon' => 'image',
+        'url' => ['/banners'],
+    ];
+}
+
+if (
+    Yii::$app->user->can('/reviews/*')
+) {
+    $menuItems[] = [
+        'label' => Yii::t('back', 'Отзывы'),
+        'icon' => 'commenting',
+        'url' => ['/reviews'],
+    ];
+}
+
+if (
+    Yii::$app->user->can('/breeds/*')
+) {
+    $menuItems[] = [
+        'label' => Yii::t('back', 'Породы'),
+        'icon' => 'paw',
+        'url' => ['/breeds'],
+    ];
+}
             
 
 if (
