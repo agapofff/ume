@@ -156,7 +156,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     
                     [
                         'attribute' => 'created_at',
-                        'format' => ['date', 'php:d F Y'],
+                        'format' => ['date', 'd.m.Y H:i:s'],
                         'filter' => DateRangePicker::widget([
                             'model' => $searchModel,
                             'attribute' => 'created_at',
@@ -187,7 +187,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     
                     [
                         'attribute' => 'updated_at',
-                        'format' => ['date', 'php:d F Y'],
+                        'format' => ['date', 'd.m.Y H:i:s'],
                         'filter' => DateRangePicker::widget([
                             'model' => $searchModel,
                             'attribute' => 'updated_at',
