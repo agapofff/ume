@@ -6,6 +6,8 @@ use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\Bonus;
+use yii\helpers\Url;
+use yii\helpers\Html;
 
 class BonusController extends Controller
 {
@@ -16,7 +18,7 @@ class BonusController extends Controller
         if ($userBonus['total'] < $sum) {
             return $this->asJson([
                 'status' => 'error',
-                'message' => Yii::t('front', 'На Вашем счету недостаточно бонусов для проведения этой операции')
+                'message' => Yii::t('front', 'На Вашем счету недостаточно UME для проведения этой операции')
             ]);
         }
         
@@ -47,6 +49,46 @@ class BonusController extends Controller
         ];
         
         if ($removeBonus->save() && $addBonus->save()) {
+            $html = Html::tag('p', Yii::t('front', 'Поздравляем!')) . 
+                    Html::tag('p', Yii::t('front', 'Вы получили в подарок {0} UME от пользователя {1}', [
+                        $sum,
+                        $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username)
+                    ])) . 
+                    Html::tag('br') . 
+                    Html::tag('div', Html::a(Yii::t('front', 'Подробнее'), Url::home(true), [
+                        'style' => '
+                            display: inline-block;
+                            padding: 24px 60px;
+                            color: #ffffff !important;
+                            background-color: #474F73;
+                            border: 1px solid #474F73;
+                            -webkit-border-radius: 50%;
+                            -moz-border-radius: 50%;
+                            border-radius: 50px;
+                            font-size: 24px;
+                            font-weight: 400;
+                            text-align: center;
+                            text-decoration: none !important;
+                        ',
+                        ]), [
+                            'style' => '
+                                text-align: center;
+                            '
+                    ]);
+                        
+            $mail = Yii::$app->mailer
+                ->compose('default', [
+                    'content' => $html,
+                ])
+                ->setFrom([
+                    Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']
+                ])
+                // ->setTo($friend->email)
+                ->setTo('agapofff@gmail.com')
+                ->setReplyTo(Yii::$app->params['senderEmail'])
+                ->setSubject(Yii::t('front', 'Вы получили подарок') . ' - ' . $site->name)
+                ->send();
+            
             return $this->asJson([
                 'status' => 'success',
                 'message' => Yii::t('front', 'Ваш подарок успешно отправлен')
