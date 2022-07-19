@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use backend\models\Bonus;
+use dektrium\user\models\User;
 use yii\helpers\Url;
 use yii\helpers\Html;
 
