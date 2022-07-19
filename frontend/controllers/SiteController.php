@@ -31,6 +31,7 @@ use backend\models\Langs;
 use backend\models\Reviews;
 use backend\models\Banners;
 use backend\models\Breeds;
+use backend\models\Bonus;
 
 
 /**
@@ -216,7 +217,7 @@ class SiteController extends Controller
             
         $friends = User::find()
             ->where([
-                    'referal' => base64_encode(Yii::$app->user->id),
+                'referal' => base64_encode(Yii::$app->user->id),
             ])
             ->orWhere([
                 'id' => base64_decode(Yii::$app->user->identity->referal),

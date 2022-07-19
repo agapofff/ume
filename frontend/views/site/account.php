@@ -223,8 +223,8 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                             <div class="col-12 col-sm-auto pr-0_5">
                                                 <div role="radiogroup">
                                                     <div class="custom-control custom-radio custom-radio-small custom-radio-secondary my-1">
-                                                        <input type="radio" id="give-to-friend-<?= $friend->id ?>-<?= $i ?>" name="give-to-friend-<?= $friend->id ?>" class="custom-control-input" value="<?= $i ?>" <?= $i == 1 ? 'checked' : '' ?>>
-                                                        <label class="custom-control-label h5 font-weight-bold text-secondary" for="give-to-friend-<?= $friend->id ?>-<?= $i ?>">
+                                                        <input type="radio" id="bonus-gift-<?= $friend->id ?>-<?= $i ?>" name="bonus-gift-<?= $friend->id ?>" class="custom-control-input" value="<?= $i ?>" <?= $i == 1 ? 'checked' : '' ?>>
+                                                        <label class="custom-control-label h5 font-weight-bold text-secondary" for="bonus-gift-<?= $friend->id ?>-<?= $i ?>">
                                                             <?= $i ?> <small class="text-uppercase font-weight-bold">ume</small>
                                                         </label>
                                                     </div>
@@ -236,7 +236,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                         </div>
                                     </div>
                                     <div class="col-auto py-0_5">
-                                        <button type="button" class="btn btn-secondary btn-lg rounded-pill give-to-friend" data-user="<?= $friend->id ?>" data-url="<?= Url::to(['/give-to-friend'], true) ?>">
+                                        <button type="button" class="btn btn-secondary btn-lg rounded-pill bonus-gift" data-user="<?= $friend->id ?>" data-url="<?= Url::to(['/bonus/gift'], true) ?>">
                                             <?= Yii::t('front', 'Подарить') ?>
                                         </button>
                                     </div>

@@ -28,26 +28,35 @@ jQuery(document).ready(function ($) {
     
     // индикатор загрузки
     // NProgress.start();
+    loading = function (show = true) {
+        if (show) {
+            $('#loader').show();
+        } else {
+            $('#loader').hide();
+        }
+    }
     $(document).on('pjax:start', function () {
-        $('#loader').show();
+        loading();
     });
     $(document).on('pjax:end', function () {
-        $('#loader').hide();
+        loading(false);
     });
     $('form').on('beforeSubmit', function () {
-        $('#loader').hide();
+        loading(false);
     });
     $(window).on('beforeunload', function () {
-        $('#loader').show();
+        loading();
         $('#fade').fadeIn('fast');
         $('.modal').modal('hide');
     });
     // $(window).on('load', function () {
-        $('#loader').hide();
+        // loading(false);
     // });
     $(document).on('click', '#loader', function () {
-        $('#loader').hide();
+        loading(false);
     });
+    
+    loading(false);
     
     
     // lazy loading
@@ -155,7 +164,7 @@ jQuery(document).ready(function ($) {
             url = $form.attr('action'),
             type = $form.attr('method'),
             data = $form.serialize();
-        sendAjaxData($form, url, type, data, true);
+        sendAjaxData($form, url, data, type, true);
     });
 
     // ajax-кнопки
@@ -167,8 +176,8 @@ jQuery(document).ready(function ($) {
         sendAjaxData($link, url);
     });
 
-    sendAjaxData = function ($element, action, method = 'get', params = [], isForm = false) {
-        NProgress.start();
+    sendAjaxData = function ($element, action, params = [], method = 'get', isForm = false) {
+        loading();
         $.ajax({
             url: action,
             type: method,
@@ -195,7 +204,7 @@ jQuery(document).ready(function ($) {
                 return false;
             },
             complete: function () {
-                NProgress.done();
+                loading(false);
             }
         });
     }
@@ -471,7 +480,17 @@ jQuery(document).ready(function ($) {
     });
     
     
-    
+    // bonus gift
+    $(document).on('click', '.bonus-gift', function () {
+        var $btn = $(this),
+            url = $(this).data('url'),
+            params = {
+                user: $(this).data('user'),
+                sum: $('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val()
+            };
+            
+        sendAjaxData($btn, url, params);
+    });
     
     
     // cookies

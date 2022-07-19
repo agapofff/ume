@@ -72,7 +72,7 @@ class Bonus extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
     
-    public function getUserBonus($user_id)
+    public static function getUserBonus($user_id)
     {            
         $total = 0;
         $reasons = [];
