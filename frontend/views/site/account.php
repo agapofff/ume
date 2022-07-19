@@ -279,11 +279,11 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                 <label class="form-control-label">
                                     <?= Yii::t('front', 'Отправьте эту ссылку Вашим друзьям и знакомым:') ?>
                                 </label>
-                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg" id="invite-input" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')" readonly>
+                                <input type="text" value="<?= $inviteLink ?>" class="form-control form-control-lg copy" id="invite-input" data-text="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')" readonly>
                                 <div class="help text-right">
-                                    <a href="#" onclick="copyToClipboard('<?= $inviteLink ?>', '<?= Yii::t('front', 'Ссылка скопирована') ?>', '<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')">
+                                    <button type="button" class="btn btn-link p-0 copy" data-text="<?= $inviteLink ?>" data-success="<?= Yii::t('front', 'Ссылка скопирована') ?>" data-error="<?= Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') ?>')">
                                         <?= Yii::t('front', 'Скопировать ссылку') ?>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             <div class="text-center mt-1 mb-0_5">

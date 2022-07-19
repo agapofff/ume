@@ -1,19 +1,19 @@
 new WOW().init();
 
-function copyToClipboard(content, successMsg = 'Скопировано', errorMsg = 'Ошибка') {
-    var aux = document.createElement('div');
-    aux.setAttribute('contentEditable', true);
-    aux.innerHTML = content;
-    aux.setAttribute('onfocus', "document.execCommand('selectAll',false,null)"); 
-    document.body.appendChild(aux);
-    aux.focus();
-    if (document.execCommand('copy')) {
-        toastr.success(successMsg);
-    } else {
-        toastr.error(errorMsg);
-    }
-    document.body.removeChild(aux);
-}
+// function copyToClipboard(content, successMsg = 'Скопировано', errorMsg = 'Ошибка') {
+    // var aux = document.createElement('div');
+    // aux.setAttribute('contentEditable', true);
+    // aux.innerHTML = content;
+    // aux.setAttribute('onfocus', "document.execCommand('selectAll',false,null)"); 
+    // document.body.appendChild(aux);
+    // aux.focus();
+    // if (document.execCommand('copy')) {
+        // toastr.success(successMsg);
+    // } else {
+        // toastr.error(errorMsg);
+    // }
+    // document.body.removeChild(aux);
+// }
 
 jQuery(document).ready(function ($) {
     
@@ -25,6 +25,27 @@ jQuery(document).ready(function ($) {
 
         return elementBottom > viewportTop && elementTop < viewportBottom;
     };
+    
+    // copy to clipboard
+    $('.copy').click(function () {
+        var $el = $(this),
+            txt = $(this).data('text'),
+            successMessage = $(this).data('success') ? $(this).data('success') : 'Скопировано',
+            errorMessage = $(this).data('error') ? $(this).data('error') : 'Ошибка',
+            $temp = $('<input>');
+            
+        $el.after($temp);
+        $temp.val(txt).select();
+        
+        if (document.execCommand('copy')) {
+            toastr.success(successMessage);
+        } else {
+            toastr.error(errorMessage);
+        }
+        
+        $temp.remove();
+    });
+    
     
     // индикатор загрузки
     // NProgress.start();
