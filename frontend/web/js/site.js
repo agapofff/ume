@@ -486,7 +486,7 @@ jQuery(document).ready(function ($) {
             url = $(this).data('url'),
             params = {
                 user: $(this).data('user'),
-                sum: $('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val()
+                sum: parseFloat($('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val())
             };
 console.log(params);
         sendAjaxData($btn, url, params);
