@@ -50,13 +50,21 @@ class BonusController extends Controller
         ];
         
         if ($removeBonus->save() && $addBonus->save()) {
-            $html = Html::tag('p', Yii::t('front', 'Поздравляем!')) . 
-                    Html::tag('p', Yii::t('front', 'Вы получили в подарок {0} UME от пользователя {1}', [
+            $html = Html::tag('h1', Yii::t('front', 'Поздравляем!'), [
+                        'style' => '
+                            text-align: center;
+                        ',
+                    ]) . 
+                    Html::tag('p', Yii::t('front', 'Вы получили в подарок <b>{0} UME</b> от пользователя <b>{1}</b>', [
                         $sum,
                         $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username)
-                    ])) . 
+                    ]), [
+                        'style' => '
+                            text-align: center;
+                        ',
+                    ]) . 
                     Html::tag('br') . 
-                    Html::tag('div', Html::a(Yii::t('front', 'Подробнее'), Url::home(true), [
+                    Html::tag('div', Html::a(Yii::t('front', 'Потратить бонусы'), Url::home(true), [
                         'style' => '
                             display: inline-block;
                             padding: 24px 60px;
