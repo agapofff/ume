@@ -87,7 +87,7 @@ class BonusController extends Controller
                 // ->setTo($friend->email)
                 ->setTo('agapofff@gmail.com')
                 ->setReplyTo(Yii::$app->params['senderEmail'])
-                ->setSubject(Yii::t('front', 'Вы получили подарок') . ' - ' . $site->name)
+                ->setSubject(Yii::t('front', 'Вы получили подарок'))
                 ->send();
             
             return $this->asJson([
