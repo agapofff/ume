@@ -32,7 +32,7 @@ class BonusController extends Controller
             'type' => 0,
             'amount' => $sum,
             'reason' => 2,
-            'description' => $user,
+            'description' => (string) $user,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
@@ -44,7 +44,7 @@ class BonusController extends Controller
             'type' => 1,
             'amount' => $sum,
             'reason' => 2,
-            'description' => Yii::$app->user->id,
+            'description' => (string) Yii::$app->user->id,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
@@ -97,7 +97,11 @@ class BonusController extends Controller
         } else {
             return $this->asJson([
                 'status' => 'error',
-                'message' => Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже')
+                'message' => Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже'),
+                'errors' => [
+                    $removeBonus->getErrors(),
+                    $addBonus->getErrors(),
+                ]
             ]);
         }
     }
