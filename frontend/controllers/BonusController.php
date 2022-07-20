@@ -15,7 +15,7 @@ class BonusController extends Controller
     public function actionGift(int $user, int $sum)
     {
         $userBonus = Bonus::getUserBonus(Yii::$app->user->id);
-
+        
         if ($userBonus['total'] < $sum) {
             return $this->asJson([
                 'status' => 'error',
@@ -24,6 +24,8 @@ class BonusController extends Controller
         }
         
         $friend = User::findOne($user);
+        
+        $friendName = Yii::$app->user->profile->name ?: (Yii::$app->user->profile->first_name ?: Yii::$app->user->username);
         
         $removeBonus = new Bonus();
         $removeBonus->attributes = [
@@ -50,8 +52,6 @@ class BonusController extends Controller
         ];
         
         if ($removeBonus->save() && $addBonus->save()) {
-            $friendName = $friend->profile->name ?: ($friend->profile->first_name ?: $friend->username);
-            
             $html = Html::tag('h1', Yii::t('front', 'Поздравляем!'), [
                         'style' => '
                             text-align: center;
@@ -94,8 +94,8 @@ class BonusController extends Controller
                 ->setFrom([
                     Yii::$app->params['senderEmail'] => Yii::$app->params['senderName']
                 ])
-                // ->setTo($friend->email)
-                ->setTo('agapofff@gmail.com')
+                ->setTo($friend->email)
+                // ->setTo('agapofff@gmail.com')
                 ->setReplyTo(Yii::$app->params['senderEmail'])
                 ->setSubject(Yii::t('front', '+{0} UME от {1}', [
                     $sum,
