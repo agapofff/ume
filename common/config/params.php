@@ -76,6 +76,8 @@ return [
             'Другое',
         ]
     ],
+    'referalBonus' => 5,
+    
 
     // 'hideNotAvailable' => false, // скрывать недоступные товары
     // 'scanToWin' => [
