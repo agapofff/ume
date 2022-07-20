@@ -25,7 +25,7 @@ class BonusController extends Controller
         
         $friend = User::findOne($user);
         
-        $friendName = Yii::$app->user->profile->name ?: (Yii::$app->user->profile->first_name ?: Yii::$app->user->username);
+        $friendName = Yii::$app->user->identity->name ?: (Yii::$app->user->identity->first_name ?: Yii::$app->identity->username);
         
         $removeBonus = new Bonus();
         $removeBonus->attributes = [
