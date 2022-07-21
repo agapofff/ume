@@ -133,9 +133,9 @@ $this->title = Yii::$app->name;
                 </div>
                 <div>
                     <video autoplay loop muted playsinline class="d-block w-100">
-                        <source src="/video/UME_molecule_v2_4_small.mp4" type="video/mp4">
-                        <source src="/video/UME_molecule_v2_4_small.ogv" type="video/ogv">
-                        <source src="/video/UME_molecule_v2_4_small.webm" type="video/webm">
+                        <source src="/video/UME_molecule.mp4" type="video/mp4">
+                        <source src="/video/UME_molecule.ogv" type="video/ogv">
+                        <source src="/video/UME_molecule.webm" type="video/webm">
                     </video>
                 </div>
             </div>
