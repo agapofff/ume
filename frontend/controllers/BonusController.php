@@ -118,5 +118,36 @@ class BonusController extends Controller
             ]);
         }
     }
+    
+    public function actionAdd($user_id, $amount, $reason, $description = null)
+    {
+        return $this->setBonus(1, $user_id, $amount, $reason, $description);
+    }
+    
+    public function actionRemove($user_id, $amount, $reason, $description = null)
+    {
+        return $this->setBonus(0, $user_id, $amount, $reason, $description);
+    }
 
+    public function setBonus($type, $user_id, $amount, $reason, $description = null)
+    {
+        $model = new Bonus();
+        $model->attributes = [
+            'active' => 1,
+            'user_id' => $user_id,
+            'type' => $type,
+            'amount' => $amount,
+            'reason' => $reason,
+            'description' => $description,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ];
+        
+        if ($model->save()) {
+            return true;
+        } else {
+            return $model->getErrors();
+        }
+    }
+    
 }
