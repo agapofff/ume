@@ -693,31 +693,6 @@
             // echo $this->render('@frontend/views/layouts/_cookies');
         }
     ?>
-    
-<?php
-    $this->registerJs("
-        // $(document).on('click', '.copy', function (e) {
-            // e.preventDefault();
-            
-            // var txt = $(this).data('text'),
-                // success = $(this).data('success'),
-                // error = $(this).data('error');
-                
-            // $('body').append($('<input id=\"copy\">'));
-            // $('#copy').val(txt).select();
-            
-            // if (document.execCommand('copy')) {
-                // toastr.success(success);
-            // } else {
-                // toastr.error(error);
-            // }
-            
-            // $('#copy').remove();
-            
-            // return false;
-        // });
-    ", View::POS_READY);
-?>
 
 <?php
     if (Yii::$app->controller->id != 'checkout') {

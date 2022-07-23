@@ -1,5 +1,8 @@
 <?php
-use \kartik\datecontrol\Module;
+use kartik\datecontrol\Module;
+use dektrium\user\models\User;
+use dektrium\user\controllers\RegistrationController;
+use backend\models\Bonus;
 
 $config = [
     'id' => 'UME',
@@ -31,6 +34,29 @@ $config = [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin'],
             'enableGeneratingPassword' => false,
+            'controllerMap' => [
+                'registration' => [
+                    'class' => RegistrationController::className(),
+                    'on ' . RegistrationController::EVENT_AFTER_CONFIRM => function ($e) {
+                        if (Yii::$app->user->identity->referal) {
+                            if ($user = User::findOne(base64_decode(Yii::$app->user->identity->referal))) {
+                                $addBonus = new Bonus();
+                                $addBonus->attributes = [
+                                    'active' => 1,
+                                    'user_id' => $user->id,
+                                    'type' => 1,
+                                    'amount' => 5,
+                                    'reason' => 0,
+                                    'description' => (string) Yii::$app->user->id,
+                                    'created_at' => date('Y-m-d H:i:s'),
+                                    'updated_at' => date('Y-m-d H:i:s'),
+                                ];
+                                $addBonus->save();
+                            }
+                        }
+                    }
+                ],
+            ],
         ],        
         'datecontrol' => [
             'class' => '\kartik\datecontrol\Module'

@@ -527,7 +527,7 @@ ul.check-circle li:before {
     margin-top: 0.2rem;
 }
 #action-description ul li:before {
-    margin-top: 0.2em;
+    margin-top: 0.5em;
 }
 
 .about-cover-icons {
@@ -631,6 +631,10 @@ ul.check-circle li:before {
     transform: rotate(-45deg) !important;
 }
 
+table#bonus-history tr:first-child,
+table#bonus-history tr:first-child td {
+    border: none !important
+}
 
 /* GIFT */
 body[data-gift] .cart-product[data-price="0"] .dvizh-change-count,

@@ -160,9 +160,159 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
             ?>
         </a>
         <div id="bonus" class="collapse" data-parent="#account">
-            <p class="lead">
-                <?= Yii::t('front', 'Здесь пока пусто') ?>
-            </p>
+            <div class="mb-4 mt-3 px-xl-5">
+            <?php
+                Pjax::begin([
+                    'id' => 'pjax-bonuses',
+                    'enablePushState' => false,
+                ]);
+            ?>
+                    <h2 class="mb-3 text-uppercase">
+                        <?= Yii::t('front', 'Накопленные бонусы') ?>
+                    </h2>
+                    <div class="row alig-items-center">
+                        <div class="col-md-6">
+                            <img src="/images/lk_bonus.png" alt="<?= Yii::$app->id ?>" class="img-fluid">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row justify-content-center">
+                                <div class="col-auto">
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto">
+                                            <p class="text-gray-700 mb-0">
+                                                <?= Yii::$app->formatter->asDate('now') ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#bonuses" class="text-gray-700 mb-0" data-toggle="modal">
+                                                <?= Yii::t('front', 'Подробнее') ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <p class="display-1 text-secondary font-weight-bold mb-0">
+                                        <?= $userBonus['total'] ?> <small class="font-weight-bold">UME</small>
+                                    </p>
+                                </div>
+                                <div class="col-12 mb-1">
+                                    <hr>
+                                </div>
+                                <div class="col-auto">
+                                    <h5 class="text-center">
+                                        <?= Yii::t('front', 'Сумма бонусов состоит из') ?>:
+                                    </h5>
+                                    <div class="row justify-content-between">
+                                        <div class="col-sm-6 text-center mt-1">
+                                            <p class="h2 font-weight-bold text-secondary">
+                                                <?= $userBonus['reasons'][1] ?> <small class="font-weight-bold">UME</small>
+                                            </p>
+                                            <p class="h6">
+                                                <?= Yii::t('front', 'Подписки') ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6 text-center mt-1">
+                                            <p class="h2 font-weight-bold text-secondary">
+                                                <?= $userBonus['reasons'][0] ?> <small class="font-weight-bold">UME</small>
+                                            </p>
+                                            <p class="h6">
+                                                <?= Yii::t('front', 'Рекомендации') ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6 text-center mt-1">
+                                            <p class="h2 font-weight-bold text-secondary">
+                                                <?= $userBonus['reasons'][2] ?> <small class="font-weight-bold">UME</small>
+                                            </p>
+                                            <p class="h6">
+                                                <?= Yii::t('front', 'Подарки') ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6 text-center mt-1">
+                                            <p class="h2 font-weight-bold text-secondary">
+                                                <?= $userBonus['reasons'][3] ?> <small class="font-weight-bold">UME</small>
+                                            </p>
+                                            <p class="h6">
+                                                <?= Yii::t('front', 'Другое') ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-3">
+                    <h2 class="text-uppercase text-center mb-2">
+                        <?= Yii::t('front', 'Куда потратить') ?>
+                    </h2>
+                    <div class="row justify-content-center">
+                        <div class="col-auto">
+                            <ul class="check-circle">
+                                <li class="h6">
+                                    <?= Yii::t('front', 'Покупка бустеров') ?>
+                                </li>
+                                <li class="h6">
+                                    <?= Yii::t('front', 'Покупка акуссеуаров') ?>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-auto">
+                            <ul class="check-circle">
+                                <li class="h6">
+                                    <?= Yii::t('front', 'Участие в розыгрыше') ?>
+                                </li>
+                                <li class="h6">
+                                    <?= Yii::t('front', 'Поделиться с другом') ?>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                            
+                    <div class="modal fade" id="bonuses" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                            <div class="modal-content">
+                                <div class="modal-header pb-0">
+                                    <h5 class="modal-title text-center mb-1">
+                                        <?= Yii::t('front', 'Бонусный счет') ?>
+                                    </h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <img src="/images/modal_close.svg">
+                                    </button>
+                                </div>
+                                <div class="modal-body pt-0_5">
+                                    <table id="bonus-history" class="table mb-0">
+                                        <tbody>
+                                <?php
+                                    if ($userBonus['bonuses']) {
+                                        foreach (array_reverse($userBonus['bonuses']) as $bonus) {
+                                ?>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <?= Yii::$app->formatter->asDate($bonus->created_at) ?>
+                                                </td>
+                                                <td class="text-center">
+                                                    <?= $bonus->type ? '+' : '-' ?><?= $bonus->amount ?> <small>UME</small>
+                                                </td>
+                                                <td class="text-center">
+                                                    <?= Yii::t('front', Yii::$app->params['bonus'][$bonus->type][$bonus->reason]) ?>
+                                                </td>
+                                            </tr>
+                                <?php
+                                        }
+                                    }
+                                ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="h5 font-weight-bold mb-0">
+                                        <?= $userBonus['total'] ?> <small class="font-weight-bold">UME</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <?php
+                Pjax::end();
+            ?>
+            </div>
         </div>
         
         <hr>

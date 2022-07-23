@@ -189,7 +189,25 @@ class SiteController extends Controller
         
         $user = User::findOne(Yii::$app->user->id);
         
-        $bonus = Bonus::getUserBonus(Yii::$app->user->id);
+        $userBonus = Bonus::getUserBonus(Yii::$app->user->id);
+        $userBonusDescriptions = [];
+        if ($userBonus) {
+            foreach ($userBonus as $bonus) {
+                switch ($bonus->reason) {
+                    case 0:
+                    case 2:
+                        $bonusUser = User::findOne((int) $bonus->description);
+                        $userBonusDescriptions[$bonus->id] = $bonusUser->profile->name ?: ($bonusUser->profile->first_name ?: $bonusUser->username);
+                        break;
+                    case 1:
+                        $userBonusDescriptions[$bonus->id] = Yii::t('front', 'Заказ') . ' #' . $bonus->description;
+                        break;
+                    default:
+                        $userBonusDescriptions[$bonus->id] = $bonus->description;
+                        break;
+                }
+            }
+        }
         
         $profile = Profile::findOne([
             'user_id' => Yii::$app->user->id
@@ -231,7 +249,8 @@ class SiteController extends Controller
             'breeds' => $breeds,
             'actions' => $actions,
             'friends' => $friends,
-            'bonus' => $bonus,
+            'userBonus' => $userBonus,
+            'userBonusDescriptions' => $userBonusDescriptions,
         ]);
     }
     

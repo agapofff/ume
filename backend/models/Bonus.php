@@ -76,6 +76,7 @@ class Bonus extends \yii\db\ActiveRecord
     {            
         $total = 0;
         $reasons = [];
+        $history = [];
         
         foreach (Yii::$app->params['bonus'][1] as $reason) {
             $reasons[] = 0;
@@ -101,7 +102,8 @@ class Bonus extends \yii\db\ActiveRecord
         
         return [
             'total' => $total,
-            'reasons' => $reasons
+            'reasons' => $reasons,
+            'bonuses' => $bonuses,
         ];
     }
 

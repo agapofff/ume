@@ -12,6 +12,23 @@ use yii\helpers\Html;
 
 class BonusController extends Controller
 {
+    public function actionIndex ($layout = 'blank')
+    {
+        $bonuses = Bonus::find()
+            ->where([
+                'active' => 1,
+                'user_id' => Yii::$app->user->id,
+            ])
+            ->orderBy([
+                'created_at' => SORT_DESC
+            ])
+            ->all();
+            
+        return $this->render('index', [
+            'bonuses' => $bonuses
+        ]);
+    }
+    
     public function actionGift(int $user, int $sum)
     {
         $userBonus = Bonus::getUserBonus(Yii::$app->user->id);
