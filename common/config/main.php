@@ -54,7 +54,7 @@ $config = [
                                 $addBonus->save();
                             }
                         }
-                    }
+                    },
                 ],
             ],
         ],        
