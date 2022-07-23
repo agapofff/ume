@@ -17,6 +17,8 @@ new WOW().init();
 
 jQuery(document).ready(function ($) {
     
+    var ajaxDataSent = new $.Deferred();
+    
     $.fn.isInViewport = function(offset = 0) {
         var elementTop = $(this).offset().top,
             elementBottom = elementTop + $(this).outerHeight(),
@@ -229,6 +231,7 @@ jQuery(document).ready(function ($) {
             },
             complete: function () {
                 loading(false);
+                ajaxDataSent.resolve();
             }
         });
     }
@@ -512,8 +515,21 @@ jQuery(document).ready(function ($) {
                 user: $(this).data('user'),
                 sum: parseFloat($('input[name="bonus-gift-' + $(this).data('user') + '"]:checked').val())
             };
+        
+        ajaxDataSent = new $.Deferred();
 
-        sendAjaxData($btn, url, params);
+        $.when(ajaxDataSent).then(function () {
+            $.pjax.reload({
+                container: '#pjax-bonuses',
+                async: false
+            });
+            $.pjax.reload({
+                container: '#pjax-friends',
+                async: false
+            });
+        });
+        
+        sendAjaxData($btn, url, params);    
     });
     
     
