@@ -160,7 +160,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
             ?>
         </a>
         <div id="bonus" class="collapse" data-parent="#account">
-            <div class="mb-4 mt-3 px-xl-5 d-none">
+            <div class="mb-4 mt-3 px-xl-5">
             <?php
                 Pjax::begin([
                     'id' => 'pjax-bonuses',
