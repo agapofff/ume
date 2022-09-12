@@ -10,12 +10,12 @@ $this->title = Yii::$app->name;
 <div id="index1" class="container-lg container-xl container-xxl mb-5">
     <div class="row align-items-center mb-2 wow fadeIn" data-wow-duration="0.5s">
         <div class="col-auto">
-            <h1 class="text-uppercase">
+            <h1 class="text-uppercase font-weight-light">
                 <?= Yii::t('front', 'Just like you') ?>!
             </h1>
         </div>
         <div class="col-auto">
-            <h5 class="text-uppercase">
+            <h5 class="text-uppercase font-weight-normal">
                 <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
             </h5>
         </div>
@@ -39,7 +39,7 @@ $this->title = Yii::$app->name;
                     <h4 id="us-label" class="d-flex mb-1 mr-1 text-uppercase">
                         <a href="#us" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="true" aria-controls="us" onclick="owlGoTo('#about-slider', 0);">
                             <div class="row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-auto font-weight-normal">
                                     <?= Yii::t('front', 'Мы') ?>
                                 </div>
                                 <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
@@ -59,7 +59,7 @@ $this->title = Yii::$app->name;
                     <h4 id="philosophy-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
                         <a href="#philosophy" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="philosophy" onclick="owlGoTo('#about-slider', 1);">
                             <div class="row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-auto font-weight-normal">
                                     <?= Yii::t('front', 'Философия') ?>
                                 </div>
                                 <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
@@ -79,7 +79,7 @@ $this->title = Yii::$app->name;
                     <h4 id="target-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
                         <a href="#target" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="target" onclick="owlGoTo('#about-slider', 2);">
                             <div class="row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-auto font-weight-normal">
                                     <?= Yii::t('front', 'Цель') ?>
                                 </div>
                                 <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
@@ -99,7 +99,7 @@ $this->title = Yii::$app->name;
                     <h4 id="mission-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
                         <a href="#mission" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="mission" onclick="owlGoTo('#about-slider', 3);">
                             <div class="row align-items-center">
-                                <div class="col-auto">
+                                <div class="col-auto font-weight-normal">
                                     <?= Yii::t('front', 'Миссия') ?>
                                 </div>
                                 <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
@@ -119,16 +119,16 @@ $this->title = Yii::$app->name;
         <div class="col-lg-6 wow fadeIn">
             <div id="about-slider" class="owl-carousel owl-theme owl-fade">
                 <div>
-                    <img src="/images/main/us.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/us.jpg" class="img-fluid" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <img src="/images/main/philosophy.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/philosophy.jpg" class="img-fluid" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <img src="/images/main/target.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/target.jpg" class="img-fluid" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <img src="/images/main/mission.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/mission.jpg" class="img-fluid" alt="<?= $title ?>">
                 </div>
             </div>
         </div>
@@ -140,7 +140,7 @@ $this->title = Yii::$app->name;
     <div class="container-lg container-xl container-xxl sticky-top title">
         <div class="row">
             <div class="col-lg-12 col-xl-11 offset-xl-1">
-                <h2 class="text-uppercase mb-2 wow fadeInUp">
+                <h2 class="text-uppercase font-weight-light mb-2 wow fadeInUp">
                     <?= Yii::t('front', 'Преимущества') ?>
                 </h2>
             </div>
@@ -152,7 +152,7 @@ $this->title = Yii::$app->name;
             <div class="col-lg-12 col-xl-11 offset-xl-1">
                 <div class="row position-relative">
                     <div class="col-md-9 col-lg-8 col-xl-7 offset-lg-1 offset-xl-2">
-                        <h5 class="text-uppercase wow fadeInUp">
+                        <h5 class="text-uppercase font-weight-normal wow fadeInUp">
                             <?= Yii::t('front', 'Мы знаем, какую важную роль в жизни домашних питомцев играет правильное питание, и используем революционные идеи, чтобы достичь максимальной пользы и безопасности наших кормов.') ?>
                         </h5>
                     </div>
@@ -198,7 +198,7 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <img src="/images/main/banner8.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                                    <img src="/images/main/banner8.jpg" class="img-fluid" alt="<?= $title ?>">
                                 </div>
                             </div>
                         </div>
@@ -235,7 +235,7 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100 border border-gray-500">
+                                    <video autoplay loop muted playsinline class="d-block w-100">
                                         <source src="/video/ume_blue_bg.mp4" type="video/mp4">
                                         <source src="/video/ume_blue_bg.ogv" type="video/ogv">
                                         <source src="/video/ume_blue_bg.webm" type="video/webm">
@@ -276,7 +276,7 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100 border border-gray-500">
+                                    <video autoplay loop muted playsinline class="d-block w-100">
                                         <source src="/video/ginseng_small.mp4" type="video/mp4">
                                         <source src="/video/ginseng_small.ogv" type="video/ogv">
                                         <source src="/video/ginseng_small.webm" type="video/webm">
@@ -317,7 +317,7 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100 border border-gray-500">
+                                    <video autoplay loop muted playsinline class="d-block w-100">
                                         <source src="/video/_UME_molecule_FULLHD.mp4" type="video/mp4">
                                         <source src="/video/_UME_molecule_FULLHD.ogv" type="video/ogv">
                                         <source src="/video/_UME_molecule_FULLHD.webm" type="video/webm">
@@ -351,7 +351,7 @@ $this->title = Yii::$app->name;
         <div id="index5" class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-1">
             <div class="row">
                 <div class="col-lg-12 col-xl-11 offset-xl-1">
-                    <h2 class="text-uppercase wow fadeInUp">
+                    <h2 class="text-uppercase font-weight-light wow fadeInUp">
                         <?= Yii::t('front', 'Каталог кормов и аксессуаров') ?>
                     </h2>
                     <p class="wow fadeInUp">
@@ -368,7 +368,7 @@ $this->title = Yii::$app->name;
                 ?>
                         <<?php if ($banner->link) { ?>a href="<?= $banner->link == '#' ? '#' : Url::to([$banner->link]) ?>"<?php } else { ?>div<?php } ?> class="mainpage-banner card border-0 rounded-0 text-dark text-decoration-none">
                             <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('500x500') ?>" class="card-img rounded-0 img-fluid" alt="<?= $image->alt ? $image->alt : $bannerText ?>" loading="lazy">
-                            <div class="card-img-overlay border border-gray-800">
+                            <div class="card-img-overlay border border-gray-400">
                                 <div class="row <?= $banner->content_align == 2 ? 'justify-content-end' : '' ?> h-100">
                                     <div class="col-<?= in_array($banner->content_align, [0, 2]) ? '7' : '12' ?> py-0_5">
                                         <div class="row h-100">
@@ -410,10 +410,10 @@ $this->title = Yii::$app->name;
         <div class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-3 overflow-x-hidden">
             <div class="row">
                 <div class="col-lg-12 col-xl-11 offset-xl-1 position-relative">
-                    <h2 class="text-uppercase text-teal wow fadeInUp">
+                    <h2 class="text-uppercase font-weight-light text-teal wow fadeInUp">
                         <?= Yii::t('front', 'Отзывы ваших питомцев') ?>
                     </h2>
-                    <p class="wow fadeInUp">
+                    <p class="lead text-secondary wow fadeInUp">
                         <?= Yii::t('front', 'Посмотрите, что говорят наши собаки о корме') ?> <span class="text-uppercase font-weight-bold"><?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', [' ', ' ']) ?></span>
                     </p>
                 </div>
@@ -467,7 +467,7 @@ $this->title = Yii::$app->name;
         <div class="container-lg container-xl container-xxl mt-5 mb-3">
             <div class="row">
                 <div class="col-lg-12 col-xl-11 offset-xl-1 mb-2">
-                    <h2 class="text-uppercase wow fadeInUp">
+                    <h2 class="text-uppercase font-weight-light wow fadeInUp">
                         <?= Yii::t('front', 'Новости') ?>
                     </h2>
                 </div>
