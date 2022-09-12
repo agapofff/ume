@@ -235,7 +235,11 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <img src="/images/main/banner5.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                                    <video autoplay loop muted playsinline class="d-block w-100 border border-gray-500">
+                                        <source src="/video/ume_blue_bg.mp4" type="video/mp4">
+                                        <source src="/video/ume_blue_bg.ogv" type="video/ogv">
+                                        <source src="/video/ume_blue_bg.webm" type="video/webm">
+                                    </video>
                                 </div>
                             </div>
                         </div>
@@ -313,7 +317,11 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <img src="/images/main/banner7.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                                    <video autoplay loop muted playsinline class="d-block w-100 border border-gray-500">
+                                        <source src="/video/_UME_molecule_FULLHD.mp4" type="video/mp4">
+                                        <source src="/video/_UME_molecule_FULLHD.ogv" type="video/ogv">
+                                        <source src="/video/_UME_molecule_FULLHD.webm" type="video/webm">
+                                    </video>
                                 </div>
                             </div>
                         </div>
