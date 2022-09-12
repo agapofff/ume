@@ -11,7 +11,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
     <div id="main" class="container-lg container-xl container-xxl mb-4">
 
-        <h1 class="mb-2 text-uppercase wow fadeIn" data-wow-duration="0.5s">
+        <h1 class="mb-2 text-uppercase font-weight-light wow fadeIn" data-wow-duration="0.5s">
             <?= Yii::t('front', 'Преимущества UME') ?>
         </h1>
 
@@ -101,10 +101,10 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                     ])
                 ?>
                 <div class="col-md-11 offset-md-1">
-                    <h2 class="text-uppercase font-weight-bolder mb-2 wow fadeInUp">
+                    <h2 class="text-uppercase font-weight-light mb-2 wow fadeInUp">
                         <?= Yii::t('front', 'Инновации и ИИ') ?>
                     </h2>
-                    <p class="h5 pr-md-15 pr-lg-17 pr-xl-19 wow fadeInUp">
+                    <p class="h5 font-weight-normal pr-md-15 pr-lg-17 pr-xl-19 wow fadeInUp">
                         <?= Yii::t('front', 'С помощью систем видеомониторинга и искусственного интеллекта мы изучаем пищевые предпочтения наших питомцев и подбираем идеальный рацион') ?>.
                     </p>
                 </div>
@@ -141,7 +141,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         </div>
         <div class="row">
             <div class="col-md-10 col-lg-9 col-xl-8 offset-md-1 position-relative">
-                <h2 class="d-inline-block text-uppercase font-weight-bolder position-relative mb-2 wow fadeInUp" style="max-width: 600px">
+                <h2 class="d-inline-block text-uppercase font-weight-light position-relative mb-2 wow fadeInUp" style="max-width: 600px">
                     <?= Yii::t('front', 'Альтернативные источники белка') ?>
                 </h2>
                 <?= Html::img('/images/arrow.svg', [
@@ -156,7 +156,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         </div>
         <div class="row mb-2">
             <div class="col-md-10 col-lg-9 col-xl-8 offset-md-1">
-                <p class="h5 wow fadeInUp">
+                <p class="h5 font-weight-normal wow fadeInUp">
                     <?= Yii::t('front', 'Корма UME разработаны на основе белка насекомых: это позволяет сделать производство экологичнее, а меню собак — разнообразнее и питательнее') ?>.
                 </p>
             </div>
@@ -196,10 +196,10 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         <div class="container-lg container-xl container-xxl">
             <div class="row mb-2">
                 <div class="col-md-10 col-lg-9 col-xl-8 offset-md-1">
-                    <h2 class="text-uppercase font-weight-bolder position-relative mb-2 wow fadeInUp">
+                    <h2 class="text-uppercase font-weight-light position-relative mb-2 wow fadeInUp">
                         <?= Yii::t('front', 'Белый императорский женьшень') ?>
                     </h2>
-                    <p class="h5 wow fadeInUp">
+                    <p class="h5 font-weight-normal wow fadeInUp">
                         <?= Yii::t('front', 'Выращивая женьшень 6 лет в экологически чистых условиях горы Чанбайшань, мы сохраняем в его корне максимум полезных веществ, включая 37 видов гинзенозидов') ?>.
                     </p>
                 </div>
@@ -243,14 +243,14 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                         ',
                     ])
                 ?>
-                <h2 class="text-uppercase font-weight-bolder position-relative wow fadeInUp">
+                <h2 class="text-uppercase font-weight-light position-relative wow fadeInUp">
                     <?= Yii::t('front', 'Гипоаллергенная беззерновая формула') ?>
                 </h2>
             </div>
         </div>
         <div class="row mb-2">
             <div class="col-md-10 col-lg-11 col-xl-10 offset-md-1">
-                <p class="h5 wow fadeInUp">
+                <p class="h5 font-weight-normal wow fadeInUp">
                     <?= Yii::t('front', 'Мы сознательно избегаем использования глютена, сои, искусственных красителей, ароматизаторов и консервантов — они вредны как человеку, так и животным') ?>.
                 </p>
             </div>
