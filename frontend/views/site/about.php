@@ -165,7 +165,11 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             <div class="col-lg-11 offset-lg-1 position-relative">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-6 order-lg-last wow fadeIn">
-                        <img src="/images/about/alternatives.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                        <video autoplay loop muted playsinline class="d-block w-100">
+                            <source src="/video/ume_blue_bg.mp4" type="video/mp4">
+                            <source src="/video/ume_blue_bg.ogv" type="video/ogv">
+                            <source src="/video/ume_blue_bg.webm" type="video/webm">
+                        </video>
                     </div>
                     <div class="col-11 col-lg-6">
                         <ul class="check-circle my-2 my-lg-0">
@@ -255,7 +259,11 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             <div class="col-lg-11 offset-lg-1 position-relative">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-lg-7 col-xl-8 order-lg-last wow fadeIn">
-                        <img src="/images/about/noallergens.jpg" class="img-fluid border border-gray-500 wow fadeIn" alt="<?= $title ?>">
+                        <video autoplay loop muted playsinline class="d-block w-100">
+                            <source src="/video/_UME_molecule_FULLHD.mp4" type="video/mp4">
+                            <source src="/video/_UME_molecule_FULLHD.ogv" type="video/ogv">
+                            <source src="/video/_UME_molecule_FULLHD.webm" type="video/webm">
+                        </video>
                     </div>
                     <div class="col-11 col-lg-5 col-xl-4">
                         <ul class="check-circle my-2 my-lg-0">
