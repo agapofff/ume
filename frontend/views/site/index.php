@@ -119,24 +119,16 @@ $this->title = Yii::$app->name;
         <div class="col-lg-6 wow fadeIn">
             <div id="about-slider" class="owl-carousel owl-theme owl-fade">
                 <div>
-                    <img src="/images/main/UME_dog_001_v2_static_pic_02.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/us.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <video autoplay loop muted playsinline class="d-block w-100">
-                        <source src="/video/UME_planshet_00.mp4" type="video/mp4">
-                        <source src="/video/UME_planshet_00.ogv" type="video/ogv">
-                        <source src="/video/UME_planshet_00.webm" type="video/webm">
-                    </video>
+                    <img src="/images/main/philosophy.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <img src="/images/main/UME_products.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                    <img src="/images/main/target.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                 </div>
                 <div>
-                    <video autoplay loop muted playsinline class="d-block w-100">
-                        <source src="/video/UME_molecule.mp4" type="video/mp4">
-                        <source src="/video/UME_molecule.ogv" type="video/ogv">
-                        <source src="/video/UME_molecule.webm" type="video/webm">
-                    </video>
+                    <img src="/images/main/mission.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                 </div>
             </div>
         </div>
