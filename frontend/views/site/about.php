@@ -111,7 +111,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             </div>
             <div class="row align-items-center justify-content-center">
                 <div class="col-12 col-lg-7 col-xl-8">
-                    <img src="/images/about/innovations.jpg" alt="<?= $title ?>" class="img-fluid border border-gray-500">
+                    <img src="/images/about/innovations2.jpg" alt="<?= $title ?>" class="img-fluid border border-gray-500">
                 </div>
                 <div class="col-11 col-lg-5 col-xl-4">
                     <ul class="check-circle my-2 my-lg-0">
