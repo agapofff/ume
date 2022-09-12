@@ -198,7 +198,7 @@ $this->title = Yii::$app->name;
                                     ?>
                                 </div>
                                 <div class="col-md-8">
-                                    <img src="/images/main/banner4.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
+                                    <img src="/images/main/banner8.jpg" class="img-fluid border border-gray-500" alt="<?= $title ?>">
                                 </div>
                             </div>
                         </div>
