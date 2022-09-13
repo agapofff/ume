@@ -548,6 +548,9 @@ ul.check-circle li:before {
     color: #0B2142 !important;
 }
 
+#index-app > .row {
+    background: url('../images/main/app_bg.jpg') bottom center / cover no-repeat;
+}
 
 .mainpage-banner .title {
     overflow-wrap: normal;

@@ -135,6 +135,32 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
+<div id="index-app" class="container-lg container-xl container-xxl mb-5 mb-lg-7 mt-3 mt-lg-5">
+    <div class="row justify-content-center align-items-center mx-lg-0 pt-1 pt-lg-2">
+        <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4">
+            <img src="/images/main/app_phone.png" class="img-fluid">
+        </div>
+        <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4 py-2 pl-xl-2">
+            <p class="display-3 text-secondary font-weight-bold">UME</p>
+            <p class="lead font-weight-bold mb-2">
+                <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME и специализированные услуги для вашего питомца') ?>
+            </p>
+            <div class="row">
+                <div class="col mb-0_5">
+                    <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank">
+                        <img src="/images/google.png" class="img-fluid">
+                    </a>
+                </div>
+                <div class="col mb-0_5">
+                    <a href="<?= Yii::$app->params['apps']['apple'] ?>" target="_blank">
+                        <img src="/images/apple.png" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="index3" class="position-relative mb-5">
 
     <div class="container-lg container-xl container-xxl sticky-top title">

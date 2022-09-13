@@ -78,6 +78,10 @@ return [
     ],
     'referalBonus' => 5,
     
+    'apps' => [
+        'google' => '#',
+        'apple' => '#',
+    ],
 
     // 'hideNotAvailable' => false, // скрывать недоступные товары
     // 'scanToWin' => [
