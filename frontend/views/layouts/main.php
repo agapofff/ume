@@ -321,8 +321,8 @@
 
     <?php $this->beginBody() ?>
             
-        <nav id="nav" class="bg-white px-0 py-0 transition">
-            <div id="nav-container" class="container-xxl py-1_5">
+        <nav id="nav" class="fixed-top bg-white px-0 py-0 transition">
+            <div id="nav-container" class="container-xxl pt-1_5">
                 <div class="row justify-content-between align-items-center w-100 flex-nowrap no-gutters">
                     <div id="logo" class="col-auto pr-0">
                         <a href="<?= Url::home(true) ?><?= Yii::$app->language ?>">
@@ -429,11 +429,11 @@
                     </div>
                 </div>
                 
-                <hr class="border-gray-800 py-0 w-100 light" style="border-width: 2px">                            
+                <hr class="border-gray-800 mb-0_5 py-0 w-100 light" style="border-width: 2px">                            
             </div>
         </nav>
 
-        <div id="pagecontent">
+        <div id="pagecontent" class="mt-8">
 
             <?php 
                 // echo Breadcrumbs::widget([
