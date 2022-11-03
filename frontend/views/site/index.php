@@ -198,7 +198,7 @@ $this->title = Yii::$app->name;
         <div class="col-12">
             <div id="owl-advantages" class="owl-carousel-stacked row owl-loop">
                 <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 1, 1000)">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block" onclick="owlGoTo('#owl-advantages', 1, 1000)">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
@@ -214,7 +214,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 2, 1000)">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block" onclick="owlGoTo('#owl-advantages', 2, 1000)">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
@@ -230,7 +230,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 3, 1000)">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block" onclick="owlGoTo('#owl-advantages', 3, 1000)">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
@@ -246,7 +246,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 0, 300)">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block" onclick="owlGoTo('#owl-advantages', 0, 300)">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
