@@ -372,7 +372,7 @@ jQuery(document).ready(function ($) {
         slideBy: 1,
         center: false,
         mouseDrag: false,
-        touchDrag: false,
+        touchDrag: true,
         pullDrag: false,
         autoplay: false,
         rewind: false,
@@ -386,7 +386,6 @@ jQuery(document).ready(function ($) {
     });
     
     $('.owl-carousel-stacked').on('change.owl.carousel', function (event) {
-console.log(event);
         var $owlStacked = event.relatedTarget.$element;
         if (event.item.index > event.property.value) {
             $owlStacked.find('.owl-item.active').eq(0).prev().removeClass('stacked');   
