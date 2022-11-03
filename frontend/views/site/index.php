@@ -144,12 +144,12 @@ $this->title = Yii::$app->name;
                         </div>
                         <div class="col-12 mt-2 mt-xl-4">
                             <div class="row">
-                                <div class="col-auto">
+                                <div class="col-auto mb-0_5">
                                     <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank" class="text-decoration-none">
                                         <img src="/images/main/google.png" alt="<?= $this->title ?>" class="img-fluid">
                                     </a>
                                 </div>
-                                <div class="col-auto">
+                                <div class="col-auto mb-0_5">
                                     <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank" class="text-decoration-none">
                                         <img src="/images/main/apple.png" alt="<?= $this->title ?>" class="img-fluid">
                                     </a>
