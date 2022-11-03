@@ -532,8 +532,10 @@ form .text-center > .help-block {
     min-width: 350px;
     max-width: 850px;
 }
-#owl-advantages .owl-nav {
-    display: none;
+@media (min-width: 768px) {
+    #owl-advantages .owl-nav {
+        display: none;
+    }
 }
 /*
 .stack-slider .slick-prev,
