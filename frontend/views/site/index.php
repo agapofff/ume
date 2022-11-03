@@ -7,17 +7,17 @@ $this->title = Yii::$app->name;
 
 ?>
 
-<div id="index1" class="container-lg container-xl container-xxl mb-5">
+<div id="index1" class="container-xxl mb-5">
     <div class="row align-items-center mb-2 wow fadeIn" data-wow-duration="0.5s">
         <div class="col-auto">
-            <h1 class="text-uppercase font-weight-light">
+            <h1 class="text-uppercase font-weight-light display-1 m-0">
                 <?= Yii::t('front', 'Just like you') ?>!
             </h1>
         </div>
         <div class="col-auto">
-            <h5 class="text-uppercase font-weight-normal">
+            <h4 class="text-uppercase font-weight-normal m-0">
                 <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
-            </h5>
+            </h4>
         </div>
     </div>
     <div class="row wow fadeIn">
@@ -31,469 +31,313 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
-<div id="index2" class="container-lg container-xl container-xxl mb-2 mb-lg-4">
-    <div class="row">
-        <div class="col-lg-6 col-xl-5 offset-xl-1 mb-3 mb-lg-0">
-            <div id="about" class="accordion">
-                <div class="wow fadeInUp">
-                    <h4 id="us-label" class="d-flex mb-1 mr-1 text-uppercase">
-                        <a href="#us" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="true" aria-controls="us" onclick="owlGoTo('#about-slider', 0);">
-                            <div class="row align-items-center">
-                                <div class="col-auto font-weight-normal">
-                                    <?= Yii::t('front', 'Мы') ?>
-                                </div>
-                                <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
-                                    <img src="/images/arrow_corner.svg" class="arrow-corner">
-                                </div>
-                            </div>
-                        </a>
-                    </h4>
-                    <div id="us" class="collapse show" aria-labelledby="us-label" data-parent="#about">
-                        <p>
-                            <?= Yii::t('front', 'Чтобы лучше понимать домашних животных, мы с помощью новейших технологий собрали множество данных об их предпочтениях. Теперь ваш пёс может сам выбрать свое меню, приготовленное из вкусных и полезных продуктов.') ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="wow fadeInUp">
-                    <hr class="my-0">
-                    <h4 id="philosophy-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#philosophy" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="philosophy" onclick="owlGoTo('#about-slider', 1);">
-                            <div class="row align-items-center">
-                                <div class="col-auto font-weight-normal">
-                                    <?= Yii::t('front', 'Философия') ?>
-                                </div>
-                                <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
-                                    <img src="/images/arrow_corner.svg" class="arrow-corner">
-                                </div>
-                            </div>
-                        </a>
-                    </h4>
-                    <div id="philosophy" class="collapse" aria-labelledby="philosophy-label" data-parent="#about">
-                        <p>
-                            <?= Yii::t('front', 'Лучше узнать животных с использованием искусственного интеллекта, чтобы общаться со своими питомцами на одном языке') ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="wow fadeInUp">
-                    <hr class="my-0">
-                    <h4 id="target-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#target" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="target" onclick="owlGoTo('#about-slider', 2);">
-                            <div class="row align-items-center">
-                                <div class="col-auto font-weight-normal">
-                                    <?= Yii::t('front', 'Цель') ?>
-                                </div>
-                                <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
-                                    <img src="/images/arrow_corner.svg" class="arrow-corner">
-                                </div>
-                            </div>
-                        </a>
-                    </h4>
-                    <div id="target" class="collapse" aria-labelledby="target-label" data-parent="#about">
-                        <p>
-                            <?= Yii::t('front', 'Обеспечить четвероногих друзей высококачественной, здоровой и полезной едой, которая непременно придётся им по вкусу') ?>
-                        </p>
-                    </div>
-                </div>
-                <div class="wow fadeInUp">
-                    <hr class="my-0">
-                    <h4 id="mission-label" class="d-flex mt-1 mb-1 mr-1 text-uppercase">
-                        <a href="#mission" class="d-block w-100 text-decoration-none text-dark accordion-arrow" data-toggle="collapse" aria-expanded="false" aria-controls="mission" onclick="owlGoTo('#about-slider', 3);">
-                            <div class="row align-items-center">
-                                <div class="col-auto font-weight-normal">
-                                    <?= Yii::t('front', 'Миссия') ?>
-                                </div>
-                                <div class="col-auto justify-content-end arrow text-right pl-4 pr-0 transition">
-                                    <img src="/images/arrow_corner.svg" class="arrow-corner">
-                                </div>
-                            </div>
-                        </a>
-                    </h4>
-                    <div id="mission" class="collapse" aria-labelledby="mission-label" data-parent="#about">
-                        <p>
-                            <?= Yii::t('front', 'Развитие технологий и создание продуктов, которые помогают людям лучше понимать и качественнее обеспечивать потребности питомца, а также заботиться о его здоровье.') ?>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 wow fadeIn">
-            <div id="about-slider" class="owl-carousel owl-theme owl-fade">
-                <div>
-                    <img src="/images/main/us.jpg" class="img-fluid" alt="<?= $title ?>">
-                </div>
-                <div>
-                    <img src="/images/main/philosophy.jpg" class="img-fluid" alt="<?= $title ?>">
-                </div>
-                <div>
-                    <img src="/images/main/target.jpg" class="img-fluid" alt="<?= $title ?>">
-                </div>
-                <div>
-                    <img src="/images/main/mission.jpg" class="img-fluid" alt="<?= $title ?>">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="index-app" class="container-lg container-xl container-xxl mb-5 mb-lg-7 mt-3 mt-lg-5">
-    <div class="row justify-content-center align-items-center mx-lg-0 pt-1 pt-lg-2">
-        <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4">
-            <img src="/images/main/app_phone.png" class="img-fluid">
-        </div>
-        <div class="col-12 col-sm-10 col-md-6 col-lg-5 col-xl-4 py-2 pl-xl-2">
-            <p class="display-3 text-secondary font-weight-bold">UME</p>
-            <p class="lead font-weight-bold mb-2">
-                <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME и специализированные услуги для вашего питомца') ?>
+<div class="container-xxl mt-5 mt-lg-8">
+    <div class="row flex-nowrap">
+        <div class="col">
+            <h2 class="display-3 text-uppercase font-weight-light mb-2">
+                <?= Yii::t('front', 'Каталог кормов и аксессуаров') ?>
+            </h2>
+            <p class="h5 font-weight-normal">
+                <?= Yii::t('front', 'Ознакомьтесь с нашей продукцией') ?>
             </p>
-            <div class="row">
-                <div class="col mb-0_5">
-                    <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank">
-                        <img src="/images/google.png" class="img-fluid">
-                    </a>
-                </div>
-                <div class="col mb-0_5">
-                    <a href="<?= Yii::$app->params['apps']['apple'] ?>" target="_blank">
-                        <img src="/images/apple.png" class="img-fluid">
-                    </a>
-                </div>
-            </div>
+        </div>
+        <div class="col-auto d-none d-md-block">
+            <?= Html::img('/images/arrow.svg', [
+                    'class' => 'mt-0_5',
+                    'style' => '
+                        width: 4.5em;
+                        transform: rotate(135deg);
+                    ',
+                ])
+            ?>
         </div>
     </div>
-</div>
-
-<div id="index3" class="position-relative mb-5">
-
-    <div class="container-lg container-xl container-xxl sticky-top title">
-        <div class="row">
-            <div class="col-lg-12 col-xl-11 offset-xl-1">
-                <h2 class="text-uppercase font-weight-light mb-2 wow fadeInUp">
-                    <?= Yii::t('front', 'Преимущества') ?>
-                </h2>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container-lg container-xl container-xxl description transition pb-2">
-        <div class="row">
-            <div class="col-lg-12 col-xl-11 offset-xl-1">
-                <div class="row position-relative">
-                    <div class="col-md-9 col-lg-8 col-xl-7 offset-lg-1 offset-xl-2">
-                        <h5 class="text-uppercase font-weight-normal wow fadeInUp">
-                            <?= Yii::t('front', 'Мы знаем, какую важную роль в жизни домашних питомцев играет правильное питание, и используем революционные идеи, чтобы достичь максимальной пользы и безопасности наших кормов.') ?>
+    <div class="row mt-3 mt-md-4">
+        <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <div class="row no-gutters h-50">
+                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
+                        <h3 class="mb-2 text-uppercase text-nowrap font-weight-normal">
+                            <?= Yii::t('front', 'Влажный корм') ?>
+                        </h3>
+                        <h5 class="mb-3">
+                            <?= Yii::t('front', 'Полнорационный стерилизованный влажный корм UME с энтопротеином и белым императорским женьшенем') ?>
                         </h5>
+                        <img src="/images/main/wet-food.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
                     </div>
-                    <?= Html::img('/images/arrow.svg', [
-                            'class' => 'position-absolute bottom-0 right-0 d-none d-md-block mr-0_5 wow fadeIn',
-                            'style' => '
-                                width: 4.5em;
-                                -webkit-transform: rotate(135deg);
-                                -moz-transform: rotate(135deg);
-                                transform: rotate(135deg);
-                            ',
-                        ])
-                    ?>
+                </div>
+            </div>
+            <div class="col-5 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(-10%, 10%);">
+                <img src="/images/main/wet-food.png" class="img-fluid" alt="<?= $this->title ?>">
+            </div>
+        </a>
+        <a href="<?= Url::to(['/catalog/accessories']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <div class="row no-gutters h-50">
+                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
+                        <h3 class="mb-2 text-uppercase text-nowrap font-weight-normal">
+                            <?= Yii::t('front', 'Аксессуары') ?>
+                        </h3>
+                        <h5 class="mb-3">
+                            <?= Yii::t('front', 'Брендированные высококачественные аксессуары для стильных питомцев') ?>
+                        </h5>
+                        <img src="/images/main/accessories.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(5%, 15%);">
+                <img src="/images/main/accessories.png" class="img-fluid" alt="<?= $this->title ?>">
+            </div>
+        </a>
+        <a href="<?= Url::to(['/catalog/dry-food']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <div class="row no-gutters h-50">
+                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
+                        <h3 class="mb-2 text-uppercase text-nowrap font-weight-normal">
+                            <?= Yii::t('front', 'Сухой корм') ?>
+                        </h3>
+                        <h5 class="mb-3">
+                            <?= Yii::t('front', 'Полнорационный сухой корм UME с белком насекомых и женьшенем для всех пород собак') ?>
+                        </h5>
+                        <img src="/images/main/dry-food.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(3%, 10%);">
+                <img src="/images/main/dry-food.png" class="img-fluid" alt="<?= $this->title ?>">
+            </div>
+        </a>
+        <a href="<?= Url::to(['/catalog/treats']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <div class="row no-gutters h-50">
+                    <div class="col-sm-8 col-md-6 col-lg-6 col-xl-8 col-xxl-7">
+                        <h3 class="mb-2 text-uppercase text-nowrap font-weight-normal">
+                            <?= Yii::t('front', 'Лакомства') ?>
+                        </h3>
+                        <h5 class="mb-3">
+                            <?= Yii::t('front', 'Полезные и вкусные лакомства UME с женьшенем') ?>
+                        </h5>
+                        <img src="/images/main/treats.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(3%, 10%);">
+                <img src="/images/main/treats.png" class="img-fluid" alt="<?= $this->title ?>">
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="container-xxl mt-3 mt-lg-8">
+    <div class="row">
+        <div class="col-xl-6 mb-3 mb-xl-0">
+            <div class="row h-100">
+                <div class="col-12 align-self-center">
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-4">
+                        <?= Yii::t('front', 'Скачайте приложение UME') ?>
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-11 col-lg-10 col-xl-9 ">
+                            <p class="h3 font-weight-normal">
+                                <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME и специализированные услуги для вашего питомца.') ?>
+                            </p>
+                        </div>
+                        <div class="col-12 mt-2 mt-xl-4">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank" class="text-decoration-none">
+                                        <img src="/images/main/google.png" alt="<?= $this->title ?>" class="img-fluid">
+                                    </a>
+                                </div>
+                                <div class="col-auto">
+                                    <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank" class="text-decoration-none">
+                                        <img src="/images/main/apple.png" alt="<?= $this->title ?>" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 align-self-end d-none d-xl-block">
+                    <hr class="border-gray-800 my-2" style="margin-right: -30px;">
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
-        <a href="<?= Url::to(['/about#innovations']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
-            <div class="row">
-                <div class="col-lg-11 offset-lg-1">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="display-1 text-white transition">
-                                01
-                            </div>
-                        </div>
-                        <div class="col-sm-10 pt-1_5">
-                            <hr class="m-0 border-dark">
-                            <div class="row pt-2">
-                                <div class="col-md-4">
-                                    <h5 class="mb-1">
-                                        <?= Yii::t('front', 'Инновации и ИИ') ?>
-                                    </h5>
-                                    <?= Html::img('/images/arrow_small.svg', [
-                                            'class' => 'd-none d-md-block wow rotateIn',
-                                            'style' => '
-                                                width: 3em;
-                                                margin-left: -0.5em;
-                                            ',
-                                        ])
-                                    ?>
-                                </div>
-                                <div class="col-md-8">
-                                    <img src="/images/main/banner8.jpg" class="img-fluid" alt="<?= $title ?>">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-auto">
+            <div class="owl-carousel-stacked row" data-related="#app-slider-description-1">
+                <div class="col-12">
+                    <img src="/images/main/app-1.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+                <div class="col-12">
+                    <img src="/images/main/app-2.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+                <div class="col-12">
+                    <img src="/images/main/app-3.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
             </div>
-        </a>
-    </div>
-        
-    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
-        <a href="<?= Url::to(['/about#alternatives']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
-            <div class="row">
-                <div class="col-lg-11 offset-lg-1">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="display-1 text-white transition">
-                                02
-                            </div>
-                        </div>
-                        <div class="col-sm-10 pt-1_5">
-                            <hr class="m-0 border-dark">
-                            <div class="row pt-2">
-                                <div class="col-md-4">
-                                    <h5 class="mb-1">
-                                        <?= Yii::t('front', 'Альтернативные источники белка') ?>
-                                    </h5>
-                                    <?= Html::img('/images/arrow_small.svg', [
-                                            'class' => 'd-none d-md-block wow rotateIn',
-                                            'style' => '
-                                                width: 3em;
-                                                margin-left: -0.5em;
-                                            ',
-                                        ])
-                                    ?>
-                                </div>
-                                <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100">
-                                        <source src="/video/ume_blue_bg.mp4" type="video/mp4">
-                                        <source src="/video/ume_blue_bg.ogv" type="video/ogv">
-                                        <source src="/video/ume_blue_bg.webm" type="video/webm">
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <hr class="border-gray-800 my-2">
+        </div>
+        <div class="col-auto offset-xl-6" style="max-width: 360px;">
+            <div id="app-slider-description-1" class="owl-carousel owl-theme owl-fade">
+                <h5>
+                    <?= Yii::t('front', 'Легко и быстро покупать продукты и накапливать баллы') ?>
+                </h5>
+                <h5>
+                    <?= Yii::t('front', 'Создать личный профиль питомца') ?>
+                </h5>
+                <h5>
+                    <?= Yii::t('front', 'Создать целую экосистему для питомцев') ?>
+                </h5>
             </div>
-        </a>
+        </div>
     </div>
-    
-    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">    
-        <a href="<?= Url::to(['/about#ginseng']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
-            <div class="row">
-                <div class="col-lg-11 offset-lg-1">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="display-1 text-white transition">
-                                03
-                            </div>
-                        </div>
-                        <div class="col-sm-10 pt-1_5">
-                            <hr class="m-0 border-dark">
-                            <div class="row pt-2">
-                                <div class="col-md-4">
-                                    <h5 class="mb-1">
-                                        <?= Yii::t('front', 'Белый императорский женьшень') ?>
-                                    </h5>
-                                    <?= Html::img('/images/arrow_small.svg', [
-                                            'class' => 'd-none d-md-block wow rotateIn',
-                                            'style' => '
-                                                width: 3em;
-                                                margin-left: -0.5em;
-                                            ',
-                                        ])
-                                    ?>
-                                </div>
-                                <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100">
-                                        <source src="/video/ginseng_small.mp4" type="video/mp4">
-                                        <source src="/video/ginseng_small.ogv" type="video/ogv">
-                                        <source src="/video/ginseng_small.webm" type="video/webm">
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-        
-    <div class="container-lg container-xl container-xxl sticky-top advantages bg-white">
-        <a href="<?= Url::to(['/about#hypoallergenic']) ?>" class="d-block mb-0_5 text-dark text-decoration-none">
-            <div class="row">
-                <div class="col-lg-11 offset-lg-1">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <div class="display-1 text-white transition">
-                                04
-                            </div>
-                        </div>
-                        <div class="col-sm-10 pt-1_5">
-                            <hr class="m-0 border-dark">
-                            <div class="row pt-2">
-                                <div class="col-md-4">
-                                    <h5 class="mb-1">
-                                        <?= Yii::t('front', 'Гипоаллергенная беззерновая формула') ?>
-                                    </h5>
-                                    <?= Html::img('/images/arrow_small.svg', [
-                                            'class' => 'd-none d-md-block wow rotateIn',
-                                            'style' => '
-                                                width: 3em;
-                                                margin-left: -0.5em;
-                                            ',
-                                        ])
-                                    ?>
-                                </div>
-                                <div class="col-md-8">
-                                    <video autoplay loop muted playsinline class="d-block w-100">
-                                        <source src="/video/_UME_molecule_FULLHD.mp4" type="video/mp4">
-                                        <source src="/video/_UME_molecule_FULLHD.ogv" type="video/ogv">
-                                        <source src="/video/_UME_molecule_FULLHD.webm" type="video/webm">
-                                    </video>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>    
-    </div>
-    
 </div>
 
-<div id="index4" class="container-lg container-xl container-xxl mt-3 mt-lg-5 mb-3 wow fadeIn">
+<div class="container-xxl mt-3 mt-lg-8">
     <div class="row">
         <div class="col-12">
-            <video autoplay loop muted playsinline class="d-block w-100">
-                <source src="/video/UME_dog_001_1200px.mp4" type="video/mp4">
-                <source src="/video/UME_dog_001_1200px.ogv" type="video/ogv">
-                <source src="/video/UME_dog_001_1200px.webm" type="video/webm">
-            </video>
+            <div id="owl-advantages" class="owl-carousel-stacked row owl-loop">
+                <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 1, 1000)">
+                        <img src="/images/main/next.svg">
+                    </button>
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
+                        <?= Yii::t('front', 'Мы') ?>
+                    </h2>
+                    <img src="/images/main/us.jpg" class="img-fluid">
+                    <div class="row">
+                        <div class="col-12 col-xl-11 col-xxl-10">
+                            <h5 class="mt-2 mt-lg-3">
+                                <?= Yii::t('front', 'Чтобы лучше понимать домашних животных, мы с помощью новейших технологий собрали множество данных об их предпочтениях. Теперь ваш пёс может сам выбрать свое меню, приготовленное из вкусных и полезных продуктов.') ?>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 2, 1000)">
+                        <img src="/images/main/next.svg">
+                    </button>
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
+                        <?= Yii::t('front', 'Философия') ?>
+                    </h2>
+                    <img src="/images/main/philosophy.jpg" class="img-fluid">
+                    <div class="row">
+                        <div class="col-12 col-xl-11 col-xxl-10">
+                            <h5 class="mt-2 mt-lg-3">
+                                <?= Yii::t('front', 'Лучше узнать животных с использованием искусственного интеллекта, чтобы общаться со своими питомцами на одном языке') ?>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 3, 1000)">
+                        <img src="/images/main/next.svg">
+                    </button>
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
+                        <?= Yii::t('front', 'Цель') ?>
+                    </h2>
+                    <img src="/images/main/target.jpg" class="img-fluid">
+                    <div class="row">
+                        <div class="col-12 col-xl-11 col-xxl-10">
+                            <h5 class="mt-2 mt-lg-3">
+                                <?= Yii::t('front', 'Обеспечить четвероногих друзей высококачественной, здоровой и полезной едой, которая непременно придётся им по вкусу') ?>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right" onclick="owlGoTo('#owl-advantages', 0, 300)">
+                        <img src="/images/main/next.svg">
+                    </button>
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-3">
+                        <?= Yii::t('front', 'Миссия') ?>
+                    </h2>
+                    <img src="/images/main/mission.jpg" class="img-fluid">
+                    <div class="row">
+                        <div class="col-12 col-xl-11 col-xxl-10">
+                            <h5 class="mt-2 mt-lg-3">
+                                <?= Yii::t('front', 'Развитие технологий и создание продуктов, которые помогают людям лучше понимать и качественнее обеспечивать потребности питомца, а также заботиться о его здоровье.') ?>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<?php
-    if ($banners) {
-?>
-        <div id="index5" class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-1">
-            <div class="row">
-                <div class="col-lg-12 col-xl-11 offset-xl-1">
-                    <h2 class="text-uppercase font-weight-light wow fadeInUp">
-                        <?= Yii::t('front', 'Каталог кормов и аксессуаров') ?>
+<div class="container-xxl mt-3 mt-lg-6">
+    <div class="row">
+        <img src="images/arrow.svg" style="transform: rotate(45deg);">
+    </div>
+    <div class="row">
+        <div class="col-xl-6 mb-3 mb-xl-0">
+            <div class="row h-100">
+                <div class="col-12 align-self-center">
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2 mb-xl-4">
+                        <?= Yii::t('front', 'Программа привилегий UME') ?>
                     </h2>
-                    <p class="wow fadeInUp">
-                        <?= Yii::t('front', 'Ознакомьтесь с нашими кормами') ?>
-                    </p>
-                </div>
-                <div class="col-12 mt-2">
-                    <div class="owl-carousel owl-theme" data-items="1-2-2-3-3-3" data-loop="true" data-dots="true" data-margin="30">
-                <?php
-                    foreach ($banners as $banner) {
-                        $bannerText = json_decode($banner->text)->{Yii::$app->language};
-                        $image = $banner->getImage();
-                        $cachedImage = '/images/cache/Banners/Banners' . $image->itemId . '/' . $image->urlAlias . '_500x500.' . $image->getExtension();
-                ?>
-                        <<?php if ($banner->link) { ?>a href="<?= $banner->link == '#' ? '#' : Url::to([$banner->link]) ?>"<?php } else { ?>div<?php } ?> class="mainpage-banner card border-0 rounded-0 text-dark text-decoration-none">
-                            <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('500x500') ?>" class="card-img rounded-0 img-fluid" alt="<?= $image->alt ? $image->alt : $bannerText ?>" loading="lazy">
-                            <div class="card-img-overlay border border-gray-400">
-                                <div class="row <?= $banner->content_align == 2 ? 'justify-content-end' : '' ?> h-100">
-                                    <div class="col-<?= in_array($banner->content_align, [0, 2]) ? '7' : '12' ?> py-0_5">
-                                        <div class="row h-100">
-                                            <div class="col-12 align-self-start">
-                                                <h5 class="title">
-                                                    <?= $bannerText ?>
-                                                </h5>
-                                            </div>
-                                    <?php
-                                        if ($banner->show_button) {
-                                    ?>
-                                            <div class="col-12 align-self-end">
-                                                <button type="button" class="btn btn-secondary btn-lg rounded-pill">
-                                                    <?= Yii::t('front', $banner->button_text ?: 'Купить') ?>
-                                                </button>
-                                            </div>
-                                    <?php
-                                        }
-                                    ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </<?= $banner->link ? 'a' : 'div' ?>>
-                <?php
-                    }
-                ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-<?php
-    }
-?>
-
-<?php
-    if ($reviews) {
-?>
-        <div class="container-lg container-xl container-xxl mt-5 mt-lg-7 mb-3 overflow-x-hidden">
-            <div class="row">
-                <div class="col-lg-12 col-xl-11 offset-xl-1 position-relative">
-                    <h2 class="text-uppercase font-weight-light text-teal wow fadeInUp">
-                        <?= Yii::t('front', 'Отзывы ваших питомцев') ?>
-                    </h2>
-                    <p class="lead text-secondary wow fadeInUp">
-                        <?= Yii::t('front', 'Посмотрите, что говорят наши собаки о корме') ?> <span class="text-uppercase font-weight-bold"><?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', [' ', ' ']) ?></span>
-                    </p>
-                </div>
-                <div class="col-12 mt-5 mt-lg-7">
-                    <div class="reviews-carousel">
-                <?php
-                    foreach ($reviews as $r => $review) {
-                        $petPhoto = $review->getImage();
-                        $cachedImage = $petPhoto ? '/images/cache/Reviews/Reviews' . $petPhoto->itemId . '/' . $petPhoto->urlAlias . '_300x300.' . $petPhoto->getExtension() : '/images/placeholder.png';
-                        
-                        $age = $review->pet_birthday ? explode(',', Yii::$app->formatter->asDuration((new DateTime())->setTimestamp(time())->diff(new DateTime($review->pet_birthday)), ',', ''))[0] : null;
-                ?>
-                        <div class="review mx-1" data-id="<?= $r ?>">
-                            <div class="row">
-                                <div class="col-12 col-sm-auto pet-photo position-relative text-teal ">
-                                    <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $petPhoto->getUrl('300x300') ?>" class="img-fluid border-teal rounded-pill mt-3 mx-1 transition" alt="<?= $review->pet_name ?>" loading="lazy">
-                                </div>
-                                <div class="col-12 col-sm p-0 overflow-hidden content position-relative transition">
-                                    <div class="mt-1 mr-2 ml-0_5 mb-0">
-                                        <p class="font-weight-light">
-                                            <?= $review->text ?>
-                                        </p>
-                                        <p class="font-weight-bold">
-                                            <?= $review->pet_name ?>, <?= json_decode($review->breed->name)->{Yii::$app->language} ?><?= $age ? ', ' . $age : '' ?>
-                                        </p>
-                                        <div class="rating">
-                                        <?php
-                                            for ($i = 0; $i <= $review->rating; $i++) {
-                                                echo Html::img('/images/rating_star_mini.svg');
-                                            }
-                                        ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-11 col-lg-10 col-xl-9 ">
+                            <p class="h3 font-weight-normal mb-2 mb-lg-4">
+                                <?= Yii::t('front', 'Эффективный сервис услуг и систем поощрения ваших питомцев. Делайте простые действия и получайте баллы.') ?>
+                            </p>
+                            <a href="<?= Url::to(['/bonus']) ?>" class="btn btn-lg btn-secondary rounded-pill py-1_5">
+                                <span class="h5">
+                                    <?= Yii::t('front', 'Подробнее') ?>
+                                </span>
+                            </a>
                         </div>
-                <?php
-                    }
-                ?>
                     </div>
+                </div>
+                <div class="col-12 align-self-end d-none d-xl-block">
+                    <hr class="border-gray-800 my-2" style="margin-right: -30px;">
                 </div>
             </div>
         </div>
-<?php
-    }
-?>
+        <div class="col-auto">
+            <div class="owl-carousel-stacked row" data-related="#app-slider-description-2">
+                <div class="col-12">
+                    <img src="/images/main/app-4.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+                <div class="col-12">
+                    <img src="/images/main/app-5.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+                <div class="col-12">
+                    <img src="/images/main/app-6.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+                <div class="col-12">
+                    <img src="/images/main/app-6.png" alt="<?= $this->title ?>" class="img-fluid">
+                </div>
+            </div>
+            <hr class="border-gray-800 my-2">
+        </div>
+        <div class="col-auto offset-xl-6" style="max-width: 360px;">
+            <div id="app-slider-description-2" class="owl-carousel owl-theme owl-fade">
+                <h5>
+                    <?= Yii::t('front', 'Покупать товары и получать бонусы') ?>
+                </h5>
+                <h5>
+                    <?= Yii::t('front', 'Размещать посты в своей ленте') ?>
+                </h5>
+                <h5>
+                    <?= Yii::t('front', 'Приглашать как можно больше друзей') ?>
+                </h5>
+                <h5>
+                    <?= Yii::t('front', 'Покупать подписки и услуги консьержа') ?>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php
     if ($news) {
 ?>
-        <div class="container-lg container-xl container-xxl mt-5 mb-3">
+        <div class="container-xxl mt-3 mt-lg-7 mb-5 mb-lg-9">
             <div class="row">
-                <div class="col-lg-12 col-xl-11 offset-xl-1 mb-2">
-                    <h2 class="text-uppercase font-weight-light wow fadeInUp">
+                <div class="col-12 mb-2">
+                    <h2 class="display-3 text-uppercase font-weight-light mb-2">
                         <?= Yii::t('front', 'Новости') ?>
                     </h2>
                 </div>
@@ -525,4 +369,3 @@ $this->title = Yii::$app->name;
 <?php
     }
 ?>
-

@@ -317,6 +317,11 @@ return [
             'linkAssets' => false,
         ],
         
+        'cache' => [
+            // 'class' => 'yii\caching\FileCache',
+            'class' => 'yii\caching\DummyCache',
+        ],
+        
         /*
         'user' => [
             'identityClass' => 'common\models\User',
@@ -528,7 +533,7 @@ return [
 
                 // 'orders' => 'orders/index',
                 // 'orders/<id>' => 'orders/view',
-                'blog' => 'site/blog',
+                // 'blog' => 'site/blog',
                 'news' => 'news/index',
                 'news/<slug>' => 'news/post',
                 

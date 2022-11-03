@@ -336,7 +336,98 @@ jQuery(document).ready(function ($) {
     }
     
 
+    // stacked carousel
+    $('.owl-carousel-stacked').on('initialized.owl.carousel', function(event) {
+        var $owlStacked = event.relatedTarget.$element;
+        setTimeout(function () {
+            $owlStacked
+                .width($owlStacked.find('.owl-item').width())
+                .find('.owl-nav')
+                    .addClass('position-relative row justify-content-center bottom-auto left-auto right-auto mt-3 mx-0')
+                    .width($owlStacked.find('.owl-item').width())
+                .find('.owl-prev, .owl-next')
+                    .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0');
+            $owlStacked.find('.owl-next').removeClass('disabled');
+                    
+            $owlStacked.find('.owl-item').each(function(k, item) {
+                    $(this)
+                        .addClass('transition')
+                        .css({
+                            'z-index': k
+                        });
+                });
+        }, 100, $owlStacked);
+    });
+    
+    $('.owl-carousel-stacked').addClass('owl-carousel owl-theme');
+    $('.owl-carousel-stacked').owlCarousel({
+        loop: false,
+        // startPosition: 0,
+        margin: 30,
+        nav: true,
+        dots: false,
+        items: 2,
+        autoWidth: true,
+        smartSpeed: 1000,
+        slideBy: 1,
+        center: false,
+        mouseDrag: false,
+        touchDrag: false,
+        pullDrag: false,
+        autoplay: false,
+        rewind: false,
+        // checkVisible: false,
+        // navContainer: '<div class="owl-nav position-relative row justify-content-center m-0"></div>',
+        // navElement: '<button type="button" class="position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0"></button>',
+        navText: [
+            '<img src="/images/prev.svg">',
+            '<img src="/images/next.svg">'
+        ]
+    });
+    
+    $('.owl-carousel-stacked').on('change.owl.carousel', function (event) {
+console.log(event);
+        var $owlStacked = event.relatedTarget.$element;
+        if (event.item.index > event.property.value) {
+            $owlStacked.find('.owl-item.active').eq(0).prev().removeClass('stacked');   
+            $owlStacked.find('.owl-item.active').eq(0).nextAll().removeClass('stacked');   
+        } else if (event.item.index < event.property.value) {
+            $owlStacked.find('.owl-item.active').eq(0).addClass('stacked');
+        }
+        if (event.property.value == 0) {
+            $owlStacked.find('.owl-item').removeClass('stacked');   
+        }
+        if ($owlStacked.is('[data-related]')) {
+            owlGoTo($owlStacked.data('related'), event.property.value, 1000);
+        }
+    });
+    
+
     // SLICK
+    $('.stack-slider')
+        .on('init', function (slick) {
+// console.log(slick);
+            $(this).find('.slick-slide').each(function (k, slide) {
+                $(this).css({
+                    'z-index': k
+                });
+            });
+        })
+        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+            if (currentSlide < nextSlide) {
+                $(this).find('[data-slick-index="' + currentSlide + '"]').addClass('stacked');
+            } else if (currentSlide > nextSlide) {
+                $(this).find('[data-slick-index="' + nextSlide + '"]').removeClass('stacked');
+            }
+            console.log(currentSlide + ' - ' + nextSlide);
+        })
+        .on('swipe', function (event, slick, direction) {
+            console.log(direction);
+        });
+        
+    $('[data-slick]').slick();
+    
+
     
     $('.reviews-carousel').slick({
         arrows: false,
@@ -391,21 +482,21 @@ jQuery(document).ready(function ($) {
     
     // MAIN MENU
     
-    $('#menu')
-        .on('show.bs.modal', function (event) {
-            if (event.target.id) {
-                $('#nav')
-                    .removeClass('navbar-light bg-white')
-                    .addClass('navbar-dark bg-gray-900');
-            }
-        })
-        .on('hide.bs.modal', function (event) {
-            if (event.target.id == 'menu') {
-                $('#nav')
-                    .removeClass('navbar-dark bg-gray-900')
-                    .addClass('navbar-light bg-white');
-            }
-        });
+    // $('#menu')
+        // .on('show.bs.modal', function (event) {
+            // if (event.target.id) {
+                // $('#nav')
+                    // .removeClass('navbar-light bg-white')
+                    // .addClass('navbar-dark bg-gray-900');
+            // }
+        // })
+        // .on('hide.bs.modal', function (event) {
+            // if (event.target.id == 'menu') {
+                // $('#nav')
+                    // .removeClass('navbar-dark bg-gray-900')
+                    // .addClass('navbar-light bg-white');
+            // }
+        // });
         
         
 
@@ -422,7 +513,7 @@ jQuery(document).ready(function ($) {
             // $('.advantages:last-child').css('height', 0);
             // $('#index3').css('paddingBottom', lastAdvHeight);
         });
-        
+        /*
         $(window).on('scroll', function (event) {
             $('#index3 .description').toggleClass('fade', $(window).scrollTop() > $('#index3 .description').offset().top - $('#index3 .title').outerHeight());
             
@@ -442,6 +533,7 @@ jQuery(document).ready(function ($) {
                 }
             });
         });
+        */
     }
     
     

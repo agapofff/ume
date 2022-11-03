@@ -163,11 +163,6 @@ $config = [
         ],
         */
 
-        'cache' => [
-            // 'class' => 'yii\caching\FileCache',
-            'class' => 'yii\caching\DummyCache',
-        ],
-
         // интернационализация через базу данных
         'i18n' => [
             'translations' => [

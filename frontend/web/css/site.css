@@ -54,7 +54,9 @@ button,
 .custom-control-label {
     cursor: pointer;
 }
-
+.text-decoration-underline {
+    text-decoration: underline;
+}
 .text-underline {
     display: inline-block;
     position: relative;
@@ -166,7 +168,7 @@ button,
 	top: 0 !important;
 }
 .top-100 {
-	left: 100% !important;
+	top: 100% !important;
 }
 .bottom-0 {
 	bottom: 0 !important;
@@ -185,6 +187,18 @@ button,
 }
 .right-100 {
 	right: 100% !important;
+}
+.top-auto {
+    top: auto !important;
+}
+.bottom-auto {
+    bottom: auto !important;
+}
+.left-auto {
+    left: auto !important;
+}
+.right-auto {
+    right: auto !important;
 }
 .opacity-25 {
     opacity: .25 !important;
@@ -313,6 +327,30 @@ form .text-center > .help-block {
     text-align: center;
 }
 
+
+.modal .modal-dialog,
+.modal .modal-content {
+	min-width: 450px;
+}
+@media (max-width: 576px){
+	.modal .modal-dialog,
+	.modal .modal-content {
+		width: 100vw !important;
+		max-width: 100vw !important;
+		min-width: 100vw !important;
+        margin: 0 !important;
+	}
+}
+.modal:not(.show) .modal-dialog.left-0 {
+    -webkit-transform: translate(-100%, 0) !important;
+    -moz-transform: translate(-100%, 0) !important;
+    transform: translate(-100%, 0) !important;
+}
+.modal:not(.show) .modal-dialog.right-0 {
+    -webkit-transform: translate(100%, 0) !important;
+    -moz-transform: translate(100%, 0) !important;
+    transform: translate(100%, 0) !important;
+}
 .modal .close img {
     width: 1em;
     height: 1em;
@@ -341,12 +379,26 @@ form .text-center > .help-block {
     margin: -0.4rem -0.8rem 0 0;
 }
 
+.nav-lang-select .dropdown-menu {
+    min-width: unset;
+    margin-left: -0.5em;
+}
+
 #nav-menu-button img {
     width: 50px;
 }
 
-#menu {
-    z-index: 1039 !important;
+.search {
+    width: auto;
+    min-width: 50px;
+    max-width: 200px;
+    padding-left: 0.7em;
+}
+.search-button {
+    position: absolute;
+    top: 50%;
+    right: 0.7em;
+    transform: translateY(-50%);
 }
 
 .main-menu-item:before {
@@ -447,6 +499,77 @@ form .text-center > .help-block {
     /* height: 100%; */
     /* background: url('/images/arrow_mainline.svg') 0 center repeat-x; */
 /* } */
+
+
+/* stacked carousel */
+.owl-carousel-stacked .owl-stage-outer {
+    width: fit-content;
+}
+.owl-carousel-stacked .owl-item.transition {
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    transition: all 1s;
+}
+.owl-carousel-stacked .stacked {
+    -webkit-transform: scale(0.7) translateX(150%) !important;
+    -moz-transform: scale(0.7) translateX(150%) !important;
+    transform: scale(0.7) translateX(150%) !important;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+}
+.owl-carousel-stacked .owl-nav {
+    bottom: -2em;
+}
+.owl-carousel-stacked .owl-prev {
+    left: 7em;
+}
+.owl-carousel-stacked .owl-next {
+    left: 13em;
+    right: auto;
+}
+#owl-advantages .advantage {
+    min-width: 350px;
+    max-width: 850px;
+}
+#owl-advantages .owl-nav {
+    display: none;
+}
+/*
+.stack-slider .slick-prev,
+.stack-slider .slick-next {
+    top: auto;
+    bottom: -100px;
+    right: auto;
+    width: 19px;
+    height: 37px;    
+}
+.stack-slider .slick-prev {
+    left: 106px;
+    background: url('/images/prev.svg') 0 0 no-repeat;
+}
+.stack-slider .slick-next {
+    left: 210px;   
+    background: url('/images/next.svg') 0 0 no-repeat;
+}
+.stack-slider .slick-prev:before,
+.stack-slider .slick-next:before {
+    display: none;
+}
+.stack-slider .slick-slide {
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    transition: all 1s linear;
+}
+.stack-slider .slick-slide.stacked {
+    -webkit-transform: scale(0.7) translateX(150%) !important;
+    -moz-transform: scale(0.7) translateX(150%) !important;
+    transform: scale(0.7) translateX(150%) !important;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+}
+*/
 
 .news-post:after {
     content: '';
@@ -647,23 +770,14 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
 
 
 /* dropdown menu */
-.dropdown-menu {
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    display: block;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-}
-.dropdown-menu.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-.dropdown.hover:hover > .dropdown-menu {
-    opacity: 1;
-    z-index: 10000;
-    pointer-events: auto;
+.dropdown-toggle:after {
+    width: 13px;
+    height: 7px;
+    border: none !important;
+    background: url('/images/dropdown.svg') center center / contain no-repeat;
+    margin-top: 0.55rem;
+    display: inline-block;
+    float: right;
 }
 
 
