@@ -164,28 +164,30 @@ $this->title = Yii::$app->name;
             </div>
         </div>
         <div class="col-auto">
-            <div class="owl-carousel-stacked row" data-related="#app-slider-description-1">
-                <div class="col-12">
+            <div class="owl-carousel-stacked d-none row" data-related="#app-slider-description-1">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-1.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
-                <div class="col-12">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-2.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
-                <div class="col-12">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-3.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
             </div>
             <hr class="border-gray-800 my-2">
         </div>
+    </div>
+    <div class="row">
         <div class="col-auto offset-xl-6" style="max-width: 360px;">
             <div id="app-slider-description-1" class="owl-carousel owl-theme owl-fade">
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Легко и быстро покупать продукты и накапливать баллы') ?>
                 </h5>
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Создать личный профиль питомца') ?>
                 </h5>
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Создать целую экосистему для питомцев') ?>
                 </h5>
             </div>
@@ -196,7 +198,7 @@ $this->title = Yii::$app->name;
 <div class="container-xxl mt-3 mt-lg-8">
     <div class="row">
         <div class="col-12">
-            <div id="owl-advantages" class="owl-carousel-stacked row owl-loop">
+            <div id="owl-advantages" class="owl-carousel-stacked d-none row owl-loop">
                 <div class="col-12 vw-75 mr-md-3 mr-lg-4 mr-xl-5 bg-white advantage">
                     <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block" onclick="owlGoTo('#owl-advantages', 1, 1000)">
                         <img src="/images/main/next.svg">
@@ -296,34 +298,36 @@ $this->title = Yii::$app->name;
             </div>
         </div>
         <div class="col-auto">
-            <div class="owl-carousel-stacked row" data-related="#app-slider-description-2">
-                <div class="col-12">
+            <div class="owl-carousel-stacked d-none row" data-related="#app-slider-description-2">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-4.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
-                <div class="col-12">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-5.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
-                <div class="col-12">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
                     <img src="/images/main/app-6.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
-                <div class="col-12">
-                    <img src="/images/main/app-6.png" alt="<?= $this->title ?>" class="img-fluid">
+                <div class="col-12 pr-0 pr-sm-1 max-vw-75">
+                    <img src="/images/main/app-7.png" alt="<?= $this->title ?>" class="img-fluid">
                 </div>
             </div>
             <hr class="border-gray-800 my-2">
         </div>
+    </div>
+    <div class="row">
         <div class="col-auto offset-xl-6" style="max-width: 360px;">
             <div id="app-slider-description-2" class="owl-carousel owl-theme owl-fade">
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Покупать товары и получать бонусы') ?>
                 </h5>
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Размещать посты в своей ленте') ?>
                 </h5>
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Приглашать как можно больше друзей') ?>
                 </h5>
-                <h5>
+                <h5 class="text-center">
                     <?= Yii::t('front', 'Покупать подписки и услуги консьержа') ?>
                 </h5>
             </div>

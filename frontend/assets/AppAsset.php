@@ -62,7 +62,7 @@ class AppAsset extends AssetBundle
         // 'js/jquery.marquee.min.js',
         // 'js/headroom.min.js',
         // 'js/jQuery.headroom.js',
-        
+        'js/imagesloaded.pkgd.min.js',
         'js/site.js',
     ];
     public $depends = [

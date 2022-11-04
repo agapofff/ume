@@ -337,68 +337,77 @@ jQuery(document).ready(function ($) {
     
 
     // stacked carousel
-    $('.owl-carousel-stacked').on('initialized.owl.carousel', function(event) {
-        var $owlStacked = event.relatedTarget.$element;
-        setTimeout(function () {
-            $owlStacked
-                .width($owlStacked.find('.owl-item').width())
-                .find('.owl-nav')
-                    .addClass('position-relative row justify-content-center bottom-auto left-auto right-auto mt-3 mx-0')
-                    .width($owlStacked.find('.owl-item').width())
-                .find('.owl-prev, .owl-next')
-                    .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0');
-            $owlStacked.find('.owl-next').removeClass('disabled');
-                    
-            $owlStacked.find('.owl-item').each(function(k, item) {
-                $(this)
-                    .addClass('transition')
-                    .css({
-                        'z-index': k
+
+    
+    $('.owl-carousel-stacked').each(function () {
+        var $owlStacked = $(this);
+        
+        $owlStacked
+            .on('initialized.owl.carousel resized.owl.carousel', function (event) {
+        // console.log('init');
+                // var $owlStacked = event.relatedTarget.$element;
+                setTimeout(function () {
+                    $owlStacked
+                        .width($owlStacked.find('.owl-item').width())
+                        .find('.owl-nav')
+                            .addClass('position-relative row justify-content-center bottom-auto left-auto right-auto mt-3 mx-0')
+                            .width($owlStacked.find('.owl-item').width())
+                        .find('.owl-prev, .owl-next')
+                            .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0');
+                    $owlStacked.find('.owl-next').removeClass('disabled');
+                            
+                    $owlStacked.find('.owl-item').each(function(k, item) {
+                        $(this)
+                            .addClass('transition')
+                            .css({
+                                'z-index': k
+                            });
                     });
+                }, 100, $owlStacked);
+            })
+            .on('change.owl.carousel', function (event) {
+                // var $owlStacked = event.relatedTarget.$element;
+                if (event.item.index > event.property.value) {
+                    $owlStacked.find('.owl-item.active').eq(0).prev().removeClass('stacked');   
+                    $owlStacked.find('.owl-item.active').eq(0).nextAll().removeClass('stacked');   
+                } else if (event.item.index < event.property.value) {
+                    $owlStacked.find('.owl-item.active').eq(0).addClass('stacked');
+                }
+                if (event.property.value == 0) {
+                    $owlStacked.find('.owl-item').removeClass('stacked');   
+                }
+                if ($owlStacked.is('[data-related]')) {
+                    owlGoTo($owlStacked.data('related'), event.property.value, 1000);
+                }
             });
-        }, 300, $owlStacked);
-    });
-    
-    $('.owl-carousel-stacked').addClass('owl-carousel owl-theme');
-    $('.owl-carousel-stacked').owlCarousel({
-        loop: false,
-        // startPosition: 0,
-        margin: 30,
-        nav: true,
-        dots: false,
-        items: 2,
-        autoWidth: true,
-        smartSpeed: 1000,
-        slideBy: 1,
-        center: false,
-        mouseDrag: false,
-        touchDrag: true,
-        pullDrag: false,
-        autoplay: false,
-        rewind: false,
-        // checkVisible: false,
-        // navContainer: '<div class="owl-nav position-relative row justify-content-center m-0"></div>',
-        // navElement: '<button type="button" class="position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0"></button>',
-        navText: [
-            '<img src="/images/prev.svg">',
-            '<img src="/images/next.svg">'
-        ]
-    });
-    
-    $('.owl-carousel-stacked').on('change.owl.carousel', function (event) {
-        var $owlStacked = event.relatedTarget.$element;
-        if (event.item.index > event.property.value) {
-            $owlStacked.find('.owl-item.active').eq(0).prev().removeClass('stacked');   
-            $owlStacked.find('.owl-item.active').eq(0).nextAll().removeClass('stacked');   
-        } else if (event.item.index < event.property.value) {
-            $owlStacked.find('.owl-item.active').eq(0).addClass('stacked');
-        }
-        if (event.property.value == 0) {
-            $owlStacked.find('.owl-item').removeClass('stacked');   
-        }
-        if ($owlStacked.is('[data-related]')) {
-            owlGoTo($owlStacked.data('related'), event.property.value, 1000);
-        }
+        
+        $owlStacked.imagesLoaded(function () {
+            $owlStacked.removeClass('d-none').addClass('owl-carousel owl-theme');
+            $owlStacked.owlCarousel({
+                loop: false,
+                // startPosition: 0,
+                margin: 30,
+                nav: true,
+                dots: false,
+                items: 2,
+                autoWidth: true,
+                smartSpeed: 1000,
+                slideBy: 1,
+                center: false,
+                mouseDrag: false,
+                touchDrag: true,
+                pullDrag: false,
+                autoplay: false,
+                rewind: false,
+                // checkVisible: false,
+                // navContainer: '<div class="owl-nav position-relative row justify-content-center m-0"></div>',
+                // navElement: '<button type="button" class="position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0"></button>',
+                navText: [
+                    '<img src="/images/prev.svg">',
+                    '<img src="/images/next.svg">'
+                ]
+            });
+        });
     });
     
 
