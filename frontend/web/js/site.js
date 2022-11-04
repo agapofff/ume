@@ -344,7 +344,7 @@ jQuery(document).ready(function ($) {
                 .width($owlStacked.find('.owl-item').width())
                 .find('.owl-nav')
                     .addClass('position-relative row justify-content-center bottom-auto left-auto right-auto mt-3 mx-0')
-                    .width($owlStacked.find('.owl-item').width())
+                    // .width($owlStacked.find('.owl-item').width())
                 .find('.owl-prev, .owl-next')
                     .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0');
             $owlStacked.find('.owl-next').removeClass('disabled');
