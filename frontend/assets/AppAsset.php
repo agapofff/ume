@@ -17,7 +17,7 @@ class AppAsset extends AssetBundle
         // 'bootstrap4/bootstrap4-reboot.scss',
         // 'bootstrap4/bootstrap4-grid.scss',
         // 'css/bootstrap4/bootstrap4.scss',
-        'css/bootstrap.css',
+        'css/_bootstrap.css',
         'css/owl.carousel.css',
         'css/owl.theme.default.css',
         'css/bootstrap-select.min.css',

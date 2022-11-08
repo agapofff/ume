@@ -388,18 +388,18 @@ form .text-center > .help-block {
     width: 50px;
 }
 
-.search {
-    width: auto;
-    min-width: 50px;
-    max-width: 200px;
-    padding-left: 0.7em;
-}
-.search-button {
-    position: absolute;
-    top: 50%;
-    right: 0.7em;
-    transform: translateY(-50%);
-}
+/* .search { */
+    /* width: auto; */
+    /* min-width: 50px; */
+    /* max-width: 200px; */
+    /* padding-left: 0.7em; */
+/* } */
+/* .search-button { */
+    /* position: absolute; */
+    /* top: 50%; */
+    /* right: 0.7em; */
+    /* transform: translateY(-50%); */
+/* } */
 
 .main-menu-item:before {
     content: '';
@@ -530,13 +530,37 @@ form .text-center > .help-block {
 }
 #owl-advantages .advantage {
     min-width: 350px;
-    max-width: 850px;
+    max-width: 560px;
 }
 @media (min-width: 768px) {
-    #owl-advantages .owl-nav {
+    #owl-advantages .owl-nav,
+    .app-slider-description .owl-nav {
         display: none;
     }
 }
+.stacked-fade:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    pointer-events: none;
+    z-index: 1;
+    background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+    background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 100%);
+    background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+}
+.app-slider-description div.bg-white {
+    width: 215px;
+}
+@media (max-width: 400px) {
+    .stacked-fade:after {
+        display: none;
+    }
+}
+
 /*
 .stack-slider .slick-prev,
 .stack-slider .slick-next {
@@ -773,11 +797,11 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
 
 /* dropdown menu */
 .dropdown-toggle:after {
-    width: 13px;
-    height: 7px;
+    width: 7px;
+    height: 5px;
     border: none !important;
-    background: url('/images/dropdown.svg') center center / contain no-repeat;
-    margin-top: 0.55rem;
+    background: url(/images/dropdown-small.svg) center center / cover no-repeat;
+    margin: 0.55rem 0 0 0.1rem;
     display: inline-block;
     float: right;
 }

@@ -353,7 +353,8 @@ jQuery(document).ready(function ($) {
                             .addClass('position-relative row justify-content-center bottom-auto left-auto right-auto mt-3 mx-0')
                             .width($owlStacked.find('.owl-item').width())
                         .find('.owl-prev, .owl-next')
-                            .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-2 py-0');
+                            .addClass('position-relative d-inline-block top-auto left-auto right-auto bottom-auto px-1_5 py-0');
+                            
                     $owlStacked.find('.owl-next').removeClass('disabled');
                             
                     $owlStacked.find('.owl-item').each(function(k, item) {
@@ -363,6 +364,8 @@ jQuery(document).ready(function ($) {
                                 'z-index': k
                             });
                     });
+                    
+                    $owlStacked.trigger('to.owl.carousel', [0, 0]);
                 }, 100, $owlStacked);
             })
             .on('change.owl.carousel', function (event) {
@@ -383,6 +386,10 @@ jQuery(document).ready(function ($) {
         
         $owlStacked.imagesLoaded(function () {
             $owlStacked.removeClass('d-none').addClass('owl-carousel owl-theme');
+            
+            var owlStackedItems = $owlStacked.attr('data-items') ? $owlStacked.attr('data-items').split('-') : false,
+                owlStackedLoop = $owlStacked.attr('data-loop') == 'true' ? true : false;
+                
             $owlStacked.owlCarousel({
                 loop: false,
                 // startPosition: 0,

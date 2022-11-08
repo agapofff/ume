@@ -78,11 +78,6 @@
     // меню
     $menuItems = [
         [
-            'label' => Yii::t('front', 'О нас'),
-            'url' => Url::to(['/about']),
-            'class' => '',
-        ],
-        [
             'label' => Yii::t('front', 'Каталог'),
             'url' => Url::to(['/catalog']),
             'class' => '',
@@ -95,6 +90,11 @@
         [
             'label' => Yii::t('front', 'Программа лояльности'),
             'url' => Url::to(['/bonus']),
+            'class' => '',
+        ],
+        [
+            'label' => Yii::t('front', 'О нас'),
+            'url' => Url::to(['/about']),
             'class' => '',
         ],
         [
@@ -322,19 +322,16 @@
     <?php $this->beginBody() ?>
             
         <nav id="nav" class="fixed-top bg-white px-0 py-0 transition">
-            <div id="nav-container" class="container-xxl pt-1_5">
+            <div id="nav-container" class="container-xl pt-1_5">
                 <div class="row justify-content-between align-items-center w-100 flex-nowrap no-gutters">
-                    <div id="logo" class="col-auto pr-0">
+                    <div id="logo" class="col-auto pr-0 pb-0_25">
                         <a href="<?= Url::home(true) ?><?= Yii::$app->language ?>">
-                            <?= Html::img('/images/logo/dark.svg', [
-                                    'class' => 'light',
-                                ])
-                            ?>
+                            <img src="/images/logo/dark.svg" alt="<?= Yii::$app->name ?>">
                         </a>
                     </div>
                     <div class="col-auto pl-0">
                         <div class="row align-items-center justify-content-end">
-                            <div id="menu-desktop" class="col-auto d-none d-xl-block">
+                            <div id="menu-desktop" class="col-auto d-none d-lg-block">
                                 <div class="row align-items-center flex-nowrap no-gutters">
                             <?php
                                 foreach ($menuItems as $menuItem) {
@@ -344,7 +341,7 @@
                                     }
                             ?>
                                     <div class="col-auto">
-                                        <a href="<?= $menuItem['url'] ?>" class="btn btn-link px-0_5 px-xxl-1_5 text-uppercase text-gray-700 text-decoration-<?= $activeMenu ? 'underline' : 'none' ?> <?= $menuItem['class'] ?>">
+                                        <a href="<?= $menuItem['url'] ?>" class="btn btn-link px-0_5 px-xl-1 text-uppercase text-secondary font-weight-bold text-decoration-<?= $activeMenu ? 'underline' : 'none' ?> <?= $menuItem['class'] ?>">
                                             <?= $menuItem['label'] ?>
                                         </a>
                                     </div>
@@ -353,30 +350,8 @@
                             ?>
                                 </div>
                             </div>
-                            <div id="search-form-container" class="col pl-0 d-none d-xl-block">
-                                <form action="<?= Url::to(['/search']) ?>" class="search-form position-relative">
-                                    <input type="text" class="search form-control rounded-pill bg-gray-200 border-gray-200" name="search">
-                                    <button type="submit" class="search-button btn btn-link p-0 text-decoration-none">
-                                        <img src="/images/search.svg">
-                                    </button>
-                                </form>
-                            </div>
-                            <div id="nav-cart-icon" class="col-auto">
-                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart-" aria-label="<?= Yii::t('front', 'Корзина') ?>">
-                                    <?= Html::img('/images/cart_dark.svg', [
-                                            'class' => 'light',
-                                        ])
-                                    ?>
-                                    <?= CartInformer::widget([
-                                            'htmlTag' => 'div',
-                                            'cssClass' => 'nav-cart-informer position-absolute top-0 right-0 d-flex align-items-center justify-content-center rounded-pill bg-orange text-white p-0',
-                                            'text' => '{c}'
-                                        ]);
-                                    ?>
-                                </button>
-                            </div>
-                            <div id="nav-lang-select" class="col-auto nav-lang-select d-none d-xl-block dropdown">
-                                <a href="#" class="dropdown-toggle text-uppercase text-decoration-none light" data-toggle="dropdown">
+                            <div id="nav-lang-select" class="col-auto pl-0 pl-xl-1_5 nav-lang-select dropdown d-none d-sm-block">
+                                <a href="#" class="dropdown-toggle text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="dropdown">
                                     <?= Yii::$app->language ?>
                                 </a>
                                 <div class="dropdown-menu text-center">
@@ -385,13 +360,39 @@
                                         foreach ($langs as $key => $lang) {
                                             if ($lang['label'] !== Yii::$app->language) {
                                                 echo Html::a($lang['label'], $lang['url'], [
-                                                    'class' => 'd-block text-uppercase text-decoration-none px-0_5 light'
+                                                    'class' => 'd-block text-uppercase text-decoration-none px-0_5 text-secondary font-weight-bold'
                                                 ]);
                                             }
                                         }
                                     }
                                 ?>
                                 </div>
+                            </div>
+                            <div id="search-form-container" class="col-auto pl-0 pl-xl-0_5">
+                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0" data-toggle="modal" data-target="#search-modal" aria-label="<?= Yii::t('front', 'Поиск') ?>">
+                                    <img src="/images/search.svg">
+                                </button>
+                            </div>
+                            <div id="nav-cart-icon" class="col-auto pl-0 pl-xl-0_5">
+                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart-" aria-label="<?= Yii::t('front', 'Корзина') ?>">
+                                    <img src="/images/cart_dark.svg">
+                                    <?= CartInformer::widget([
+                                            'htmlTag' => 'div',
+                                            'cssClass' => 'nav-cart-informer position-absolute top-0 right-0 d-flex align-items-center justify-content-center rounded-pill bg-orange text-white p-0',
+                                            'text' => '{c}'
+                                        ]);
+                                    ?>
+                                </button>
+                            </div>
+                            <div id="nav-user-icon" class="col-auto pl-0 pl-xl-0_5">
+                                <a href="<?= Yii::$app->user->isGuest ? Url::to(['/login']) : Url::to(['/account']) ?>" class="transition">
+                                    <img src="/images/guest_dark.png">
+                                </a>
+                            </div>
+                            <div class="col-auto d-lg-none pl-0">
+                                <button id="nav-menu-button" class="btn btn-link text-decoration-none rounded-0 transition p-0" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
+                                    <img src="/images/btn_menu_dark.svg">
+                                </button>
                             </div>
                             <!--
                             <div id="nav-wishlist-icon" class="ml-auto mr-2 ml-lg-3 mr-lg-0 ml-xl-4 ml-xxl-5 p-0_25">
@@ -409,22 +410,6 @@
                                 </a>
                             </div>
                             -->
-                            <div id="nav-user-icon" class="col-auto pl-0_5">
-                                <a href="<?= Yii::$app->user->isGuest ? Url::to(['/login']) : Url::to(['/account']) ?>" class="transition">
-                                    <?= Html::img('/images/guest_dark.png', [
-                                            'class' => 'light',
-                                        ])
-                                    ?>
-                                </a>
-                            </div>
-                            <div class="col-auto d-xl-none pl-0_5">
-                                <button id="nav-menu-button" class="btn btn-link text-decoration-none rounded-0 transition p-0" type="button" data-toggle="modal" data-target="#menu" aria-label="<?= Yii::t('front', 'Меню') ?>">
-                                    <?= Html::img('/images/btn_menu_dark.svg', [
-                                            'class' => 'light',
-                                        ])
-                                    ?>
-                                </button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -433,7 +418,7 @@
             </div>
         </nav>
 
-        <div id="pagecontent" class="mt-8">
+        <div id="pagecontent" class="mt-7">
 
             <?php 
                 // echo Breadcrumbs::widget([
@@ -470,8 +455,8 @@
         </div>
 
 
-        <footer class="bg-gray-900 text-white pt-4 pb-2 mt-5">
-            <div class="container-xxl">
+        <footer class="bg-gray-900 text-white pt-4 pb-1 mt-5">
+            <div class="container-xl">
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-auto mb-1">
                         <div class="mb-2">
@@ -480,9 +465,9 @@
                                 ])
                             ?>
                         </div>
-                        <h5 class="mb-2 text-uppercase font-weight-light">
+                        <p class="h6 text-uppercase font-weight-light">
                             <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
-                        </h5>
+                        </p>
                     </div>
                     <div class="col-12 col-md-auto col-lg-7 col-xl-6 col-xxl-5">
                         <div class="row justify-content-between">
@@ -490,7 +475,7 @@
                         <?php
                             foreach ($footerMenuItems as $k => $menuItem) {   
                         ?>
-                                <p class="h5 mb-1_5">
+                                <p class="mb-1">
                                     <a href="<?= $menuItem['url'] ?>" class="text-decoration-none font-weight-light text-nowrap text-white">
                                         <?= $menuItem['label'] ?>
                                     </a>
@@ -500,7 +485,7 @@
                                 if ($k == 2) {
                         ?>
                                     </div>
-                                    <div class="col-auto pr-3 pr-lg-6">
+                                    <div class="col-auto pr-3 pr-lg-4">
                         <?php
                                 }
                             }
@@ -515,12 +500,12 @@
                         <?= Html::a(Yii::t('front', 'Политика конфиденциальности'), [
                                 '/privacy-policy'
                             ], [
-                                'class' => 'h5 text-decoration-none text-gray-400 font-weight-light m-0'
+                                'class' => 'text-decoration-none text-gray-400 font-weight-light m-0'
                             ])
                         ?>
                     </div>
                     <div class="col-auto mb-1">
-                        <span class="h5 text-gray-400 font-weight-light m-0">
+                        <span class="text-gray-400 font-weight-light m-0">
                             © Copyright ume.tech <?= date('Y') ?>
                         </span>
                     </div>
@@ -536,7 +521,7 @@
                         ?>
                     </div>
                     <div class="col-auto">
-                        <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="h5 text-gray-400 font-weight-light text-nowrap text-decoration-none m-0">
+                        <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-gray-400 font-weight-light text-nowrap text-decoration-none m-0">
                             <?= Yii::$app->params['supportEmail'] ?>
                         </a>
                     </div>
@@ -550,7 +535,7 @@
             <div class="modal-dialog position-absolute top-0 right-0 left-0 vw-100 mt-6 mx-0 border-0">
                 <div class="modal-content m-0 border-0 vw-100 min-vh-100 bg-gray-900 rounded-0">
                     <div class="modal-body p-0 rounded-0">
-                        <div class="container-lg container-xl container-xxl">
+                        <div class="container-lg container-xl container-xl">
                             <div class="d-sm-none mt-2">
                                 <?php
                                     if ($langs) {
@@ -661,13 +646,7 @@
         <div class="modal side p-0 fade" id="menu" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 bottom-0 left-0 border-0 m-0">
                 <div class="modal-content m-0 border-0 vh-100 bg-secondary text-white rounded-0">
-                    <div class="modal-header align-items-center flex-nowrap pl-1_5 pr-0_5 py-1 border-0">
-                        <form action="<?= Url::to(['/search']) ?>" class="search-form position-relative pl-0_5">
-                            <input type="text" class="search form-control rounded-pill bg-gray-200 border-gray-200" name="search">
-                            <button type="submit" class="search-button btn btn-link p-0 text-decoration-none">
-                                <img src="/images/search.svg">
-                            </button>
-                        </form>
+                    <div class="modal-header align-items-center justify-content-end flex-nowrap pl-1_5 pr-0_5 py-1 border-0">
                         <button type="button" class="btn btn-link p-0 float-none" data-dismiss="modal" aria-label="<?= Yii::t('front', 'Закрыть') ?>">
                             <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="white" stroke-width="2"/>
@@ -712,7 +691,7 @@
                         </ul>
                     </div>
                     
-                    <div class="modal-footer justify-content-start d-md-none">
+                    <div class="modal-footer justify-content-start d-sm-none">
                 <?php
                     if ($langs) {
                         foreach ($langs as $key => $lang) {

@@ -13,12 +13,12 @@ $name = json_decode($post->name)->{Yii::$app->language};
         <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('500x500') ?>" alt="<?= $image->alt ?: $name ?>" class="card-img transition">
     </div>
     <div class="card-img-overlay p-1_5">
-        <p class="blog-post-date mb-2 opacity-50 small">
+        <p class="h6 blog-post-date mb-2 opacity-50 small">
             <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
         </p>
-        <h5 class="font-weight-500 mb-2">
+        <p class="h5 font-weight-500 mb-2">
             <?= $name ?>
-        </h5>
+        </p>
         <p class="mb-0 lead text-white d-sm-none d-md-block d-lg-none d-xl-block">
             <?= json_decode($post->description)->{Yii::$app->language} ?>
         </p>
