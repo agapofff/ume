@@ -217,8 +217,8 @@ $this->title = Yii::$app->name;
     <div class="row">
         <div class="col-12 overflow-hidden">
             <div id="owl-advantages" class="owl-carousel-stacked d-none row">
-                <div class="col-auto mr-2 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
+                <div class="col-auto mvmr-2 bg-white advantage">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="text-uppercase font-weight-light mb-1 mb-lg-2">
@@ -234,7 +234,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-auto mr-2 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="text-uppercase font-weight-light mb-1 mb-lg-2">
@@ -250,7 +250,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-auto mr-2 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="text-uppercase font-weight-light mb-1 mb-lg-2">
@@ -266,7 +266,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
                 <div class="col-auto mr-2 mr-lg-4 bg-white advantage">
-                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right d-none d-md-block mt-0_25 pr-0" onclick="owlGoTo('#owl-advantages', 0, 300)">
+                    <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="owlGoTo('#owl-advantages', 0, 300)">
                         <img src="/images/main/next.svg">
                     </button>
                     <h2 class="text-uppercase font-weight-light mb-1 mb-lg-2">
