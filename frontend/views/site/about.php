@@ -9,7 +9,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
 <div id="about">
 
-    <div id="main" class="container-lg container-xl container-xxl mb-4">
+    <div id="main" class="container-xl mb-4">
 
         <h1 class="mb-2 text-uppercase font-weight-light wow fadeIn" data-wow-duration="0.5s">
             <?= Yii::t('front', 'Преимущества UME') ?>
