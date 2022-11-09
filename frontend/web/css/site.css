@@ -655,6 +655,11 @@ form .text-center > .help-block {
     transform: scale(1.2);
 }
 
+.news-post-content img {
+    max-width: 100%;
+    height: auto;
+}
+
 #action-description ul,
 ul.check-circle {
     padding-left: 0;
