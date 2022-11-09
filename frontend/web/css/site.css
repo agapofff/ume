@@ -666,6 +666,7 @@ form .text-center > .help-block {
 @media (min-width: 1200px) {
     .news-post-content img.wide {
         margin-left: -5rem !important;
+        width: calc(100% + 5rem) !important;
     }
 }
 
