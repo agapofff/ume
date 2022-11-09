@@ -667,6 +667,7 @@ form .text-center > .help-block {
     .news-post-content img.wide {
         margin-left: -5rem !important;
         width: calc(100% + 5rem) !important;
+        max-width: calc(100% + 5rem) !important;
     }
 }
 
