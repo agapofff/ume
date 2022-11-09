@@ -528,15 +528,17 @@ form .text-center > .help-block {
     left: 13em;
     right: auto;
 }
+#owl-advantages .owl-nav,
 #owl-advantages .advantage {
     min-width: 350px;
-    max-width: 560px;
+    width: 560px;
+    max-width: 100vw;
 }
 @media (min-width: 768px) {
     #owl-advantages .owl-nav,
-    .app-slider-description .owl-nav {
-        display: none;
-    }
+}
+.app-slider-description .owl-nav {
+    display: none;
 }
 .stacked-fade:after {
     content: '';
