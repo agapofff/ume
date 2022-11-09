@@ -30,7 +30,7 @@ $this->title = $postName;
                     <p class="blog-post-date mb-1 opacity-50">
                         <?= Yii::$app->formatter->asDatetime($post->date_published, 'php:d.m.Y') ?>
                     </p>
-                    <h1 class="h2 mb-3 text-uppercase font-weight-light">
+                    <h1 class="h2 mb-2 text-uppercase font-weight-light">
                         <?= $postName ?>
                     </h1>
                     <h4 class="font-weight-bolder mb-3">
