@@ -9,7 +9,7 @@ $this->title = $postName;
 
 ?>
 
-<div class="container-lg container-xl container-xxl">
+<div class="container-xl">
     <div class="row">
         <div class="col-md-10 col-lg-8">
             <div class="row">
@@ -53,7 +53,7 @@ $this->title = $postName;
     <?php
         }
     ?>
-            <div id="post-content" class="px-xl-5">
+            <div class="post-content px-xl-5">
                 <?= str_replace('<img ', '<img loading="lazy" ', json_decode($post->text)->{Yii::$app->language}) ?>
             </div>
         </div>
