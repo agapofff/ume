@@ -25,12 +25,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="container-xl">
+    <h1 class="text-uppercase mb-3 font-weight-light">
+        <?= $this->title ?>
+    </h1>
     <div class="row justify-content-center">
         <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8">
-        
-            <h1 class="h2 text-uppercase mb-3 font-weight-light">
-                <?= $this->title ?>
-            </h1>
         
             <?php 
                 $form = ActiveForm::begin([

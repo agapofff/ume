@@ -24,11 +24,12 @@
 ?>
 
 <div class="container-xl">    
+    <h1 class="text-uppercase mb-3 font-weight-light">
+        <?= $this->title ?>
+    </h1>
+    
     <div class="row justify-content-center">
         <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8">
-            <h1 class="h2 text-uppercase mb-3 font-weight-light">
-                <?= $this->title ?>
-            </h1>
 
             <?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
 
