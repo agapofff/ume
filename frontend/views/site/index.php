@@ -53,7 +53,7 @@ $this->title = Yii::$app->name;
         </div>
     </div>
     <div class="row mt-1 mt-lg-3">
-        <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+        <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
             <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
                 <div class="row no-gutters h-50">
                     <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
@@ -71,7 +71,7 @@ $this->title = Yii::$app->name;
                 <img src="/images/main/wet-food.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/accessories']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+        <a href="<?= Url::to(['/catalog/accessories']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
             <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
                 <div class="row no-gutters h-50">
                     <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
@@ -89,7 +89,7 @@ $this->title = Yii::$app->name;
                 <img src="/images/main/accessories.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/dry-food']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+        <a href="<?= Url::to(['/catalog/dry-food']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
             <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
                 <div class="row no-gutters h-50">
                     <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
@@ -107,7 +107,7 @@ $this->title = Yii::$app->name;
                 <img src="/images/main/dry-food.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/treats']) ?>" class="col-xl-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+        <a href="<?= Url::to(['/catalog/treats']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
             <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
                 <div class="row no-gutters h-50">
                     <div class="col-sm-8 col-md-6 col-lg-6 col-xl-8 col-xxl-7">

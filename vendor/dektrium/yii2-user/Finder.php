@@ -127,6 +127,11 @@ class Finder extends BaseObject
     {
         return $this->findUser(['email' => $email])->one();
     }
+    
+    public function findUserByPhone($phone)
+    {
+        return $this->findUser(['phone' => $phone])->one();
+    }
 
     /**
      * Finds a user by the given username or email.

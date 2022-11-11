@@ -369,9 +369,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                     </div>
                     <div class="modal-footer justify-content-center">
-                        <button id="sms-code-button" type="button" class="btn btn-outline-secondary btn-lg rounded-pill">
-                            <?= Yii::t('front', 'Отправить СМС-код') ?>
-                        </button>
+                        <button id="sms-code-button" type="button" class="btn btn-link text-secondary">&nbsp;</button>
                     </div>
                 </div>
             </div>
@@ -431,16 +429,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 if (time === 0) {
                     $('#sms-code-button')
                         .removeAttr('disabled')
-                        .text('" . Yii::t('front', 'Отправить СМС-код') . "');
+                        .text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . "');
                     time = 60;
                     clearInterval(timer);
                     return false;
                 } else if (time === 60) {
                     $('#sms-code-button')
                         .attr('disabled', true)
-                        .text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                        .text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . ': ' . Yii::t('front', 'подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
                 } else {
-                    $('#sms-code-button').text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                    $('#sms-code-button').text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . ': ' . Yii::t('front', 'подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
                 }
                 time = time - 1;
             }, 1000);

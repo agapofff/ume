@@ -24,13 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="container-lg container-xl container-xxl">
-
+<div class="container-xl">
     <div class="row justify-content-center">
-
-        <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
+        <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8">
         
-            <h1 class="h2 text-center text-uppercase mb-5">
+            <h1 class="h2 text-uppercase mb-3 font-weight-light">
                 <?= $this->title ?>
             </h1>
         
@@ -66,8 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
 
-                <div class="row justify-content-center mt-2 mt-md-4 mb-3">
-                    <div class="col-auto">
+                <div class="row justify-content-end mt-2 mt-md-4 mb-3">
+                    <div class="col-md-9">
                         <?= Html::submitButton(Html::tag('span') .Yii::t('front', 'Сохранить'),
                             [
                                 'class' => 'btn btn-lg btn-secondary rounded-pill',

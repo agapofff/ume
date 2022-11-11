@@ -23,13 +23,10 @@ use yii\web\View;
 $this->title = Yii::t('front', 'Регистрация');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="container-lg container-xl container-xxl">
-
+<div class="container-xl">
     <div class="row justify-content-center">
-
-        <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8 col-xxl-7">
-        
-            <h1 class="h2 text-center text-uppercase mb-5">
+        <div class="col-xs-12 col-md-10 col-lg-9 col-xl-8">
+            <h1 class="h2 text-uppercase mb-3 font-weight-light">
                 <?= $this->title ?>
             </h1>
 
@@ -142,29 +139,34 @@ $this->params['breadcrumbs'][] = $this->title;
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
                 
-                <div class="row justify-content-center mt-2 mt-md-4 mb-3">
-                    <div class="col-auto mb-1">
-                        <?= Html::submitButton(Yii::t('front', 'Регистрация'), [
-                                'class' => 'btn btn-lg btn-secondary rounded-pill',
-                                'tabindex' => '6',
-                                'title' => Yii::t('front', 'Регистрация')
-                            ]) 
-                        ?>
-                    </div>
-                    <div class="col-auto mb-1">
-                        <?= Html::a(Yii::t('front', 'Авторизация'), ['/login'], [
-                                'class' => 'btn btn-lg btn-outline-secondary rounded-pill',
-                            ])
-                        ?>
+                <div class="row justify-content-end mt-1 mt-lg-2">
+                    <div class="col-md-9">
+                        <div class="row justify-content-center justify-content-sm-start">
+                            <div class="col-auto mb-1">
+                                <?= Html::submitButton(Yii::t('front', 'Регистрация'), [
+                                        'class' => 'btn btn-lg btn-secondary rounded-pill',
+                                        'tabindex' => '6',
+                                        'title' => Yii::t('front', 'Регистрация')
+                                    ]) 
+                                ?>
+                            </div>
+                            <div class="col-auto mb-1">
+                                <?= Html::a(Yii::t('front', 'Авторизация'), ['/login'], [
+                                        'class' => 'btn btn-lg btn-outline-secondary rounded-pill',
+                                    ])
+                                ?>
+                            </div>
+                        </div>
+                        <p>
+                            <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
+                                    '/resend'
+                                ])
+                            ?>
+                        </p> 
                     </div>
                 </div>
 
-                <p class="text-center">
-                    <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
-                            '/resend'
-                        ])
-                    ?>
-                </p>    
+   
                 
                 <?= $form
                         ->field($model, 'username', [
@@ -224,9 +226,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                             </div>
                             <div class="modal-footer justify-content-center">
-                                <button id="sms-code-button" type="button" class="btn btn-outline-secondary btn-lg rounded-pill">
-                                    <?= Yii::t('front', 'Отправить СМС-код') ?>
-                                </button>
+                                <button id="sms-code-button" type="button" class="btn btn-link text-secondary">&nbsp;</button>
                             </div>
                         </div>
                     </div>
@@ -297,16 +297,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 if (time === 0) {
                     $('#sms-code-button')
                         .removeAttr('disabled')
-                        .text('" . Yii::t('front', 'Отправить СМС-код') . "');
+                        .text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . "');
                     time = 60;
                     clearInterval(timer);
                     return false;
                 } else if (time === 60) {
                     $('#sms-code-button')
                         .attr('disabled', true)
-                        .text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                        .text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . ': ' . Yii::t('front', 'подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
                 } else {
-                    $('#sms-code-button').text('" . Yii::t('front', 'Подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
+                    $('#sms-code-button').text('" . Yii::t('front', 'Отправить СМС-код ещё раз') . ': ' . Yii::t('front', 'подождите') . " ' + time + ' " . Yii::t('front', 'сек.') . "');
                 }
                 time = time - 1;
             }, 1000);

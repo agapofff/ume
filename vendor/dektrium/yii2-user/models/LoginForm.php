@@ -35,7 +35,9 @@ class LoginForm extends Model
     /** @var string User's plain password */
     public $password;
     
-
+    public $type = 'email';
+    public $phone;
+    public $sms_code;
 
     /** @var string Whether to remember the user */
     public $rememberMe = false;
@@ -80,6 +82,8 @@ class LoginForm extends Model
             'login'      => Yii::t('front', 'Логин'),
             'password'   => Yii::t('front', 'Пароль'),
             'rememberMe' => Yii::t('front', 'Запомнить меня'),
+            'phone' => Yii::t('front', 'Телефон'),
+            'sms_code' => Yii::t('front', 'СМС-код'),
         ];
     }
 
@@ -87,40 +91,38 @@ class LoginForm extends Model
     public function rules()
     {
         $rules = [
-            'loginTrim' => ['login', 'trim'],
-            'requiredFields' => [['login'], 'required'],
-            'confirmationValidate' => [
-                'login',
-                function ($attribute) {
-
-                    if ($this->user !== null) {
-                        $confirmationRequired = $this->module->enableConfirmation
-                            && !$this->module->enableUnconfirmedLogin;
+            [['login', 'password', 'phone', 'sms_code', 'type'], 'safe'],
+            [['login', 'password', 'phone', 'sms_code', 'type'], 'trim'],
+            [['rememberMe'], 'boolean'],
+            
+            [['login', 'password'], 'required', 'when' => function ($model) {
+                return $model->type == 'email';
+            }],
+            
+            [['phone'], 'required', 'when' => function ($model) {
+                return $model->type == 'phone';
+            }],
+            
+            [['login', 'password', 'phone', 'sms_code'], function ($attribute) {
+                if ($this->user !== null) {
+                    if ($this->type == 'email') {
+                        $confirmationRequired = $this->module->enableConfirmation && !$this->module->enableUnconfirmedLogin;
                         if ($confirmationRequired && !$this->user->getIsConfirmed()) {
                             $this->addError($attribute, Yii::t('front', 'Вам необходимо подтвердить свой e-mail адрес'));
                         }
-                        if ($this->user->getIsBlocked()) {
-                            $this->addError($attribute, Yii::t('front', 'Ваш аккаунт был заблокирован'));
-                        }
+                    }
+                    if ($this->user->getIsBlocked()) {
+                        $this->addError($attribute, Yii::t('front', 'Ваш аккаунт был заблокирован'));
                     }
                 }
-            ],
-            'rememberMe' => ['rememberMe', 'boolean'],
-        ];
-
-        if (!$this->module->debug) {
-            $rules = array_merge($rules, [
-                'requiredFields' => [['login', 'password'], 'required'],
-                'passwordValidate' => [
-                    'password',
-                    function ($attribute) {
-                        if ($this->user === null || !Password::validate($this->password, $this->user->password_hash)) {
-                            $this->addError($attribute, Yii::t('front', 'Неверный логин или пароль'));
-                        }
+                if ($this->user === null) {
+                    if (!Password::validate($this->password, $this->user->password_hash)) {
+                        $this->addError($attribute, Yii::t('front', 'Неверный пароль'));
                     }
-                ]
-            ]);
-        }
+                    $this->addError($attribute, Yii::t('front', 'Неверный логин или пароль'));
+                }
+            }],
+        ];
 
         return $rules;
     }
@@ -168,7 +170,7 @@ class LoginForm extends Model
     public function beforeValidate()
     {
         if (parent::beforeValidate()) {
-            $this->user = $this->finder->findUserByUsernameOrEmail(trim($this->login));
+            $this->user = $this->phone ? $this->finder->findUserByPhone(trim($this->phone)) : $this->finder->findUserByUsernameOrEmail(trim($this->login));
 
             return true;
         } else {

@@ -1,4 +1,10 @@
 <?php
+use dektrium\user\models\User;
+use dektrium\user\controllers\RegistrationController;
+use dektrium\user\controllers\SecurityController;
+use backend\models\Bonus;
+use yii\helpers\Url;
+
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
     require __DIR__ . '/../../common/config/params-local.php',
@@ -290,6 +296,43 @@ return [
         }
         
     },
+    
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'admins' => ['admin'],
+            'enableGeneratingPassword' => false,
+            'controllerMap' => [
+                'registration' => [
+                    'class' => RegistrationController::className(),
+                    'on ' . RegistrationController::EVENT_AFTER_CONFIRM => function ($e) {
+                        if (Yii::$app->user->identity->referal) {
+                            if ($user = User::findOne(base64_decode(Yii::$app->user->identity->referal))) {
+                                $addBonus = new Bonus();
+                                $addBonus->attributes = [
+                                    'active' => 1,
+                                    'user_id' => $user->id,
+                                    'type' => 1,
+                                    'amount' => 5,
+                                    'reason' => 0,
+                                    'description' => (string) Yii::$app->user->id,
+                                    'created_at' => date('Y-m-d H:i:s'),
+                                    'updated_at' => date('Y-m-d H:i:s'),
+                                ];
+                                $addBonus->save();
+                            }
+                        }
+                    },
+                ],
+                'security' => [
+                    'class' => SecurityController::className(),
+                    'on ' . SecurityController::EVENT_AFTER_LOGIN => function ($e) {
+                        Yii::$app->response->redirect(Url::to(['/account']))->send();
+                    }
+                ],
+            ],
+        ],     
+    ],
     
     'components' => [
     

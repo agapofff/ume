@@ -30,7 +30,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
 ?>
 
 <div class="container-lg container-xl container-xxl">
-    <h1 class="text-uppercase mb-2 wow fadeIn" data-wow-duration="0.5s">
+    <h1 class="text-uppercase font-weight-light mb-2 wow fadeIn" data-wow-duration="0.5s">
         <?= Yii::t('front', 'Личный кабинет') ?>
     </h1>
     
