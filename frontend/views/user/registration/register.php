@@ -157,7 +157,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ?>
                             </div>
                         </div>
-                        <p>
+                        <p class="d-none">
                             <?= Html::a(Yii::t('front', 'Не получили письмо с подтверждением регистрации?'), [
                                     '/resend'
                                 ])
