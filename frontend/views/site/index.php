@@ -142,15 +142,21 @@ $this->title = Yii::$app->name;
                         ])
                     ?>
                     <h2 class="text-uppercase font-weight-light mb-1 mb-lg-1_5">
-                        <?= Yii::t('front', 'Скачайте приложение UME') ?>
+                        <?= Yii::t('front', 'Приложение UME') ?>
                     </h2>
                     <div class="row">
                         <div class="col-md-11 col-lg-10 col-xl-9 mb-2 mb-lg-4">
-                            <h6 class="font-weight-bolder">
-                                <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME и специализированные услуги для вашего питомца.') ?>
-                            </h6>
+                            <h5 class="font-weight-bolder mb-1_5">
+                                <?= Yii::t('front', 'Скоро в App Store и Google Play') ?>
+                            </h5>
+                            <p class="font-weight-bolder mb-1_5">
+                                <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME, и специализированные услуги для вашего питомца.') ?>
+                            </p>
+                            <p class="font-weight-bolder mb-1_5">
+                                <?= Yii::t('front', 'Официальный релиз － февраль 2023г') ?>
+                            </p>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 d-none">
                             <div class="row">
                                 <div class="col-6 col-md-5 col-lg-4 col-xl-3 pr-xl-0 mb-0_5">
                                     <a href="<?= Yii::$app->params['apps']['google'] ?>" target="_blank" class="text-decoration-none">
@@ -217,7 +223,7 @@ $this->title = Yii::$app->name;
     <div class="row">
         <div class="col-12 overflow-hidden">
             <div id="owl-advantages" class="owl-carousel-stacked d-none row">
-                <div class="col-auto mvmr-2 bg-white advantage">
+                <div class="col-auto mr-2 bg-white advantage">
                     <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="$('#owl-advantages').trigger('next.owl.carousel');">
                         <img src="/images/main/next.svg">
                     </button>
@@ -265,7 +271,7 @@ $this->title = Yii::$app->name;
                         </div>
                     </div>
                 </div>
-                <div class="col-auto mr-2 mr-lg-4 bg-white advantage">
+                <div class="col-auto mr-2 bg-white advantage">
                     <button type="button" class="btn btn-link text-decoration-none owl-next float-right mt-0_25 pr-0" onclick="owlGoTo('#owl-advantages', 0, 300)">
                         <img src="/images/main/next.svg">
                     </button>
