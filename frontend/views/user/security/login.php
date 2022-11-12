@@ -49,7 +49,7 @@
                     <?= $form
                             ->field($model, 'login', [
                                 'inputOptions' => [
-                                    'autofocus' => 'autofocus',
+                                    // 'autofocus' => 'autofocus',
                                     'class' => 'form-control form-control-lg',
                                     'autocomplete' => rand(),
                                     'tabindex' => '1',
@@ -169,7 +169,7 @@
                                 <?= $form
                                         ->field($model, 'sms_code', [
                                             'inputOptions' => [
-                                                'autofocus' => 'autofocus',
+                                                // 'autofocus' => 'autofocus',
                                                 'class' => 'form-control form-control-lg text-center',
                                                 'tabindex' => '7',
                                                 'autocomplete' => rand(),
