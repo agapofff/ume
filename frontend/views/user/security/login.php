@@ -224,10 +224,11 @@
         switchLoginForm = function (byPhone = 0) {
             if (byPhone) {
                 // $('.login-by-email').hide();
-                $('#login-form-login, #login-form-password').val('');
+                
                 $('.login-by-phone').show();
                 $('#login-form-type').val('phone');
                 $('#login-form-phone').focus();
+                $('#login-form-login, #login-form-password').val('');
             } else {
                 $('.login-by-email').show();
                 // $('.login-by-phone').hide(); 
