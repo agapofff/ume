@@ -119,6 +119,15 @@ use kartik\alert\AlertBlock;
                 ])
         ?>
         
+        
+            <?= Gallery::widget([
+                    'model' => $model,
+                    'previewSize' => '300x300',
+                    'fileInputPluginOptions' => [
+                        'showPreview' => false,
+                    ]
+                ]);
+            ?>
 
 
         <br>
@@ -182,17 +191,8 @@ use kartik\alert\AlertBlock;
 
 
         
-        <div class="hidden">
-            <?php
-				echo Gallery::widget([
-                    'model' => $model,
-                    'previewSize' => '300x300',
-                    'fileInputPluginOptions' => [
-                        'showPreview' => false,
-                    ]
-                ]);
-            ?>
-		</div>
+
+
         
         
         <div class="hidden">
