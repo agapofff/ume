@@ -236,7 +236,7 @@
                 $('.login-by-email').show();
                 $('#login-form-type').val('email');
                 $('#login-form-login, #login-form-password').removeAttr('disabled');
-                $('#login-form-phone').attr('disabled');
+                $('#login-form-phone').attr('disabled', 'disabled');
                 $('#login-form-login').focus();
             }
         }
