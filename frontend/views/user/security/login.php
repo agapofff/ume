@@ -172,8 +172,8 @@
                                             'inputOptions' => [
                                                 // 'autofocus' => 'autofocus',
                                                 'class' => 'form-control form-control-lg text-center',
-                                                'tabindex' => '7',
                                                 'autocomplete' => rand(),
+                                                'maxlength' => 4,
                                                 'style' => '
                                                     font-family: monospace;
                                                     font-size: 250%;
@@ -245,8 +245,7 @@
         
         $('#login-form')
             .on('beforeSubmit', function (event) {
-                event.preventDefault();               
-console.log('submit');                
+                event.preventDefault();                  
                 if ($('#login-form-type').val() == 'phone' && !$('#login-form-sms_code').val()) {
                     $('#sms-code-modal').modal('show');
                     sendSmsCode();
@@ -260,11 +259,14 @@ console.log('submit');
         
         sendSmsCode = function () {
             if (time === 60) {
-                var sendCode = $.get('/" . Yii::$app->language . "/sms/get-code', {
+                loading();
+                $.get('/" . Yii::$app->language . "/sms/get-code', {
                     phone: $('#login-form-phone').val()
+                }, function () {
+                    setTimer();
+                    loading(false);
+                    $('#login-form-sms_code').val('').focus();
                 });
-                $('#login-form-sms_code').val('').focus();
-                setTimer();
             }
             return false;
         }

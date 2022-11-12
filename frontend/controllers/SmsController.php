@@ -33,8 +33,8 @@ class SmsController extends Controller
         return $smsCode;
     }
     
-    public function actionCheckCode($code)
+    public function actionCheckCode(int $code)
     {
-        return $code == Yii::$app->session->get('smsCode');
+        return $code === Yii::$app->session->get('smsCode') ? 1 : 0;
     }
 }

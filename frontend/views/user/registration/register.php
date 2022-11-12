@@ -199,7 +199,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'inputOptions' => [
                                                 'autofocus' => 'autofocus',
                                                 'class' => 'form-control form-control-lg text-center',
-                                                'tabindex' => '7',
+                                                'maxlength' => 4,
                                                 'autocomplete' => rand(),
                                                 'style' => '
                                                     font-family: monospace;
@@ -273,8 +273,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     sendSmsCode();
                     return false;
                 }
-                
-                
             });
             
         $(document).on('click', '#sms-code-button', function () {
@@ -283,11 +281,14 @@ $this->params['breadcrumbs'][] = $this->title;
         
         sendSmsCode = function () {
             if (time === 60) {
-                var sendCode = $.get('/" . Yii::$app->language . "/sms/get-code', {
+                loading();
+                $.get('/" . Yii::$app->language . "/sms/get-code', {
                     phone: $('#register-form-phone').val()
+                }, function () {
+                    setTimer();
+                    loading(false);
+                    $('#register-form-sms_code').val('').focus();
                 });
-                $('#register-form-sms_code').val('').focus();
-                setTimer();
             }
             return false;
         }
