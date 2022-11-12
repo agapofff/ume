@@ -120,14 +120,15 @@ use kartik\alert\AlertBlock;
         ?>
         
         
-            <?= Gallery::widget([
-                    'model' => $model,
-                    'previewSize' => '300x300',
-                    'fileInputPluginOptions' => [
-                        'showPreview' => false,
-                    ]
-                ]);
-            ?>
+        <label class="control-label" for="category-sort">Изображение</label>
+        <?= Gallery::widget([
+                'model' => $model,
+                'previewSize' => '300x300',
+                'fileInputPluginOptions' => [
+                    'showPreview' => false,
+                ]
+            ]);
+        ?>
 
 
         <br>
