@@ -228,7 +228,7 @@
                 $('.login-by-phone').show();
                 $('#login-form-type').val('phone');
                 $('#login-form-phone').focus();
-                $('#login-form-login, #login-form-password').val('');
+                $('#login-form-login, #login-form-password').val('').attr('disabled', 'disabled');
             } else {
                 $('.login-by-email').show();
                 // $('.login-by-phone').hide(); 
