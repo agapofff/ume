@@ -544,7 +544,8 @@ return [
                 'resend' => 'user/registration/resend',
                 'request' => 'user/recovery/request',
                 'account' => 'site/account',
-                'account/edit' => 'user/settings/profile',
+                // 'account/edit' => 'user/settings/profile',
+                'account/edit' => 'user/settings/account',
                 
                 'join/<referal>' => 'site/join',
                 

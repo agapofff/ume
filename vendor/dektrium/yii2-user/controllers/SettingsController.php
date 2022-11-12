@@ -186,10 +186,11 @@ class SettingsController extends Controller
         // $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $settingsEvent);
         
         if ($profile->load(Yii::$app->request->post()) && $profile->save()) {
-            // $user->email = $profile->public_email;
-            // $user->phone = $profile->phone;
-            // $user->first_name = $profile->first_name;
-            // $user->save();
+            $user->email = $profile->public_email;
+            $user->phone = $profile->phone;
+            $user->first_name = $profile->first_name;
+            $user->last_name = $profile->first_name;
+            $user->save();
             
             Yii::$app->getSession()->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
             $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $profileEvent);
@@ -213,6 +214,7 @@ class SettingsController extends Controller
     {
         /** @var SettingsForm $model */
         $model = \Yii::createObject(SettingsForm::className());
+// print_r($model->attributes);
         $event = $this->getFormEvent($model);
 
         $this->performAjaxValidation($model);
@@ -220,6 +222,14 @@ class SettingsController extends Controller
         $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
         if ($model->load(\Yii::$app->request->post())) {
             if ($model->save()) {
+                $profile = $this->finder->findProfileById(Yii::$app->user->identity->getId());
+                
+                $profile->first_name = $model->first_name;
+                $profile->last_name = $model->last_name;
+                $profile->phone = $model->phone;
+                $profile->public_email = $model->email;
+                $profile->save();
+                
                 Yii::$app->session->setFlash('success', Yii::t('front', 'Ваш профиль был обновлён'));
                 $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
             } else {
@@ -227,10 +237,10 @@ class SettingsController extends Controller
             }
         }
 
-        // return $this->render('account', [
-            // 'model' => $model
-        // ]);
-        return $this->redirect(['/account']);
+        return $this->render('account', [
+            'model' => $model
+        ]);
+        // return $this->redirect(['/account']);
     }
 
     /**

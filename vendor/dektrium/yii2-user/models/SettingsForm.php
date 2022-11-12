@@ -80,6 +80,7 @@ class SettingsForm extends Model
             'email'    => $this->user->unconfirmed_email ?: $this->user->email,
             'phone' => $this->user->phone,
             'first_name' => $this->user->first_name,
+            'last_name' => $this->user->last_name,
         ], false);
         parent::__construct($config);
     }
@@ -181,6 +182,7 @@ class SettingsForm extends Model
             $this->user->password = $this->new_password;
             $this->user->phone = $this->phone;
             $this->user->first_name = $this->first_name;
+            $this->user->last_name = $this->last_name;
             
             if ($this->email == $this->user->email && $this->user->unconfirmed_email != null) {
                 $this->user->unconfirmed_email = null;

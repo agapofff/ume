@@ -228,8 +228,8 @@ class User extends ActiveRecord implements IdentityInterface
             'register' => ['username', 'email', 'password'],
             'connect'  => ['username', 'email'],
             'create'   => ['username', 'email', 'password'],
-            'update'   => ['username', 'email', 'password'],
-            'settings' => ['username', 'email', 'password'],
+            'update'   => ['first_name', 'last_name', 'username', 'email', 'password', 'phone'],
+            'settings' => ['first_name', 'last_name', 'email', 'password', 'phone'],
         ]);
     }
 
