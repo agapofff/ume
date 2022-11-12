@@ -35,7 +35,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
     </h1>
     <h3 class="text-uppercase font-weight-light mb-3 position-relative">
         <?= Yii::t('front', 'Профиль') ?>
-        <a href="<?= Url::to(['/account']) ?>">
+        <a href="<?= Url::to(['/logout']) ?>">
             <img src="/images/arrow_lk_active.svg" class="position-absolute top-0 right-0 d-none d-md-block transition" style="
                 width: 1.5em;
                 -webkit-transform: rotate(-45deg);
