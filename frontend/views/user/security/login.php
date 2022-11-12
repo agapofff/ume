@@ -223,13 +223,13 @@
 
         switchLoginForm = function (byPhone = 0) {
             if (byPhone) {
-                $('.login-by-email').hide();
+                // $('.login-by-email').hide();
                 $('.login-by-phone').show();
                 $('#login-form-type').val('phone');
                 $('#login-form-phone').focus();
             } else {
                 $('.login-by-email').show();
-                $('.login-by-phone').hide(); 
+                // $('.login-by-phone').hide(); 
                 $('#login-form-type').val('email');
                 $('#login-form-login').focus();
             }
