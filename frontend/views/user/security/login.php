@@ -101,6 +101,7 @@
                                     'tabindex' => '4',
                                     // 'required' => true,
                                     'autocomplete' => rand(),
+                                    'disabled' => 'disabled',
                                 ],
                                 'options' => [
                                     'class' => 'form-group row align-items-center mb-2',
@@ -221,19 +222,21 @@
 <?php
     $this->registerJS("
 
-        switchLoginForm = function (byPhone = 0) {
+        switchLoginForm = function (byPhone) {
+            $('#login-form-login, #login-form-password, #login-form-phone, #login-form-sms_code').val('');
             if (byPhone) {
                 // $('.login-by-email').hide();
-                
                 $('.login-by-phone').show();
                 $('#login-form-type').val('phone');
+                $('#login-form-login, #login-form-password').attr('disabled', 'disabled');
+                $('#login-form-phone').removeAttr('disabled');
                 $('#login-form-phone').focus();
-                $('#login-form-login, #login-form-password').val('').attr('disabled', 'disabled');
             } else {
-                $('.login-by-email').show();
                 // $('.login-by-phone').hide(); 
-                $('#login-form-phone').val('');
+                $('.login-by-email').show();
                 $('#login-form-type').val('email');
+                $('#login-form-login, #login-form-password').removeAttr('disabled');
+                $('#login-form-phone').attr('disabled');
                 $('#login-form-login').focus();
             }
         }
