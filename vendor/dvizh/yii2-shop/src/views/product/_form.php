@@ -126,7 +126,7 @@ $store_types = Yii::$app->params['store_types'];
             </div>
         </div>
         
-
+        <div class="hidden">
         <?= $form
                 ->field($model, 'category_id')
                 ->widget(Select2::classname(), [
@@ -140,7 +140,7 @@ $store_types = Yii::$app->params['store_types'];
                     ],
                 ]);
         ?>
-
+        </div>
     
         <?php // предустановка категории, из которой сделан переход
             if (!$model->id && Yii::$app->request->get('category_id')){
