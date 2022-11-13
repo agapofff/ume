@@ -690,15 +690,21 @@ $store_types = Yii::$app->params['store_types'];
                             ],
                         ],
                         [
-                            // 'class' => EditableColumn::className(),
+                            'class' => EditableColumn::className(),
                             'attribute' => 'name',
-                            'label' => Yii::t('back', 'Язык'),
-                            // 'url' => ['price/edit-field'],
-                            // 'type' => 'text',
+                            'label' => Yii::t('back', 'Магазин'),
+                            'url' => ['price/edit-field'],
+                            'type' => 'select',
                             'filter' => false,
-                            // 'editableOptions' => [
+                            'editableOptions' => [
                                 // 'mode' => 'inline',
-                            // ],
+                                'source' => ArrayHelper::map($stores, 'store_id', 'name'),
+                            ],
+                            'value' => function ($price) use ($stores) {
+                                return array_filter($stores, function ($store) use ($price) {
+                                    return $store['store_id'] === $price->name;
+                                })[0]['name'];
+                            },
                             'headerOptions' => [
                                 'class' => 'text-center',
                             ],
@@ -1283,6 +1289,7 @@ $store_types = Yii::$app->params['store_types'];
         echo $this->render('price/_form', [
             'model' => $priceModel,
             'productModel' => $model,
+            'stores' => $stores,
         ])
     ?> 
 

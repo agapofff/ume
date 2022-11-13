@@ -1,5 +1,5 @@
 <?php
-
+use yii\web\View;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
 use yii\widgets\ActiveForm;
@@ -23,7 +23,11 @@ use kartik\alert\AlertBlock;
         ]);
     ?>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php 
+        $form = ActiveForm::begin([
+            'id' => 'stores-form',
+        ]); 
+    ?>
 
         <?= $form
                 ->field($model, 'active')
@@ -50,7 +54,7 @@ use kartik\alert\AlertBlock;
                                         Html::radio($name, $checked, [
                                             'value' => $value,
                                             'class' => 'btn-switch'
-                                        ]) . $label . 
+                                        ]) . strtoupper($label) . 
                                     '</label>';
                         },
                     ]
@@ -62,26 +66,19 @@ use kartik\alert\AlertBlock;
 
         <?= $form
                 ->field($model, 'type')
-                ->radioList(
-                    [
-                        0 => 'не МЛМ',
-                        1 => 'МЛМ',
-                        2 => 'Скидка',
-                    ],
-                    [
-                        'class' => 'btn-group',
-                        'data-toggle' => 'buttons',
-                        'unselect' => null,
-                        'item' => function ($index, $label, $name, $checked, $value) {
-                            return '<label class="btn btn-primary text-white '. ($checked ? ' active' : '') . '">' .
-                                        Html::radio($name, $checked, [
-                                            'value' => $value,
-                                            'class' => 'btn-switch'
-                                        ]) . $label . 
-                                    '</label>';
-                        },
-                    ]
-                )
+                ->radioList(Yii::$app->params['store_types'], [
+                    'class' => 'btn-group',
+                    'data-toggle' => 'buttons',
+                    'unselect' => null,
+                    'item' => function ($index, $label, $name, $checked, $value) {
+                        return '<label class="btn btn-primary text-white '. ($checked ? ' active' : '') . '">' .
+                                    Html::radio($name, $checked, [
+                                        'value' => $value,
+                                        'class' => 'btn-switch'
+                                    ]) . $label . 
+                                '</label>';
+                    },
+                ])
                 ->label(Yii::t('back', 'Тип магазина'), [
                     'style' => 'display: block'
                 ])
@@ -96,9 +93,8 @@ use kartik\alert\AlertBlock;
         
         <?= $form
                 ->field($model, 'name')
-                ->textInput([
-                    'maxlength' => true
-                ])
+                ->hiddenInput()
+                ->label(false)
         ?>
         
         <?= $form

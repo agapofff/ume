@@ -17,6 +17,7 @@ use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 use yii\helpers\Url;
 use backend\models\Langs;
+use backend\models\Stores;
 use backend\models\ShopProductToCategory;
 
 class ProductController extends Controller
@@ -77,6 +78,8 @@ class ProductController extends Controller
         $languages = Langs::findAll([
             'active' => 1
         ]);
+        
+        $stores = Stores::find()->asArray()->all();
 
         if ($model->load(Yii::$app->request->post())) {
             
@@ -108,6 +111,7 @@ class ProductController extends Controller
                 'priceModel' => $priceModel,
                 'priceTypes' => $priceTypes,
                 'languages' => $languages,
+                'stores' => $stores,
             ]);
         }
     }
@@ -193,6 +197,12 @@ class ProductController extends Controller
         $typeParams = Yii::$app->request->queryParams;
         $typeParams['PriceSearch']['item_id'] = $id;
         $dataProvider = $searchModel->search($typeParams);
+        
+        $modifications = Modification::find()
+            ->where([
+                'product_id' => $id
+            ])
+            ->all();
 
         $searchModificationModel = new ModificationSearch();
         $typeParams['ModificationSearch']['product_id'] = $id;
@@ -202,6 +212,8 @@ class ProductController extends Controller
         $languages = Langs::findAll([
             'active' => 1
         ]);
+        
+        $stores = Stores::find()->asArray()->all();
 
         if ($model->load(Yii::$app->request->post())) {
             
@@ -238,7 +250,7 @@ class ProductController extends Controller
             return $this->render('update', [
                 'model' => $model,
                 'module' => $this->module,
-                'modifications' => Modification::find()->where(['product_id' => $id])->all(),
+                'modifications' => $modifications,
                 'modificationModel' => $modificationModel,
                 'searchModificationModel' => $searchModificationModel,
                 'modificationDataProvider' => $modificationDataProvider,
@@ -246,6 +258,7 @@ class ProductController extends Controller
                 'searchModel' => $searchModel,
                 'priceModel' => $priceModel,
                 'languages' => $languages,
+                'stores' => $stores,
             ]);
         }
     }

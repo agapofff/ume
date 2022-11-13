@@ -66,6 +66,8 @@ class StoresController extends Controller
         $model = new Stores();
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->name = $model->store_id . ' (' . strtoupper($model->lang) . ', ' . Yii::$app->params['store_types'][$model->type] . ')';
+            
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Элемент успешно создан'));
             } else {
@@ -89,6 +91,8 @@ class StoresController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
+            $model->name = $model->store_id . ' (' . strtoupper($model->lang) . ', ' . Yii::$app->params['store_types'][$model->type] . ')';
+            
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
             } else {

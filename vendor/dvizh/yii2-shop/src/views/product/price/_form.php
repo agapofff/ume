@@ -8,6 +8,7 @@ use dvizh\shop\models\PriceType;
 /* @var $this yii\web\View */
 /* @var $model common\models\ProductOption */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 <div class="modal fade" id="add-price-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -28,24 +29,23 @@ use dvizh\shop\models\PriceType;
                             'action' => Url::toRoute(['price/create'])
                         ]);
                     ?>
-                    
-                            <?php $model->available = 'yes'; ?>
-                        
-                            <?= $form
-                                    ->field($model, 'available')
-                                    ->label(Yii::t('back', 'Синхронизировать'))
-                                    ->radioList([
-                                        'yes' => 'Да',
-                                        'no' => 'Нет'
-                                    ]); 
-                            ?>
 
                         <?= $form
+                                ->field($model, 'available')
+                                    ->textInput([
+                                        'type' => 'hidden', 
+                                        'value' => 'yes'
+                                    ])
+                                    ->label(false) 
+                        ?>
+                        
+                        <?= $form
                                 ->field($model, 'type_id')
-                                    ->dropdownList(ArrayHelper::map($productModel->getUnderchargedPrices(), 'id', 'name'), [
-                                        'data-role' => 'type-price',
-                                        'prompt' => 'Выберете тип цены',
-                                    ]);
+                                    ->textInput([
+                                        'type' => 'hidden', 
+                                        'value' => 1
+                                    ])
+                                    ->label(false) 
                         ?>
                         
                         <?= $form
@@ -58,16 +58,13 @@ use dvizh\shop\models\PriceType;
                         ?>
                         
                         <?= $form
+                                ->field($model, 'name')
+                                ->dropdownList(ArrayHelper::map($stores, 'store_id', 'name'));
+                        ?>
+                        
+                        <?= $form
                                 ->field($model, 'code')
                                 ->textInput() 
-                        ?>
-
-                        <?= $form
-                                ->field($model, 'name')
-                                ->textInput([
-                                    'type' => 'hidden', 
-                                    'data-role' => 'price-name'
-                                ]) 
                         ?>
 
                         <?= $form
