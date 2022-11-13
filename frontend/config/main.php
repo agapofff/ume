@@ -554,7 +554,8 @@ return [
                 // 'catalog/<slug>/<collection>' => 'catalog/index',
                 // '<catalog:(slug)>' => 'catalog/index',
                 
-                // 'catalog' => 'catalog/index',
+                'catalog' => 'catalog/index',
+                'catalog/<slug>' => 'catalog/category',
                 // [
                     // 'pattern' => 'catalog/<collectionSlug>/<categorySlug>',
                     // 'route' => 'catalog',

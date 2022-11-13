@@ -12,11 +12,12 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 
 class CatalogController extends \yii\web\Controller
 {
     
-    public function actionIndex($collectionSlug = null, $categorySlug = null)
+    public function actionIndex($slug = null, $categorySlug = null)
     {
         $collIDs = [
             16, // 2021
@@ -175,6 +176,16 @@ class CatalogController extends \yii\web\Controller
             'category' => $category,
             'title' => $title,
         ]);
+    }
+    
+    public function actionCategory($slug)
+    {
+        $category = Category::findOne([
+            'slug' => $slug
+        ]);
+
+        $products = $category->products;
+print_r($products);
     }
 
     
