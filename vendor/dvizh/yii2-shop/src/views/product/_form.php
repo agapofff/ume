@@ -247,8 +247,8 @@ $store_types = Yii::$app->params['store_types'];
                     'fileInputPluginOptions' => [
                         'showPreview' => false,
                     ],
-                    'containerClass' => 'row',
-                    'elementClass' => 'col-xs-4',
+                    'containerClass' => 'row-',
+                    'elementClass' => 'col-xs-4-',
                     // 'deleteButtonClass' => 'btn btn-sm btn-danger position-absolute top-0 right-0',
                     'deleteButtonText' => Html::tag('i', '', ['class' => 'fa fa-trash']),
                     // 'editButtonClass' => 'btn btn-sm btn-info position-absolute bottom-0 right-0',
