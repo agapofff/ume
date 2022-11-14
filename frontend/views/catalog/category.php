@@ -4,132 +4,95 @@ use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
 
-$this->title = Yii::$app->params['title'] ?: Yii::t('front', 'Каталог');
+$categoryName = json_decode($category->name)->{Yii::$app->language};
+$categoryText = json_decode($category->text)->{Yii::$app->language};
+
+$this->title = Yii::$app->params['title'] ?: $categoryName;
+if (!Yii::$app->params['description']) {
+    $this->registerMetaTag([
+        'name' => 'description',
+        'content' => $categoryText
+    ]);
+}
+
 $h1 = Yii::$app->params['h1'] ?: $this->title;
 
 // \yii\web\YiiAsset::register($this);
 
 ?>
 
-<?= $this->render('@frontend/views/site/cover-socials') ?>
+<div class="container-xl">
+    <h1 class="text-uppercase font-weight-light mb-3">
+        <?= $h1 ?>
+    </h1>
 
-
-<h1 class="display-3 acline text-center my-5">
-    <?= $h1 ?>
-</h1>
-
-
-<div class="container-fluid position-relative <?= $cover ?>">
-
-    <div class="row justify-content-center my-2 my-lg-5">
-    
-        <div class="col-12 col-lg-11 col-xl-10 my-2 my-lg-5 py-2 py-lg-5">
-        
-            <div class="row align-items-center">
-            <?php
-                if ($images) {
-            ?>
-                <div class="col-12 col-sm-8 p-0 position-absolute h-100 cover">
-                <?php
-                    foreach ($images as $image) {
-                ?>
-                        <img data-src="<?= $image->getUrl() ?>" alt="<?= $title ?> <?= Yii::$app->name ?>" class="lazyload pointer-events-none">
-                <?php
-                    }
-                ?>
+    <div class="row justify-content-center align-items-center no-gutters category-bg">
+        <div class="col-12">
+            <div class="row align-items-center py-1 py-lg-2 py-xl-3">
+                <div class="col-lg-7 text-center pr-lg-0">
+                    <img data-src="<?= $category->getImage()->getUrl() ?>" alt="<?= $title ?> <?= Yii::$app->name ?>" class="lazyload pointer-events-none img-fluid my-1">
                 </div>
-            <?php
-                }
-            ?>
-                
-                <div class="col-12 col-sm-8 col-md-6 col-lg-5 my-5 cover-menu">
-                    
-                    <h2 class="display-1 acline my-5 text-nowrap">
-                        <?= $title ?>
-                    </h2>
-                    
-                    <?php
-                        if ($category->id == 17) {
-                    ?>
-                            <h3 class="display-3 acline my-5">
-                                <?= Yii::t('front', 'Coming soon...') ?>
-                            </h3>
-                    <?php
-                        }
-                    ?>
-                    
-                <?php
-                    if ($subCategories) {
-                ?>
-                    <div class="row">
-                    <?php
-                        foreach ($subCategories as $subCategory) {
-                    ?>
-                        <div class="col-12 col-sm-6 my-2">
-                            <?= Html::a(json_decode($subCategory->name)->{Yii::$app->language}, [
-                                    '/catalog/' . $subCategory->slug
-                                ], [
-                                    'class' => 'h4 font-weight-light mb-0' . ($subCategory->slug == $slug ? ' text-underline' : ''),
-                                ]
-                            ) ?>
-                        </div>
-                    <?php
-                        }
-                    ?>
-                    </div>
-                <?php
-                    }
-                ?>
-                    
+                <div class="col-lg-5 category-text text-uppercase font-weight-bolder lead pl-lg-0 pr-lg-2 pr-xl-3">
+                    <?= $categoryText ?>
                 </div>
-            
             </div>
-        
         </div>
-    
     </div>
-
 </div>
 
-
-<div class="container-fluid">
-
-    <div class="products-view px-3">
-
-        <?= ListView::widget([
-                'dataProvider' => $dataProvider,
-                'viewParams' => [
-                    'prices' => $prices,
-                    'prices_old' => $prices_old,
-                ],
-                'layout' => '{items}{pager}',
-                'summary' => false,
-                'options' => [
-                    'tag' => 'div',
-                    'class' => 'row list-products justify-content-center',
-                    'id' => 'products'
-                ],
-                'itemOptions' => [
-                    'tag' => 'div',
-                    'class' => 'col-12 col-md-6 col-lg-4 col-xl-3 px-2 mb-3',
-                ],
-                'emptyText' => '',
-                'emptyTextOptions' => [
-                    'tag' => 'div',
-                    'class' => 'h4 w-100 text-center my-5 py-5',
-                ],
-                'itemView' => '_product',
-                'pager' => [
-                    'linkContainerOptions' => [
-                        'class' => 'list-inline'
-                    ],
-                    'options' => [
-                        'class' => 'col-12 text-center d-flex justify-content-center'
-                    ]
-                ],
-            ]);
-        ?>
-
+<div class="container-xl mt-2 mt-lg-3">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-lg-11 col-xl-10">
+            <div class="row">
+                <div class="col-lg-6 my-1 my-lg-2">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="/images/catalog/icon1.svg">
+                        </div>
+                        <div class="col">
+                            <p class="h5 text-uppercase font-weight-light mb-0">
+                                <?= Yii::t('front', 'Стимулируют иммуную систему') ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 my-1 my-lg-2">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="/images/catalog/icon2.svg">
+                        </div>
+                        <div class="col">
+                            <p class="h5 text-uppercase font-weight-light mb-0">
+                                <?= Yii::t('front', 'Повышает выносливость и стрессоустойчивость') ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 my-1 my-lg-2">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="/images/catalog/icon3.svg">
+                        </div>
+                        <div class="col">
+                            <p class="h5 text-uppercase font-weight-light mb-0">
+                                <?= Yii::t('front', 'Улучшает работу середечно-сусудистой системы и ЖКТ') ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 my-1 my-lg-2">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <img src="/images/catalog/icon4.svg">
+                        </div>
+                        <div class="col">
+                            <p class="h5 text-uppercase font-weight-light mb-0">
+                                <?= Yii::t('front', 'Способствуют актвиному долголетию') ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>

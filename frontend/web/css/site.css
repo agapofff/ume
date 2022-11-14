@@ -600,6 +600,10 @@ form .hint-block {
 }
 */
 
+.category-bg {
+    background: url('../images/category_bg.jpg') center top / cover no-repeat;
+}
+
 .news-post:after {
     content: '';
     position: absolute;

@@ -7,6 +7,7 @@ use backend\models\Stores;
 use backend\models\Langs;
 use dvizh\shop\models\Product;
 use dvizh\shop\models\Category;
+use dvizh\shop\models\Price;
 use dvizh\filter\models\Filter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -188,10 +189,17 @@ class CatalogController extends \yii\web\Controller
             'lang' => Yii::$app->language,
             'type' => Yii::$app->params['store_type']
         ]);
-        print_r($store);
+        
+        $prices = Price::find()->all();
 
         $products = $category->products;
-print_r($products);
+
+        return $this->render('category', [
+            'category' => $category,
+            'products' => $products,
+            'store' => $store,
+            'prices' => $prices,
+        ]);
     }
 
     
