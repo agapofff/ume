@@ -112,7 +112,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
         </div>
     </div>
     <p class="mb-0_25 ml-md-1 ml-lg-2 ml-xl-3">
-        <a href="<?= Url::to(['/logout']) ?>" class="btn btn-outline-secondary">
+        <a href="<?= Url::to(['/logout']) ?>" class="btn btn-outline-secondary rounded-pill">
             <?= Yii::t('front', 'Выйти') ?>
         </a>
     </p>
