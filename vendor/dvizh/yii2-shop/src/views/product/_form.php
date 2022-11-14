@@ -220,8 +220,7 @@ $store_types = Yii::$app->params['store_types'];
         
         <?= $form
                 ->field($model, 'code')
-                ->hiddenInput()
-                ->label(false)
+                ->textInput()
         ?>
         
         <?= $form
