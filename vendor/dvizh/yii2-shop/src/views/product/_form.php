@@ -1008,7 +1008,6 @@ $store_types = Yii::$app->params['store_types'];
                     ->textarea([
                         'class' => 'is_json hidden'
                     ])
-                    ->label('Пищева ценность') 
             ?>
             <ul class="nav nav-pills">
         <?php
