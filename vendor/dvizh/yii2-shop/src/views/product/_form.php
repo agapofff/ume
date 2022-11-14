@@ -1067,72 +1067,6 @@ $store_types = Yii::$app->params['store_types'];
             
         <div class="form-group-json">
             <?= $form
-                    ->field($model, 'howtouse', [
-                        'labelOptions' => [
-                            'style' => 'text-align: left; margin-bottom: 0;',
-                        ]
-                    ])
-                    ->textarea([
-                        'class' => 'is_json hidden'
-                    ])
-            ?>
-            <ul class="nav nav-pills">
-        <?php
-            foreach ($languages as $key => $lang){
-        ?>
-                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
-                    <a href="#howtouse_<?= $lang->code ?>_tab" aria-controls="howtouse_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
-                </li>
-        <?php
-            }
-        ?>
-            </ul>
-            <div class="tab-content">
-        <?php
-            foreach ($languages as $key => $lang){
-        ?>
-                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="howtouse_<?= $lang->code ?>_tab">
-                    <?= \vova07\imperavi\Widget::widget([
-                            'id' => 'howtouse_'.$lang->code,
-                            'name' => 'howtouse_'.$lang->code,
-                            'value' => ($model->id ? json_decode($model->howtouse)->{$lang->code} : ''),
-                            'settings' => [
-                                'lang' => Yii::$app->language,
-                                'minHeight' => 100,
-                                'maxHeight' => 400,
-                                'imageUpload' => Url::toRoute(['/site/image-upload']),
-                                'imageDelete' => Url::toRoute(['/site/image-delete']),
-                                'imageManagerJson' => Url::to(['/site/images-get']),
-                                'plugins' => [
-                                    'fontsize',
-                                    'fontcolor',
-                                    'table',
-                                    'video',
-                                    'fullscreen',
-                                ],
-                                'replaceDivs' => false,
-                            ],
-                            'plugins' => [
-                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
-                            ],
-                            'options' => [
-                                'class' => 'json_field',
-                                'data' => [
-                                    'field' => 'product-howtouse',
-                                    'lang' => $lang->code,
-                                ]
-                            ]
-                        ]);
-                    ?>
-                </div>
-        <?php
-            }
-        ?>
-            </div>
-        </div>
-            
-        <div class="form-group-json">
-            <?= $form
                     ->field($model, 'feeding', [
                         'labelOptions' => [
                             'style' => 'text-align: left; margin-bottom: 0;',
@@ -1196,6 +1130,75 @@ $store_types = Yii::$app->params['store_types'];
         ?>
             </div>
         </div>
+        
+        
+
+        <div class="form-group-json">
+            <?= $form
+                    ->field($model, 'howtouse', [
+                        'labelOptions' => [
+                            'style' => 'text-align: left; margin-bottom: 0;',
+                        ]
+                    ])
+                    ->textarea([
+                        'class' => 'is_json hidden'
+                    ])
+            ?>
+            <ul class="nav nav-pills">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <li <?php if ($lang->code == Yii::$app->language){?>class="active"<?php } ?>>
+                    <a href="#howtouse_<?= $lang->code ?>_tab" aria-controls="howtouse_<?= $lang->code ?>_tab" role="tab" data-toggle="tab"><?= strtoupper($lang->code) ?></a>
+                </li>
+        <?php
+            }
+        ?>
+            </ul>
+            <div class="tab-content">
+        <?php
+            foreach ($languages as $key => $lang){
+        ?>
+                <div role="tabpanel" class="tab-pane <?php if ($lang->code == Yii::$app->language){?>active<?php } ?>" id="howtouse_<?= $lang->code ?>_tab">
+                    <?= \vova07\imperavi\Widget::widget([
+                            'id' => 'howtouse_'.$lang->code,
+                            'name' => 'howtouse_'.$lang->code,
+                            'value' => ($model->id ? json_decode($model->howtouse)->{$lang->code} : ''),
+                            'settings' => [
+                                'lang' => Yii::$app->language,
+                                'minHeight' => 100,
+                                'maxHeight' => 400,
+                                'imageUpload' => Url::toRoute(['/site/image-upload']),
+                                'imageDelete' => Url::toRoute(['/site/image-delete']),
+                                'imageManagerJson' => Url::to(['/site/images-get']),
+                                'plugins' => [
+                                    'fontsize',
+                                    'fontcolor',
+                                    'table',
+                                    'video',
+                                    'fullscreen',
+                                ],
+                                'replaceDivs' => false,
+                            ],
+                            'plugins' => [
+                                'imagemanager' => 'vova07\imperavi\bundles\ImageManagerAsset',
+                            ],
+                            'options' => [
+                                'class' => 'json_field',
+                                'data' => [
+                                    'field' => 'product-howtouse',
+                                    'lang' => $lang->code,
+                                ]
+                            ]
+                        ]);
+                    ?>
+                </div>
+        <?php
+            }
+        ?>
+            </div>
+        </div>
+        
                 
         <hr>
         
