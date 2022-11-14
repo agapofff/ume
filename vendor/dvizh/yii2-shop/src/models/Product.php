@@ -76,7 +76,7 @@ class Product extends \yii\db\ActiveRecord implements \dvizh\relations\interface
     {
         return [
             'id' => 'ID',
-            'code' => Yii::t('back', 'Vendor Code'),
+            'code' => Yii::t('back', 'Код'),
             'sku'  => Yii::t('back', 'ID товара'),
             'barcode' => Yii::t('back', 'Штрихкод'),
             'category_id' => Yii::t('back', 'Категория'),
