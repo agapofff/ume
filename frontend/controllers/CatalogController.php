@@ -5,8 +5,8 @@ namespace frontend\controllers;
 use Yii;
 use backend\models\Stores;
 use backend\models\Langs;
-use common\models\Product;
-use common\models\Category;
+use dvizh\shop\models\Product;
+use dvizh\shop\models\Category;
 use dvizh\filter\models\Filter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -183,6 +183,12 @@ class CatalogController extends \yii\web\Controller
         $category = Category::findOne([
             'slug' => $slug
         ]);
+
+        $store = Stores::findOne([
+            'lang' => Yii::$app->language,
+            'type' => Yii::$app->params['store_type']
+        ]);
+        print_r($store);
 
         $products = $category->products;
 print_r($products);
