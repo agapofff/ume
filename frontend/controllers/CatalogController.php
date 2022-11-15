@@ -190,7 +190,12 @@ class CatalogController extends \yii\web\Controller
             'type' => Yii::$app->params['store_type']
         ]);
         
-        $prices = Price::find()->all();
+        $prices = Price::find()
+            ->where([
+                'name' => $store->store_id
+            ])
+            ->asArray()
+            ->all();
 
         $products = $category->products;
 
@@ -198,7 +203,7 @@ class CatalogController extends \yii\web\Controller
             'category' => $category,
             'products' => $products,
             'store' => $store,
-            'prices' => $prices,
+            'prices' => ArrayHelper::index($prices, 'item_id'),
         ]);
     }
 
