@@ -11,7 +11,7 @@ $this->title = $postName;
 
 <div class="container-xl">
     <div class="row">
-        <div class="col-md-10 col-lg-8">
+        <div class="col-12">
             <div class="row">
                 <div class="col-auto d-none d-md-block pl-0_5 pr-0">
                     <a href="<?= Url::to(['/news']) ?>">
