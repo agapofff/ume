@@ -85,7 +85,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
             </div>
-            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(0, 22%);">
                 <img src="/images/main/accessories.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
@@ -103,7 +103,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
             </div>
-            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(18%, 17%);">
                 <img src="/images/main/dry-food.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
@@ -121,7 +121,7 @@ $this->title = Yii::$app->name;
                     </div>
                 </div>
             </div>
-            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(5%, 23%);">
                 <img src="/images/main/treats.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
