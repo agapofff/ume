@@ -53,75 +53,75 @@ $this->title = Yii::$app->name;
         </div>
     </div>
     <div class="row mt-1 mt-lg-3">
-        <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
-            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+        <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <img src="/images/main/wet-food.png" class="img-fluid d-xl-none mb-2" alt="<?= $this->title ?>">
+                <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
+                    <?= Yii::t('front', 'Влажный корм') ?>
+                </h4>
                 <div class="row no-gutters h-50">
-                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
-                        <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
-                            <?= Yii::t('front', 'Влажный корм') ?>
-                        </h4>
-                        <p class="mb-3 font-weight-bolder">
+                    <div class="col-xl-7">
+                        <p class="mb-0 mb-xl-3 font-weight-bolder">
                             <?= Yii::t('front', 'Полнорационный стерилизованный влажный корм UME с энтопротеином и белым императорским женьшенем') ?>
                         </p>
-                        <img src="/images/main/wet-food.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
                     </div>
                 </div>
             </div>
-            <div class="col-5 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(-10%, 10%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
                 <img src="/images/main/wet-food.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/accessories']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
-            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+        <a href="<?= Url::to(['/catalog/accessories']) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <img src="/images/main/accessories.png" class="img-fluid d-xl-none mb-2" alt="<?= $this->title ?>">
+                <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
+                    <?= Yii::t('front', 'Аксессуары') ?>
+                </h4>
                 <div class="row no-gutters h-50">
-                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
-                        <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
-                            <?= Yii::t('front', 'Аксессуары') ?>
-                        </h4>
-                        <p class="mb-3 font-weight-bolder">
+                    <div class="col-xl-7">
+                        <p class="mb-0 mb-xl-3 font-weight-bolder">
                             <?= Yii::t('front', 'Брендированные высококачественные аксессуары для стильных питомцев') ?>
                         </p>
-                        <img src="/images/main/accessories.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
                     </div>
                 </div>
             </div>
-            <div class="col-8 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(7%, 15%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
                 <img src="/images/main/accessories.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/dry-food']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
-            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+        <a href="<?= Url::to(['/catalog/dry-food']) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <img src="/images/main/dry-food.png" class="img-fluid d-xl-none mb-2" alt="<?= $this->title ?>">
+                <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
+                    <?= Yii::t('front', 'Сухой корм') ?>
+                </h4>
                 <div class="row no-gutters h-50">
-                    <div class="col-sm-8 col-md-7 col-xl-8 col-xxl-7">
-                        <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
-                            <?= Yii::t('front', 'Сухой корм') ?>
-                        </h4>
-                        <p class="mb-3 font-weight-bolder">
+                    <div class="col-xl-7">
+                        <p class="mb-0 mb-xl-3 font-weight-bolder">
                             <?= Yii::t('front', 'Полнорационный сухой корм UME с белком насекомых и женьшенем для всех пород собак') ?>
                         </p>
-                        <img src="/images/main/dry-food.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
                     </div>
                 </div>
             </div>
-            <div class="col-6 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(5%, 10%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
                 <img src="/images/main/dry-food.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
-        <a href="<?= Url::to(['/catalog/treats']) ?>" class="col-lg-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
-            <div class="col-sm-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+        <a href="<?= Url::to(['/catalog/treats']) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+            <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+                <img src="/images/main/treats.png" class="img-fluid d-xl-none mb-2" alt="<?= $this->title ?>">
+                <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
+                    <?= Yii::t('front', 'Лакомства') ?>
+                </h4>
                 <div class="row no-gutters h-50">
-                    <div class="col-sm-8 col-md-6 col-lg-6 col-xl-8 col-xxl-7">
-                        <h4 class="mb-2 text-uppercase text-nowrap font-weight-bolder">
-                            <?= Yii::t('front', 'Лакомства') ?>
-                        </h4>
-                        <p class="mb-3 font-weight-bolder">
+                    <div class="col-xl-7">
+                        <p class="mb-0 mb-xl-3 font-weight-bolder">
                             <?= Yii::t('front', 'Полезные и вкусные лакомства UME с женьшенем') ?>
                         </p>
-                        <img src="/images/main/treats.png" class="img-fluid d-sm-none" alt="<?= $this->title ?>">
                     </div>
                 </div>
             </div>
-            <div class="col-7 position-absolute bottom-0 right-0 d-none d-sm-block" style="transform: translate(3%, 10%);">
+            <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 20%);">
                 <img src="/images/main/treats.png" class="img-fluid" alt="<?= $this->title ?>">
             </div>
         </a>
