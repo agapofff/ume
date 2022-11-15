@@ -27,7 +27,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
         <?= $h1 ?>
     </h1>
 
-    <div class="row justify-content-center align-items-center no-gutters category-bg d-none">
+    <div class="row justify-content-center align-items-center no-gutters category-bg">
         <div class="col-12">
             <div class="row align-items-center py-1 py-lg-2 py-xl-3">
                 <div class="col-lg-7 text-center pr-lg-0">
@@ -41,7 +41,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     </div>
 </div>
 
-<div class="container-xl mt-2 mt-lg-3 d-none">
+<div class="container-xl mt-2 mt-lg-3">
     <div class="row justify-content-center align-items-center">
         <div class="col-lg-11 col-xl-10">
             <div class="row">
@@ -98,7 +98,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
     </div>
 </div>
 
-<div class="container-xl mt-2 mt-lg-3 d-none">
+<div class="container-xl mt-2 mt-lg-3">
 <?php
     if ($products) {
 ?>
