@@ -12,6 +12,7 @@ class BuyButton extends \yii\base\Widget
     public $count = 1;
     public $price = false;
     public $description = '';
+    public $comment = '';
     public $cssClass = NULL;
     public $htmlTag = 'a';
     public $options = null;
@@ -55,10 +56,11 @@ class BuyButton extends \yii\base\Widget
             'data-price' => (int)$this->price,
             'data-options' => json_encode($this->options),
             'data-description' => $this->description,
+            'data-comment' => $this->comment,
             'data-model' => $model::className(),
             'title' => $this->text,
             'style' => '',
-			'disabled' => true,
+			// 'disabled' => true,
 			// 'type' => 'button',
         ]);
     }

@@ -22,11 +22,11 @@ dvizh.modificationconstruct = {
         jQuery.ajax({
             url: dvizh.modificationconstruct.dvizhShopUpdatePriceUrl, 
             type: 'post',
-            async: false,
+            // async: false,
             // cache: false,
             dataType: 'json',
             beforeSend: function(){
-                NProgress.start();
+                loading();
             },
             data: {
                 options: options,
@@ -83,7 +83,7 @@ console.log(data);
                 // $('.dvizh-option:first .dvizh-option-values-before').trigger('click');
             },
             complete: function(){
-                NProgress.done();
+                loading(false);
                 
             },
         });

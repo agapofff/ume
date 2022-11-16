@@ -374,7 +374,7 @@
                                 </button>
                             </div>
                             <div id="nav-cart-icon" class="col-auto pl-0 pl-xl-0_5">
-                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart-" aria-label="<?= Yii::t('front', 'Корзина') ?>">
+                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart" aria-label="<?= Yii::t('front', 'Корзина') ?>">
                                     <img src="/images/cart_dark.svg">
                                     <?= CartInformer::widget([
                                             'htmlTag' => 'div',
@@ -711,7 +711,7 @@
             </div>
         </div>
         
-        <!--
+        
         <div class="modal side p-0 fade" id="mini-cart" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0">
                 <div class="modal-content m-0 border-0 vh-100 vw-50">
@@ -762,7 +762,7 @@
                 </div>
             </div>
         </div>
-        -->
+        
         
     <?php
         if (!Yii::$app->session->get('cookiesNotificationShown')) {
