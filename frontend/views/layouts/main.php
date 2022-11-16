@@ -775,7 +775,7 @@
         $this->registerJs("
             // показ корзины при изменении
             $(document).on('dvizhCartChanged', function () {
-                $('#mini-cart').modal('show');
+                // $('#mini-cart').modal('show');
             });
         ", View::POS_READY);
     }

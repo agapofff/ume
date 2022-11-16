@@ -13,7 +13,7 @@ $this->title = $postName;
     <div class="row">
         <div class="col-12">
             <div class="row">
-                <div class="col-auto d-none d-md-block pl-0_5 pr-0">
+                <div class="col-1 d-none d-md-block pl-0_5 pr-0">
                     <a href="<?= Url::to(['/news']) ?>">
                         <?= Html::img('/images/arrow.svg', [
                                 'class' => 'wow fadeIn',

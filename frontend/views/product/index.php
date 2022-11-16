@@ -13,7 +13,7 @@ $images = $product->getImages();
 
 if ($images) {
     $image = $images[0];
-    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.jpg';
+    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.' . $image->getExtension();
     $this->registerMetaTag([
         'property' => 'og:image',
         'content' => Url::to(file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x600'), true)
@@ -30,7 +30,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     <div class="row">
         <div class="col-12">
             <div class="row">
-                <div class="col-auto d-none d-md-block pl-0_5 pr-0">
+                <div class="col-1 d-none d-md-block pl-0_5 pr-0">
                     <a href="<?= Url::to(['/catalog/' . $category->slug]) ?>">
                         <?= Html::img('/images/arrow.svg', [
                                 'class' => 'wow fadeIn',
@@ -62,7 +62,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
         <?php
             foreach ($images as $key => $image) {
                 if ($key) {
-                    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.jpg';
+                    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.' . $image->getExtension();
         ?>
                     <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x600') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
         <?php
@@ -104,6 +104,63 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             </div>
         </div>
     </div>
+    
+    <div class="row justify-content-center mt-3 mt-lg-4">
+        <div class="col-12 col-md-11 col-lg-10">
+            <h3 class="font-weight-light text-uppercase mb-2">
+                <?= Yii::t('front', 'Описание') ?>
+            </h3>
+    <?php
+        if ($product->short_text){
+    ?>
+            <div id="product-description" class="product-table-content">
+                <?= json_decode($product->short_text)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+    
+    <?php
+        if ($product->additives){
+    ?>
+            <div id="product-additives" class="product-table-content">
+                <?= json_decode($product->additives)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+    
+    <?php
+        if ($product->components){
+    ?>
+            <div id="product-components" class="product-table-content">
+                <?= json_decode($product->components)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+    
+    <?php
+        if ($product->feeding){
+    ?>
+            <div id="product-feeding" class="product-table-content">
+                <?= json_decode($product->feeding)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+    
+    <?php
+        if ($product->howtouse){
+    ?>
+            <div id="product-howtouse">
+                <?= json_decode($product->howtouse)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+        </div>
+    </div>
 </div>
 
 
@@ -114,6 +171,22 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             toastr.error('" . Yii::t('front', 'Нет в наличии') . "');
         }
     ");
+?>
+
+<?php
+    $this->registerJs("
+        $('table').addClass('table mb-0').wrap('<div class=\"table-responsive\"></div>');
+        $('.table-responsive').each(function () {
+            if (!$(this).parent().is('#product-feeding')) {
+                $(this).find('tr').each(function () {
+                    $(this).find('td').eq(0).addClass('col-7 font-weight-bloder');
+                    $(this).find('td').eq(1).addClass('col-5');
+                });
+                $(this).find('tr').eq(0).find('td').addClass('bg-gray-600 text-white font-weight-bold');
+            }
+        });
+        $('#product-feeding').find('tr').eq(0).find('td').addClass('bg-secondary text-white font-weight-bold');
+    ", View::POS_READY);
 ?>
 
 <?php
@@ -152,31 +225,31 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
 
 <?php // Yandex Ecommerce
     $this->registerJs("
-        var id = $('.dvizh-cart-buy-button').attr('data-comment'),
-            name = '" . $product_name . "',
-            price = '" . round($price) . "',
-            // category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
-            variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
-            currency = '" . Yii::$app->params['currency'] . "';
+        // var id = $('.dvizh-cart-buy-button').attr('data-comment'),
+            // name = '" . $product_name . "',
+            // price = '" . round($price) . "',
+            category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
+            // variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
+            // currency = '" . Yii::$app->params['currency'] . "';
             
-        ymDetail(id, name, price, variant, currency);
-        fbqViewContent(id, name, price, variant, currency);
+        // ymDetail(id, name, price, variant, currency);
+        // fbqViewContent(id, name, price, variant, currency);
     ", View::POS_READY);
 ?>
 
 <?php
     $this->registerJs("
-        $(document).on('click', '.dvizh-cart-buy-button', function () {
-            var id = $('.dvizh-cart-buy-button').attr('data-comment'),
-                name = '" . $product_name . "',
-                quantity = 1,
-                price = '" . round($price) . "',
-                // category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
-                variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
-                currency = '" . Yii::$app->params['currency'] . "';
+        // $(document).on('click', '.dvizh-cart-buy-button', function () {
+            // var id = $('.dvizh-cart-buy-button').attr('data-comment'),
+                // name = '" . $product_name . "',
+                // quantity = 1,
+                // price = '" . round($price) . "',
+                category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
+                // variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
+                // currency = '" . Yii::$app->params['currency'] . "';
                 
-            ymAdd(id, name, price, variant, currency);
-            fbqAddToCart(id, name, price, variant, currency);
-        });
+            // ymAdd(id, name, price, variant, currency);
+            // fbqAddToCart(id, name, price, variant, currency);
+        // });
     ", View::POS_READY);
 ?>
