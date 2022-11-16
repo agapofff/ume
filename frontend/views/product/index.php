@@ -106,7 +106,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     </div>
     
     <div class="row justify-content-center mt-3 mt-lg-4">
-        <div class="col-12 col-md-11 col-lg-10">
+        <div class="col-12 col-lg-11 col-xl-10">
             <h3 class="font-weight-light text-uppercase mb-2">
                 <?= Yii::t('front', 'Описание') ?>
             </h3>
