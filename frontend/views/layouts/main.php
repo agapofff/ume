@@ -712,7 +712,7 @@
         </div>
         
         
-        <div class="modal side p-0 fade" id="mini-cart" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
+        <div class="modal side p-0 fade" id="mini-cart-" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0">
                 <div class="modal-content m-0 border-0 vh-100 vw-50">
                     <div class="modal-header align-items-center flex-nowrap py-md-2 pt-lg-3 pt-xl-4 pt-xxl-5 px-md-1 px-lg-2 px-xl-3">

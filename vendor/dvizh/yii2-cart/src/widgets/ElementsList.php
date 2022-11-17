@@ -126,8 +126,12 @@ class ElementsList extends \yii\base\Widget
             $bottomPanel = '';
 
             if ($this->showTotal) {
-                $bottomPanel .= Html::tag('div', Yii::t('front', 'Итого') . ': ' . Yii::$app->cart->cost . ' '. Yii::$app->cart->currency, [
-                    'class' => 'dvizh-cart-total-row',
+                $bottomPanel .= Html::tag('div', Html::tag('span', Yii::t('front', 'Итого'), [
+                    'class' => 'font-weight-bold pb-1',
+                ]) . '<br>' . Html::tag('h4', Yii::$app->formatter->asCurrency(Yii::$app->cart->cost, Yii::$app->params['currency']), [
+                    'class' => 'font-weight-normal text-nowrap mb-0 d-inline text-right',
+                ]), [
+                    'class' => 'dvizh-cart-total-row text-right py-1 px-1 bg-gray-200 mb-3',
                 ]);
             }
 
@@ -195,8 +199,8 @@ class ElementsList extends \yii\base\Widget
         $cartElName = $product->getCartName();
         
         $image = $product->getImage();
-        $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_200x200.jpg';
-        $img = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('200x200');
+        $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x150.jpg';
+        $img = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x150');
 
         return $this->render($this->elementView, [
             'allOptions' => $allOptions,

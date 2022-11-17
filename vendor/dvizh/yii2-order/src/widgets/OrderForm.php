@@ -152,18 +152,18 @@ class OrderForm extends \yii\base\Widget
 			
 			$deliveryList = ArrayHelper::map($shippings->delivery, 'id', 'text');
 			$pickupsList = ArrayHelper::map($shippings->pickups, 'id', 'text');
-			$courierList = ArrayHelper::map($shippings->courier, 'id', 'text');
+			// $courierList = ArrayHelper::map($shippings->courier, 'id', 'text');
         
-// echo \yii\helpers\VarDumper::dump($pickupsList, 9999, true); exit;
+// echo \yii\helpers\VarDumper::dump($deliveryList, 9999, true); exit;
         
-			if ($shippings->delivery){
-				$orderModel->shipping_type_id = 1;
-				$delivery_id = $shippings->delivery[0]->id;
-				$delivery_name = $shippings->delivery[0]->text;
-			} else if ($shippings->pickups){
+			if ($shippings->pickups){
 				$orderModel->shipping_type_id = 2;
 				$delivery_id = $shippings->pickups[0]->id;
 				$delivery_name = $shippings->pickups[0]->text;
+			} else if ($shippings->delivery){
+				$orderModel->shipping_type_id = 1;
+				$delivery_id = $shippings->delivery[0]->id;
+				$delivery_name = $shippings->delivery[0]->text;
 			} else if ($shippings->courier){
 				$orderModel->shipping_type_id = 3;
 				$delivery_id = $shippings->courier[0]->id;
@@ -197,7 +197,7 @@ class OrderForm extends \yii\base\Widget
             'courier' => empty($shippings->courier),
             'deliveryList' => $deliveryList,
             'pickupsList' => $pickupsList,
-            'courierList' => $courierList,
+            // 'courierList' => $courierList,
             'fieldsDefaultValues' => [
                 'city_id' => $city_id,
                 'city_name' => $city_name,

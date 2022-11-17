@@ -14,6 +14,10 @@
 
 ?>
 
+<h3 class="font-weight-light text-uppercase mb-2">
+    <?= Yii::t('front', 'Оформление заказа') ?>
+</h3>
+
 <div id="order" class="dvizh_order_form">
 
     <?php
@@ -31,543 +35,545 @@
         
         <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken) ?>
 
-		<div class="row justify-content-between mb-1 mb-md-3">
-			<div class="col-auto">
-				<p class="text-uppercase font-weight-bold">
-					<?= Yii::t('front', 'Контактная информация') ?>
-				</p>
-			</div>
-	<?php
-		if (Yii::$app->user->isGuest){
-	?>
-			<div class="col-auto">
-				<p>
-					<?= Yii::t('front', 'Уже есть аккаунт?') ?>
-					&nbsp;
-					<?= Html::a(Yii::t('front', 'Войти'), ['/login']) ?>
-				</p>
-			</div>
-	<?php
-		}
-	?>
-		</div>
+        <p class="text-uppercase font-weight-bold mb-2">
+            <?= Yii::t('front', 'Контактная информация') ?>
+        </p>
             
-		<?= $form
-				->field($orderModel, 'client_name', [
-					'inputOptions' => [
-						'class' => 'form-control mb-0 px-0',
-						'autocomplete' => rand(),
-						'placeholder' => ' ',
-					],
-					'options' => [
-						'class' => 'form-group mb-2 position-relative floating-label',
-					],
-					'template' => '{input}{label}{hint}{error}',
-				])
-		?>
-
-		<?= $form
-				->field($orderModel, 'email', [
-					'inputOptions' => [
-						'class' => 'form-control mb-0 px-0',
-						'autocomplete' => rand(),
-						'placeholder' => ' ',
-					],
-					'options' => [
-						'class' => 'form-group mb-2 position-relative floating-label',
-					],
-					'template' => '{input}{label}{hint}{error}',
-				])
-		?>
-		
-		<?= $form
-				->field($orderModel, 'phone', [
-					'inputOptions' => [
-						'class' => 'form-control mb-0 px-0',
-						'autocomplete' => rand(),
-						'placeholder' => ' ',
-					],
-					'options' => [
-						'class' => 'form-group mb-1 position-relative floating-label',
-					],
-					'template' => '{input}{label}{hint}{error}',
-				])
-		?>
-		
-		<div id="block-country" class="form-group mb-1 position-relative required" data-select2>
-			<label class="control-label" for="country">
-				<?= Yii::t('front', 'Страна') ?>
-			</label>
-			<?= Select2::widget([
-					'id' => 'country',
-					'name' => 'country',
-					'value' => $fieldsDefaultValues['country_id'],
-					'bsVersion' => '4.x',
-					'language' => Yii::$app->language,
-					'theme' => Select2::THEME_BOOTSTRAP,
-					'data' => $countriesList,
-					'options' => [
-						'class' => 'form-control mb-0 px-0',
-						'placeholder' => ' ',
-						'autocomplete' => rand(),
-						'options' => $countriesOptions,
-					],
-					'pluginOptions' => [
-						'allowClear' => false,
-						'dropdownParent' => new JsExpression("$('#block-country')"),
-						// 'minimumInputLength' => 2,
-						// 'ajax' => [
-							// 'url' => Url::to('/checkout/get-cities'),
-							// 'dataType' => 'json',
-							// 'data' => new JsExpression("function(params){
-								// return {
-									// country_id:$('#order-country_id').val(),
-									// lang:'" . Yii::$app->language . "',
-									// q:params.term
-								// };
-							// }"),
-						// ],
-					],
-				]);
-			?>
-			
-		</div>
-		
-		<div id="block-city" class="form-group mb-3 mb-md-5 position-relative required" data-select2>
-			<label class="control-label" for="city">
-				<?= Yii::t('front', 'Город') ?>
-			</label>
-			<?= Select2::widget([
-					'id' => 'city',
-					'name' => 'city',
-					'value' => $fieldsDefaultValues['city_id'],
-					'bsVersion' => '4.x',
-					'language' => Yii::$app->language,
-					'theme' => Select2::THEME_BOOTSTRAP,
-					'data' => $citiesList,
-					'options' => [
-						'class' => 'form-control mb-0 px-0',
-						'placeholder' => ' ',
-						'autocomplete' => rand(),
-					],
-					'pluginOptions' => [
-						'allowClear' => false,
-						'dropdownParent' => new JsExpression("$('#block-city')"),
-						// 'minimumInputLength' => 0,
-						'ajax' => [
-							'url' => Url::to(['/checkout/get-cities']),
-							'dataType' => 'json',
-							'data' => new JsExpression("
-								function(params){
-									return {
-										country_id:$('#country').val(),
-										lang:'" . Yii::$app->language . "',
-										q:params.term
-									};
-								}
-							"),
-							// 'transport' => new JsExpression("
-								// function(params, success, failure){
-									// var request = $.ajax(params);
-
-									// request.then(function(){
-										// console.log('city success');
-									// });
-									// request.fail(failure);
-
-									// return request;
-								// }
-							// "),
-						],
-                        'cache' => true,
-					],
-				]);
-			?>
-		</div>
-				
-		
-		<div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
-			<div class="col-auto">
-				<p class="text-uppercase font-weight-bold m-0">
-					<?= Yii::t('front', 'Доставка') ?>
-				</p>
-			</div>
-		</div>
-		
-		<?= $form
-				->field($orderModel, 'shipping_type_id')
-                // ->textInput()
-				->hiddenInput()
-				->label(false)
-		?>
-	
-		<div id="shipping_types_list" class="form-group row" role="tablist">
-			<?php
-				foreach ($shippingTypesList as $key => $sht) {
-			?>
-					<div class="col-auto">
-						<div class="custom-control custom-radio mr-2">
-							<input 
-								type="radio" 
-								id="shipping-type-tab-link-<?= $sht->id ?>" 
-								name="shipping_type_switcher" 
-								value="<?= $sht->id ?>" 
-								class="custom-control-input" 
-								data-target="#shipping-type-tab-<?= $sht->id ?>" 
-								<?php if ($orderModel->shipping_type_id == $sht->id) { ?>
-									checked
-								<?php } ?>
-							>
-							<label class="custom-control-label" for="shipping-type-tab-link-<?= $sht->id ?>">
-								<?= Yii::t('front', $sht->name) ?>
-							</label>
-						</div>
-					</div>
-			<?php
-				}
-			?>
-		</div>
-	
-		<div id="shipping_options_section" class="tab-content mb-1">
-		
-	<?php
-		foreach ($shippingTypesList as $key => $sht) {
-	?>  
-			<div 
-				class="tab-pane mt-2 mt-md-3 <?php if ($orderModel->shipping_type_id == $sht->id) {  ?>active<?php } ?>" 
-				id="shipping-type-tab-<?= $sht->id ?>" 
-			>
-            
-		<?php
-			if ($sht->id == 3) {
-		?>
-				<div id="block-courier" class="form-group position-relative">
-					<label class="control-label" for="courier">
-						<?= Yii::t('front', 'Способ курьерской доставки') ?>
-					</label>
-					<?= Select2::widget([
-							'id' => 'courier',
-							'name' => 'courier',
-							'value' => $fieldsDefaultValues['delivery_id'],
-							'bsVersion' => '4.x',
-							'language' => Yii::$app->language,
-							'theme' => Select2::THEME_BOOTSTRAP,
-							'data' => $courierList,
-							'options' => [
-								'class' => 'form-control mb-0 px-0',
-								'placeholder' => Yii::t('front', 'Выберите способ доставки'),
-								'autocomplete' => rand(),
-							],
-                            'hideSearch' => true,
-							'pluginOptions' => [
-								'allowClear' => false,
-								'dropdownParent' => new JsExpression("$('#block-courier')"),
-								// 'minimumInputLength' => 2,
-								'ajax' => [
-									'url' => Url::to(['/checkout/get-delivery']),
-									'dataType' => 'json',
-									'data' => new JsExpression("function(params){
-										return {
-											country_id:$('#country').val(),
-											city_id:$('#city').val(),
-											type:'courier',
-											q:params.term
-										};
-									}"),
-								],
-                                'selectOnClose' => true,
-                                'cache' => true,
-							],
-						]);
-					?>
-				</div>			
-		<?php
-			}
-		?>
-
-		<?php
-			if ($sht->id == 1) {
-		?>
-				<div id="block-delivery" class="form-group position-relative">
-					<label class="control-label" for="pickup">
-						<?= Yii::t('front', 'Способ доставки') ?>
-					</label>
-					<?= Select2::widget([
-							'id' => 'delivery',
-							'name' => 'delivery',
-							'value' => $fieldsDefaultValues['delivery_id'],
-							'bsVersion' => '4.x',
-							'language' => Yii::$app->language,
-							'theme' => Select2::THEME_BOOTSTRAP,
-							'data' => $deliveryList,
-							'options' => [
-								'class' => 'form-control mb-0 px-0',
-								'placeholder' => Yii::t('front', 'Выберите способ доставки'),
-								'autocomplete' => rand(),
-							],
-                            'hideSearch' => true,
-							'pluginOptions' => [
-								'allowClear' => false,
-								'dropdownParent' => new JsExpression("$('#block-delivery')"),
-								// 'minimumInputLength' => 2,
-								'ajax' => [
-									'url' => Url::to(['/checkout/get-delivery']),
-									'dataType' => 'json',
-									'data' => new JsExpression("function(params){
-										return {
-											country_id:$('#country').val(),
-											city_id:$('#city').val(),
-											type:'delivery',
-											q:params.term
-										};
-									}"),
-								],
-                                'selectOnClose' => true,
-                                'cache' => true,
-							],
-						]);
-					?>
-				</div>			
-		<?php
-			}
-		?>
-			
-		<?php
-			if ($sht->id == 2){
-		?>
-				<div id="block-pickup" class="form-group position-relative">
-					<label class="control-label" for="pickup">
-						<?= Yii::t('front', 'Пункт самовывоза') ?>
-					</label>
-					<?= Select2::widget([
-							'id' => 'pickup',
-							'name' => 'pickup',
-							'value' => $fieldsDefaultValues['delivery_id'],
-							'bsVersion' => '4.x',
-							'language' => Yii::$app->language,
-							'theme' => Select2::THEME_BOOTSTRAP,
-							'data' => $pickupsList,
-							'options' => [
-								'class' => 'form-control mb-0 px-0',
-								'placeholder' => Yii::t('front', 'Выберите пункт самовывоза'),
-								'autocomplete' => rand(),
-							],
-                            'hideSearch' => true,
-							'pluginOptions' => [
-								'allowClear' => false,
-								'dropdownParent' => new JsExpression("$('#block-pickup')"),
-								// 'minimumInputLength' => 2,
-                                'minimumResultsForSearch' => 'Infinity',
-								'ajax' => [
-									'url' => Url::to(['/checkout/get-delivery']),
-									'dataType' => 'json',
-									'data' => new JsExpression("function(params){
-										return {
-											country_id:$('#country').val(),
-											city_id:$('#city').val(),
-											type:'pickups',
-											q:params.term
-										};
-									}"),
-								],
-                                'selectOnClose' => true,
-                                'cache' => true,
-							],
-						]);
-					?>
-				</div>
-		<?php
-			}
-		?>
-			
-			</div>
-	<?php
-		}
-	?>
-		
-		</div>
-		
-
-		<div id="delivery_price_and_time" class="row justify-content-between">
-			<div class="col-auto">
-				<p id="delivery_price">
-					<?= $delivery_price ?>
-				</p>                        
-			</div>
-			<div class="col-auto">
-				<p id="delivery_time">
-					<?= $delivery_time ?>
-				</p>                        
-			</div>
-		</div>
-		
-		<p id="delivery_comment" class="<?= $delivery_comment ? '' : 'd-none' ?>">
-			<?= $delivery_comment ?>
-		</p>
-		
-		<p id="delivery_image" style="height: 500px; display: none;"></p>
-		
-		<div id="address" class="row justify-content-center mt-1 mt-md-2">
-			<div class="col-12">
-				<?= $form
-						->field($orderModel, 'address', [
-							'inputOptions' => [
-								'class' => 'form-control mb-0 px-0',
-								'autocomplete' => rand(),
-								'placeholder' => ' ',
-							],
-							'options' => [
-								'class' => 'form-group mb-2 position-relative floating-label',
-							],
-							'template' => '{input}{label}{hint}{error}',
-						])
-				?>
-			</div>
-		</div>
-		
-		<div class="position-relative">
-	<?php
-		if ($fields) {
-			foreach ($fields as $field) {
-	?>
-				<div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
-					<?php if ($field->name != 'postcode') { ?>
-						style="
-							position: absolute;
-							top: 0;
-							left: 0;
-							right: 0;
-							opacity: 0;
-							z-index: -1;
-						"
-                    <?php } ?>
-				>
-					<div class="col-12 order-custom-field-<?= $field->id ?>">
-					<?php
-						if ($widget = $field->type->widget) {
-							echo $widget::widget([
-								'form' => $form,
-								'fieldModel' => $field,
-								'defaultValue' => $fieldsDefaultValues[$field->name],
-							]);
-						} else {
-							echo $form
-									->field($fieldValueModel, 'value['.$field->id.']')
-									->label($field->name)
-									->textInput([
-										'required' => ($field->required == 'yes')
-									]);
-						}
-					?>
-					</div>
-				</div>
-	<?php
-			}
-		}
-	?>
-		</div>
-		
-
-
-<?php if ($paymentTypes) { ?>
-        <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
-            <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
-                <?= Yii::t('front', 'Оплата') ?>
-            </p>
-            <div class="pointer-events-none opacity-75">
-                <?= Select2::widget([
-                        'id' => 'payment_type_id',
-                        'name' => 'Order[payment_type_id]',
-                        'value' => ($fieldsDefaultValues['payment_type_id'] ?: 2),
-                        'bsVersion' => '4.x',
-                        'language' => Yii::$app->language,
-                        'theme' => Select2::THEME_BOOTSTRAP,
-                        'data' => $paymentTypes,
-                        'options' => [
-                            'class' => 'form-control mb-0 px-0',
-                            'placeholder' => ' ',
-                            'autocomplete' => rand(),
-                        ],
-                        'pluginOptions' => [
-                            'allowClear' => false,
-                            'dropdownParent' => new JsExpression("$('#block-payment_type_id')"),
-                        ],
-                    ]);
+        <div class="row">
+            <div class="col-sm-10 col-md-9 col-lg-8 col-xl-7">
+                    
+                <?= $form
+                        ->field($orderModel, 'client_name', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg',
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ]
+                        ])
                 ?>
-            </div>
-        </div>
-<?php } ?>
-        
-		
-		<div id="order_comment" class="row justify-content-center">
-			<div class="col-12">
-				<?= $form
-						->field($orderModel, 'comment', [
-							'inputOptions' => [
-								'class' => 'form-control mb-0',
-								'autocomplete' => rand(),
-								// 'placeholder' => ' ',
-								'rows' => 5,
-								'style' => '
-									resize: none;
-									margin-top: 4px;
-									border: 1px solid rgba(0, 0, 0, 0.2);
-								',
-							],
-							'options' => [
-								'class' => 'form-group mb-3 mb-md-5 position-relative',
-							],
-							'template' => '{label}{input}{hint}{error}',
-						])
-						->textArea()
-				?>
-			</div>
-		</div>
-		
-		<div id="order_total" class="row justify-content-center">
-			<div class="col-12">
-				<div class="h4">
-					<span class="text-bold mr-2">
-						<?= Yii::t('front', 'Итого') ?>:
-					</span>
-					<span id="total">
-						<?= $total ?>
-					</span>
-				</div>
-			</div>
-		</div>
-        
-        <div class="<?= Yii::$app->user->isGuest ? 'form-group mt-2 mb-0 ' : 'd-none' ?>">
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="agree" name="agree" <?php if (!Yii::$app->user->isGuest){?>checked="checked"<?php }?>>
-                <label class="custom-control-label" for="agree">
-                    <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
-                            '/privacy-policy'
-                        ], [
-                            'target' => '_blank',
-                        ]) ?>...
-                </label>
-            </div>
-        </div>
-		
-		<div id="submit" class="row my-2 my-md-5 align-items-center">
-			<div id="order_submit" class="col-sm-6 text-center order-lg-last">
-				<?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
-                        'id' => 'submit-payment-text',
-                        'style' => 'display: none',
-                    ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
-                        'id' => 'submit-finish-text'
-                    ]), [
-                        'id' => 'order-form-submit-button',
-						'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',
-					])
-				?>
-			</div>
-			<div class="col-sm-6 py-1">
-				<?= Html::a(Yii::t('front', 'Назад в корзину'), ['/cart']) ?>
-			</div>
-		</div>
+                
+                <?= $form
+                        ->field($orderModel, 'phone', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg',
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ]
+                        ])
+                ?>
+
+                <?= $form
+                        ->field($orderModel, 'email', [
+                            'inputOptions' => [
+                                'class' => 'form-control form-control-lg',
+                                'autocomplete' => rand(),
+                                'placeholder' => ' ',
+                            ],
+                            'options' => [
+                                'class' => 'form-group row align-items-center mb-2',
+                            ],
+                            'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                            'labelOptions' => [
+                                'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                            ]
+                        ])
+                ?>
+                
+                <div id="block-country" class="form-group row align-items-center mb-2 required" data-select2>
+                    <label class="control-label col-md-3 mb-md-0 font-weight-bold" for="country">
+                        <?= Yii::t('front', 'Страна') ?>
+                    </label>
+                    <div class="col-md-9">
+                        <?= Select2::widget([
+                                'id' => 'country',
+                                'name' => 'country',
+                                'value' => $fieldsDefaultValues['country_id'],
+                                'bsVersion' => '4.x',
+                                'language' => Yii::$app->language,
+                                'theme' => Select2::THEME_BOOTSTRAP,
+                                'data' => $countriesList,
+                                'size' => 'lg',
+                                'options' => [
+                                    'class' => 'form-control form-control-lg',
+                                    'placeholder' => ' ',
+                                    'autocomplete' => rand(),
+                                    'options' => $countriesOptions,
+                                    'size' => 'lg',
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => false,
+                                    'dropdownParent' => new JsExpression("$('#block-country')"),
+                                    // 'minimumInputLength' => 2,
+                                    // 'ajax' => [
+                                        // 'url' => Url::to('/checkout/get-cities'),
+                                        // 'dataType' => 'json',
+                                        // 'data' => new JsExpression("function(params){
+                                            // return {
+                                                // country_id:$('#order-country_id').val(),
+                                                // lang:'" . Yii::$app->language . "',
+                                                // q:params.term
+                                            // };
+                                        // }"),
+                                    // ],
+                                ],
+                            ]);
+                        ?>
+                    </div>
+                </div>
+                
+                <div id="block-city" class="form-group row align-items-center mb-2  required" data-select2>
+                    <label class="control-label col-md-3 mb-md-0 font-weight-bold" for="city">
+                        <?= Yii::t('front', 'Город') ?>
+                    </label>
+                    <div class="col-md-9">
+                        <?= Select2::widget([
+                                'id' => 'city',
+                                'name' => 'city',
+                                'value' => $fieldsDefaultValues['city_id'],
+                                'bsVersion' => '4.x',
+                                'language' => Yii::$app->language,
+                                'theme' => Select2::THEME_BOOTSTRAP,
+                                'data' => $citiesList,
+                                'options' => [
+                                    'class' => 'form-control form-control-lg',
+                                    'placeholder' => ' ',
+                                    'autocomplete' => rand(),
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => false,
+                                    'dropdownParent' => new JsExpression("$('#block-city')"),
+                                    // 'minimumInputLength' => 0,
+                                    'ajax' => [
+                                        'url' => Url::to(['/checkout/get-cities']),
+                                        'dataType' => 'json',
+                                        'data' => new JsExpression("
+                                            function(params){
+                                                return {
+                                                    country_id:$('#country').val(),
+                                                    lang:'" . Yii::$app->language . "',
+                                                    q:params.term
+                                                };
+                                            }
+                                        "),
+                                        // 'transport' => new JsExpression("
+                                            // function(params, success, failure){
+                                                // var request = $.ajax(params);
+
+                                                // request.then(function(){
+                                                    // console.log('city success');
+                                                // });
+                                                // request.fail(failure);
+
+                                                // return request;
+                                            // }
+                                        // "),
+                                    ],
+                                    'cache' => true,
+                                ],
+                            ]);
+                        ?>
+                    </div>
+                </div>
+                        
+                
+                <div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
+                    <div class="col-auto">
+                        <p class="text-uppercase font-weight-bold m-0">
+                            <?= Yii::t('front', 'Доставка') ?>
+                        </p>
+                    </div>
+                </div>
+                
+                <?= $form
+                        ->field($orderModel, 'shipping_type_id')
+                        // ->textInput()
+                        ->hiddenInput()
+                        ->label(false)
+                ?>
             
+                <div id="shipping_types_list" class="form-group row" role="tablist">
+                    <?php
+                        foreach ($shippingTypesList as $key => $sht) {
+                    ?>
+                            <div class="col-auto">
+                                <div class="custom-control custom-radio mr-2">
+                                    <input 
+                                        type="radio" 
+                                        id="shipping-type-tab-link-<?= $sht->id ?>" 
+                                        name="shipping_type_switcher" 
+                                        value="<?= $sht->id ?>" 
+                                        class="custom-control-input" 
+                                        data-target="#shipping-type-tab-<?= $sht->id ?>" 
+                                        <?php if ($orderModel->shipping_type_id == $sht->id) { ?>
+                                            checked
+                                        <?php } ?>
+                                    >
+                                    <label class="custom-control-label" for="shipping-type-tab-link-<?= $sht->id ?>">
+                                        <?= Yii::t('front', $sht->name) ?>
+                                    </label>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    ?>
+                </div>
+            
+                <div id="shipping_options_section" class="tab-content mb-1">
+                
+            <?php
+                foreach ($shippingTypesList as $key => $sht) {
+            ?>  
+                    <div 
+                        class="tab-pane mt-2 mt-md-3 <?php if ($orderModel->shipping_type_id == $sht->id) {  ?>active<?php } ?>" 
+                        id="shipping-type-tab-<?= $sht->id ?>" 
+                    >
+                    
+                <?php
+                    if ($sht->id == 3) {
+                ?>
+                        <div id="block-courier" class="form-group position-relative">
+                            <label class="control-label" for="courier">
+                                <?= Yii::t('front', 'Способ курьерской доставки') ?>
+                            </label>
+                            <?= Select2::widget([
+                                    'id' => 'courier',
+                                    'name' => 'courier',
+                                    'value' => (empty($courierList) ? null : $fieldsDefaultValues['delivery_id']),
+                                    'bsVersion' => '4.x',
+                                    'language' => Yii::$app->language,
+                                    'theme' => Select2::THEME_BOOTSTRAP,
+                                    'data' => $courierList,
+                                    'options' => [
+                                        'class' => 'form-control mb-0 px-0',
+                                        'placeholder' => Yii::t('front', 'Выберите способ доставки'),
+                                        'autocomplete' => rand(),
+                                    ],
+                                    'hideSearch' => true,
+                                    'pluginOptions' => [
+                                        'allowClear' => false,
+                                        'dropdownParent' => new JsExpression("$('#block-courier')"),
+                                        // 'minimumInputLength' => 2,
+                                        'ajax' => [
+                                            'url' => Url::to(['/checkout/get-delivery']),
+                                            'dataType' => 'json',
+                                            'data' => new JsExpression("function(params){
+                                                return {
+                                                    country_id:$('#country').val(),
+                                                    city_id:$('#city').val(),
+                                                    type:'courier',
+                                                    q:params.term
+                                                };
+                                            }"),
+                                        ],
+                                        'selectOnClose' => true,
+                                        'cache' => true,
+                                    ],
+                                ]);
+                            ?>
+                        </div>			
+                <?php
+                    }
+                ?>
+
+                <?php print_r($deliveryList); echo $fieldsDefaultValues['delivery_id'];
+                    if ($sht->id == 1) {
+                ?>
+                        <div id="block-delivery" class="form-group position-relative">
+                            <label class="control-label" for="pickup">
+                                <?= Yii::t('front', 'Способ доставки') ?>
+                            </label>
+                            <?= Select2::widget([
+                                    'id' => 'delivery',
+                                    'name' => 'delivery',
+                                    'value' => (empty($deliveryList) ? null : $fieldsDefaultValues['delivery_id']),
+                                    'bsVersion' => '4.x',
+                                    'language' => Yii::$app->language,
+                                    'theme' => Select2::THEME_BOOTSTRAP,
+                                    'data' => $deliveryList,
+                                    'options' => [
+                                        'class' => 'form-control mb-0 px-0',
+                                        'placeholder' => Yii::t('front', 'Выберите способ доставки'),
+                                        'autocomplete' => rand(),
+                                    ],
+                                    'hideSearch' => true,
+                                    'pluginOptions' => [
+                                        'allowClear' => false,
+                                        'dropdownParent' => new JsExpression("$('#block-delivery')"),
+                                        // 'minimumInputLength' => 2,
+                                        'ajax' => [
+                                            'url' => Url::to(['/checkout/get-delivery']),
+                                            'dataType' => 'json',
+                                            'data' => new JsExpression("function(params){
+                                                return {
+                                                    country_id:$('#country').val(),
+                                                    city_id:$('#city').val(),
+                                                    type:'delivery',
+                                                    q:params.term
+                                                };
+                                            }"),
+                                        ],
+                                        'selectOnClose' => true,
+                                        'cache' => true,
+                                    ],
+                                ]);
+                            ?>
+                        </div>			
+                <?php
+                    }
+                ?>
+                    
+                <?php
+                    if ($sht->id == 2){
+                ?>
+                        <div id="block-pickup" class="form-group position-relative">
+                            <label class="control-label" for="pickup">
+                                <?= Yii::t('front', 'Пункт самовывоза') ?>
+                            </label>
+                            <?= Select2::widget([
+                                    'id' => 'pickup',
+                                    'name' => 'pickup',
+                                    'value' => (empty($pickupsList) ? null : $fieldsDefaultValues['delivery_id']),
+                                    'bsVersion' => '4.x',
+                                    'language' => Yii::$app->language,
+                                    'theme' => Select2::THEME_BOOTSTRAP,
+                                    'data' => $pickupsList,
+                                    'options' => [
+                                        'class' => 'form-control mb-0 px-0',
+                                        'placeholder' => Yii::t('front', 'Выберите пункт самовывоза'),
+                                        'autocomplete' => rand(),
+                                    ],
+                                    'hideSearch' => true,
+                                    'pluginOptions' => [
+                                        'allowClear' => false,
+                                        'dropdownParent' => new JsExpression("$('#block-pickup')"),
+                                        // 'minimumInputLength' => 2,
+                                        'minimumResultsForSearch' => 'Infinity',
+                                        'ajax' => [
+                                            'url' => Url::to(['/checkout/get-delivery']),
+                                            'dataType' => 'json',
+                                            'data' => new JsExpression("function(params){
+                                                return {
+                                                    country_id:$('#country').val(),
+                                                    city_id:$('#city').val(),
+                                                    type:'pickups',
+                                                    q:params.term
+                                                };
+                                            }"),
+                                        ],
+                                        'selectOnClose' => true,
+                                        'cache' => true,
+                                    ],
+                                ]);
+                            ?>
+                        </div>
+                <?php
+                    }
+                ?>
+                    
+                    </div>
+            <?php
+                }
+            ?>
+                
+                </div>
+                
+
+                <div id="delivery_price_and_time" class="row justify-content-between">
+                    <div class="col-auto">
+                        <p id="delivery_price">
+                            <?= $delivery_price ?>
+                        </p>                        
+                    </div>
+                    <div class="col-auto">
+                        <p id="delivery_time">
+                            <?= $delivery_time ?>
+                        </p>                        
+                    </div>
+                </div>
+                
+                <p id="delivery_comment" class="<?= $delivery_comment ? '' : 'd-none' ?>">
+                    <?= $delivery_comment ?>
+                </p>
+                
+                <p id="delivery_image" style="height: 500px; display: none;"></p>
+                
+                <div id="address" class="row justify-content-center mt-1 mt-md-2">
+                    <div class="col-12">
+                        <?= $form
+                                ->field($orderModel, 'address', [
+                                    'inputOptions' => [
+                                        'class' => 'form-control mb-0 px-0',
+                                        'autocomplete' => rand(),
+                                        'placeholder' => ' ',
+                                    ],
+                                    'options' => [
+                                        'class' => 'form-group mb-2 position-relative floating-label',
+                                    ],
+                                    'template' => '{input}{label}{hint}{error}',
+                                ])
+                        ?>
+                    </div>
+                </div>
+                
+                <div class="position-relative">
+            <?php
+                if ($fields) {
+                    foreach ($fields as $field) {
+            ?>
+                        <div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
+                            <?php if ($field->name != 'postcode') { ?>
+                                style="
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    right: 0;
+                                    opacity: 0;
+                                    z-index: -1;
+                                "
+                            <?php } ?>
+                        >
+                            <div class="col-12 order-custom-field-<?= $field->id ?>">
+                            <?php
+                                if ($widget = $field->type->widget) {
+                                    echo $widget::widget([
+                                        'form' => $form,
+                                        'fieldModel' => $field,
+                                        'defaultValue' => $fieldsDefaultValues[$field->name],
+                                    ]);
+                                } else {
+                                    echo $form
+                                            ->field($fieldValueModel, 'value['.$field->id.']')
+                                            ->label($field->name)
+                                            ->textInput([
+                                                'required' => ($field->required == 'yes')
+                                            ]);
+                                }
+                            ?>
+                            </div>
+                        </div>
+            <?php
+                    }
+                }
+            ?>
+                </div>
+                
+
+
+        <?php if ($paymentTypes) { ?>
+                <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
+                    <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
+                        <?= Yii::t('front', 'Оплата') ?>
+                    </p>
+                    <div class="pointer-events-none opacity-75">
+                        <?= Select2::widget([
+                                'id' => 'payment_type_id',
+                                'name' => 'Order[payment_type_id]',
+                                'value' => ($fieldsDefaultValues['payment_type_id'] ?: 2),
+                                'bsVersion' => '4.x',
+                                'language' => Yii::$app->language,
+                                'theme' => Select2::THEME_BOOTSTRAP,
+                                'data' => $paymentTypes,
+                                'options' => [
+                                    'class' => 'form-control mb-0 px-0',
+                                    'placeholder' => ' ',
+                                    'autocomplete' => rand(),
+                                ],
+                                'pluginOptions' => [
+                                    'allowClear' => false,
+                                    'dropdownParent' => new JsExpression("$('#block-payment_type_id')"),
+                                ],
+                            ]);
+                        ?>
+                    </div>
+                </div>
+        <?php } ?>
+                
+                
+                <div id="order_comment" class="row justify-content-center">
+                    <div class="col-12">
+                        <?= $form
+                                ->field($orderModel, 'comment', [
+                                    'inputOptions' => [
+                                        'class' => 'form-control mb-0',
+                                        'autocomplete' => rand(),
+                                        // 'placeholder' => ' ',
+                                        'rows' => 5,
+                                        'style' => '
+                                            resize: none;
+                                            margin-top: 4px;
+                                            border: 1px solid rgba(0, 0, 0, 0.2);
+                                        ',
+                                    ],
+                                    'options' => [
+                                        'class' => 'form-group mb-3 mb-md-5 position-relative',
+                                    ],
+                                    'template' => '{label}{input}{hint}{error}',
+                                ])
+                                ->textArea()
+                        ?>
+                    </div>
+                </div>
+                
+                <div id="order_total" class="row justify-content-center">
+                    <div class="col-12">
+                        <div class="h4">
+                            <span class="text-bold mr-2">
+                                <?= Yii::t('front', 'Итого') ?>:
+                            </span>
+                            <span id="total">
+                                <?= $total ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="<?= Yii::$app->user->isGuest ? 'form-group mt-2 mb-0 ' : 'd-none' ?>">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="agree" name="agree" <?php if (!Yii::$app->user->isGuest){?>checked="checked"<?php }?>>
+                        <label class="custom-control-label" for="agree">
+                            <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
+                                    '/privacy-policy'
+                                ], [
+                                    'target' => '_blank',
+                                ]) ?>...
+                        </label>
+                    </div>
+                </div>
+                
+                <div id="submit" class="row my-2 my-md-5 align-items-center">
+                    <div id="order_submit" class="col-sm-6 text-center order-lg-last">
+                        <?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
+                                'id' => 'submit-payment-text',
+                                'style' => 'display: none',
+                            ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
+                                'id' => 'submit-finish-text'
+                            ]), [
+                                'id' => 'order-form-submit-button',
+                                'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',
+                            ])
+                        ?>
+                    </div>
+                    <div class="col-sm-6 py-1">
+                        <?= Html::a(Yii::t('front', 'Назад в корзину'), ['/cart']) ?>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
 
         <?= Html::hiddenInput('lang_id', $lang_id, [
                 'id' => 'lang_id'

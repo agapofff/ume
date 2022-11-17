@@ -22,17 +22,15 @@ class ChangeCount extends \yii\base\Widget
     public function init()
     {
         parent::init();
-
         \dvizh\cart\assets\WidgetAsset::register($this->getView());
-        
         return true;
     }
 
     public function run()
     {
-        if($this->showArrows) {
+        if ($this->showArrows) {
             $downArr = Html::tag('div', Html::button($this->downArr, [
-                'class' => 'btn btn-link p-0 rounded-pill d-flex align-items-center justify-content-center cart-change-count minus',
+                'class' => 'btn btn-link d-flex align-items-center justify-content-center cart-change-count minus',
                 'style' => 'pointer-events: ' . ($this->model->count == 1 ? 'none' : 'normal'),
                 'disabled' => ($this->model->count == 1 ? true : false),
             ]), [
@@ -40,7 +38,7 @@ class ChangeCount extends \yii\base\Widget
                 'style' => 'pointer-events: ' . ($this->model->count == 1 ? 'none' : 'normal')
             ]);
             $upArr = Html::tag('div', Html::button($this->upArr, [
-                'class' => 'btn btn-link p-0 rounded-pill d-flex align-items-center justify-content-center cart-change-count plus',
+                'class' => 'btn btn-link d-flex align-items-center justify-content-center cart-change-count plus',
             ]), [
                 'class' => 'input-group-append dvizh-arr dvizh-upArr'
             ]);
@@ -57,7 +55,10 @@ class ChangeCount extends \yii\base\Widget
                 'data-id' => $this->model->getId(),
                 'data-href' => $this->actionUpdateUrl,
                 'min' => '1',
-                'style' => ($this->showArrows ? 'pointer-events: none;' : ''),
+                'style' => '
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                ' . ($this->showArrows ? 'pointer-events: none;' : ''),
             ]);
         } else {
             $input = Html::input('number', 'count', $this->defaultValue, [
@@ -65,6 +66,10 @@ class ChangeCount extends \yii\base\Widget
                 'data-line-selector' => $this->lineSelector,
                 'data-id' => $this->model->getCartId(),
                 'min' => '1',
+                'style' => '
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                ',
             ]);
         }
         

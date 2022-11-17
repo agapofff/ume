@@ -567,10 +567,10 @@ return [
                 
                 'product/<slug>' => 'product/index',
                 
-                // 'checkout' => 'checkout/index',
-                // 'checkout/pay' => 'checkout/pay',
-                // 'checkout/error' => 'checkout/error',
-                // 'checkout/success' => 'checkout/success',
+                'checkout' => 'checkout/index',
+                'checkout/pay' => 'checkout/pay',
+                'checkout/error' => 'checkout/error',
+                'checkout/success' => 'checkout/success',
                 
                 'cookies-notification-shown' => 'site/cookies-notification-shown',
 

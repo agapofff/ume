@@ -140,7 +140,7 @@ class CheckoutController extends \yii\web\Controller
     {
         $language = $lang ?: Yii::$app->language;
         $citiesJson = Yii::$app->runAction('curl', [
-            'url' => 'https://www.sessia.com/api/directory/cities/' . $country_id,
+            'url' => 'https://api.sessia.com/api/directory/cities/' . $country_id,
             'params' => json_encode([
                 '_format' => 'json',
                 'limit' => 10,
@@ -180,9 +180,16 @@ class CheckoutController extends \yii\web\Controller
                 ];
                 $total += ($element->getCount() * $element->getPrice());
             }
+            
+// echo $country_id;
+// echo '<br>';
+// echo $city_id;
+// echo '<br>';
+// print_r($products); 
+// exit;
 
             $deliveryJson = Yii::$app->runAction('curl', [
-                'url' => 'https://www.sessia.com/api/market/delivery-cost',
+                'url' => 'https://api.sessia.com/api/market/delivery-cost',
                 'post' => true,
                 'params' => json_encode([
                     'country' => $country_id,
@@ -194,9 +201,8 @@ class CheckoutController extends \yii\web\Controller
 
             if ($deliveryJson) {
                 $deliveries = [
-                    'courier' => [],
+                    'pickups' => [],
                     'delivery' => [],
-                    'pickups' => []
                 ];
                 $details = [];
                 $deliveryJson = str_replace('\r\n', '<br>', $deliveryJson);
@@ -209,8 +215,6 @@ class CheckoutController extends \yii\web\Controller
                     
                     if ($shipping->delivery_type->pickup) {
                         $text = $shipping->comment;
-                    } elseif ($shipping->delivery_type->delivery_service->id == 8150) {
-                        $text = $shipping->delivery_type->delivery_service->name;
                     } else {
                         $text = $shipping->delivery_type->name . (
                             strpos($shipping->delivery_type->name, $operator) !== false ? '' : ' ' . $operator
@@ -219,7 +223,7 @@ class CheckoutController extends \yii\web\Controller
                     
                     $text = str_replace('<br>', ' ', $text);
                     
-                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : ($shipping->delivery_type->delivery_service->id == 8150 ? 'courier' : 'delivery');
+                    $deliveryType = $shipping->delivery_type->pickup ? 'pickups' : 'delivery';
                     
                     if ($q) {
                         if (mb_stripos($text, $q) === false) {
@@ -236,18 +240,18 @@ class CheckoutController extends \yii\web\Controller
                     }
                     
                     // убрать Никольскую
-                    if (strpos($text, 'Никольская') !== false) {
-                        $alreadySet = true;
-                    }
+                    // if (strpos($text, 'Никольская') !== false) {
+                        // $alreadySet = true;
+                    // }
                     
                     // убрать все пункты самовывоза, кроме склада - и переименовать склад
-                    if ($deliveryType == 'pickups') {
-                        if (strpos($text, 'Склад Freedom International Group') !== false) {
-                            $text = 'г. Москва, ул. Краснобогатырская, д.89, стр.1 (метро Преображенская площадь)';
-                        } else {
-                            continue;
-                        }
-                    }
+                    // if ($deliveryType == 'pickups') {
+                        // if (strpos($text, 'Склад Freedom International Group') !== false) {
+                            // $text = 'г. Москва, ул. Краснобогатырская, д.89, стр.1 (метро Преображенская площадь)';
+                        // } else {
+                            // continue;
+                        // }
+                    // }
                     
                     if (!$alreadySet) {
                         $deliveries[$deliveryType][] = [
@@ -260,18 +264,14 @@ class CheckoutController extends \yii\web\Controller
                         'cost' => $shipping->cost,
                         'price' => Yii::$app->formatter->asCurrency($shipping->cost, Yii::$app->params['currency']),
                         'image' => isset($shipping->image) ? 'https://sessia.com' . $shipping->image : '',
-                        'comment' => str_replace('Freedom International Group', 'NRK87', 
-                            $shipping->comment
-                        ),
+                        'comment' => $shipping->comment,
                         'time' => (isset($shipping->delivery_time_from) ? Yii::t('front', 'от {0} до {1} дней', [
                             $shipping->delivery_time_from,
                             $shipping->delivery_time_to
                         ]) : ''),
                         'delivery_service' => [
                             'id' => $shipping->delivery_type->delivery_service->id,
-                            'name' => str_replace('FIG', 'NRK87.', 
-                                $shipping->delivery_type->delivery_service->name
-                            ),
+                            'name' => $shipping->delivery_type->delivery_service->name,
                         ],
                         'sum' => ($total + $shipping->cost),
                         'total' => Yii::$app->formatter->asCurrency(($total + $shipping->cost), Yii::$app->params['currency']),
@@ -282,14 +282,18 @@ class CheckoutController extends \yii\web\Controller
                 }
                 
                 // сначала показывать курьера с примеркой в Москве
-                if ($country_id == 1 && $city_id == 3) {
-                    ArrayHelper::multisort($deliveries['delivery'], 'id', SORT_DESC);
-                }
-                
+                // if ($country_id == 1 && $city_id == 3) {
+                    // ArrayHelper::multisort($deliveries['delivery'], 'id', SORT_DESC);
+                // }
+// echo \yii\helpers\VarDumper::dump([
+    // 'pickups' => $deliveries['pickups'],
+    // 'delivery' => $deliveries['delivery'],
+    // 'details' => $details,
+// ], 99, true);
+// exit;
                 $return = [
-                    'delivery' => $deliveries['delivery'],
                     'pickups' => $deliveries['pickups'],
-                    'courier' => $deliveries['courier'],
+                    'delivery' => $deliveries['delivery'],
                     'details' => $details,
                 ];
                 
@@ -302,11 +306,6 @@ class CheckoutController extends \yii\web\Controller
                     case 'delivery':
                         return json_encode([
                             'results' => $return['delivery']
-                        ]);
-                        break;
-                    case 'courier':
-                        return json_encode([
-                            'results' => $return['courier']
                         ]);
                         break;
                     case 'details':

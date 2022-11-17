@@ -76,7 +76,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             <h4 class="mb-2 mb-lg-3">
                 <?= json_decode($product->text)->{Yii::$app->language} ?>
             </h4>
-            <div class="row align-items-center mt-2 mt-lg-3 mt-xl-4">
+            <div class="row align-items-center mt-2 mt-lg-3 mt-xl-4 d-none">
                 <div class="col-auto pr-lg-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     <meta itemprop="price" content="<?= $price->price ?>">
                     <meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">
