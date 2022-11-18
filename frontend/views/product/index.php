@@ -55,7 +55,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
         </div>
     </div>
     
-    <div class="row no-gutters align-items-center bg-gray-200 py-2">
+    <div class="row no-gutters align-items-center bg-gray-200 py-1">
         <div class="col-lg-6 px-xl-2">
             <div class="owl-carousel owl-theme owl-dots">
             
