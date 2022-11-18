@@ -676,8 +676,8 @@
                                                             echo $optionKey . '="' . $optionVal . '" ';
                                                         }
                                                     }
-                                                ?>
-                                            >
+                                                ?> 
+                                            data-dismiss="modal">
                                                 <?= $menuItem['label'] ?>
                                             </a>
                                     <?php
