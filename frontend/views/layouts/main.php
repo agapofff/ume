@@ -665,7 +665,7 @@
                                         $activeMenu = $menuItem['url'] == Url::to();
                                     }
                             ?>
-                                    <li class="nav-item <?= $activeMenu ? 'active' : '' ?>">
+                                    <li class="nav-item <?= $activeMenu ? 'active' : '' ?>" data-dismiss="modal">
                                     <?php
                                         if (isset($menuItem['url'])) {
                                     ?>
@@ -677,7 +677,7 @@
                                                         }
                                                     }
                                                 ?> 
-                                            data-dismiss="modal">
+                                            >
                                                 <?= $menuItem['label'] ?>
                                             </a>
                                     <?php
