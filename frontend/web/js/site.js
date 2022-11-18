@@ -103,6 +103,15 @@ jQuery(document).ready(function ($) {
     if (location.href.includes('#')) {
         $('a[href="#' + location.href.split('#')[1] + '"]').trigger('click');
     }
+    
+    
+    // scrollTo
+    $(document).on('click', '.scrollTo', function (e) {
+        e.preventDefault();
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $('#' + $(this).attr('href').split('#')[1]).offset().top - 50
+        }, 500);
+    });
 
 
     // уведомления

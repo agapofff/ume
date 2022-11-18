@@ -73,6 +73,16 @@
         'languages' => Yii::$app->params['languages'],
     ]);
     $langs = $langs->toArray();
+
+    
+    $controllerID = Yii::$app->controller->id;
+    $actionID = Yii::$app->controller->action->id;
+    
+    // главная страница?
+    $isMainPage = $controllerID == 'site' && $actionID == 'index';
+    
+    // карточка товара
+    $isProductPage = $controllerID == 'product' && $actionID == 'index';
     
     
     // меню
@@ -84,18 +94,18 @@
         ],
         [
             'label' => Yii::t('front', 'Приложение'),
-            'url' => Url::to(['/app']),
-            'class' => '',
+            'url' => Url::to(['/', '#' => 'app']),
+            'class' => 'scrollTo',
         ],
         [
             'label' => Yii::t('front', 'Программа лояльности'),
-            'url' => Url::to(['/bonus']),
-            'class' => '',
+            'url' => Url::to(['/', '#' => 'bonus']),
+            'class' => ($isMainPage ? 'scrollTo' : ''),
         ],
         [
             'label' => Yii::t('front', 'О нас'),
             'url' => Url::to(['/about']),
-            'class' => '',
+            'class' => ($isMainPage ? 'scrollTo' : ''),
         ],
         [
             'label' => Yii::t('front', 'Новости'),
@@ -127,13 +137,13 @@
         ],
         [
             'label' => Yii::t('front', 'Приложение UME'),
-            'url' => Url::to(['/app']),
-            'class' => '',
+            'url' => Url::to(['/', '#' => 'app']),
+            'class' => ($isMainPage ? 'scrollTo' : ''),
         ],
         [
             'label' => Yii::t('front', 'Программа Привилегий'),
-            'url' => Url::to(['/bonus']),
-            'class' => '',
+            'url' => Url::to(['/', '#' => 'bonus']),
+            'class' => ($isMainPage ? 'scrollTo' : ''),
         ],
         [
             'label' => Yii::t('front', 'О нас'),
@@ -166,17 +176,8 @@
         // ];
     // }
     
-    $controllerID = Yii::$app->controller->id;
-    $actionID = Yii::$app->controller->action->id;
-    
-    // главная страница?
-    $isMainPage = $controllerID == 'site' && $actionID == 'index';
-    
-    // карточка товара
-    $isProductPage = $controllerID == 'product' && $actionID == 'index';
     
     $cart = Yii::$app->cart;
-    
     
     // товар в подарок
     $giftData = null;

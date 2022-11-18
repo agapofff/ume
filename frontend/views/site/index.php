@@ -141,7 +141,7 @@ $this->title = Yii::$app->name;
     
 </div>
 
-<div class="container-xl mt-2 mt-lg-4">
+<div id="app" class="container-xl pt-3 pt-lg-5">
     <div class="row">
         <div class="col-xl-6 mb-3 mb-xl-0">
             <div class="row h-100">
@@ -305,7 +305,7 @@ $this->title = Yii::$app->name;
     </div>
 </div>
 
-<div class="container-xl mt-3 mt-lg-5">
+<div id="bonus" class="container-xl pt-3 pt-lg-5">
     <div class="row">
         <div class="col-xl-6 mb-3 mb-xl-0">
             <div class="row h-100">
