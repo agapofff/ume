@@ -622,7 +622,7 @@ form .hint-block {
 }
 .news-post .card-img {
     position: relative;
-    opacity: 0;
+    opacity: 0.7;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
@@ -637,20 +637,20 @@ form .hint-block {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(71, 79, 115, 0.8);
-    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     transition: all 0.5s ease;
     z-index: -1;
 }
+.news-post:hover .card-img-overlay:before {
+    background-color: rgba(0, 0, 0, 0.5);
+}
 .news-post:hover .card-img {
     opacity: 1;
 }
-.news-post:hover .card-img-overlay:before {
-    opacity: 1;
-}
-.news-post:hover .card-img-overlay * {
+.news-post:hover * {
     color: #fff !important;
 }
 .news-img-zoom {
@@ -895,3 +895,14 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     }
 }
 
+
+/* select 2 */
+.select2-container--bootstrap .select2-selection--single {
+    height: calc(1.5em + 1.8rem + 2px);
+    padding: 0.9rem 1.8rem;
+    font-size: 1.33rem;
+    line-height: 1.5;
+    font-weight: 300;
+    border-radius: 0.65rem;
+    border: 1px solid #978F76;
+}
