@@ -17,7 +17,7 @@ $productName = json_decode($product->name)->{Yii::$app->language};
             <?= $productName ?>
         </h4>
         <div class="row no-gutters h-50">
-            <div class="col-xl-8">
+            <div class="col-xl-7">
                 <div class="mb-2 font-weight-bolder">
                     <?= json_decode($product->text)->{Yii::$app->language} ?>
                 </div>
