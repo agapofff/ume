@@ -39,7 +39,7 @@ $productName = json_decode($product->name)->{Yii::$app->language};
             </div>
         </div>
     </div>
-    <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 10%);">
+    <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(7%, 10%);">
         <img data-src="<?= $product->getImage()->getUrl() ?>" class="lazyload img-fluid pointer-events-none" alt="<?= $productName ?>">
     </div>
 </a>
