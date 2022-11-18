@@ -61,12 +61,12 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             
         <?php
             foreach ($images as $key => $image) {
-                if ($key) {
+                // if ($key) {
                     $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.' . $image->getExtension();
         ?>
                     <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x600') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
         <?php
-                }
+                // }
             }
         ?>
             
@@ -76,7 +76,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             <h4 class="mb-2 mb-lg-3">
                 <?= json_decode($product->text)->{Yii::$app->language} ?>
             </h4>
-            <div class="row align-items-center mt-2 mt-lg-3 mt-xl-4 d-none">
+            <div class="row align-items-center mt-2 mt-lg-3 mt-xl-4">
                 <div class="col-auto pr-lg-3" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                     <meta itemprop="price" content="<?= $price->price ?>">
                     <meta itemprop="priceCurrency" content="<?= Yii::$app->params['currency'] ?>">

@@ -4,6 +4,10 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ListView;
 use yii\widgets\Pjax;
+use dvizh\shop\widgets\ShowPrice;
+use dvizh\cart\widgets\BuyButton;
+use dvizh\cart\widgets\ChangeCount;
+use dvizh\cart\widgets\ChangeOptions;
 
 $categoryName = json_decode($category->name)->{Yii::$app->language};
 $categoryText = json_decode($category->text)->{Yii::$app->language};
@@ -118,9 +122,21 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                             <p class="mb-2 font-weight-bolder">
                                 <?= Yii::t('front', 'Полнорационный стерилизованный влажный корм UME с энтопротеином и белым императорским женьшенем') ?>
                             </p>
-                            <button type="button" class="btn btn-secondary rounded-pill px-2 py-1">
-                                <?= Yii::t('front', 'Купить') ?> <?= Yii::$app->formatter->asCurrency($prices[$product->id]['price'], $store->currency) ?>
-                            </button>
+                            <?= BuyButton::widget([
+                                    'model' => $product,
+                                    'price' => $prices[$product->id]['price'],
+                                    'count' => 1,
+                                    'comment' => $prices[$product->id]['code'],
+                                    'htmlTag' => 'button',
+                                    'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 d-flex',
+                                    'text' => Yii::t('front', 'Купить') . ' ' . ShowPrice::widget([
+                                        'htmlTag' => 'span',
+                                        'cssClass' => 'text-nowrap ml-0_5',
+                                        'model' => $product,
+                                        'price' => $price->price,
+                                    ]),
+                                ]);
+                            ?>
                         </div>
                     </div>
                 </div>

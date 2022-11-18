@@ -28,7 +28,6 @@ class ProductController extends \yii\web\Controller
         }
         
         $category = $product->category;
-// print_r($category->attributes); exit;
         
         $store = Stores::findOne([
             'lang' => Yii::$app->language,
