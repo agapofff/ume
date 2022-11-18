@@ -665,7 +665,7 @@
                                         $activeMenu = $menuItem['url'] == Url::to();
                                     }
                             ?>
-                                    <li class="nav-item <?= $activeMenu ? 'active' : '' ?>" data-dismiss="modal">
+                                    <li class="nav-item <?= $activeMenu ? 'active' : '' ?>">
                                     <?php
                                         if (isset($menuItem['url'])) {
                                     ?>
@@ -677,7 +677,7 @@
                                                         }
                                                     }
                                                 ?> 
-                                            >
+                                            onclick="$('#menu').modal('hide');">
                                                 <?= $menuItem['label'] ?>
                                             </a>
                                     <?php
