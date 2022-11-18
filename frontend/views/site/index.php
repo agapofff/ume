@@ -36,9 +36,9 @@ $this->title = Yii::$app->name;
     <div class="row flex-nowrap">
         <div class="col">
             <h2 class="text-uppercase font-weight-light mb-1">
-                <?= Yii::t('front', 'Каталог кормов и аксессуаров') ?>
+                <?= Yii::t('front', 'Продукция UME') ?>
             </h2>
-            <p class="font-weight-bolder">
+            <p class="font-weight-bolder d-none">
                 <?= Yii::t('front', 'Ознакомьтесь с нашей продукцией') ?>
             </p>
         </div>
@@ -52,7 +52,19 @@ $this->title = Yii::$app->name;
             ?>
         </div>
     </div>
+    
     <div class="row mt-1 mt-lg-3">
+    <?php
+        foreach ($products as $product) {
+            echo $this->render('@frontend/views/catalog/_product', [
+                'product' => $product,
+                'prices' => $prices,
+            ]);
+        }
+    ?>
+    </div>
+    
+    <div class="row mt-1 mt-lg-3 d-none">
         <a href="<?= Url::to(['/catalog/wet-food']) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
             <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
                 <img src="/images/main/wet-food.png" class="img-fluid d-xl-none mb-2" alt="<?= $this->title ?>">
@@ -126,6 +138,7 @@ $this->title = Yii::$app->name;
             </div>
         </a>
     </div>
+    
 </div>
 
 <div class="container-xl mt-2 mt-lg-4">

@@ -2,12 +2,7 @@
 
 use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\widgets\ListView;
 use yii\widgets\Pjax;
-use dvizh\shop\widgets\ShowPrice;
-use dvizh\cart\widgets\BuyButton;
-use dvizh\cart\widgets\ChangeCount;
-use dvizh\cart\widgets\ChangeOptions;
 
 $categoryName = json_decode($category->name)->{Yii::$app->language};
 $categoryText = json_decode($category->text)->{Yii::$app->language};
@@ -109,42 +104,10 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
         <div class="row">
     <?php
         foreach ($products as $product) {
-            $productName = json_decode($product->name)->{Yii::$app->language};
-    ?>
-            <a href="<?= Url::to(['/product/' . $product->slug]) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
-                <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
-                    <img src="<?= $product->getImage()->getUrl() ?>" class="img-fluid d-xl-none mb-1" alt="<?= $productName ?>">
-                    <h4 class="mb-2 font-weight-bolder">
-                        <?= $productName ?>
-                    </h4>
-                    <div class="row no-gutters h-50">
-                        <div class="col-xl-8">
-                            <p class="mb-2 font-weight-bolder">
-                                <?= Yii::t('front', 'Полнорационный стерилизованный влажный корм UME с энтопротеином и белым императорским женьшенем') ?>
-                            </p>
-                            <?= BuyButton::widget([
-                                    'model' => $product,
-                                    'price' => $prices[$product->id]['price'],
-                                    'count' => 1,
-                                    'comment' => $prices[$product->id]['code'],
-                                    'htmlTag' => 'button',
-                                    'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 d-flex',
-                                    'text' => Yii::t('front', 'Купить') . ' ' . ShowPrice::widget([
-                                        'htmlTag' => 'span',
-                                        'cssClass' => 'text-nowrap ml-0_5',
-                                        'model' => $product,
-                                        'price' => $price->price,
-                                    ]),
-                                ]);
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 10%);">
-                    <img src="<?= $product->getImage()->getUrl() ?>" class="img-fluid" alt="<?= $productName ?>">
-                </div>
-            </a>
-    <?php
+            echo $this->render('@frontend/views/catalog/_product', [
+                'product' => $product,
+                'prices' => $prices,
+            ]);
         }
     ?>
         </div>

@@ -103,7 +103,7 @@ $store_types = Yii::$app->params['store_types'];
                         ]);
                 ?>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 hidden">
                 <?= $form
                         ->field($model, 'is_promo')
                         ->widget(SwitchInput::classname(), [
@@ -116,7 +116,7 @@ $store_types = Yii::$app->params['store_types'];
                         ]);
                 ?>
             </div>
-            <div class="col-md-3 hidden">
+            <div class="col-md-3">
                 <?= $form
                         ->field($model, 'sort')
                         ->textInput([

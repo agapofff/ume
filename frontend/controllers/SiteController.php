@@ -12,6 +12,7 @@ use yii\web\Controller;
 use yii\db\Expression;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use dvizh\shop\models\Category;
 use dvizh\shop\models\Price;
 use dvizh\shop\models\Product;
 use dvizh\shop\models\product\ProductSearch;
@@ -32,6 +33,7 @@ use backend\models\Reviews;
 use backend\models\Banners;
 use backend\models\Breeds;
 use backend\models\Bonus;
+use backend\models\Stores;
 
 
 /**
@@ -87,32 +89,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $products = [];
-        
-        $promoProducts = Product::find()
-            ->where([
-                'is_promo' => 1,
-                'active' => 1
-            ])
-            ->orderBy(new Expression('rand()'))
-            ->limit(8)
-            ->all();
-            
-        $priceType = Price::findOne([
-            'name' => Yii::$app->language
-        ])->type_id;
-            
-        foreach ($promoProducts as $product) {
-            $priceModel = $product->getPriceModel($priceType);
-            if ($priceModel->available && $priceModel->price){
-                $products[] = $product;
-            }
-        }
-            
-        Yii::$app->params['currency'] = Langs::findOne([
-            'code' => Yii::$app->language
-        ])->currency;
-        
         $news = News::find()
             ->where([
                 'active' => 1
@@ -138,12 +114,34 @@ class SiteController extends Controller
             'active' => 1,
             'category' => 'Каталог на Главной',
         ]);
+        
+        
+        // временно - вывод на главной только влажного корма
+        
+        $category = Category::findOne(27);
+
+        $store = Stores::findOne([
+            'lang' => Yii::$app->language,
+            'type' => Yii::$app->params['store_type']
+        ]);
+        
+        $prices = Price::find()
+            ->where([
+                'name' => $store->store_id
+            ])
+            ->asArray()
+            ->all();
+
+        $products = $category->products;
             
         return $this->render('index', [
-            'products' => $products,
             'news' => $news,
             'reviews' => $reviews,
             'banners' => $banners,
+            'products' => $products,
+            'category' => $category,
+            'store' => $store,
+            'prices' => ArrayHelper::index($prices, 'item_id'),
         ]);
         
     }

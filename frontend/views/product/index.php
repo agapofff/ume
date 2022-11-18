@@ -58,7 +58,6 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     <div class="row no-gutters align-items-center bg-gray-200 py-1">
         <div class="col-lg-6 px-xl-2">
             <div class="owl-carousel owl-theme owl-dots">
-            
         <?php
             foreach ($images as $key => $image) {
                 // if ($key) {
@@ -69,7 +68,6 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                 // }
             }
         ?>
-            
             </div>
         </div>
         <div class="col-lg-6 px-1 px-lg-2 px-xl-3">

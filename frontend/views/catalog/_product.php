@@ -1,28 +1,45 @@
 <?php
-    use yii\helpers\Html;
-    use yii\helpers\Url;
-    use yii\helpers\HtmlPurifier;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\helpers\HtmlPurifier;
+use dvizh\shop\widgets\ShowPrice;
+use dvizh\cart\widgets\BuyButton;
+use dvizh\cart\widgets\ChangeCount;
+use dvizh\cart\widgets\ChangeOptions;
+
+$productName = json_decode($product->name)->{Yii::$app->language};
 ?>
 
-    <div class="card bg-transparent border-0 product">
-        <div class="card-body px-sm-1 px-md-2 px-lg-3 px-xl-4 px-xxl-5">
-            <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
-                <?php
-                    $image = $product->getImage();
-                    $cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_x1000.jpg';
+<a href="<?= Url::to(['/product/' . $product->slug]) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
+    <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
+        <img data-src="<?= $product->getImage()->getUrl() ?>" class="lazyload img-fluid d-xl-none mb-1" alt="<?= $productName ?>">
+        <h4 class="mb-2 font-weight-bolder">
+            <?= $productName ?>
+        </h4>
+        <div class="row no-gutters h-50">
+            <div class="col-xl-8">
+                <div class="mb-2 font-weight-bolder">
+                    <?= json_decode($product->text)->{Yii::$app->language} ?>
+                </div>
+                <?= BuyButton::widget([
+                        'model' => $product,
+                        'price' => $prices[$product->id]['price'],
+                        'count' => 1,
+                        'comment' => $prices[$product->id]['code'],
+                        'htmlTag' => 'button',
+                        'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 d-flex',
+                        'text' => Yii::t('front', 'Купить') . ' ' . ShowPrice::widget([
+                            'htmlTag' => 'span',
+                            'cssClass' => 'text-nowrap ml-0_5',
+                            'model' => $product,
+                            'price' => $prices[$product->id]['price'],
+                        ]),
+                    ]);
                 ?>
-                <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x1000') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
-            </a>
-            <p class="text-center mt-1_5 mb-0_5">
-                <?= $productName ?>
-            </p>
-            <p class="price text-center">
-            <?php if ($oldPrice) { ?>
-                <del class="text-muted d-none"><?= Yii::$app->formatter->asCurrency($oldPrice, Yii::$app->params['currency']) ?></del>&nbsp;
-            <?php } ?>
-            <?php if ($price) { ?>
-                <?= Yii::$app->formatter->asCurrency($price, Yii::$app->params['currency']) ?>
-            <?php } ?>
-            </p>
+            </div>
         </div>
     </div>
+    <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 10%);">
+        <img data-src="<?= $product->getImage()->getUrl() ?>" class="lazyload img-fluid pointer-events-none" alt="<?= $productName ?>">
+    </div>
+</a>
