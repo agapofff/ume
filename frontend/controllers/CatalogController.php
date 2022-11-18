@@ -20,6 +20,8 @@ class CatalogController extends \yii\web\Controller
     
     public function actionIndex()
     {
+        return $this->redirect(['/catalog/wet-food']);
+        
         $categories = Category::find()
             ->where([
                 'active' => 1

@@ -124,7 +124,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                         </div>
                     </div>
                 </div>
-                <div class="col-5 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(0, 10%);">
+                <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10, 15%);">
                     <img src="<?= $product->getImage()->getUrl() ?>" class="img-fluid" alt="<?= $productName ?>">
                 </div>
             </a>
