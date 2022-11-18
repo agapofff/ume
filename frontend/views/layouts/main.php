@@ -665,11 +665,11 @@
                                         $activeMenu = $menuItem['url'] == Url::to();
                                     }
                             ?>
-                                    <li class="nav-item <?= $menuItem['class'] ?> <?= $activeMenu ? 'active' : '' ?>">
+                                    <li class="nav-item <?= $activeMenu ? 'active' : '' ?>">
                                     <?php
                                         if (isset($menuItem['url'])) {
                                     ?>
-                                            <a href="<?= $menuItem['url'] ?>" class="nav-link text-uppercase text-white p-0 mx-1 my-1 <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
+                                            <a href="<?= $menuItem['url'] ?>" class="nav-link text-uppercase text-white p-0 mx-1 my-1 <?= $menuItem['class'] ?> <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
                                                 <?php 
                                                     if (isset($menuItem['options'])) {
                                                         foreach ($menuItem['options'] as $optionKey => $optionVal) {
