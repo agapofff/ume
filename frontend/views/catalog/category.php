@@ -114,17 +114,17 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                         <?= $productName ?>
                     </h4>
                     <div class="row no-gutters h-50">
-                        <div class="col-xl-8 col-xxl-7">
-                            <p class="mb-3 font-weight-bolder">
+                        <div class="col-xl-8">
+                            <p class="mb-2 font-weight-bolder">
                                 <?= Yii::t('front', 'Полнорационный стерилизованный влажный корм UME с энтопротеином и белым императорским женьшенем') ?>
                             </p>
-                            <p class="h3 font-weight-light">
-                                <?= Yii::$app->formatter->asCurrency($prices[$product->id]['price'], $store->currency) ?>
-                            </p>
+                            <button type="button" class="btn btn-secondary rounded-pill px-2 py-1">
+                                <?= Yii::t('front', 'Купить') ?> <?= Yii::$app->formatter->asCurrency($prices[$product->id]['price'], $store->currency) ?>
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 15%);">
+                <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(10%, 10%);">
                     <img src="<?= $product->getImage()->getUrl() ?>" class="img-fluid" alt="<?= $productName ?>">
                 </div>
             </a>
