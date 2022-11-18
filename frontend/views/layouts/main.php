@@ -95,7 +95,7 @@
         [
             'label' => Yii::t('front', 'Приложение'),
             'url' => Url::to(['/', '#' => 'app']),
-            'class' => 'scrollTo',
+            'class' => ($isMainPage ? 'scrollTo' : ''),
         ],
         [
             'label' => Yii::t('front', 'Программа лояльности'),
@@ -105,7 +105,7 @@
         [
             'label' => Yii::t('front', 'О нас'),
             'url' => Url::to(['/about']),
-            'class' => ($isMainPage ? 'scrollTo' : ''),
+            'class' => '',
         ],
         [
             'label' => Yii::t('front', 'Новости'),
