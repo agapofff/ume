@@ -47,7 +47,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                     <a href="<?= Url::to(['/catalog/' . $category->slug]) ?>" class="blog-post-date mb-1 opacity-50 text-decoration-none">
                         <?= json_decode($category->name)->{Yii::$app->language} ?>
                     </a>
-                    <h1 class="h2 mb-1 mb-lg-2 text-uppercase font-weight-light">
+                    <h1 class="h2 mb-1 mb-lg-2 font-weight-light">
                         <?= $productName ?>
                     </h1>
                 </div>

@@ -32,4 +32,5 @@ class ProductQuery extends ActiveQuery
     {
         return $this->andwhere(['category_id' => $childCategoriesIds]);
     }
+    
 }

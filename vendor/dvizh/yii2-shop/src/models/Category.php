@@ -141,8 +141,11 @@ class Category extends \yii\db\ActiveRecord
 
     public function getProducts()
     {
-        return $this->hasMany(Product::className(), ['id' => 'product_id'])
-             ->viaTable('{{%shop_product_to_category}}', ['category_id' => 'id'])->available();
+        return $this
+            ->hasMany(Product::className(), ['id' => 'product_id'])
+            ->viaTable('{{%shop_product_to_category}}', ['category_id' => 'id'])
+            ->orderBy(['{{%shop_product}}.sort' => SORT_ASC])
+            ->available();
     }
     
     public function getChilds()
