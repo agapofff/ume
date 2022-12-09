@@ -575,6 +575,8 @@ return [
                 'cookies-notification-shown' => 'site/cookies-notification-shown',
 
                 'about' => 'site/about',
+                'history' => 'site/history',
+                'bonus' => 'site/bonus',
 
                 // 'orders' => 'orders/index',
                 // 'orders/<id>' => 'orders/view',
