@@ -94,7 +94,7 @@
         ],
         [
             'label' => Yii::t('front', 'История UME'),
-            'url' => Url::to(['/history'),
+            'url' => Url::to(['/history']),
             'class' => '',
         ],
         [
