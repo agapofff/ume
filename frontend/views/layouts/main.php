@@ -93,14 +93,14 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Приложение'),
-            'url' => Url::to(['/', '#' => 'app']),
-            'class' => ($isMainPage ? 'scrollTo' : ''),
+            'label' => Yii::t('front', 'История UME'),
+            'url' => Url::to(['/history'),
+            'class' => '',
         ],
         [
             'label' => Yii::t('front', 'Программа лояльности'),
-            'url' => Url::to(['/', '#' => 'bonus']),
-            'class' => ($isMainPage ? 'scrollTo' : ''),
+            'url' => Url::to(['/bonus']),
+            'class' => '',
         ],
         [
             'label' => Yii::t('front', 'О нас'),
@@ -136,14 +136,14 @@
             'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Приложение UME'),
-            'url' => Url::to(['/', '#' => 'app']),
-            'class' => ($isMainPage ? 'scrollTo' : ''),
+            'label' => Yii::t('front', 'История UME'),
+            'url' => Url::to(['/history']),
+            'class' => '',
         ],
         [
-            'label' => Yii::t('front', 'Программа Привилегий'),
-            'url' => Url::to(['/', '#' => 'bonus']),
-            'class' => ($isMainPage ? 'scrollTo' : ''),
+            'label' => Yii::t('front', 'Программа лояльности'),
+            'url' => Url::to(['/bonus']),
+            'class' => '',
         ],
         [
             'label' => Yii::t('front', 'О нас'),
