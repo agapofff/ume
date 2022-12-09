@@ -233,6 +233,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }    
+    
+    public function actionBonus()
+    {
+        return $this->render('bonus');
+    }    
+    
+    public function actionHistory()
+    {
+        return $this->render('history');
     }
 
     
