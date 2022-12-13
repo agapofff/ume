@@ -23,7 +23,10 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
                     <h2 class="h3 text-uppercase font-weight-light mb-1 mt-0_5 d-sm-none">
                         <?= Yii::t('front', 'Программа привилегий') ?>
                     </h2>
-                    <p class="text-uppercase font-weight-bolder" style="max-width: 300px">
+                    <p class="text-uppercase font-weight-bolder d-none d-sm-block" style="max-width: 300px">
+                        <?= Yii::t('front', 'Эффективный сервис услуг и систем поощрения ваших питомцев') ?>
+                    </p>
+                    <p class="text-uppercase font-weight-bolder small d-sm-none" style="max-width: 150px">
                         <?= Yii::t('front', 'Эффективный сервис услуг и систем поощрения ваших питомцев') ?>
                     </p>
                 </div>
@@ -35,7 +38,10 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
 <div class="container-xl mb-2 mb-lg-3">
     <div class="row justify-content-center">
         <div class="col-12 px-md-1_5 px-lg-2 px-xl-6">
-            <h2 class="text-uppercase font-weight-light">
+            <h2 class="text-uppercase font-weight-light d-none d-sm-block">
+                <?= Yii::t('front', 'Общие положения программы привилегий подписчикам и покупателям UME') ?>
+            </h2>
+            <h2 class="h4 text-uppercase font-weight-light d-sm-none">
                 <?= Yii::t('front', 'Общие положения программы привилегий подписчикам и покупателям UME') ?>
             </h2>
             <p class="font-weight-light">
@@ -57,7 +63,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
             </h3>
             <div class="container-xl p-0">
                 <div class="row mt-2 mt-lg-3">
-                    <div class="col-6">
+                    <div class="col-sm-6 mb-1 mb-sm-0">
                         <div class="card rounded-0 border-dark">
                             <div class="card-body text-center py-2 py-lg-3">
                                 <div class="row align-items-center h-100">
@@ -71,7 +77,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
                             </div>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-sm-6">
                         <div class="card h-100 rounded-0 border-dark">
                             <div class="card-body text-center py-2 py-lg-3">
                                 <div class="row align-items-center h-100">
@@ -103,7 +109,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
             </h3>
         </div>
         <div class="col-12">
-            <div class="row no-gutters justify-content-between px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2 bg-gray-200">
+            <div class="row no-gutters justify-content-between px-1 px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2 bg-gray-200">
                 <div class="col">
                     <p class="h4 m-0">
                         <?= Yii::t('front', 'Серебро') ?>
@@ -117,7 +123,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
             </div>
         </div>
         <div class="col-12">
-            <div class="row no-gutters justify-content-between px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2">
+            <div class="row no-gutters justify-content-between px-1 px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2">
                 <div class="col">
                     <p class="h4 m-0">
                         <?= Yii::t('front', 'Золото') ?>
@@ -131,7 +137,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
             </div>
         </div>
         <div class="col-12">
-            <div class="row no-gutters justify-content-between px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2 bg-gray-200">
+            <div class="row no-gutters justify-content-between px-1 px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2 bg-gray-200">
                 <div class="col">
                     <p class="h4 m-0">
                         <?= Yii::t('front', 'Платина') ?>
@@ -145,7 +151,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
             </div>
         </div>
         <div class="col-12">
-            <div class="row no-gutters justify-content-between px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2">
+            <div class="row no-gutters justify-content-between px-1 px-md-1_5 px-lg-2 px-xl-5 py-1_5 py-lg-2">
                 <div class="col">
                     <p class="h4 m-0">
                         <?= Yii::t('front', 'Voyage, поездка с питомцем') ?>
