@@ -8,11 +8,15 @@ use dvizh\cart\widgets\ChangeCount;
 use dvizh\cart\widgets\ChangeOptions;
 
 $productName = json_decode($product->name)->{Yii::$app->language};
+
+$image = $product->getImage();
+$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['S'] . 'x.' . $image->extension;
+$imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['S'] . 'x');
 ?>
 
 <a href="<?= Url::to(['/product/' . $product->slug]) ?>" class="col-sm-6 mb-1 mb-sm-3 mb-xl-5 text-dark text-decoration-none">
     <div class="col-sm-12 col-md-11 col-lg-10 col-xl-11 py-3 px-3 bg-gray-200 position-relative h-100">
-        <img data-src="<?= $product->getImage()->getUrl() ?>" class="lazyload img-fluid d-xl-none mb-1" alt="<?= $productName ?>">
+        <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid d-xl-none mb-1" alt="<?= $productName ?>">
         <h4 class="mb-2 font-weight-bolder">
             <?= $productName ?>
         </h4>
@@ -40,6 +44,6 @@ $productName = json_decode($product->name)->{Yii::$app->language};
         </div>
     </div>
     <div class="col-8 position-absolute bottom-0 right-0 d-none d-xl-block" style="transform: translate(7%, 10%);">
-        <img data-src="<?= $product->getImage()->getUrl() ?>" class="lazyload img-fluid pointer-events-none" alt="<?= $productName ?>">
+        <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid pointer-events-none" alt="<?= $productName ?>">
     </div>
 </a>
