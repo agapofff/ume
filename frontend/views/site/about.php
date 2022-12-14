@@ -9,6 +9,27 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
 <div id="about">
 
+    <div class="container-xl mb-2 mb-lg-3">
+        <h1 class="text-uppercase font-weight-light mb-2 mb-lg-3">
+            <?= Yii::t('front', 'Преимущества UME') ?>
+        </h1>
+        
+        <div class="row position-relative">
+            <div class="col-12">
+                <img data-src="/images/main/head.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            </div>
+            <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-7 position-absolute pl-2 pl-lg-3 pl-xl-6 pt-1 pt-md-2 pt-lg-3 pt-lg-6">
+                <p class="text-uppercase font-weight-bold d-none d-md-block" style="max-width: 300px">
+                    <?= Yii::t('front', 'Чтобы лучше понимать животных и заботиться об их здоровье, мы соединили современные технологии и тысячелетние традиции применения женьшеня.') ?>
+                </p>
+            </div>
+        </div>
+        <p class="text-uppercase font-weight-bold d-md-none mt-1 text-center">
+            <?= Yii::t('front', 'Чтобы лучше понимать животных и заботиться об их здоровье, мы соединили современные технологии и тысячелетние традиции применения женьшеня.') ?>
+        </p>
+    </div>
+    
+<!--
     <div id="main" class="container-xl mb-4">
 
         <h1 class="mb-2 text-uppercase font-weight-light wow fadeIn" data-wow-duration="0.5s">
@@ -88,6 +109,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             </div>
         </div>    
     </div>
+-->
 
     <div id="innovations">
         <div class="container-lg container-xl container-xxl">
