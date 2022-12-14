@@ -10,7 +10,7 @@ use dvizh\cart\widgets\ChangeOptions;
 $productName = json_decode($product->name)->{Yii::$app->language};
 
 $image = $product->getImage();
-$cachedImage = '/images/cache/Products/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['S'] . 'x.' . $image->extension;
+$cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['S'] . 'x.' . $image->extension;
 $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['S'] . 'x');
 ?>
 
