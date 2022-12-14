@@ -82,6 +82,15 @@ return [
         'google' => '#',
         'apple' => '#',
     ],
+    
+    'productImageSizes' => [
+        'XXS' => 100,
+        'XS' => 200,
+        'S' => 500,
+        'M' => 700,
+        'L' => 2000,
+        'XL' => 3500,
+    ],
 
     // 'hideNotAvailable' => false, // скрывать недоступные товары
     // 'scanToWin' => [
