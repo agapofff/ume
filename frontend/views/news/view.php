@@ -43,7 +43,7 @@ $this->title = $postName;
     <div class="row">
         <div class="col-xl-8">
     <?php
-        if ($image = $post->getImage()){
+        if ($image = $post->getImage() && $post->show_preview){
     ?>
             <?= Html::img($image->getUrl(), [
                     'class' => 'img-fluid mb-3',
