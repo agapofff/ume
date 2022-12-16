@@ -33,15 +33,15 @@ use agapofff\gallery\widgets\Gallery;
         ?>
 
             <?= $form
-                ->field($model, 'active')
-                ->widget(SwitchInput::classname(), [
-                    'pluginOptions' => [
-                        'onText' => Yii::t('back', 'Да'),
-                        'offText' => Yii::t('back', 'Нет'),
-                        'onColor' => 'success',
-                        'offColor' => 'danger',
-                    ],
-                ]);
+                    ->field($model, 'active')
+                    ->widget(SwitchInput::classname(), [
+                        'pluginOptions' => [
+                            'onText' => Yii::t('back', 'Да'),
+                            'offText' => Yii::t('back', 'Нет'),
+                            'onColor' => 'success',
+                            'offColor' => 'danger',
+                        ],
+                    ]);
             ?>
 
             <?= $form
@@ -145,7 +145,19 @@ use agapofff\gallery\widgets\Gallery;
                         'editButtonText' => Html::tag('i', '', ['class' => 'fa fa-edit']),
                     ]);
                 ?>
-            </div>            
+            </div>   
+            
+            <?= $form
+                    ->field($model, 'show_preview')
+                    ->widget(SwitchInput::classname(), [
+                        'pluginOptions' => [
+                            'onText' => Yii::t('back', 'Да'),
+                            'offText' => Yii::t('back', 'Нет'),
+                            'onColor' => 'success',
+                            'offColor' => 'danger',
+                        ],
+                    ]);
+            ?>
 
             <div class="form-group-json">
                 <?= $form

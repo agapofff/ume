@@ -33,7 +33,7 @@ class News extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['active', 'category_id', 'saveAndExit'], 'integer'],
+            [['active', 'category_id', 'saveAndExit', 'show_preview'], 'integer'],
             [['date_published'], 'safe'],
             [['name', 'description', 'text', 'publisher'], 'string'],
             [['category_id'], 'required'],
@@ -54,6 +54,7 @@ class News extends \yii\db\ActiveRecord
             'text' => Yii::t('back', 'Текст'),
             'publisher' => Yii::t('back', 'Издание'),
             'slug' => Yii::t('back', 'Алиас'),
+            'show_preview' => Yii::t('back', 'Показать превью на странице новости'),
         ];
     }
 
