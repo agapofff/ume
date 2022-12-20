@@ -15,6 +15,16 @@
 
 ?>
 
+<h1 class="font-weight-light text-uppercase mb-3">
+    <?= Yii::t('front', 'Корзина') ?>
+    <?= CartInformer::widget([
+            'htmlTag' => 'sub',
+            'cssClass' => 'nav-cart-informer text-orange p-0',
+            'text' => '{c}'
+        ]);
+    ?>
+</h1>
+
 <h3 class="font-weight-light text-uppercase mb-2">
     <?= Yii::t('front', 'Оформление заказа') ?>
 </h3>
