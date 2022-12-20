@@ -385,7 +385,7 @@
                         <?= $form
                                 ->field($orderModel, 'address', [
                                     'inputOptions' => [
-                                        'class' => 'form-control mb-0 px-0',
+                                        'class' => 'form-control form-control-lg',
                                         'autocomplete' => rand(),
                                         'placeholder' => ' ',
                                     ],
@@ -450,7 +450,7 @@
 
 
         <?php if ($paymentTypes) { ?>
-                <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required" data-select2>
+                <div id="block-payment_type_id" class="form-group mt-2 mb-3 position-relative required d-none" data-select2>
                     <p class="control-label text-uppercase font-weight-bold mb-1" for="payment_type_id">
                         <?= Yii::t('front', 'Оплата') ?>
                     </p>
@@ -484,10 +484,10 @@
                         <?= $form
                                 ->field($orderModel, 'comment', [
                                     'inputOptions' => [
-                                        'class' => 'form-control mb-0',
+                                        'class' => 'form-control form-control-lg',
                                         'autocomplete' => rand(),
                                         // 'placeholder' => ' ',
-                                        'rows' => 5,
+                                        'rows' => 3,
                                         'style' => '
                                             resize: none;
                                             margin-top: 4px;
@@ -497,6 +497,9 @@
                                     'options' => [
                                         'class' => 'form-group mb-3 mb-md-5 position-relative',
                                     ],
+                                    'labelOptions' => [
+                                        'class' => 'font-weight-bold'
+                                    ]
                                     'template' => '{label}{input}{hint}{error}',
                                 ])
                                 ->textArea()
