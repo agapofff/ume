@@ -335,9 +335,9 @@
                             ?>
                         </div>
                         
-                        <h5 class="mt-2">
+                        <h6 class="mt-2 mb-1_5">
                             <?= Yii::t('front', 'Выбрать адрес самовывоза') ?>
-                        </h5>
+                        </h6>
                         <div id="pickupsList" class="row"></div>
                 <?php
                     }
