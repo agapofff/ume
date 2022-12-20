@@ -10,6 +10,7 @@ use dvizh\shop\models\Price;
 use dvizh\shop\models\Modification;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\helpers\VarDumper;
 
 class SynchroController extends \yii\web\Controller
 {
