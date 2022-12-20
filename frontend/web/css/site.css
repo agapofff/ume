@@ -359,6 +359,11 @@ form .hint-block {
     height: 1em;
 }
 
+.ekko-lightbox-item iframe[src*="maps.google.com"] {
+    width: 100%;
+    height: 400px;
+}
+
 #nav {
     z-index: 1040;
 }
