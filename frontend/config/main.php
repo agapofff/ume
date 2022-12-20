@@ -350,10 +350,10 @@ return [
                 'yii\bootstrap\BootstrapAsset' => false,
                 'yii\bootstrap\BootstrapAssetPlugin' => false,
                 'dvizh\filter\assets\Asset' => false,
-                'dvizh\cart\assets\WidgetAsset' => [
-                    'css' => [],
-                    'depends' => [],
-                ],
+                // 'dvizh\cart\assets\WidgetAsset' => [
+                    // 'css' => [],
+                    // 'depends' => [],
+                // ],
                 'dvizh\filter\assets\FrontendAsset' => false,
                 'dvizh\filter\assets\FrontendAjaxAsset' => false,
             ],
