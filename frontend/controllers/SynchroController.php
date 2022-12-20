@@ -30,7 +30,7 @@ class SynchroController extends \yii\web\Controller
         $modifications = Modification::find()->all();
         
         $prices = Price::find()->all();
-        
+echo VarDumper::dump($prices, 99, true); exit;
         $stores = Stores::find()
             ->where([
                 'active' => 1
