@@ -662,6 +662,9 @@ console.log('shippingType change');
                 
                 $.ajax({
                     url: '" . Url::to(['/checkout/get-delivery']) . "',
+                    beforeRequest: function () {
+                        loading();
+                    },
                     data: {
                         country_id: $('#country').val(),
                         city_id: $('#city').val(),
@@ -698,6 +701,9 @@ console.log(option);
                             });
                         }
                         $('#' + shippingType).trigger('change');
+                    },
+                    complete: function () {
+                        loading(false);
                     }
                 });
             // }
