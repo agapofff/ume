@@ -688,7 +688,7 @@ console.log(option);
                         });
 
                         if (shippingType == 'pickups') {
-                            $('#pickupsList').clear();
+                            $('#pickupsList').html('');
                             $.each(data.pickups, function (k, pickup) {
                                 var pickupData;
                                 $.each(data.details, function (d, detail) {
