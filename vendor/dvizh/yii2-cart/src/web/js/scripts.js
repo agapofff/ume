@@ -345,9 +345,9 @@ console.log(response);
 
         return true;
     },
-}
+};
 
-$(function() {
+jQuery(document).ready(function() {
     dvizh.cart.init();
     // dvizh.cart.renderCart();
     // $('.btn-minicart-checkout').toggleClass('d-none', $('.dvizh-cart-count:first').text() === '0');
