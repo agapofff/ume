@@ -9,15 +9,15 @@
 ?>
 
 <div class="container-xl">
-        <h1 class="font-weight-light text-uppercase mb-3">
-            <?= Yii::t('front', 'Корзина') ?>
-            <?= CartInformer::widget([
-                    'htmlTag' => 'sup',
-                    'cssClass' => 'dvizh-cart-informer text-orange p-0 h2 position-absolute top-0 left-100 ml-1 mt-0 font-weight-light',
-                    'text' => '{c}'
-                ]);
-            ?>
-        </h1>
+    <h1 class="font-weight-light text-uppercase mb-3 position-relative">
+        <?= Yii::t('front', 'Корзина') ?>
+        <?= CartInformer::widget([
+                'htmlTag' => 'sup',
+                'cssClass' => 'dvizh-cart-informer text-orange p-0 h2 position-absolute top-0 left-100 ml-1 mt-0 font-weight-light',
+                'text' => '{c}'
+            ]);
+        ?>
+    </h1>
     <div class="row justify-content-center">    
         <div class="col-12">
             <?= ElementsList::widget([
