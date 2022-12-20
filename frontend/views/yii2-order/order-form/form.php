@@ -390,9 +390,12 @@
                                         'placeholder' => ' ',
                                     ],
                                     'options' => [
-                                        'class' => 'form-group mb-2 position-relative floating-label',
+                                        'class' => 'form-group row align-items-center mb-2',
                                     ],
-                                    'template' => '{input}{label}{hint}{error}',
+                                    'template' => '{label}<div class="col-md-9">{input}</div>{hint}{error}',
+                                    'labelOptions' => [
+                                        'class' => 'col-md-3 mb-md-0 font-weight-bold'
+                                    ]
                                 ])
                         ?>
                     </div>
