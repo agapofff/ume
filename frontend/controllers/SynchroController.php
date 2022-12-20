@@ -23,20 +23,11 @@ class SynchroController extends \yii\web\Controller
             'available' => 'no',
         ]);
         
-        Modification::updateAll([
-            'available' => 0,
-            'amount' => 0,
-        ]);
-        
-        $modifications = Modification::find()->all();
-        
         $prices = Price::find()->all();
-echo VarDumper::dump($prices, 99, true); exit;
-        $stores = Stores::find()
-            ->where([
-                'active' => 1
-            ])
-            ->all();
+// echo VarDumper::dump($prices, 99, true); exit;
+        $stores = Stores::findAll([
+            'active' => 1
+        ]);
         
         if ($stores) {
             foreach ($stores as $store) {
@@ -46,22 +37,17 @@ echo VarDumper::dump($prices, 99, true); exit;
                     foreach ($request as $val) {
                         if (isset($val['goods_list'])) {
                             foreach ($val['goods_list'] as $good) {
-                                foreach ($modifications as $modification) {
-                                    if ($modification->sku == $good['id']) {
-                                        $modification->available = $good['is_purchasable'] ? 1 : 0;
-                                        $modification->amount = $good['is_purchasable'] ? 99 : 0;
-                                        $modification->code = $good['vendor_code'];
-                                        $modification->save();
-                                        
-                                        foreach ($prices as $price) {
-                                            if ($price->item_id == $modification->id) {
-                                                $price->price = isset($good['price']) ? (int)$good['price'] : 0;
-                                                // $price->price_old = isset($good['retail_price']) ? (int)$good['retail_price'] : 0;
-                                                $price->available = $good['is_purchasable'] ? 'yes' : 'no';
-                                                $price->save();
-                                            }
-                                        }
-                                    }
+                                $price = Price::findOne([
+                                    'name' => $store->store_id,
+                                    'code' => $good['id'],
+                                ]);
+                                
+                                if ($price) {
+                                    $price->price = isset($good['price']) ? (int)$good['price'] : 0;
+                                    $price->price_old = isset($good['retail_price']) ? (int)$good['retail_price'] : 0;
+                                    $price->available = $good['is_purchasable'] ? 'yes' : 'no';
+                                    $price->amount = $good['is_purchasable'] ? 99 : 0;
+                                    $price->save();
                                 }
                             }
                         }
