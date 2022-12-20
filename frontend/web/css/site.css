@@ -911,3 +911,10 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     border-radius: 0.65rem;
     border: 1px solid #978F76;
 }
+
+.select-pickup .show-map:before {
+    content: '';
+    width: 18px;
+    height: 23px;
+    background: url('../images/map-pointer.svg') center center / cover no-repeat;
+}
