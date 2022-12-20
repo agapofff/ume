@@ -3,6 +3,7 @@
     use yii\helpers\Url;
     use yii\widgets\ActiveForm;
     use yii\web\View;
+    use kartik\depdrop\DepDrop;
     use kartik\select2\Select2;
     use yii\web\JsExpression;
     use yii\helpers\ArrayHelper;
@@ -169,18 +170,6 @@
                                                 };
                                             }
                                         "),
-                                        // 'transport' => new JsExpression("
-                                            // function(params, success, failure){
-                                                // var request = $.ajax(params);
-
-                                                // request.then(function(){
-                                                    // console.log('city success');
-                                                // });
-                                                // request.fail(failure);
-
-                                                // return request;
-                                            // }
-                                        // "),
                                     ],
                                     'cache' => true,
                                 ],
@@ -193,24 +182,25 @@
                 <div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
                     <div class="col-auto">
                         <p class="text-uppercase font-weight-bold m-0">
-                            <?= Yii::t('front', 'Доставка') ?>
+                            <?= Yii::t('front', 'Способ доставки') ?>
                         </p>
                     </div>
                 </div>
                 
                 <?= $form
                         ->field($orderModel, 'shipping_type_id')
-                        // ->textInput()
-                        ->hiddenInput()
-                        ->label(false)
+                        ->textInput()
+                        // ->hiddenInput()
+                        // ->label(false)
                 ?>
             
-                <div id="shipping_types_list" class="form-group row" role="tablist">
+                <div id="shipping_types_list" class="form-group" role="tablist">
+                    <div class="row">
                     <?php
                         foreach ($shippingTypesList as $key => $sht) {
                     ?>
-                            <div class="col-auto">
-                                <div class="custom-control custom-radio mr-2">
+                            <div class="col-6">
+                                <div class="custom-control custom-radio shipping_type_switcher border pt-1 pl-4 rounded-lg <?php if ($orderModel->shipping_type_id == $sht->id) { ?>border-primary<?php } ?>">
                                     <input 
                                         type="radio" 
                                         id="shipping-type-tab-link-<?= $sht->id ?>" 
@@ -222,14 +212,20 @@
                                             checked
                                         <?php } ?>
                                     >
-                                    <label class="custom-control-label" for="shipping-type-tab-link-<?= $sht->id ?>">
-                                        <?= Yii::t('front', $sht->name) ?>
+                                    <label class="custom-control-label d-block pb-1" for="shipping-type-tab-link-<?= $sht->id ?>">
+                                        <p class="font-weight-bold mb-0_5">
+                                            <?= Yii::t('front', $sht->name) ?>
+                                        </p>
+                                        <p class="h5 font-weight-light mt-0_5">
+                                            <?= Yii::t('front', 'от') ?> <?= Yii::$app->formatter->asCurrency($sht->cost, Yii::$app->params['currency']) ?>
+                                        </p>
                                     </label>
                                 </div>
                             </div>
                     <?php
                         }
                     ?>
+                    </div>
                 </div>
             
                 <div id="shipping_options_section" class="tab-content mb-1">
@@ -237,60 +233,11 @@
             <?php
                 foreach ($shippingTypesList as $key => $sht) {
             ?>  
-                    <div 
-                        class="tab-pane mt-2 mt-md-3 <?php if ($orderModel->shipping_type_id == $sht->id) {  ?>active<?php } ?>" 
-                        id="shipping-type-tab-<?= $sht->id ?>" 
-                    >
+                    <div id="shipping-type-tab-<?= $sht->id ?>" class="tab-pane mt-2 mt-md-3 <?php if ($orderModel->shipping_type_id == $sht->id) { ?>active<?php } ?>">
                     
-                <?php
-                    if ($sht->id == 3) {
-                ?>
-                        <div id="block-courier" class="form-group position-relative">
-                            <label class="control-label" for="courier">
-                                <?= Yii::t('front', 'Способ курьерской доставки') ?>
-                            </label>
-                            <?= Select2::widget([
-                                    'id' => 'courier',
-                                    'name' => 'courier',
-                                    'value' => (empty($courierList) ? null : $fieldsDefaultValues['delivery_id']),
-                                    'bsVersion' => '4.x',
-                                    'language' => Yii::$app->language,
-                                    'theme' => Select2::THEME_BOOTSTRAP,
-                                    'data' => $courierList,
-                                    'options' => [
-                                        'class' => 'form-control mb-0 px-0',
-                                        'placeholder' => Yii::t('front', 'Выберите способ доставки'),
-                                        'autocomplete' => rand(),
-                                    ],
-                                    'hideSearch' => true,
-                                    'pluginOptions' => [
-                                        'allowClear' => false,
-                                        'dropdownParent' => new JsExpression("$('#block-courier')"),
-                                        // 'minimumInputLength' => 2,
-                                        'ajax' => [
-                                            'url' => Url::to(['/checkout/get-delivery']),
-                                            'dataType' => 'json',
-                                            'data' => new JsExpression("function(params){
-                                                return {
-                                                    country_id:$('#country').val(),
-                                                    city_id:$('#city').val(),
-                                                    type:'courier',
-                                                    q:params.term
-                                                };
-                                            }"),
-                                        ],
-                                        'selectOnClose' => true,
-                                        'cache' => true,
-                                    ],
-                                ]);
-                            ?>
-                        </div>			
-                <?php
-                    }
-                ?>
-
-                <?php print_r($deliveryList); echo $fieldsDefaultValues['delivery_id'];
+                <?php 
                     if ($sht->id == 1) {
+// print_r($deliveryList); 
                 ?>
                         <div id="block-delivery" class="form-group position-relative">
                             <label class="control-label" for="pickup">
@@ -325,6 +272,9 @@
                                                     q:params.term
                                                 };
                                             }"),
+                                            'success' => new JsExpression("function(response){
+                                                console.log(response);
+                                            }"),
                                         ],
                                         'selectOnClose' => true,
                                         'cache' => true,
@@ -338,14 +288,15 @@
                     
                 <?php
                     if ($sht->id == 2){
+// print_r($pickupsList); 
                 ?>
                         <div id="block-pickup" class="form-group position-relative">
                             <label class="control-label" for="pickup">
                                 <?= Yii::t('front', 'Пункт самовывоза') ?>
                             </label>
                             <?= Select2::widget([
-                                    'id' => 'pickup',
-                                    'name' => 'pickup',
+                                    'id' => 'pickups',
+                                    'name' => 'pickups',
                                     'value' => (empty($pickupsList) ? null : $fieldsDefaultValues['delivery_id']),
                                     'bsVersion' => '4.x',
                                     'language' => Yii::$app->language,
@@ -362,24 +313,32 @@
                                         'dropdownParent' => new JsExpression("$('#block-pickup')"),
                                         // 'minimumInputLength' => 2,
                                         'minimumResultsForSearch' => 'Infinity',
-                                        'ajax' => [
-                                            'url' => Url::to(['/checkout/get-delivery']),
-                                            'dataType' => 'json',
-                                            'data' => new JsExpression("function(params){
-                                                return {
-                                                    country_id:$('#country').val(),
-                                                    city_id:$('#city').val(),
-                                                    type:'pickups',
-                                                    q:params.term
-                                                };
-                                            }"),
-                                        ],
+                                        // 'ajax' => [
+                                            // 'url' => Url::to(['/checkout/get-delivery']),
+                                            // 'dataType' => 'json',
+                                            // 'data' => new JsExpression("function(params){
+                                                // return {
+                                                    // country_id:$('#country').val(),
+                                                    // city_id:$('#city').val(),
+                                                    // type:'pickups',
+                                                    // q:params.term
+                                                // };
+                                            // }"),
+                                            // 'success' => new JsExpression("function(response){
+                                                // console.log(response);
+                                            // }"),
+                                        // ],
                                         'selectOnClose' => true,
                                         'cache' => true,
                                     ],
                                 ]);
                             ?>
                         </div>
+                        
+                        <h5 class="mt-2">
+                            <?= Yii::t('front', 'Выбрать адрес самовывоза') ?>
+                        </h5>
+                        <div id="pickupsList" class="row"></div>
                 <?php
                     }
                 ?>
@@ -391,6 +350,17 @@
                 
                 </div>
                 
+                <div id="shipping_variants" class="row">
+        <?php
+            foreach ($shippingTypesList as $key => $sht) {
+                if ($sht->id == $orderModel->shipping_type_id) {
+        ?>
+                    
+        <?php
+                }
+            }
+        ?>
+                </div>
 
                 <div id="delivery_price_and_time" class="row justify-content-between">
                     <div class="col-auto">
@@ -408,8 +378,6 @@
                 <p id="delivery_comment" class="<?= $delivery_comment ? '' : 'd-none' ?>">
                     <?= $delivery_comment ?>
                 </p>
-                
-                <p id="delivery_image" style="height: 500px; display: none;"></p>
                 
                 <div id="address" class="row justify-content-center mt-1 mt-md-2">
                     <div class="col-12">
@@ -435,7 +403,9 @@
                     foreach ($fields as $field) {
             ?>
                         <div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
-                            <?php if ($field->name != 'postcode') { ?>
+                        <?php /*
+                            if ($field->name != 'postcode') {
+                        ?>
                                 style="
                                     position: absolute;
                                     top: 0;
@@ -444,7 +414,9 @@
                                     opacity: 0;
                                     z-index: -1;
                                 "
-                            <?php } ?>
+                        <?php 
+                            } */
+                        ?>
                         >
                             <div class="col-12 order-custom-field-<?= $field->id ?>">
                             <?php
@@ -599,9 +571,8 @@
     ]);
 ?>
 
-<?php
-    $this->registerJs(
-    "
+<?php // phone mask
+    $this->registerJs("
         $.mask.definitions['h'] = '[0-9]';
         
         function setPhoneMask(){
@@ -621,6 +592,23 @@
     "
         var dadataServiceUrl = 'https://dadata.ru/api/v2',
             dadataToken = '" . Yii::$app->params['dadataApiKey'] . "';
+            
+        // переключатель способов доставки
+        // $('.shipping_type_switcher').click(function () {
+            // $('.shipping_type_switcher').removeClass('border-primary');
+            // $(this).addClass('border-primary');
+            // $(this).find('input').tab('show');
+            // $(this).find('input').removeClass('active').prop('checked', true);
+            // $('#order-shipping_type_id').val($(this).find('input').val()).trigger('change');
+        // });
+        
+        $('input[name=\"shipping_type_switcher\"]').click(function () {
+            $(this).tab('show');
+            $(this).removeClass('active');
+            $('.shipping_type_switcher').removeClass('border-primary');
+            $(this).parent().addClass('border-primary');
+            $('#order-shipping_type_id').val($(this).val()).trigger('change');
+        });
         
         $('#country').change(function () {
             $('#order-phone').val('');
@@ -638,8 +626,10 @@
         });
         
         $('#order-shipping_type_id').change(function () {
+console.log('shippingType change');
             shippingTypeChange();
         });
+
         
         shippingTypeChange = function (isCityChanged = false) {
 // console.log('shippingTypeChange = ' + isCityChanged);
@@ -653,25 +643,72 @@
                 $('#order-address').suggestions().disable();
             }
             
-            if (isCityChanged) {
-                $('#delivery, #pickup').empty();
-            }
+            // if (isCityChanged) {
+                $('#delivery, #pickups').empty();
+            // }
             
             $('#delivery').val(null);
-            $('#pickup').val(null);
+            $('#pickups').val(null);
             
-            if (!isCityChanged) {
+            
+            // if (!isCityChanged) {
                 if ($('#order-shipping_type_id').val() === '1') {
-                    $('#delivery').val($('#delivery option').eq(1).attr('value'));
+                    var shippingType = 'delivery';
+                    // $('#delivery').val($('#delivery option').eq(1).attr('value'));
                 } else if ($('#order-shipping_type_id').val() === '2') {
-                    $('#pickup').val($('#pickup option').eq(1).attr('value'));
+                    var shippingType = 'pickups';
+                    // $('#pickups').val($('#pickups option').eq(1).attr('value'));
                 }
-            }
-            $('#delivery').trigger('change');
-            $('#pickup').trigger('change');
+                
+                $.ajax({
+                    url: '" . Url::to(['/checkout/get-delivery']) . "',
+                    data: {
+                        country_id: $('#country').val(),
+                        city_id: $('#city').val(),
+                        // type: shippingType,
+                        term: '',
+                    },
+                    success: function (response) {
+console.log('checking');
+
+                        var data = JSON.parse(response);
+console.log(data);
+                        $.each(data, function (dataType, options) {
+                            if (dataType == shippingType) {
+console.log(options);
+                                $.each(options, function (key, option) {
+console.log(option);
+                                    var newOption = new Option(option.text, option.id, false, false);
+                                    $('#' + shippingType).append(newOption);
+                                });
+                            }
+                        });
+
+                        if (shippingType == 'pickups') {
+                            $('#pickupsList').empty();
+                            $.each(data.pickups, function (k, pickup) {
+                                var pickupData;
+                                $.each(data.details, function (d, detail) {
+                                    if (d == pickup.id) {
+                                        pickupData = detail;
+                                    }
+                                });
+                                
+                                $('#pickupsList').append('<div class=\"col-6 select-pickip border rounded-lg pt-1 px-1_5' + (k ? '' : ' border-primary') + '\" data-id=\"' + pickup.id + '\"><p class=\"font-weight-bold\">' + pickup.text +'</p><p class=\"show-map\"><button type=\"button\" class=\"btn btn-link text-dark px-0\" data-toggle=\"lightbox\" data-remote=\"https://maps.google.com/maps?width=100%&height=500&hl=" . Yii::$app->language . "&q=' + pickupData.lat + ',' + pickupData.lon + '&t=&z=16&ie=UTF8&iwloc=B&output=embed\" data-title=\"' + pickupData.delivery_service.name + '\">" . Yii::t('front', 'Посмотреть на карте') . "</button></p></div>');
+                            });
+                        }
+                        $('#' + shippingType).trigger('change');
+                    }
+                });
+            // }
+            // $('#delivery').trigger('change');
+            // $('#pickups').trigger('change');
         }
         
+        
+        
         $('#delivery').change(function () {
+console.log('deivery chacnge');
             if ($('#delivery').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
@@ -679,11 +716,12 @@
             }
         });
         
-        $('#pickup').change(function () {
-            if ($('#pickup').val()) {
-                $('[data-field=\"delivery_id\"]').val($('#pickup').val());
-                $('[data-field=\"delivery_name\"]').val($('#pickup option:selected').text());
-                getDeliveryParams($('#pickup').val());
+        $('#pickups').change(function () {
+console.log('pickup chacnge');
+            if ($('#pickups').val()) {
+                $('[data-field=\"delivery_id\"]').val($('#pickups').val());
+                $('[data-field=\"delivery_name\"]').val($('#pickups option:selected').text());
+                getDeliveryParams($('#pickups').val());
             }
         });
         
@@ -698,7 +736,7 @@
                     shipping_id: shippingId
                 },
                 beforeSend: function () {
-                    NProgress.start();
+                    loading();
                 },
                 success: function (response) {
 					if (response == null) {
@@ -714,7 +752,7 @@ console.log(response);
                     toastr.error('" . Yii::t('front', 'Произошла ошибка! Пожалуйста, попробуйте еще раз чуть позже') . "');
                 },
                 complete: function () {
-                    NProgress.done();
+                    loading(false);
                 }
             });
         }
@@ -723,7 +761,7 @@ console.log(response);
 			if ($('#order-shipping_type_id').val() === '1') {
 				$('#delivery').trigger('change');
 			} else if ($('#order-shipping_type_id').val() === '2') {
-				$('#pickup').trigger('change');
+				$('#pickups').trigger('change');
 			} else {
 				location.reload();
 			}
@@ -769,11 +807,11 @@ console.log(response);
 				$('#delivery_time').text(params.time);
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
-                if (params.lat && params.lon) {
-                    $('#delivery_image').empty();
-                    ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
-                    $('#delivery_image').show();
-                }
+                // if (params.lat && params.lon) {
+                    // $('#delivery_image').empty();
+                    // ymaps.ready(setMap(params.lat, params.lon, params.delivery_service.name, '<p>' + params.comment + '</p><p>' + params.text + '</p>'));
+                    // $('#delivery_image').show();
+                // }
 				$('[data-field=\"delivery_cost\"]').val(params.cost);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
 			} else {
@@ -826,13 +864,16 @@ console.log(response);
 
         setPaymentOptions = function () {
             var moscowCourier = parseFloat($('[data-field=\"delivery_id\"]').val()) === 74265;
-
             $('#payment_type_id').val(moscowCourier ? 2 : 1).trigger('change');
             $('#order-form-submit-button').toggleClass('moscowCourier', moscowCourier);
             $('#submit-finish-text').toggle(moscowCourier);
             $('#submit-payment-text').toggle(!moscowCourier);
         }
         setPaymentOptions();
+        
+        
+        shippingTypeChange();
+        
 
         validateOrderForm = function () {
             var errors = false;

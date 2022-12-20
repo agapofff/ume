@@ -375,7 +375,7 @@
                                 </button>
                             </div>
                             <div id="nav-cart-icon" class="col-auto pl-0 pl-xl-0_5">
-                                <button type="button" class="btn btn-link position-relative text-decoration-none p-0 transition" data-toggle="modal" data-target="#mini-cart" aria-label="<?= Yii::t('front', 'Корзина') ?>">
+                                <a href="<?= Url::to(['/checkout']) ?>" class="btn btn-link position-relative text-decoration-none p-0 transition">
                                     <img src="/images/cart_dark.svg">
                                     <?= CartInformer::widget([
                                             'htmlTag' => 'div',
@@ -383,7 +383,7 @@
                                             'text' => '{c}'
                                         ]);
                                     ?>
-                                </button>
+                                </a>
                             </div>
                             <div id="nav-user-icon" class="col-auto pl-0 pl-xl-0_5">
                                 <a href="<?= Yii::$app->user->isGuest ? Url::to(['/login']) : Url::to(['/account']) ?>" class="transition">

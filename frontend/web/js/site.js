@@ -162,14 +162,6 @@ jQuery(document).ready(function ($) {
         // generateOwlCarousel();
     // });
 
-    
-    // переключатель способов доставки
-    $('input[name="shipping_type_switcher"]').click(function () {
-        $(this).tab('show');
-        $(this).removeClass('active');
-        $('#order-shipping_type_id').val($(this).val()).trigger('change');
-    });
-
 
 
     // формы

@@ -32,8 +32,11 @@ if ($options && !empty($allOptions)) {
         <div class="col">
             <div class="row">
                 <div class="col-auto">
-                    <a href="<?= $url ?>" class="d-block border border-gray-400 text-center" style="width: 150px; height: 150px;">
-                        <img src="<?= $image ?>" class="img-fluid">
+                    <a href="<?= $url ?>" class="d-block border border-gray-400 text-center" style="
+                        width: 150px; 
+                        height: 150px;
+                        background: url('<?= $image ?>') center center / contain no-repeat;
+                    ">
                     </a>
                 </div>
                 <div class="col">
@@ -52,10 +55,8 @@ if ($options && !empty($allOptions)) {
                         ?>
                             
                             <?php 
-                                if (!empty($otherFields))
-                                {
-                                    foreach ($otherFields as $fieldName => $field)
-                                    {
+                                if (!empty($otherFields)) {
+                                    foreach ($otherFields as $fieldName => $field) {
                                         if (isset($product->$field)){
                                             echo Html::tag('p', $fieldName . ': ' . Html::tag('strong', $product->$field));
                                         }
