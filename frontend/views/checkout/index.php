@@ -8,8 +8,8 @@
     $this->title = Yii::t('front', 'Оформить заказ');
 ?>
 
-<div class="container-xl">
-    <h1 class="font-weight-light text-uppercase mb-3 position-relative">
+<div class="container-xl mb-3">
+    <h1 class="font-weight-light text-uppercase position-relative d-inline">
         <?= Yii::t('front', 'Корзина') ?>
         <?= CartInformer::widget([
                 'htmlTag' => 'sup',
@@ -18,6 +18,9 @@
             ]);
         ?>
     </h1>
+</div>
+
+<div class="container-xl">
     <div class="row justify-content-center">    
         <div class="col-12">
             <?= ElementsList::widget([
