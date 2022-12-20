@@ -924,6 +924,6 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
 }
 
 .shipping_type_switcher.border-primary,
-.select-pickup.boredr-primary {
+.select-pickup.border-primary {
     border-width: 2px !important;
 }
