@@ -499,7 +499,7 @@
                                     ],
                                     'labelOptions' => [
                                         'class' => 'font-weight-bold'
-                                    ]
+                                    ],
                                     'template' => '{label}{input}{hint}{error}',
                                 ])
                                 ->textArea()
