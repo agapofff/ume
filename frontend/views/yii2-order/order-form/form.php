@@ -711,7 +711,11 @@ console.log(option);
             // $('#pickups').trigger('change');
         }
         
-        
+        $(document).on('click', '.select-pickup', function () {
+            $('.select-pickup').removeClass('border-primary');
+            $(this).addClass('border-primary');
+            $('#pickups').val($(this).data('id')).trigger('change');
+        });
         
         $('#delivery').change(function () {
 console.log('deivery chacnge');
