@@ -7,6 +7,7 @@
     use kartik\select2\Select2;
     use yii\web\JsExpression;
     use yii\helpers\ArrayHelper;
+    use dvizh\cart\widgets\CartInformer;
 
     if (Yii::$app->session->hasFlash('orderError')){
         $errors = Yii::$app->session->getFlash('orderError');
