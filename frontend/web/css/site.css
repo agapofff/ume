@@ -922,3 +922,8 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     background: url('../images/map-pointer.svg') center center / cover no-repeat;
     margin-right: 5px;
 }
+
+.shipping_type_switcher.border-primary,
+.select-pickup.boredr-primary {
+    border-width: 2px !important;
+}
