@@ -345,7 +345,7 @@ console.log(response);
 
         return true;
     },
-};
+}
 
 $(function() {
     dvizh.cart.init();
