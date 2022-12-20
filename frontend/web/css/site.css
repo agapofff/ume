@@ -912,6 +912,8 @@ body[data-gift] .cart-product[data-price="0"] .dvizh-cart-delete-button {
     border: 1px solid #978F76;
 }
 
+
+
 .select-pickup .show-map:before {
     content: '';
     display: inline-block;
