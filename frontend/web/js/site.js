@@ -162,6 +162,14 @@ jQuery(document).ready(function ($) {
         // generateOwlCarousel();
     // });
 
+    
+    // переключатель способов доставки
+    $('input[name="shipping_type_switcher"]').click(function () {
+        $(this).tab('show');
+        $(this).removeClass('active');
+        $('#order-shipping_type_id').val($(this).val()).trigger('change');
+    });
+
 
 
     // формы
@@ -857,22 +865,22 @@ jQuery(document).ready(function ($) {
     // }
     
     
-    // $(document).on('click', '.cart-change-count', function () {
-        // var plus = $(this).hasClass('plus'),
-            // $row = $(this).parents('.cart-product'),
-            // id = $row.attr('data-id'),
-            // name = $row.attr('data-name'),
-            // price = $row.attr('data-price'),
-            // variant = $row.find('.cart-product-variant').text(),
-            // currency = $row.attr('data-currency');
+    $(document).on('click', '.cart-change-count', function () {
+        var plus = $(this).hasClass('plus'),
+            $row = $(this).parents('.cart-product'),
+            id = $row.attr('data-id'),
+            name = $row.attr('data-name'),
+            price = $row.attr('data-price'),
+            variant = $row.find('.cart-product-variant').text(),
+            currency = $row.attr('data-currency');
             
-        // if (plus) {
-            // ymAdd(id, name, price, variant, currency);
-            // fbqAddToCart(id, name, price, variant, currency);
-        // } else {
-            // ymRemove(id, name, price, variant, currency);
-        // }
-    // });
+        if (plus) {
+            ymAdd(id, name, price, variant, currency);
+            fbqAddToCart(id, name, price, variant, currency);
+        } else {
+            ymRemove(id, name, price, variant, currency);
+        }
+    });
 
 
     
