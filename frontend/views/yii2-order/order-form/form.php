@@ -491,7 +491,7 @@
                                         'cssClass' => '',
                                         'text' => '{c}'
                                     ]);
-                                ?>
+                                ?> <?= Yii::t('front', 'шт.') ?>
                             </p>
                         </div>
                     </div>
