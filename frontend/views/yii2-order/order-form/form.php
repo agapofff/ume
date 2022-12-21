@@ -346,21 +346,6 @@
             ?>
                 
                 </div>
-
-                <div id="delivery_price_and_time" class="row justify-content-between">
-                    <div class="col-auto">
-                       
-                    </div>
-                    <div class="col-auto">
-                        <p id="delivery_time">
-                            <?= $delivery_time ?>
-                        </p>                        
-                    </div>
-                </div>
-                
-                <p id="delivery_comment" class="<?= $delivery_comment ? '' : 'd-none' ?>">
-                    <?= $delivery_comment ?>
-                </p>
                 
                 <div id="address" class="row justify-content-center mt-1 mt-md-2">
                     <div class="col-12">
@@ -489,7 +474,7 @@
                     </div>
                 </div>
                 
-                <p class="h4 mt-3 mb-3">
+                <p class="h4 mb-3">
                     <?= Yii::t('front', 'Общая стоимость') ?>
                 </p>
                 <div id="order_total" class="mb-3">
