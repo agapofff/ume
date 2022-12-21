@@ -349,9 +349,7 @@
 
                 <div id="delivery_price_and_time" class="row justify-content-between">
                     <div class="col-auto">
-                        <p id="delivery_price">
-                            <?= $delivery_price ?>
-                        </p>                        
+                       
                     </div>
                     <div class="col-auto">
                         <p id="delivery_time">
@@ -491,18 +489,68 @@
                     </div>
                 </div>
                 
-                <div id="order_total" class="row justify-content-center mt-3">
-                    <p class="h4 mb-3">
-                        <?= Yii::t('front', 'Общая стоимость') ?>
-                    </p>
-                    <div class="col-12">
-                        <div class="h4">
-                            <span class="text-bold mr-2">
+                <p class="h4 mt-3 mb-3">
+                    <?= Yii::t('front', 'Общая стоимость') ?>
+                </p>
+                <div id="order_total" class="mb-3">
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p>
+                                <?= Yii::t('front', 'Количество товаров') ?>
+                            </p>
+                        </div>
+                        <div class="col-auto">
+                            <?= CartInformer::widget([
+                                    'htmlTag' => 'p',
+                                    'cssClass' => '',
+                                    'text' => '{c}'
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p>
+                                <?= Yii::t('front', 'Сумма заказа') ?>
+                            </p>
+                        </div>
+                        <div class="col-auto">
+                            <?= CartInformer::widget([
+                                    'htmlTag' => 'p',
+                                    'cssClass' => '',
+                                    'text' => '{p}'
+                                    'currency' => Yii::$app->params['currency'],
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p id="delivery_time"></p>
+                        </div>
+                        <div class="col-auto">
+                            <p id="delivery_price"></p> 
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p></p>
+                        </div>
+                        <div class="col-auto">
+                            <p id="delivery_price"></p> 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-between">
+                        <div class="col-auto">
+                            <p class="h4">
                                 <?= Yii::t('front', 'Итого') ?>:
-                            </span>
-                            <span id="total">
+                            </p>
+                        </div>
+                        <div class="col-auto">
+                            <p class="h4">
                                 <?= $total ?>
-                            </span>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -520,21 +568,18 @@
                     </div>
                 </div>
                 
-                <div id="submit" class="row my-2 my-md-5 align-items-center">
-                    <div id="order_submit" class="col-sm-6 text-center order-lg-last">
-                        <?= Html::submitButton(Html::tag('span', Yii::t('front', 'Перейти к оплате'), [
+                <div id="submit" class="row my-3">
+                    <div id="order_submit" class="col-12">
+                        <?= Html::submitButton(Html::tag('span', Yii::t('front', 'Оплатить'), [
                                 'id' => 'submit-payment-text',
                                 'style' => 'display: none',
                             ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
                                 'id' => 'submit-finish-text'
                             ]), [
                                 'id' => 'order-form-submit-button',
-                                'class' => 'btn btn-lg btn-primary btn-hover-warning btn-block py-1 text-uppercase ttfirsneue text-nowrap',
+                                'class' => 'btn btn-secondary rounded-pill py-1 px-2',
                             ])
                         ?>
-                    </div>
-                    <div class="col-sm-6 py-1">
-                        <?= Html::a(Yii::t('front', 'Назад в корзину'), ['/cart']) ?>
                     </div>
                 </div>
                 
@@ -808,7 +853,8 @@ console.log(response);
 				$('#total').text(params.total);
 				$('#order_total').show();
 				$('#delivery_price').text(params.price);
-				$('#delivery_time').text(params.time);
+                var shippingTypeName = $('input[name=\"shipping_type_switcher\"]:checked').siblings('label').find('p').eq(0).text();
+				$('#delivery_time').text(shippingTypeName + ' (' + params.time + ')');
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
                 // if (params.lat && params.lon) {
