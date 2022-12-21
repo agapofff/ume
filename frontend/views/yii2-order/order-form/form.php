@@ -225,7 +225,7 @@
                     </div>
                 </div>
             
-                <div id="shipping_options_section" class="tab-content mb-1">
+                <div id="shipping_options_section" class="tab-content m-0">
                 
             <?php
                 foreach ($shippingTypesList as $key => $sht) {
@@ -236,7 +236,7 @@
                     if ($sht->id == 1) {
 // print_r($deliveryList); 
                 ?>
-                        <div id="block-delivery" class="form-group position-relative">
+                        <div id="block-delivery" class="form-group position-relative d-none">
                             <label class="control-label" for="pickup">
                                 <?= Yii::t('front', 'Способ доставки') ?>
                             </label>
@@ -287,7 +287,7 @@
                     if ($sht->id == 2){
 // print_r($pickupsList); 
                 ?>
-                        <div id="block-pickup" class="form-group position-relative">
+                        <div id="block-pickup" class="form-group position-relative d-none">
                             <label class="control-label" for="pickup">
                                 <?= Yii::t('front', 'Пункт самовывоза') ?>
                             </label>
