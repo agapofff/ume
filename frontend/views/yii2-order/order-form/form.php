@@ -692,9 +692,9 @@
                 
                 $.ajax({
                     url: '" . Url::to(['/checkout/get-delivery']) . "',
-                    beforeRequest: function () {
-                        loading();
-                    },
+                    // beforeRequest: function () {
+                        // loading();
+                    // },
                     data: {
                         country_id: $('#country').val(),
                         city_id: $('#city').val(),
@@ -861,7 +861,7 @@ console.log(response);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
                 
                 if ($('[data-field=\"delivery_cost\"]').val() == '') {
-                    toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна') . "');
+                    toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
                 }
 			} else {
 				location.reload();
@@ -939,7 +939,7 @@ console.log(response);
             } 
             
             if ($('[data-field=\"delivery_cost\"]').val() == '') {
-                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна') . "');
+                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
                 return false;
             }
         
