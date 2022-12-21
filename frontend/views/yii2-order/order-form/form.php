@@ -541,7 +541,7 @@
                             </p>
                         </div>
                         <div class="col-auto">
-                            <p class="h4">
+                            <p id="total" class="h4">
                                 <?= $total ?>
                             </p>
                         </div>
