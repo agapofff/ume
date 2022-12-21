@@ -474,10 +474,10 @@
                     </div>
                 </div>
                 
-                <p class="h4 mb-2">
-                    <?= Yii::t('front', 'Общая стоимость') ?>
-                </p>
                 <div id="order_total" class="mb-3">
+                    <p class="h4 mb-2">
+                        <?= Yii::t('front', 'Общая стоимость') ?>
+                    </p>
                     <div class="row justify-content-between">
                         <div class="col-auto">
                             <p>
@@ -544,33 +544,33 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                
-                <div class="<?= Yii::$app->user->isGuest ? 'form-group mt-2 mb-0 ' : 'd-none' ?>">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="agree" name="agree" <?php if (!Yii::$app->user->isGuest){?>checked="checked"<?php }?>>
-                        <label class="custom-control-label" for="agree">
-                            <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
-                                    '/privacy-policy'
-                                ], [
-                                    'target' => '_blank',
-                                ]) ?>...
-                        </label>
+                    
+                    <div class="<?= Yii::$app->user->isGuest ? 'form-group mt-2 mb-0 ' : 'd-none' ?>">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="agree" name="agree" <?php if (!Yii::$app->user->isGuest){?>checked="checked"<?php }?>>
+                            <label class="custom-control-label" for="agree">
+                                <?= Yii::t('front', 'Даю согласие на обработку моих персональных данных.') ?> <?= Html::a(Yii::t('front', 'Подробнее'), [
+                                        '/privacy-policy'
+                                    ], [
+                                        'target' => '_blank',
+                                    ]) ?>...
+                            </label>
+                        </div>
                     </div>
-                </div>
-                
-                <div id="submit" class="row my-3">
-                    <div id="order_submit" class="col-12">
-                        <?= Html::submitButton(Html::tag('span', Yii::t('front', 'Оплатить'), [
-                                'id' => 'submit-payment-text',
-                                'style' => 'display: none',
-                            ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
-                                'id' => 'submit-finish-text'
-                            ]), [
-                                'id' => 'order-form-submit-button',
-                                'class' => 'btn btn-secondary rounded-pill py-1 px-2',
-                            ])
-                        ?>
+                    
+                    <div id="submit" class="row my-3">
+                        <div id="order_submit" class="col-12">
+                            <?= Html::submitButton(Html::tag('span', Yii::t('front', 'Оплатить'), [
+                                    'id' => 'submit-payment-text',
+                                    'style' => 'display: none',
+                                ]) . Html::tag('span', Yii::t('front', 'Оформить заказ'), [
+                                    'id' => 'submit-finish-text'
+                                ]), [
+                                    'id' => 'order-form-submit-button',
+                                    'class' => 'btn btn-secondary rounded-pill py-1 px-2',
+                                ])
+                            ?>
+                        </div>
                     </div>
                 </div>
                 
