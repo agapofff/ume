@@ -109,6 +109,7 @@
                                 'theme' => Select2::THEME_BOOTSTRAP,
                                 'data' => $countriesList,
                                 'size' => 'lg',
+                                'disabled' => true,
                                 'options' => [
                                     'class' => 'form-control form-control-lg',
                                     'placeholder' => ' ',
@@ -150,6 +151,7 @@
                                 'language' => Yii::$app->language,
                                 'theme' => Select2::THEME_BOOTSTRAP,
                                 'data' => $citiesList,
+                                'disabled' => true,
                                 'options' => [
                                     'class' => 'form-control form-control-lg',
                                     'placeholder' => ' ',
