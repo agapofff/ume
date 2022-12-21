@@ -485,12 +485,14 @@
                             </p>
                         </div>
                         <div class="col-auto">
-                            <?= CartInformer::widget([
-                                    'htmlTag' => 'p',
-                                    'cssClass' => '',
-                                    'text' => '{c}'
-                                ]);
-                            ?>
+                            <p>
+                                <?= CartInformer::widget([
+                                        'htmlTag' => 'strong',
+                                        'cssClass' => '',
+                                        'text' => '{c}'
+                                    ]);
+                                ?>
+                            </p>
                         </div>
                     </div>
                     <div class="row justify-content-between">
@@ -514,7 +516,9 @@
                             <p id="delivery_time"></p>
                         </div>
                         <div class="col-auto">
-                            <p id="delivery_price"></p> 
+                            <p>
+                                <strong id="delivery_price"></strong>
+                            </p> 
                         </div>
                     </div>
                     <div class="row justify-content-between">
@@ -522,7 +526,9 @@
                             <p></p>
                         </div>
                         <div class="col-auto">
-                            <p id="delivery_price"></p> 
+                            <p>
+                                <strong id="delivery_price"></strong>
+                            </p> 
                         </div>
                     </div>
                     <hr>
