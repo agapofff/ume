@@ -766,7 +766,7 @@
         });
         
         getDeliveryParams = function (shippingId) {
-console.log(shippingId);
+console.log('shippingId: ' + shippingId);
             $.ajax({
                 url: '" . Url::to(['/checkout/get-delivery']) . "',
                 method: 'get',
