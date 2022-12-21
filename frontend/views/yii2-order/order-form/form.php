@@ -37,7 +37,7 @@
         
         <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken) ?>
 
-        <p class="text-uppercase font-weight-bold mb-2">
+        <p class="h4 mb-2">
             <?= Yii::t('front', 'Контактная информация') ?>
         </p>
             
