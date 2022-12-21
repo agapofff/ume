@@ -854,6 +854,10 @@ console.log(response);
                 // }
 				$('[data-field=\"delivery_cost\"]').val(params.cost);
 				$('[data-field=\"delivery_comment\"]').val(params.comment);
+                
+                if ($('[data-field=\"delivery_cost\"]').val() == '') {
+                    toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна') . "');
+                }
 			} else {
 				location.reload();
 			}
@@ -929,6 +933,11 @@ console.log(response);
                 return false;
             } 
             
+            if ($('[data-field=\"delivery_cost\"]').val() == '') {
+                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна') . "');
+                return false;
+            }
+        
             if (errors) {
                 return false;
             }
