@@ -182,7 +182,7 @@
                 
                 <div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
                     <div class="col-auto">
-                        <p class="text-uppercase font-weight-bold m-0">
+                        <p class="h4 mb-2">
                             <?= Yii::t('front', 'Способ доставки') ?>
                         </p>
                     </div>
