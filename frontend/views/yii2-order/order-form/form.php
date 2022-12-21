@@ -518,7 +518,7 @@
                             <?= CartInformer::widget([
                                     'htmlTag' => 'p',
                                     'cssClass' => '',
-                                    'text' => '{p}'
+                                    'text' => '{p}',
                                     'currency' => Yii::$app->params['currency'],
                                 ]);
                             ?>
