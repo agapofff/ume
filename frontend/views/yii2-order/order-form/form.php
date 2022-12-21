@@ -446,7 +446,7 @@
         <?php } ?>
                 
                 
-                <div id="order_comment" class="row justify-content-center">
+                <div id="order_comment" class="row justify-content-center mt-2">
                     <div class="col-12">
                         <?= $form
                                 ->field($orderModel, 'comment', [
@@ -454,7 +454,7 @@
                                         'class' => 'form-control form-control-lg',
                                         'autocomplete' => rand(),
                                         // 'placeholder' => ' ',
-                                        'rows' => 3,
+                                        'rows' => 2,
                                         'style' => '
                                             resize: none;
                                             margin-top: 4px;
@@ -462,7 +462,7 @@
                                         ',
                                     ],
                                     'options' => [
-                                        'class' => 'form-group mb-3 mb-md-5 position-relative',
+                                        'class' => 'form-group mb-3 position-relative',
                                     ],
                                     'labelOptions' => [
                                         'class' => 'font-weight-bold'
@@ -474,7 +474,7 @@
                     </div>
                 </div>
                 
-                <p class="h4 mb-3">
+                <p class="h4 mb-2">
                     <?= Yii::t('front', 'Общая стоимость') ?>
                 </p>
                 <div id="order_total" class="mb-3">
@@ -531,7 +531,7 @@
                             </p> 
                         </div>
                     </div>
-                    <hr>
+                    <hr class="mt-0 mb-1_5">
                     <div class="row justify-content-between">
                         <div class="col-auto">
                             <p class="h4">
@@ -822,7 +822,7 @@ console.log(response);
 		}
         
         clearDeliveryParams = function () {
-            $('#order_total').hide();
+            // $('#order_total').hide();
             $('#total').text('');
             $('#delivery_price').text(' ');
             $('#delivery_time').text(' ');
