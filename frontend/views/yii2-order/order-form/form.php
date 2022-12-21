@@ -1008,7 +1008,7 @@ console.log(response);
                         method: 'get',
                         async: false,
                         beforeSend: function () {
-                            NProgress.start();
+                            loading();
                         },
                         success: function (products) {
                             orderData.products = JSON.parse(products);
@@ -1019,14 +1019,14 @@ console.log(response);
                                 data: orderData,
                                 async: false,
                                 beforeSend: function () {
-                                    NProgress.start();
+                                    loading();
                                     $('[data-field=\"log_request\"]').val(JSON.stringify(orderData));
                                 },
                                 success: function (response) {
                                     $('[data-field=\"log_response\"]').val(JSON.stringify(response));
                                     $('#order-id').val(response.id);
                                     $('[data-field=\"id_order_sessia\"]').val(response.id);
-                                    NProgress.start();
+                                    loading();
                                     $('#order-form')[0].submit();
                                     return;
                                 },
@@ -1058,7 +1058,7 @@ console.log(response);
                                     return false;
                                 },
                                 complete: function(){
-                                    NProgress.done();
+                                    loading(false);
                                 }
                             });
                         },
@@ -1068,7 +1068,7 @@ console.log(response);
                             return false;
                         },
                         complete: function () {
-                            NProgress.done();
+                            loading(false);
                         }
                     });
                 }
