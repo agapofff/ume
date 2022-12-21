@@ -180,19 +180,15 @@
                 </div>
                         
                 
-                <div id="shipping_title" class="row justify-content-between mt-3 mt-md-5 mb-1 mb-md-3">
-                    <div class="col-auto">
-                        <p class="h4 mb-2">
-                            <?= Yii::t('front', 'Способ доставки') ?>
-                        </p>
-                    </div>
-                </div>
+                <p class="h4 mb-2">
+                    <?= Yii::t('front', 'Способ доставки') ?>
+                </p>
                 
                 <?= $form
                         ->field($orderModel, 'shipping_type_id')
-                        ->textInput()
-                        // ->hiddenInput()
-                        // ->label(false)
+                        // ->textInput()
+                        ->hiddenInput()
+                        ->label(false)
                 ?>
             
                 <div id="shipping_types_list" class="form-group" role="tablist">
