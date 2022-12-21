@@ -1002,7 +1002,7 @@ console.log(response);
                         campaign_id: '" . Yii::$app->request->cookies->getValue('promo') . "',
                         comment: $('#order-comment').val()
                     };
-                    
+                    loading();
                     $.ajax({
                         url: '" . Url::to(['/checkout/get-products']) . "',
                         method: 'get',
