@@ -138,9 +138,9 @@ class OrderForm extends \yii\base\Widget
             !Yii::$app->user->isGuest && Yii::$app->user->identity->profile->last_name ?: null,
         ]));
         
-        $orderModel->phone = $lastUserOrder && $lastUserOrder->phone ? $lastUserOrder->phone : (!Yii::$app->user->isGuest ? Yii::$app->user->identity->profile->phone : null);
+        $orderModel->phone = !Yii::$app->user->isGuest ? Yii::$app->user->identity->profile->phone : null;
         
-        $orderModel->email = $lastUserOrder && $lastUserOrder->email ? $lastUserOrder->email : (!Yii::$app->user->isGuest ? Yii::$app->user->identity->profile->email : null);
+        $orderModel->email = !Yii::$app->user->isGuest ? Yii::$app->user->identity->profile->email : null;
         
         $shippingsJson = Yii::$app->runAction('checkout/get-delivery', [
             'country_id' => $country_id,
