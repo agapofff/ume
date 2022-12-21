@@ -890,6 +890,9 @@ console.log(response);
         
         
         shippingTypeChange();
+        $(document).on('renderCart', function () {
+            shippingTypeChange();
+        });
         
 
         validateOrderForm = function () {
