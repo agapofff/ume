@@ -682,6 +682,8 @@
             $('#delivery').val(null);
             $('#pickups').val(null);
             
+            $('#pickupsList').html('');
+            
             
             // if (!isCityChanged) {
                 if ($('#order-shipping_type_id').val() === '1') {
