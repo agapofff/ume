@@ -374,7 +374,7 @@
                     foreach ($fields as $field) {
             ?>
                         <div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
-                        <?php
+                        <?php /*
                             if ($field->name != 'postcode') {
                         ?>
                                 style="
@@ -386,7 +386,7 @@
                                     z-index: -1;
                                 "
                         <?php 
-                            }
+                            } */
                         ?>
                         >
                             <div class="col-12 order-custom-field-<?= $field->id ?>">
@@ -822,7 +822,7 @@ console.log(response);
 		}
         
         clearDeliveryParams = function () {
-            // $('#order_total').hide();
+            $('#order_total').hide();
             $('#total').text('');
             $('#delivery_price').text(' ');
             $('#delivery_time').text(' ');
@@ -844,8 +844,7 @@ console.log(response);
 				$('#total').text(params.total);
 				$('#order_total').show();
 				$('#delivery_price').text(params.price);
-                var shippingTypeName = $('input[name=\"shipping_type_switcher\"]:checked').siblings('label').find('p').eq(0).text();
-				$('#delivery_time').text(shippingTypeName + ' (' + params.time + ')');
+				$('#delivery_time').text($('input[name=\"shipping_type_switcher\"]:checked').siblings('label').find('p').eq(0).text() + ' (' + params.time + ')');
 				$('#delivery_comment').html(params.comment);
 				$('#delivery_comment').toggleClass('d-none', params.comment === '');
                 // if (params.lat && params.lon) {
