@@ -346,18 +346,6 @@
             ?>
                 
                 </div>
-                
-                <div id="shipping_variants" class="row">
-        <?php
-            foreach ($shippingTypesList as $key => $sht) {
-                if ($sht->id == $orderModel->shipping_type_id) {
-        ?>
-                    
-        <?php
-                }
-            }
-        ?>
-                </div>
 
                 <div id="delivery_price_and_time" class="row justify-content-between">
                     <div class="col-auto">
