@@ -376,7 +376,7 @@
                     foreach ($fields as $field) {
             ?>
                         <div id="<?= $field->name ?>" class="row justify-content-center d-none- <?= $field->required == 'yes' ? 'required' : '' ?>"
-                        <?php /*
+                        <?php
                             if ($field->name != 'postcode') {
                         ?>
                                 style="
@@ -388,7 +388,7 @@
                                     z-index: -1;
                                 "
                         <?php 
-                            } */
+                            }
                         ?>
                         >
                             <div class="col-12 order-custom-field-<?= $field->id ?>">
