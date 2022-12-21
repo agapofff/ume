@@ -625,6 +625,8 @@
         var dadataServiceUrl = 'https://dadata.ru/api/v2',
             dadataToken = '" . Yii::$app->params['dadataApiKey'] . "';
             
+        $('[data-field=\"currency\"]').val('" . Yii::$app->params['currency'] . "');
+            
         // переключатель способов доставки
         // $('.shipping_type_switcher').click(function () {
             // $('.shipping_type_switcher').removeClass('border-primary');
