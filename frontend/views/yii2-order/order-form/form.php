@@ -491,7 +491,10 @@
                     </div>
                 </div>
                 
-                <div id="order_total" class="row justify-content-center">
+                <div id="order_total" class="row justify-content-center mt-3">
+                    <p class="h4 mb-3">
+                        <?= Yii::t('front', 'Общая стоимость') ?>
+                    </p>
                     <div class="col-12">
                         <div class="h4">
                             <span class="text-bold mr-2">
