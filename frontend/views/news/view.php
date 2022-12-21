@@ -46,7 +46,7 @@ $this->title = $postName;
         if ($image = $post->getImage()){
     ?>
             <?= Html::img($image->getUrl(), [
-                    'class' => 'img-fluid mb-3',
+                    'class' => 'img-fluid mb-3' . ($post->show_preview ? '' : ' d-none'),
                     'alt' => ($image->alt ?: $postName)
                 ])
             ?>
