@@ -656,7 +656,7 @@
         });
         
         $('#order-shipping_type_id').change(function () {
-console.log('shippingType change');
+// console.log('shippingType change');
             shippingTypeChange();
         });
 
@@ -692,9 +692,9 @@ console.log('shippingType change');
                 
                 $.ajax({
                     url: '" . Url::to(['/checkout/get-delivery']) . "',
-                    // beforeRequest: function () {
-                        // loading();
-                    // },
+                    beforeRequest: function () {
+                        loading();
+                    },
                     data: {
                         country_id: $('#country').val(),
                         city_id: $('#city').val(),
@@ -702,15 +702,15 @@ console.log('shippingType change');
                         term: '',
                     },
                     success: function (response) {
-console.log('checking');
+// console.log('checking');
 
                         var data = JSON.parse(response);
-console.log(data);
+// console.log(data);
                         $.each(data, function (dataType, options) {
                             if (dataType == shippingType) {
-console.log(options);
+// console.log(options);
                                 $.each(options, function (key, option) {
-console.log(option);
+// console.log(option);
                                     var newOption = new Option(option.text, option.id, false, false);
                                     $('#' + shippingType).append(newOption);
                                 });
@@ -748,7 +748,7 @@ console.log(option);
         });
         
         $('#delivery').change(function () {
-console.log('deivery chacnge');
+// console.log('deivery chacnge');
             if ($('#delivery').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
@@ -757,7 +757,7 @@ console.log('deivery chacnge');
         });
         
         $('#pickups').change(function () {
-console.log('pickup chacnge');
+// console.log('pickup chacnge');
             if ($('#pickups').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#pickups').val());
                 $('[data-field=\"delivery_name\"]').val($('#pickups option:selected').text());
@@ -766,6 +766,7 @@ console.log('pickup chacnge');
         });
         
         getDeliveryParams = function (shippingId) {
+console.log(shippingId);
             $.ajax({
                 url: '" . Url::to(['/checkout/get-delivery']) . "',
                 method: 'get',
