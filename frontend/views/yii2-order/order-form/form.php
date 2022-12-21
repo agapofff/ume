@@ -753,6 +753,8 @@ console.log('deivery chacnge');
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
                 getDeliveryParams($('#delivery').val());
+            } else {
+                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
             }
         });
         
@@ -762,6 +764,8 @@ console.log('pickup chacnge');
                 $('[data-field=\"delivery_id\"]').val($('#pickups').val());
                 $('[data-field=\"delivery_name\"]').val($('#pickups option:selected').text());
                 getDeliveryParams($('#pickups').val());
+            } else {
+                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
             }
         });
         
