@@ -748,7 +748,7 @@
         });
         
         $('#delivery').change(function () {
-// console.log('deivery chacnge');
+console.log('deivery chacnge');
             if ($('#delivery').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
@@ -757,7 +757,7 @@
         });
         
         $('#pickups').change(function () {
-// console.log('pickup chacnge');
+console.log('pickup chacnge');
             if ($('#pickups').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#pickups').val());
                 $('[data-field=\"delivery_name\"]').val($('#pickups option:selected').text());
