@@ -748,29 +748,25 @@
         });
         
         $('#delivery').change(function () {
-console.log('deivery chacnge');
+// console.log('deivery chacnge');
             if ($('#delivery').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#delivery').val());
                 $('[data-field=\"delivery_name\"]').val($('#delivery option:selected').text());
                 getDeliveryParams($('#delivery').val());
-            } else {
-                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
             }
         });
         
         $('#pickups').change(function () {
-console.log('pickup chacnge');
+// console.log('pickup chacnge');
             if ($('#pickups').val()) {
                 $('[data-field=\"delivery_id\"]').val($('#pickups').val());
                 $('[data-field=\"delivery_name\"]').val($('#pickups option:selected').text());
                 getDeliveryParams($('#pickups').val());
-            } else {
-                toastr.error('" . Yii::t('front', 'Доставка выбранным способом невозможна. Выберите другой способ доставки') . "');
             }
         });
         
         getDeliveryParams = function (shippingId) {
-console.log('shippingId: ' + shippingId);
+// console.log('shippingId: ' + shippingId);
             $.ajax({
                 url: '" . Url::to(['/checkout/get-delivery']) . "',
                 method: 'get',
