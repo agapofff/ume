@@ -152,7 +152,7 @@
                     </div>
                 </div>
                 
-                <div class="modal fade show" id="sms-code-modal" tabindex="-1" aria-hidden="true">
+                <div class="modal fade" id="sms-code-modal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header border-0 pb-0">
