@@ -247,7 +247,7 @@
             .on('beforeSubmit', function (event) {
                 event.preventDefault();                  
                 if ($('#login-form-type').val() == 'phone' && !$('#login-form-sms_code').val()) {
-                    $('#sms-code-modal').modal('show');
+                    $('#sms-code-modal').modal({'show':true});
                     sendSmsCode();
                     return false;
                 }
