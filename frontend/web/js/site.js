@@ -143,6 +143,11 @@ jQuery(document).ready(function ($) {
             }
         });
     });
+    $('.modal').on('shown.bs.modal', function () {
+        $(this).addClass('show');
+        $('.modal-backdrop').addClass('show');
+        $(this).find('input').eq(0).trigger('focus');
+    })
 
 
     // popover
