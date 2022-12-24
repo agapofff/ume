@@ -50,11 +50,6 @@ dvizh.modificationconstruct = {
                         .addClass('text-hover-warning')
 						.removeAttr('disabled');
                         
-                    // $('#product-wishlist-container').find('svg').attr('fill', '#D6751C');
-						
-					$('.select-size-note').hide();
-						
-					wishlistCheck();
                 } else {
                     $('.dvizh-shop-price').html(data.product_price);
 					
@@ -67,16 +62,9 @@ dvizh.modificationconstruct = {
 					$('.btn-wishlist')
                         .removeClass('text-hover-warning')
                         .attr('disabled', true);
-					
-					$('.select-size-note').show();
 
                     outOfStock();
-					
-
                 }
-                // $('.dvizh-shop-price-' + modelId).css('opacity', 1);
-                // $('.dvizh-change-options').removeClass('d-none');
-
             },
             error: function(data){
 console.log(data);

@@ -352,12 +352,20 @@ return [
                 'dvizh\filter\assets\Asset' => false,
                 'dvizh\cart\assets\WidgetAsset' => [
                     'css' => [],
-                    // 'depends' => [],
+                    'depends' => [
+                        'yii\web\JqueryAsset',
+                    ],
+                ],
+                'dvizh\shop\assets\ModificationConstructAsset' => [
+                    'css' => [],
+                    'depends' => [
+                        'yii\web\JqueryAsset',
+                    ],
                 ],
                 'dvizh\filter\assets\FrontendAsset' => false,
                 'dvizh\filter\assets\FrontendAjaxAsset' => false,
             ],
-            'linkAssets' => true,
+            'linkAssets' => false,
         ],
         
         'cache' => [
