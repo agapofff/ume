@@ -133,10 +133,10 @@ class OrderForm extends \yii\base\Widget
         $city_id = $lastUserOrder && $lastUserOrder->city_id ? $lastUserOrder->city_id : $cities['results'][0]['id'];
         $city_name = $citiesList[$city_id];
 
-        $orderModel->client_name = trim($lastUserOrder && $lastUserOrder->client_name ? $lastUserOrder->client_name : implode(' ', [
+        $orderModel->client_name = $lastUserOrder && $lastUserOrder->client_name ? $lastUserOrder->client_name : implode(' ', [
             !Yii::$app->user->isGuest && Yii::$app->user->identity->profile->first_name ?: null,
             !Yii::$app->user->isGuest && Yii::$app->user->identity->profile->last_name ?: null,
-        ]));
+        ]);
         
         $orderModel->phone = $lastUserOrder && $lastUserOrder->phone ? $lastUserOrder->phone : (!Yii::$app->user->isGuest ? Yii::$app->user->identity->phone : null);
         
