@@ -75,11 +75,10 @@ if ($options && !empty($allOptions)) {
                     ?>
                 </div>
                 <div class="col-auto">
-                    <?= ElementPrice::widget([
+                    <?= ChangeCount::widget([
                             'model' => $model,
-                            'currency' => $currency,
-                            'htmlTag' => 'h4',
-                            'cssClass' => 'font-weight-normal text-nowrap mb-0 d-inline text-right',
+                            'showArrows' => $showCountArrows,
+                            'actionUpdateUrl' => Url::to([$controllerActions['update']]),
                         ]);
                     ?>
                 </div>
