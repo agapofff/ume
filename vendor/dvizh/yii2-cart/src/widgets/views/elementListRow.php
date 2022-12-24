@@ -32,7 +32,7 @@ if ($options && !empty($allOptions)) {
 ?>
         <div class="cart-product" data-product-id="<?= $model->item_id ?>" data-currency="<?= $currency ?>" data-id="<?= $model->comment ?>" data-name="<?= $name ?>" data-price="<?= round($model->price) ?>">
             <div class="row">
-                <div class="col-auto r-0">
+                <div class="col-auto pr-0">
                     <a href="<?= $url ?>" class="d-block border border-gray-400 text-center" style="
                         width: 100px; 
                         height: 100px;
@@ -41,7 +41,7 @@ if ($options && !empty($allOptions)) {
                     </a>
                 </div>
                 <div class="col">
-                    <p class="font-weight-bold mt-1">
+                    <p class="font-weight-bold">
                         <?= $name ?> <?= $optionValue ?>
                     </p>
                     
@@ -64,7 +64,7 @@ if ($options && !empty($allOptions)) {
                 ?>
                 </div>
             </div>
-            <div class="row juatify-content-between align-items-center">
+            <div class="row justify-content-between align-items-center m-0">
                 <div class="col-auto">
                     <?= ElementPrice::widget([
                             'model' => $model,
