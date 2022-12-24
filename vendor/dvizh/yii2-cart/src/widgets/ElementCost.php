@@ -1,6 +1,6 @@
 <?php
 namespace dvizh\cart\widgets;
-
+use yii;
 use yii\helpers\Html;
 
 class ElementCost extends \yii\base\Widget

@@ -74,7 +74,7 @@ if ($options && !empty($allOptions)) {
                 ?>
                 </div>
             </div>
-            <div class="row justify-content-between align-items-center m-0">
+            <div class="row justify-content-between align-items-center m-0 no-gutters flex-nowrap">
                 <div class="col-auto">
                     <?= ElementPrice::widget([
                             'model' => $model,
@@ -93,7 +93,7 @@ if ($options && !empty($allOptions)) {
                     ?>
                 </div>
                 <div class="col-auto">
-                    <?= ElementCosl::widget([
+                    <?= ElementCost::widget([
                             'model' => $model,
                             'currency' => $currency,
                             'htmlTag' => 'h4',
