@@ -41,16 +41,6 @@ if ($options && !empty($allOptions)) {
                     </a>
                 </div>
                 <div class="col">
-                    <div class="float-right">
-                        <?= DeleteButton::widget([
-                                'model' => $model,
-                                'deleteElementUrl' => Url::to([$controllerActions['delete']]),
-                                'lineSelector' => 'list-group-item',
-                                'cssClass' => 'delete cart-delete',
-                                'text' => '<img src="/images/cart_delete.svg" style="width:16px">',
-                            ])
-                        ?>
-                    </div>
                     <p class="font-weight-bold">
                         <?= $name ?> <?= $optionValue ?>
                     </p>
@@ -74,7 +64,8 @@ if ($options && !empty($allOptions)) {
                 ?>
                 </div>
             </div>
-            <div class="row justify-content-between align-items-center m-0 no-gutters flex-nowrap">
+            <div class="row justify-content-between align-items-center m-0 no-gutters- flex-nowrap">
+                <!--
                 <div class="col-auto">
                     <?= ElementPrice::widget([
                             'model' => $model,
@@ -84,6 +75,7 @@ if ($options && !empty($allOptions)) {
                         ]);
                     ?>
                 </div>
+                -->
                 <div class="col-auto">
                     <?= ChangeCount::widget([
                             'model' => $model,
@@ -99,6 +91,16 @@ if ($options && !empty($allOptions)) {
                             'htmlTag' => 'h4',
                             'cssClass' => 'font-weight-normal text-nowrap mb-0 d-inline text-right',
                         ]);
+                    ?>
+                </div>
+                <div class="col-auto">
+                    <?= DeleteButton::widget([
+                            'model' => $model,
+                            'deleteElementUrl' => Url::to([$controllerActions['delete']]),
+                            'lineSelector' => 'list-group-item',
+                            'cssClass' => 'delete cart-delete',
+                            'text' => '<img src="/images/cart_delete.svg" style="width:16px">',
+                        ])
                     ?>
                 </div>
             </div>
