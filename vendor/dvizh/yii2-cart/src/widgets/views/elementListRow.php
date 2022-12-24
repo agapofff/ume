@@ -41,6 +41,16 @@ if ($options && !empty($allOptions)) {
                     </a>
                 </div>
                 <div class="col">
+                    <div class="float-right">
+                        <?= DeleteButton::widget([
+                                'model' => $model,
+                                'deleteElementUrl' => Url::to([$controllerActions['delete']]),
+                                'lineSelector' => 'list-group-item',
+                                'cssClass' => 'delete cart-delete',
+                                'text' => '<img src="/images/cart_delete.svg" style="width:16px">',
+                            ])
+                        ?>
+                    </div>
                     <p class="font-weight-bold">
                         <?= $name ?> <?= $optionValue ?>
                     </p>
@@ -83,13 +93,12 @@ if ($options && !empty($allOptions)) {
                     ?>
                 </div>
                 <div class="col-auto">
-                    <?= DeleteButton::widget([
+                    <?= ElementCosl::widget([
                             'model' => $model,
-                            'deleteElementUrl' => Url::to([$controllerActions['delete']]),
-                            'lineSelector' => 'list-group-item',
-                            'cssClass' => 'delete cart-delete',
-                            'text' => '<img src="/images/cart_delete.svg" style="width:16px">',
-                        ])
+                            'currency' => $currency,
+                            'htmlTag' => 'h4',
+                            'cssClass' => 'font-weight-normal text-nowrap mb-0 d-inline text-right',
+                        ]);
                     ?>
                 </div>
             </div>

@@ -19,7 +19,7 @@ class ElementPrice extends \yii\base\Widget
     public function run()
     {
         return Html::tag($this->htmlTag, Yii::$app->formatter->asCurrency((float)$this->model->price, $this->currency ? $this->currency : Yii::$app->params['currency']), [
-            'class' => "dvizh-cart-element-price{$this->model->getId()} {$this->cssClass} text-center",
+            'class' => "dvizh-cart-element-price " . $this->model->getId() . " " . $this->cssClass,
         ]);
     }
 }
