@@ -644,7 +644,7 @@
         </div>
         -->
         
-        <div class="modal side p-0 fade" id="menu" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
+        <div id="menu" class="modal fade side p-0" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 bottom-0 left-0 border-0 m-0">
                 <div class="modal-content m-0 border-0 vh-100 bg-secondary text-white rounded-0">
                     <div class="modal-header align-items-center justify-content-end flex-nowrap pl-1_5 pr-0_5 py-1 border-0">
@@ -691,7 +691,7 @@
                             ?>
                         </ul>
                     </div>
-                    
+                    <!--
                     <div class="modal-footer justify-content-start d-sm-none">
                 <?php
                     if ($langs) {
@@ -708,77 +708,14 @@
                     }
                 ?>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
         
-        
-        <div class="modal side p-0 fade" id="mini-cart-" tabindex="-1" aria-labelledby="miniCartLabel" aria-hidden="true">
-            <div class="modal-dialog position-absolute top-0 bottom-0 right-0 max-vw-50 border-0 m-0">
-                <div class="modal-content m-0 border-0 vh-100 vw-50">
-                    <div class="modal-header align-items-center flex-nowrap py-md-2 pt-lg-3 pt-xl-4 pt-xxl-5 px-md-1 px-lg-2 px-xl-3">
-                        <span class="ttfirsneue h1 m-0 text-nowrap font-weight-light">
-                            <?= Yii::t('front', 'Корзина') ?> (<?= CartInformer::widget([
-                                    'htmlTag' => 'span',
-                                    'cssClass' => 'dvizh-cart-informer',
-                                    'text' => '{c}'
-                                ]);
-                            ?>)
-                        </span>
-                        <button type="button" class="close p-0 float-none" data-dismiss="modal" aria-label="<?= Yii::t('front', 'Закрыть') ?>">
-                            <svg width="53" height="53" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="13.7891" y1="12.3744" x2="39.9521" y2="38.5373" stroke="black" stroke-width="2"/>
-                                <line x1="12.3749" y1="38.5379" x2="38.5379" y2="12.3749" stroke="black" stroke-width="2"/>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                    <div class="modal-body px-0 h-100 overflow-scroll">
-                        <div class="w-100">
-                            <div class="col-12 px-md-1 px-lg-2 px-xl-3">
-                                <hr class="my-1_5">                            
-                                <?= ElementsList::widget([
-                                        'type' => 'div',
-                                        'currency' => Yii::$app->params['currency'],
-                                        'lang' => Yii::$app->language,
-                                    ]);
-                                ?>
-                            </div>
-                            <div id="mini-cart-total" class="col-12 px-md-1 px-lg-2 px-xl-3 mt-2 mb-2 text-right <?= $cart->getCount() == 0 ? 'd-none' : '' ?>">
-                                <?= CartInformer::widget([
-                                        'currency' => Yii::$app->params['currency'],
-                                        'text' => Yii::t('front', 'Итого') . ': {p}'
-                                    ]);
-                                ?>
-                                <?= Html::a(Yii::t('front', 'Оформить заказ'), [
-                                            '/checkout'
-                                        ], [
-                                            'class' => 'btn btn-primary btn-hover-warning btn-block py-1 my-2 mini-cart-checkout-link',
-                                        ]
-                                    )
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-    <?php
-        if (!Yii::$app->session->get('cookiesNotificationShown')) {
-            // echo $this->render('@frontend/views/layouts/_cookies');
-        }
-    ?>
-
 <?php
-    if (Yii::$app->controller->id != 'checkout') {
-        $this->registerJs("
-            // показ корзины при изменении
-            $(document).on('dvizhCartChanged', function () {
-                // $('#mini-cart').modal('show');
-            });
-        ", View::POS_READY);
+    if (!Yii::$app->session->get('cookiesNotificationShown')) {
+        // echo $this->render('@frontend/views/layouts/_cookies');
     }
 ?>
         
