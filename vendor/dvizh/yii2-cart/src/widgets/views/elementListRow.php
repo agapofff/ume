@@ -64,7 +64,7 @@ if ($options && !empty($allOptions)) {
                 ?>
                 </div>
             </div>
-            <div class="row justify-content-between align-items-center m-0 no-gutters- flex-nowrap">
+            <div class="row justify-content-between align-items-center m-0 no-gutters flex-nowrap">
                 <!--
                 <div class="col-auto">
                     <?= ElementPrice::widget([
