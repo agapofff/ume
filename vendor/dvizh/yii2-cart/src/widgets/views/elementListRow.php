@@ -39,7 +39,7 @@ if ($options && !empty($allOptions)) {
                     ">
                     </a>
                 </div>
-                <div class="col-12 col-sm">
+                <div class="col">
                     <div class="row h-100">
                         <div class="col-12 align-self-start">
                             <p class="font-weight-bold mt-1">
