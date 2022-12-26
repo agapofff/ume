@@ -1002,7 +1002,9 @@ console.log(response);
                         campaign_id: '" . Yii::$app->request->cookies->getValue('promo') . "',
                         comment: $('#order-comment').val()
                     };
+                    
                     loading();
+                    
                     $.ajax({
                         url: '" . Url::to(['/checkout/get-products']) . "',
                         method: 'get',
@@ -1012,7 +1014,7 @@ console.log(response);
                         },
                         success: function (products) {
                             orderData.products = JSON.parse(products);
-                            
+console.log(orderData);
                             $.ajax({
                                 url: 'https://api.sessia.com/api/market/" . $store_id . "/ordersAnonymous',
                                 method: 'post',
