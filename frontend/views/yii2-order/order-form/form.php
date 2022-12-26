@@ -198,7 +198,7 @@
                     <?php
                         foreach ($shippingTypesList as $key => $sht) {
                     ?>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-6 mb-1 mb-mb-0">
                                 <div class="custom-control custom-radio shipping_type_switcher border pt-1 pl-4 rounded-lg <?php if ($orderModel->shipping_type_id == $sht->id) { ?>border-primary<?php } ?>">
                                     <input 
                                         type="radio" 
@@ -733,7 +733,7 @@
                                     }
                                 });
                                 
-                                $('#pickupsList').append('<div class=\"col-12 col-md-6\"><div class=\"select-pickup border rounded-lg pt-1 px-1_5 h-100 cursor-pointer ' + (k ? '' : ' border-primary') + '\" data-id=\"' + pickup.id + '\"><div class=\"row h-100\"><div class=\"col-12\"><p class=\"font-weight-bold\">' + pickup.text +'</p></div><div class=\"col-12 align-self-end\"><p><a class=\"btn btn-link show-map text-dark px-0 text-decoration-underline d-flex\" data-toggle=\"lightbox\" href=\"https://maps.google.com/maps?width=100%&height=500&hl=" . Yii::$app->language . "&q=' + pickupData.lat + ',' + pickupData.lon + '&t=&z=16&ie=UTF8&iwloc=B&output=embed\" data-title=\"' + pickupData.delivery_service.name + '\" data-max-height=\"510\">" . Yii::t('front', 'Посмотреть на карте') . "</a></p></div></div></div>');
+                                $('#pickupsList').append('<div class=\"col-12 col-md-6 mb-1 mb-md-0\"><div class=\"select-pickup border rounded-lg pt-1 px-1_5 h-100 cursor-pointer ' + (k ? '' : ' border-primary') + '\" data-id=\"' + pickup.id + '\"><div class=\"row h-100\"><div class=\"col-12\"><p class=\"font-weight-bold\">' + pickup.text +'</p></div><div class=\"col-12 align-self-end\"><p><a class=\"btn btn-link show-map text-dark px-0 text-decoration-underline d-flex\" data-toggle=\"lightbox\" href=\"https://maps.google.com/maps?width=100%&height=500&hl=" . Yii::$app->language . "&q=' + pickupData.lat + ',' + pickupData.lon + '&t=&z=16&ie=UTF8&iwloc=B&output=embed\" data-title=\"' + pickupData.delivery_service.name + '\" data-max-height=\"510\">" . Yii::t('front', 'Посмотреть на карте') . "</a></p></div></div></div>');
                             });
                         }
                         $('#' + shippingType).trigger('change');
