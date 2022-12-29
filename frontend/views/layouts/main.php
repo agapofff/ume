@@ -530,120 +530,6 @@
             </div>
         </footer>
         
-        
-        <!--
-        <div id="menu" class="modal side p-0 fade" tabindex="-1" aria-labelledby="menuLabel" aria-hidden="true">
-            <div class="modal-dialog position-absolute top-0 right-0 left-0 vw-100 mt-6 mx-0 border-0">
-                <div class="modal-content m-0 border-0 vw-100 min-vh-100 bg-gray-900 rounded-0">
-                    <div class="modal-body p-0 rounded-0">
-                        <div class="container-lg container-xl container-xl">
-                            <div class="d-sm-none mt-2">
-                                <?php
-                                    if ($langs) {
-                                        foreach ($langs as $key => $lang) {
-                                            echo Html::a($lang['label'], $lang['url'], [
-                                                'class' => 'text-uppercase text-white mr-1 ' . ($lang['active'] ? 'text-underline' : 'text-decoration-none')
-                                            ]);
-                                        }
-                                    }
-                                ?>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col-xl-11 col-xxl-10 mt-3 mt-md-4 mt-lg-5 mt-xl-6 mt-xxl-7">
-                                    <div class="row justify-content-between">
-                                        <div class="col-auto">
-                                            <ul class="nav flex-column my-auto">
-                                                <?php                            
-                                                    foreach ($menuItems as $menuItem) {
-                                                        $activeMenu = false;
-                                                        if (isset($menuItem['url'])) {
-                                                            $activeMenu = $menuItem['url'] == Url::to();
-                                                        }
-                                                ?>
-                                                        <li class="nav-item <?= $menuItem['class'] ?> <?= $activeMenu ? 'active' : '' ?>">
-                                                        <?php
-                                                            if (isset($menuItem['url'])) {
-                                                        ?>
-                                                                <a href="<?= $menuItem['url'] ?>" class="nav-link main-menu-item d-inline-block position-relative h4 font-weight-light text-uppercase text-white p-0 mb-1 mb-md-1_5 mb-lg-3 border-white <?= $activeMenu ? 'text-underline' : 'text-decoration-none' ?>"
-                                                                    <?php 
-                                                                        if (isset($menuItem['options'])) {
-                                                                            foreach ($menuItem['options'] as $optionKey => $optionVal) {
-                                                                                echo $optionKey . '="' . $optionVal . '" ';
-                                                                            }
-                                                                        }
-                                                                    ?>
-                                                                >
-                                                                    <?= $menuItem['label'] ?>
-                                                                </a>
-                                                        <?php
-                                                            } else {
-                                                                echo $menuItem['label'];
-                                                            }
-                                                        ?>
-                                                        </li>
-                                                <?php
-                                                    }
-                                                ?>
-                                            </ul>
-                                        </div>
-                                        <div class="col-auto">
-                                            <p class="h4 text-white font-weight-light text-uppercase mb-2">
-                                                <?= Yii::t('front', 'Just like you') ?>
-                                            </p>
-                                            <p class="h5 text-white text-uppercase font-weight-light mb-3">
-                                                <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', '<br>']) ?>
-                                            </p>
-                                            <div class="mb-3">
-                                            <?php
-                                                foreach (Yii::$app->params['socials'] as $socialName => $socialUrl) {
-                                                    echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
-                                                        'class' => 'menu-social-icon',
-                                                    ]), $socialUrl, [
-                                                        'class' => 'mr-1',
-                                                    ]);
-                                                }
-                                            ?>
-                                            </div>
-                                            <div id="menu-contacts" class="mb-4">
-                                                <a href="mailto:<?= Yii::$app->params['supportEmail'] ?>" class="text-white" style="text-decoration: underline">
-                                                    <?= Yii::$app->params['supportEmail'] ?>
-                                                </a>
-                                                <br>
-                                                <a href="tel:+<?= preg_replace('/[^0-9]/', '', Yii::$app->params['phone']) ?>" class="text-white">
-                                                    <?= Yii::$app->params['phone'] ?>
-                                                </a>
-                                            </div>
-                                            <div class="mb-3">
-                                                <?= Html::img('/images/logo/big.svg', [
-                                                        'id' => 'logo-big',
-                                                    ])
-                                                ?>
-                                            </div>
-                                            <div class="row mb-2">
-                                                <div class="col my-1">
-                                                    <?= Html::img('/images/apple_store.png', [
-                                                            'id' => 'apple-store',
-                                                        ])
-                                                    ?>
-                                                </div>
-                                                <div class="col my-1">
-                                                    <?= Html::img('/images/google_play.png', [
-                                                            'id' => 'google-play',
-                                                        ])
-                                                    ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        -->
-        
         <div id="menu" class="modal fade side p-0" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog position-absolute top-0 bottom-0 left-0 border-0 m-0">
                 <div class="modal-content m-0 border-0 vh-100 bg-secondary text-white rounded-0">
@@ -692,7 +578,7 @@
                         </ul>
                     </div>
                     
-                    <div class="modal-footer justify-content-start d-sm-none">
+                    <div class="modal-footer justify-content-start d-none">
                 <?php
                     if ($langs) {
                         foreach ($langs as $key => $lang) {
