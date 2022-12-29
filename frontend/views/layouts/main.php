@@ -520,7 +520,8 @@
                                 echo Html::a(Html::img('/images/socials/' . $socialName . '_light.svg', [
                                     'class' => 'footer-social-icon',
                                 ]), $socialUrl, [
-                                    'class' => 'mr-1'
+                                    'class' => 'mr-1',
+                                    'target' => '_blank',
                                 ]);
                             }
                         ?>
