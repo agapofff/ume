@@ -691,7 +691,7 @@
                             ?>
                         </ul>
                     </div>
-                    <!--
+                    
                     <div class="modal-footer justify-content-start d-sm-none">
                 <?php
                     if ($langs) {
@@ -708,7 +708,7 @@
                     }
                 ?>
                     </div>
-                    -->
+                    
                 </div>
             </div>
         </div>
