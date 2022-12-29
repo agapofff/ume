@@ -124,7 +124,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                 ?>
                 <div class="col-md-11 offset-md-1">
                     <h2 class="text-uppercase font-weight-light mb-2 wow fadeInUp">
-                        <?= Yii::t('front', 'Инновации и ИИ') ?>
+                        <?= Yii::t('front', 'Инновации и AI') ?>
                     </h2>
                     <p class="h5 font-weight-normal pr-md-15 pr-lg-17 pr-xl-19 wow fadeInUp">
                         <?= Yii::t('front', 'С помощью систем видеомониторинга и искусственного интеллекта мы изучаем пищевые предпочтения наших питомцев и подбираем идеальный рацион') ?>.
