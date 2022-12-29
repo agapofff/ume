@@ -38,7 +38,7 @@ return [
     'socials' => [
         'ok' => '#',
         'vk' => '#',
-        'tg' => '#',
+        'tg' => 'https://t.me/ume_petpoint',
     ],
     
     'actionsTypes' => [
