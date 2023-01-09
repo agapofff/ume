@@ -274,7 +274,8 @@ select::-ms-expand {
     justify-content: center;
     align-items: center;
 }
-.video video {
+.video video,
+.video iframe {
     position: absolute;
     top: 0;
     left: 0;
