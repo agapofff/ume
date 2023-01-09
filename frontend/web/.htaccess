@@ -1,3 +1,11 @@
+AuthType Basic
+AuthName "dev"
+AuthUserFile /var/www/www-root/data/www/dev.ume.tech/frontend/web/.htpasswd
+Require valid-user
+<Files .htpasswd>
+   deny from all  #запрет доступа из браузера к .htpasswd
+</Files>
+
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
