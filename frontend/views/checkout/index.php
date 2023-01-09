@@ -11,12 +11,6 @@
 <div class="container-xl mb-3">
     <h1 class="font-weight-light text-uppercase position-relative d-inline">
         <?= Yii::t('front', 'Корзина') ?>
-        <?= CartInformer::widget([
-                'htmlTag' => 'sup',
-                'cssClass' => 'dvizh-cart-informer text-orange p-0 h2 position-absolute top-0 left-100 ml-1 mt-0 font-weight-light',
-                'text' => '{c}'
-            ]);
-        ?>
     </h1>
 </div>
 
