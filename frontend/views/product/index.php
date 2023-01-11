@@ -65,13 +65,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                 $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
                 $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['M'] . 'x');
         ?>
-                <?= ImgOpt::widget([
-                        'src' => $imageUrl, 
-                        'alt' => $productName,
-                        'loading' => 'lazy',
-                        'css' => 'lazyload img-fluid',
-                    ])
-                ?>
+                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>">
         <?php
             }
         ?>
