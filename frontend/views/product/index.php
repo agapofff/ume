@@ -8,6 +8,7 @@ use dvizh\cart\widgets\ChangeCount;
 use dvizh\cart\widgets\ChangeOptions;
 use yii\web\View;
 use yii\widgets\Pjax;
+use PELock\ImgOpt\ImgOpt;
 
 $images = $product->getImages();
 
