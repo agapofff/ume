@@ -14,8 +14,8 @@ $images = $product->getImages();
 
 if ($images) {
     $image = $images[0];
-    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
-    $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['M'] . 'x');
+    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '.' . $image->extension;
+    $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl();
     $this->registerMetaTag([
         'property' => 'og:image',
         'content' => Url::to($imageUrl, true)
@@ -62,8 +62,8 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             <div class="owl-carousel owl-theme owl-dots">
         <?php
             foreach ($images as $key => $image) {
-                $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
-                $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['M'] . 'x');
+                $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '.' . $image->extension;
+                $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl();
         ?>
                 <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>">
         <?php
