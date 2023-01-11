@@ -261,6 +261,7 @@ class ComposerStaticInit8236d2fd6998012d5c1e6e4991187826
             'Psr\\Container\\' => 14,
             'Prophecy\\' => 9,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
+            'PELock\\ImgOpt\\' => 14,
         ),
         'O' => 
         array (
@@ -794,6 +795,10 @@ class ComposerStaticInit8236d2fd6998012d5c1e6e4991187826
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
+        'PELock\\ImgOpt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pelock/yii2-imgopt/src',
         ),
         'Opis\\Closure\\' => 
         array (

@@ -714,4 +714,13 @@ return array (
       '@agapofff/gallery' => $vendorDir . '/agapofff/yii2-gallery/src',
     ),
   ),
+  'pelock/yii2-imgopt' => 
+  array (
+    'name' => 'pelock/yii2-imgopt',
+    'version' => 'dev-main',
+    'alias' => 
+    array (
+      '@PELock/ImgOpt' => $vendorDir . '/pelock/yii2-imgopt/src',
+    ),
+  ),
 );

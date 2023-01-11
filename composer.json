@@ -67,7 +67,8 @@
         "facebook/php-business-sdk": "^12.0",
         "vova07/yii2-imperavi-widget": "*",
         "jisoft/yii2-sypexgeo": "*",
-        "agapofff/yii2-gallery": "dev-master"
+        "agapofff/yii2-gallery": "dev-master",
+        "pelock/yii2-imgopt": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

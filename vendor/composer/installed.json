@@ -7053,6 +7053,61 @@
             "install-path": "../paragonie/random_compat"
         },
         {
+            "name": "pelock/yii2-imgopt",
+            "version": "dev-main",
+            "version_normalized": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PELock/yii2-imgopt.git",
+                "reference": "f1afc50d331b5b2d741864e39eb0a94ebac79039"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PELock/yii2-imgopt/zipball/f1afc50d331b5b2d741864e39eb0a94ebac79039",
+                "reference": "f1afc50d331b5b2d741864e39eb0a94ebac79039",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": ">=2.0.4"
+            },
+            "time": "2022-01-19T21:08:21+00:00",
+            "default-branch": true,
+            "type": "yii2-extension",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "PELock\\ImgOpt\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bartosz Wójcik",
+                    "email": "support@pelock.com",
+                    "homepage": "https://www.pelock.com"
+                }
+            ],
+            "description": "Image optimization widget for Yii2 Framework with auto WebP image format generation from PNG/JPG files.",
+            "keywords": [
+                "Webp",
+                "generator",
+                "image",
+                "jpg",
+                "optimization",
+                "png",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/PELock/yii2-imgopt/issues",
+                "source": "https://github.com/PELock/yii2-imgopt/tree/v1.2.0"
+            },
+            "install-path": "../pelock/yii2-imgopt"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "1.0.3",
             "version_normalized": "1.0.3.0",

@@ -1,11 +1,11 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
+        'reference' => '7b9ec3ad540d488649aefccc39a6be1e4899f28e',
         'name' => 'yiisoft/yii2-app-advanced',
         'dev' => true,
     ),
@@ -1227,6 +1227,17 @@
             'reference' => '84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95',
             'dev_requirement' => false,
         ),
+        'pelock/yii2-imgopt' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'yii2-extension',
+            'install_path' => __DIR__ . '/../pelock/yii2-imgopt',
+            'aliases' => array(
+                0 => '9999999-dev',
+            ),
+            'reference' => 'f1afc50d331b5b2d741864e39eb0a94ebac79039',
+            'dev_requirement' => false,
+        ),
         'phar-io/manifest' => array(
             'pretty_version' => '1.0.3',
             'version' => '1.0.3.0',
@@ -1952,12 +1963,12 @@
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-app-advanced' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '7b9ec3ad540d488649aefccc39a6be1e4899f28e',
             'dev_requirement' => false,
         ),
         'yiisoft/yii2-authclient' => array(
