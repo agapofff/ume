@@ -226,7 +226,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
         // var id = $('.dvizh-cart-buy-button').attr('data-comment'),
             // name = '" . $product_name . "',
             // price = '" . round($price) . "',
-            category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
+            // category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
             // variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
             // currency = '" . Yii::$app->params['currency'] . "';
             
