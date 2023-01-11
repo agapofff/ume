@@ -1,7 +1,7 @@
 <?php
-
 use yii\helpers\Url;
 use yii\helpers\Html;
+use PELock\ImgOpt\ImgOpt;
 
 $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
 
@@ -16,7 +16,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         
         <div class="row position-relative">
             <div class="col-12">
-                <img data-src="/images/main/head.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+                <img data-src="/images/main/head.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="1620" height="770">
             </div>
             <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-7 position-absolute pl-2 pl-lg-3 pl-xl-6 pt-1 pt-md-2 pt-lg-3 pt-lg-6">
                 <p class="text-uppercase font-weight-bold d-none d-md-block" style="max-width: 300px">
