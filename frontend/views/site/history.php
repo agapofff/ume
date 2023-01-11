@@ -15,7 +15,6 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
         <div class="col-12">
         <?= ImgOpt::widget([
                 'src' => '/images/history/main.jpg', 
-                'alt' => $productName,
                 'loading' => 'lazy',
                 'css' => 'lazyload img-fluid',
             ])
