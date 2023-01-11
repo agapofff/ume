@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
+use PELock\ImgOpt\ImgOpt;
 
 $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
 ?>
@@ -12,7 +13,13 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
     
     <div class="row align-items-center position-relative">
         <div class="col-12">
-            <img data-src="/images/history/main.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="1620" height="770">
+        <?= ImgOpt::widget([
+                'src' => '/images/history/main.jpg', 
+                'alt' => $productName,
+                'loading' => 'lazy',
+                'css' => 'lazyload img-fluid',
+            ])
+        ?>
         </div>
         <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-7 position-absolute h-100">
             <div class="row h-100 align-items-center">
