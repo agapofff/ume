@@ -12,7 +12,7 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
     
     <div class="row align-items-center position-relative">
         <div class="col-12">
-            <img data-src="/images/history/main.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            <img data-src="/images/history/main.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="1620" height="770">
         </div>
         <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-7 position-absolute h-100">
             <div class="row h-100 align-items-center">
@@ -41,7 +41,7 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
 <div class="container-xl mb-2 mb-lg-3">
     <div class="row align-items-center">
         <div class="col-md-6 order-md-last mb-1 mb-md-0 pl-md-0">
-            <img data-src="/images/history/narek.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            <img data-src="/images/history/narek.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="811" height="811">
         </div>
         <div class="col-md-6 px-md-1_5 px-lg-2 px-xl-4">
             <p class="h4 font-weight-light mb-md-2 mb-lg-3">
@@ -57,7 +57,7 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
 <div class="container-xl mb-3 mb-lg-4">
     <div class="row">
         <div class="col-md-6 pr-md-0">
-            <img data-src="/images/history/redhead.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            <img data-src="/images/history/redhead.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="812" height="554">
         </div>
         <div class="col-md-6 col-lg-5 offset-lg-1 px-md-1_5 pr-lg-2 pr-xl-4 pl-lg-0 pt-1 pt-md-2 pt-lg-3">
             <p class="font-weight-light mb-md-2 mb-lg-3">
@@ -83,7 +83,7 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
 <div class="container-xl mb-2 mb-lg-3">
     <div class="row">
         <div class="col-md-6 order-md-last mb-1 mb-md-0 pl-md-0">
-            <img data-src="/images/history/laptop.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            <img data-src="/images/history/laptop.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="811" height="656">
         </div>
         <div class="col-md-6 px-md-1_5 px-lg-2 px-xl-4">
             <?= Html::img('/images/arrow.svg', [
