@@ -13,10 +13,11 @@ $images = $product->getImages();
 
 if ($images) {
     $image = $images[0];
-    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.' . $image->getExtension();
+    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
+    $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['S'] . 'x');
     $this->registerMetaTag([
         'property' => 'og:image',
-        'content' => Url::to(file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x600'), true)
+        'content' => Url::to($imageUrl, true)
     ]);
 }
 
@@ -60,12 +61,11 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             <div class="owl-carousel owl-theme owl-dots">
         <?php
             foreach ($images as $key => $image) {
-                // if ($key) {
-                    $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_x600.' . $image->getExtension();
+                $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
+                $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['S'] . 'x');
         ?>
-                    <img src="<?= file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl('x600') ?>" class="img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>" loading="lazy">
+                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ? $image->alt : $productName ?>">
         <?php
-                // }
             }
         ?>
             </div>
