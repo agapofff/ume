@@ -12,7 +12,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
     
     <div class="row align-items-center position-relative">
         <div class="col-12">
-            <img data-src="/images/bonus_banner.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>">
+            <img data-src="/images/bonus_banner.jpg" class="lazyload pointer-events-none img-fluid" alt="<?= $title ?>" width="1622" height="780">
         </div>
         <div class="col-9 col-sm-9 col-md-8 col-lg-8 col-xl-7 position-absolute h-100">
             <div class="row h-100 align-items-center">
