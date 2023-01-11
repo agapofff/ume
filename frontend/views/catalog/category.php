@@ -33,7 +33,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 <div class="col-lg-7 text-center pr-lg-0">
                 <?php
                     $image = $category->getImage();
-                    $cachedImage = '/images/cache/Category/Category' . $image->itemId . '/' . $image->urlAlias . '_' . $size . '.' . $image->extension;
+                    $cachedImage = '/images/cache/Category/Category' . $image->itemId . '/' . $image->urlAlias . '.' . $image->extension;
                     $imageSrc = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl();
                 ?>
                     <?= ImgOpt::widget([
