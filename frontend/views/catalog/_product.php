@@ -55,7 +55,7 @@ $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $c
                 'src' => $imageUrl, 
                 'alt' => $productName,
                 'loading' => 'lazy',
-                'css' => 'lazyload img-fluid d-xl-none mb-1',
+                'css' => 'lazyload img-fluid',
             ])
         ?>
     </div>
