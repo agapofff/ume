@@ -65,7 +65,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                 $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '.' . $image->extension;
                 $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl();
         ?>
-                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>">
+                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>" width="800" height="600">
         <?php
             }
         ?>
