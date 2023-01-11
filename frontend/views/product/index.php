@@ -242,7 +242,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                 // name = '" . $product_name . "',
                 // quantity = 1,
                 // price = '" . round($price) . "',
-                category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
+                // category = '" . json_decode($categoryName)->{Yii::$app->language} . "',
                 // variant = $('.dvizh-option:first').find('.dvizh-option-values-before:checked').closest('label').text().trim(),
                 // currency = '" . Yii::$app->params['currency'] . "';
                 
