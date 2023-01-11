@@ -3,6 +3,7 @@
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\Pjax;
+use PELock\ImgOpt\ImgOpt;
 
 $categoryName = json_decode($category->name)->{Yii::$app->language};
 $categoryText = json_decode($category->text)->{Yii::$app->language};
@@ -30,7 +31,18 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
         <div class="col-12">
             <div class="row align-items-center py-1 py-lg-2 py-xl-3">
                 <div class="col-lg-7 text-center pr-lg-0">
-                    <img data-src="<?= $category->getImage()->getUrl() ?>" alt="<?= $title ?> <?= Yii::$app->name ?>" class="lazyload pointer-events-none img-fluid my-1">
+                <?php
+                    $image = $category->getImage();
+                    $cachedImage = '/images/cache/Category/Category' . $image->itemId . '/' . $image->urlAlias . '_' . $size . '.' . $image->extension;
+                    $imageSrc = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl();
+                ?>
+                    <?= ImgOpt::widget([
+                            'src' => $imageSrc, 
+                            'alt' => $this->title,
+                            'loading' => 'lazy',
+                            'css' => 'pointer-events-none my-1',
+                        ])
+                    ?>
                 </div>
                 <div class="col-lg-5 category-text text-uppercase font-weight-bolder lead pl-2 pr-2 pl-lg-0 pr-lg-2 pr-xl-3">
                     <?= $categoryText ?>
