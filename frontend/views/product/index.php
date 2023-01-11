@@ -63,8 +63,9 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             foreach ($images as $key => $image) {
                 $cachedImage = '/images/cache/Product/Product' . $image->itemId . '/' . $image->urlAlias . '_' . Yii::$app->params['productImageSizes']['M'] . 'x.' . $image->extension;
                 $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $cachedImage : $image->getUrl(Yii::$app->params['productImageSizes']['M'] . 'x');
+                $imageSizes = $image->getSizesWhen(Yii::$app->params['productImageSizes']['M'] . 'x');
         ?>
-                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>" width="<?= $image->getSizesWhen(Yii::$app->params['productImageSizes']['M'] . 'x')['width'] ?>">
+                <img data-src="<?= $imageUrl ?>" class="lazyload img-fluid" alt="<?= $image->alt ?: $productName ?>" width="<?= $imageSizes['width'] ?>px" height="<?= $imageSizes['height'] ?>px">
         <?php
             }
         ?>
