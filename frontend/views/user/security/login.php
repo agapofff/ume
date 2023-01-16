@@ -2,6 +2,7 @@
 
     use dektrium\user\widgets\Connect;
     use dektrium\user\models\LoginForm;
+    use yii\helpers\Url;
     use yii\helpers\Html;
     use yii\widgets\ActiveForm;
     use yii\web\View;
@@ -121,6 +122,8 @@
                 ?>
                 
                 <?= Html::hiddenInput('lang', Yii::$app->language) ?>
+
+                <?= Html::hiddenInput('ref', Yii::$app->request->get('ref') ?: Url::to(['/account'])) ?>
                 
                 <div class="row justify-content-end mt-1 mt-lg-2">
                     <div class="col-md-9">

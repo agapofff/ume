@@ -17,6 +17,7 @@ use yii\data\ActiveDataProvider;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
+use yii\helpers\Url;
 use linslin\yii2\curl;
 
 class CheckoutController extends \yii\web\Controller
@@ -27,7 +28,7 @@ class CheckoutController extends \yii\web\Controller
         if (Yii::$app->user->isGuest) {
             return $this->redirect([
                 '/login',
-                'ref' => Url::to(['/cart'])
+                'ref' => Url::to(['/checkout'])
             ]);
         }
         
