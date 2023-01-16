@@ -327,7 +327,7 @@ return [
                 'security' => [
                     'class' => SecurityController::className(),
                     'on ' . SecurityController::EVENT_AFTER_LOGIN => function ($e) {
-                        Yii::$app->response->redirect(Url::to(['/account']))->send();
+                        Yii::$app->response->redirect(Yii::$app->request->referrer ?: Url::to(['/account']))->send();
                     }
                 ],
             ],

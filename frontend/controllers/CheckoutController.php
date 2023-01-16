@@ -24,6 +24,10 @@ class CheckoutController extends \yii\web\Controller
     
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->redirect('/login');
+        }
+        
         $currency = Langs::findOne([
             'code' => Yii::$app->language
         ])->currency;
