@@ -25,7 +25,10 @@ class CheckoutController extends \yii\web\Controller
     public function actionIndex()
     {
         if (Yii::$app->user->isGuest) {
-            return $this->redirect('/login');
+            return $this->redirect([
+                '/login',
+                'ref' => Url::to(['/cart'])
+            ]);
         }
         
         $currency = Langs::findOne([
