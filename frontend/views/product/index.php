@@ -179,7 +179,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
             if (!$(this).parent().is('#product-feeding')) {
                 $(this).find('tr').each(function () {
                     $(this).find('td').eq(0).addClass('col-7 font-weight-bloder');
-                    $(this).find('td').eq(1).addClass('col-5');
+                    $(this).find('td').eq(1).addClass('col-5 text-center');
                 });
                 $(this).find('tr').eq(0).find('td').addClass('bg-gray-600 text-white font-weight-bold');
             }
