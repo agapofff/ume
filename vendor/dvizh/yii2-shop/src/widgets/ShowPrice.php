@@ -32,8 +32,8 @@ class ShowPrice extends \yii\base\Widget
 
         $this->getView()->registerJs($js);
         
-        $price = $this->price ? $this->price : $this->model->getPrice(1);
-        $priceOld = $this->priceOld && $this->priceOld > 0 ? $this->priceOld : $this->model->getOldprice(1);
+        $price = $this->price ? $this->price : 0; // $this->model->getPrice(1);
+        $priceOld = $this->priceOld && $this->priceOld > 0 ? $this->priceOld : 0; // $this->model->getOldprice(1);
 
         return Html::tag('div',
             Html::tag('del',
