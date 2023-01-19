@@ -43,18 +43,21 @@ class CatalogController extends \yii\web\Controller
                 ':slug' => $slug
             ])
             ->one();
-echo Yii::$app->language . ' - ' . Yii::$app->params['store_type'] . '<br>';
+
         $store = Stores::findOne([
             'lang' => Yii::$app->language,
             'type' => Yii::$app->params['store_type']
         ]);
-echo VarDumper::dump($store, 99, true); exit;
-        $prices = Price::find()
-            ->where([
-                'name' => $store->store_id
-            ])
-            ->asArray()
-            ->all();
+
+        $prices = [];
+        if ($store) {
+            $prices = Price::find()
+                ->where([
+                    'name' => $store->store_id
+                ])
+                ->asArray()
+                ->all();
+        }
 
         $products = $category->products;
 
