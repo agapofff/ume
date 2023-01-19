@@ -95,7 +95,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
                             'count' => 1,
                             'comment' => $price->code,
                             'htmlTag' => 'button',
-                            'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 text-nowrap',
+                            'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 text-nowrap' . ($price->price ? '' : ' invisible pointer-events-none'),
                             'text' => Yii::t('front', 'В корзину'),
                         ]);
                     ?>
