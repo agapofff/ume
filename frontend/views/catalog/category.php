@@ -87,7 +87,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
-                                <?= Yii::t('front', 'Улучшает работу середечно-сусудистой системы и ЖКТ') ?>
+                                <?= Yii::t('front', 'Улучшает работу сердечно-сосудистой системы и ЖКТ') ?>
                             </p>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
-                                <?= Yii::t('front', 'Способствуют актвиному долголетию') ?>
+                                <?= Yii::t('front', 'Способствуют активному долголетию') ?>
                             </p>
                         </div>
                     </div>
