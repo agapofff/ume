@@ -32,23 +32,20 @@ $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $c
                 <div class="mb-2 font-weight-bolder">
                     <?= json_decode($product->text)->{Yii::$app->language} ?>
                 </div>
-                <?php
-                    if ($prices[$product->id]['price']){
-                        echo BuyButton::widget([
+                <?= BuyButton::widget([
+                        'model' => $product,
+                        'price' => $prices[$product->id]['price'],
+                        'count' => 1,
+                        'comment' => $prices[$product->id]['code'],
+                        'htmlTag' => 'button',
+                        'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 d-flex' . ($prices[$product->id]['price'] ? '' : ' hidden pointer-events-none'),
+                        'text' => Yii::t('front', 'Купить') . ' ' . ShowPrice::widget([
+                            'htmlTag' => 'span',
+                            'cssClass' => 'text-nowrap ml-0_5',
                             'model' => $product,
                             'price' => $prices[$product->id]['price'],
-                            'count' => 1,
-                            'comment' => $prices[$product->id]['code'],
-                            'htmlTag' => 'button',
-                            'cssClass' => 'btn btn-secondary rounded-pill py-1 px-2 d-flex',
-                            'text' => Yii::t('front', 'Купить') . ' ' . ShowPrice::widget([
-                                'htmlTag' => 'span',
-                                'cssClass' => 'text-nowrap ml-0_5',
-                                'model' => $product,
-                                'price' => $prices[$product->id]['price'],
-                            ]),
-                        ]);
-                    }
+                        ]),
+                    ]);
                 ?>
             </div>
         </div>
