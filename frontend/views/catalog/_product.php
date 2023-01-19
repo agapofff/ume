@@ -31,7 +31,7 @@ $imageUrl = file_exists(Yii::getAlias('@frontend') . '/web' . $cachedImage) ? $c
             <div class="col-xl-7">
                 <div class="mb-2 font-weight-bolder">
                     <?= json_decode($product->text)->{Yii::$app->language} ?>
-                </div>price=<?= $prices[$product->id]['price'] ?>
+                </div>
                 <?= BuyButton::widget([
                         'model' => $product,
                         'price' => $prices[$product->id]['price'],
