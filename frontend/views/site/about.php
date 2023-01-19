@@ -127,7 +127,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                         <?= Yii::t('front', 'Инновации и AI') ?>
                     </h2>
                     <p class="h5 font-weight-normal pr-md-15 pr-lg-17 pr-xl-19 wow fadeInUp">
-                        <?= Yii::t('front', 'С помощью систем видеомониторинга и искусственного интеллекта мы изучаем пищевые предпочтения наших питомцев и подбираем идеальный рацион') ?>.
+                        <?= Yii::t('front', 'С помощью систем видеомониторинга и искусственного интеллекта мы изучаем пищевые предпочтения наших питомцев и подбираем идеальный рацион.') ?>
                     </p>
                 </div>
             </div>
@@ -138,16 +138,16 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                 <div class="col-11 col-lg-5 col-xl-4">
                     <ul class="check-circle my-2 my-lg-0">
                         <li class="wow fadeInUp" data-wow-delay="0s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Видеонаблюдение за собаками в режиме 24/7') ?>.
+                            <?= Yii::t('front', 'Видеонаблюдение за собаками в режиме 24/7.') ?>
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Анализ полученных данных на основе возможностей искусственного интеллекта') ?>.
+                            <?= Yii::t('front', 'Анализ полученных данных на основе возможностей искусственного интеллекта.') ?>
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="1s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Создание индивидуальных карт оптимального и сбалансированного питания') ?>.
+                            <?= Yii::t('front', 'Создание индивидуальных карт оптимального и сбалансированного питания.') ?>
                         </li>
                         <li class="mb-0 wow fadeInUp" data-wow-delay="1.5s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Европейское производство, сертифицированное сырье') ?>.
+                            <?= Yii::t('front', 'Европейское производство, сертифицированное сырье.') ?>
                         </li>
                     </ul>
                 </div>
@@ -179,7 +179,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         <div class="row mb-2">
             <div class="col-md-10 col-lg-9 col-xl-8 offset-md-1">
                 <p class="h5 font-weight-normal wow fadeInUp">
-                    <?= Yii::t('front', 'Корма UME разработаны на основе белка насекомых: это позволяет сделать производство экологичнее, а меню собак — разнообразнее и питательнее') ?>.
+                    <?= Yii::t('front', 'Корма UME разработаны на основе белка насекомых: это позволяет сделать производство экологичнее, а меню собак — разнообразнее и питательнее.') ?>
                 </p>
             </div>
         </div>
@@ -196,16 +196,16 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                     <div class="col-11 col-lg-6">
                         <ul class="check-circle my-2 my-lg-0">
                             <li class="wow fadeInUp" data-wow-delay="0s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Протеин насекомых богат аминокислотами, является отличным источником таурина и витаминов') ?>.
+                                <?= Yii::t('front', 'Протеин насекомых богат аминокислотами, является отличным источником таурина и витаминов.') ?>
                             </li>
                             <li class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Насекомые очень питательны: они состоят в среднем на 70% из белка') ?>.
+                                <?= Yii::t('front', 'Насекомые очень питательны: они состоят в среднем на 70% из белка.') ?>
                             </li>
                             <li class="wow fadeInUp" data-wow-delay="1s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'При производстве сырья из насекомых выбрасывается до 98% меньше парниковых газов, чем при переработке продуктов животноводства') ?>.
+                                <?= Yii::t('front', 'При производстве сырья из насекомых выбрасывается до 98% меньше парниковых газов, чем при переработке продуктов животноводства.') ?>
                             </li>
                             <li class="mb-0 wow fadeInUp" data-wow-delay="1.5s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'До 2025 года рынок белка из насекомых будет расти в среднем на 37,5%*') ?>.
+                                <?= Yii::t('front', 'До 2025 года рынок белка из насекомых будет расти в среднем на 37,5%*.') ?>
                             </li>
                         </ul>
                     </div>
@@ -222,7 +222,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                         <?= Yii::t('front', 'Белый императорский женьшень') ?>
                     </h2>
                     <p class="h5 font-weight-normal wow fadeInUp">
-                        <?= Yii::t('front', 'Выращивая женьшень 6 лет в экологически чистых условиях горы Чанбайшань, мы сохраняем в его корне максимум полезных веществ, включая 37 видов гинзенозидов') ?>.
+                        <?= Yii::t('front', 'Выращивая женьшень 6 лет в экологически чистых условиях горы Чанбайшань, мы сохраняем в его корне максимум полезных веществ, включая 37 видов гинзенозидов.') ?>
                     </p>
                 </div>
             </div>
@@ -237,16 +237,16 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                 <div class="col-11 col-lg-5 col-xl-4">
                     <ul class="check-circle my-2 my-lg-0">
                         <li class="wow fadeInUp" data-wow-delay="0s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Является сильным природным адаптогеном и эффективно влияет на здоровье питомцев') ?>.
+                            <?= Yii::t('front', 'Является сильным природным адаптогеном и эффективно влияет на здоровье питомцев.') ?>
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Улучшает работу сердечно-сосудистой системы и ЖКТ') ?>.
+                            <?= Yii::t('front', 'Улучшает работу сердечно-сосудистой системы и ЖКТ.') ?>
                         </li>
                         <li class="wow fadeInUp" data-wow-delay="1s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Повышает выносливость и стрессоустойчивость') ?>.
+                            <?= Yii::t('front', 'Повышает выносливость и стрессоустойчивость.') ?>
                         </li>
                         <li class="mb-0 wow fadeInUp" data-wow-delay="1.5s" data-wow-duration="0.7s">
-                            <?= Yii::t('front', 'Стимулирует иммунную систему') ?>.
+                            <?= Yii::t('front', 'Стимулирует иммунную систему.') ?>
                         </li>
                     </ul>
                 </div>
@@ -273,7 +273,7 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
         <div class="row mb-2">
             <div class="col-md-10 col-lg-11 col-xl-10 offset-md-1">
                 <p class="h5 font-weight-normal wow fadeInUp">
-                    <?= Yii::t('front', 'Мы сознательно избегаем использования глютена, сои, искусственных красителей, ароматизаторов и консервантов — они вредны как человеку, так и животным') ?>.
+                    <?= Yii::t('front', 'Мы сознательно избегаем использования глютена, сои, искусственных красителей, ароматизаторов и консервантов — они вредны как человеку, так и животным.') ?>
                 </p>
             </div>
         </div>
@@ -290,16 +290,16 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
                     <div class="col-11 col-lg-5 col-xl-4">
                         <ul class="check-circle my-2 my-lg-0">
                             <li class="wow fadeInUp" data-wow-delay="0s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Изготовлены без использования кукурузы и пшеницы') ?>.
+                                <?= Yii::t('front', 'Изготовлены без использования кукурузы и пшеницы.') ?>
                             </li>
                             <li class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Способствуют активному долголетию') ?>.
+                                <?= Yii::t('front', 'Способствуют активному долголетию.') ?>
                             </li>
                             <li class="wow fadeInUp" data-wow-delay="1s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Не содержат ГМО') ?>.
+                                <?= Yii::t('front', 'Не содержат ГМО.') ?>
                             </li>
                             <li class="wow fadeInUp" data-wow-delay="1.5s" data-wow-duration="0.7s">
-                                <?= Yii::t('front', 'Поддерживают блеск шерсти и чистоту кожи') ?>.
+                                <?= Yii::t('front', 'Поддерживают блеск шерсти и чистоту кожи.') ?>
                             </li>
                         </ul>
                     </div>
