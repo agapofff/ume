@@ -48,7 +48,6 @@ class CatalogController extends \yii\web\Controller
             'lang' => Yii::$app->language,
             'type' => Yii::$app->params['store_type']
         ]);
-echo \yii\helpers\VarDumper::dump($store, 99, true);
         
         $prices = Price::find()
             ->where([
@@ -63,7 +62,7 @@ echo \yii\helpers\VarDumper::dump($store, 99, true);
             'category' => $category,
             'products' => $products,
             'store' => $store,
-            'prices' => ArrayHelper::index($prices, 'item_id'),
+            'prices' => $store ? ArrayHelper::index($prices, 'item_id') : $prices,
         ]);
     }
 
