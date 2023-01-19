@@ -63,7 +63,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
-                                <?= Yii::t('front', 'Стимулируют иммуную систему') ?>
+                                <?= Yii::t('front', 'Стимулируют иммунную систему') ?>
                             </p>
                         </div>
                     </div>
