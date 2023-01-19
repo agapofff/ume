@@ -45,7 +45,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
                 <?= Yii::t('front', 'Общие положения программы привилегий подписчикам и покупателям UME') ?>
             </h2>
             <p class="font-weight-light">
-                <?= Yii::t('front', 'Питомцу автоматически начисляются баллы (UME) за покупки и подписки по программе привилегий. Накапливая UME, он повышает свой статус и получает эксклюзивные привилегии и услуги. ') ?>
+                <?= Yii::t('front', 'Питомцу автоматически начисляются баллы (UME) за покупки и подписки по программе привилегий. Накапливая UME, он повышает свой статус и получает эксклюзивные привилегии и услуги.') ?>
             </p>
         </div>
     </div>
@@ -82,7 +82,9 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
                             <div class="card-body text-center py-2 py-lg-3">
                                 <div class="row align-items-center h-100">
                                     <div class="col-12">
-                                        <p class="h4 font-weight-normal mb-0_5">Другие проекты</p>
+                                        <p class="h4 font-weight-normal mb-0_5">
+                                            <?= Yii::t('front', 'Другие проекты') ?>
+                                        </p>
                                     </div>
                                     <div class="col-12">
                                         <p class="h3 font-weight-bold mb-0_5 text-secondary">$2</p>
@@ -403,7 +405,7 @@ $this->title = Yii::t('front', 'Программа лояльности') . ' - 
                     <tr>
                         <td class="py-1 px-0">
                             <p class="h5 font-weight-bold m-0">
-                                <?= Yii::t('front', 'За каждое активное участие в конкурсах и акция') ?>
+                                <?= Yii::t('front', 'За каждое активное участие в конкурсах и акциях') ?>
                             </p>
                         </td>
                         <td class="py-1 px-0">
