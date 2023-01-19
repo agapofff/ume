@@ -48,6 +48,7 @@ class CatalogController extends \yii\web\Controller
             'lang' => Yii::$app->language,
             'type' => Yii::$app->params['store_type']
         ]);
+echo \yii\helpers\VarDumper::dump($store, 99, true);
         
         $prices = Price::find()
             ->where([
