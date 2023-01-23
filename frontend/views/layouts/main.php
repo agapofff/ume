@@ -351,7 +351,7 @@
                             ?>
                                 </div>
                             </div>
-                            <!--
+                            
                             <div id="nav-lang-select" class="col-auto pl-0 pl-xl-1_5 nav-lang-select dropdown d-none d-sm-block">
                                 <a href="#" class="dropdown-toggle text-uppercase text-decoration-none text-secondary font-weight-bold" data-toggle="dropdown">
                                     <?= Yii::$app->language ?>
@@ -370,7 +370,7 @@
                                 ?>
                                 </div>
                             </div>
-                            -->
+                            
                             <!--
                             <div id="search-form-container" class="col-auto pl-0 pl-xl-0_5">
                                 <button type="button" class="btn btn-link position-relative text-decoration-none p-0" data-toggle="modal" data-target="#search-modal" aria-label="<?= Yii::t('front', 'Поиск') ?>">
