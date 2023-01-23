@@ -83,6 +83,43 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 
                 [
+                    'attribute' => 'available',
+                    'label' => Yii::t('back', 'Показать'),
+                    'format' => 'html',
+                    'filter' => Html::activeDropDownList(
+                        $searchModel,
+                        'available',
+                        [
+                            0 => Yii::t('back', 'Нет'),
+                            1 => Yii::t('back', 'Да'),
+                        ], [
+                            'class' => 'form-control',
+                            'prompt' => '---'
+                        ]
+                    ),
+                    'value' => function ($data) {
+                        return Html::a(
+                            Html::tag('big', 
+                                Html::tag('span', '', [
+                                    'class' => 'glyphicon ' . ( $data->available ? 'glyphicon-ok text-success' : 'glyphicon-remove text-danger')
+                                ])
+                            ),
+                            [
+                                'available',
+                                'id' => $data->id
+                            ], [
+                                'class' => 'pjax'
+                            ]);
+                    },
+                    'headerOptions' => [
+                        'class' => 'text-center'
+                    ],
+                    'contentOptions' => [
+                        'class' => 'text-center'
+                    ],
+                ],
+                
+                [
                     'attribute' => 'name',
                     'format' => 'raw',
                     'value' => function ($model) {
