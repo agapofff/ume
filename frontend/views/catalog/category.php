@@ -83,7 +83,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 <div class="col-lg-6 my-1 my-lg-2">
                     <div class="row align-items-center">
                         <div class="col-3 col-sm-auto">
-                            <img src="/images/catalog/icon3.svg">
+                            <img src="/images/catalog/icon3.svg" class="img-fluid">
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
