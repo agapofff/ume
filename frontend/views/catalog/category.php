@@ -58,8 +58,8 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
             <div class="row">
                 <div class="col-lg-6 my-1 my-lg-2">
                     <div class="row align-items-center">
-                        <div class="col-auto">
-                            <img src="/images/catalog/icon1.svg">
+                        <div class="col-3 col-sm-auto">
+                            <img src="/images/catalog/icon1.svg" class="img-fluid">
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
@@ -70,8 +70,8 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 </div>
                 <div class="col-lg-6 my-1 my-lg-2">
                     <div class="row align-items-center">
-                        <div class="col-auto">
-                            <img src="/images/catalog/icon2.svg">
+                        <div class="col-3 col-sm-auto">
+                            <img src="/images/catalog/icon2.svg" class="img-fluid">
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
@@ -82,7 +82,7 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 </div>
                 <div class="col-lg-6 my-1 my-lg-2">
                     <div class="row align-items-center">
-                        <div class="col-auto">
+                        <div class="col-3 col-sm-auto">
                             <img src="/images/catalog/icon3.svg">
                         </div>
                         <div class="col">
@@ -94,8 +94,8 @@ $h1 = Yii::$app->params['h1'] ?: $this->title;
                 </div>
                 <div class="col-lg-6 my-1 my-lg-2">
                     <div class="row align-items-center">
-                        <div class="col-auto">
-                            <img src="/images/catalog/icon4.svg">
+                        <div class="col-3 col-sm-auto">
+                            <img src="/images/catalog/icon4.svg" class="img-fluid">
                         </div>
                         <div class="col">
                             <p class="h5 text-uppercase font-weight-light mb-0">
