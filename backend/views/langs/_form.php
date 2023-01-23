@@ -37,6 +37,18 @@ use kartik\alert\AlertBlock;
                     ],
                 ]);
         ?>
+        
+        <?= $form
+                ->field($model, 'available')
+                ->widget(SwitchInput::classname(), [
+                    'pluginOptions' => [
+                        'onText' => Yii::t('back', 'Да'),
+                        'offText' => Yii::t('back', 'Нет'),
+                        'onColor' => 'success',
+                        'offColor' => 'danger',
+                    ],
+                ]);
+        ?>        
 
         <?= $form
                 ->field($model, 'name')

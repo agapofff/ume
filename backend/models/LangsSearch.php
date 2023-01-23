@@ -12,7 +12,7 @@ class LangsSearch extends Langs
     public function rules()
     {
         return [
-            [['id', 'active'], 'integer'],
+            [['id', 'active', 'available'], 'integer'],
             [['name', 'code', 'currency'], 'safe'],
         ];
     }
@@ -45,6 +45,7 @@ class LangsSearch extends Langs
         $query->andFilterWhere([
             'id' => $this->id,
             'active' => $this->active,
+            'available' => $this->available,
         ]);
 
         $query

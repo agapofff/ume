@@ -18,7 +18,7 @@ class Langs extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'code', 'currency'], 'required'],
-            [['active', 'saveAndExit'], 'integer'],
+            [['active', 'available', 'saveAndExit'], 'integer'],
             [['name', 'code', 'currency'], 'string', 'max' => 255],
         ];
     }
@@ -29,7 +29,8 @@ class Langs extends \yii\db\ActiveRecord
             'id' => Yii::t('back', 'ID'),
             'name' => Yii::t('back', 'Название'),
             'code' => Yii::t('back', 'Код (ISO-639)'),
-            'active' => Yii::t('back', 'Включено'),
+            'active' => Yii::t('back', 'Активно'),
+            'available' => Yii::t('back', 'Показывать на сайте'),
             'currency' => Yii::t('back', 'Валюта (ISO-4217)'),
         ];
     }

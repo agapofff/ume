@@ -128,4 +128,22 @@ class LangsController extends Controller
             return $this->redirect(['index']);
         }
     }
+    
+    public function actionAvailable($id)
+    {
+        $model = $this->findModel($id);
+        $model->available = $model->available ? 0 : 1;
+        
+        if ($model->save()) {
+            Yii::$app->session->setFlash('success', Yii::t('back', 'Изменения сохранены'));
+        } else {
+            Yii::$app->session->setFlash('danger', Yii::t('back', 'Ошибка сохранения'));
+        }
+
+        if (Yii::$app->request->isAjax) {
+            $this->actionIndex();
+        } else {
+            return $this->redirect(['index']);
+        }
+    }    
 }
