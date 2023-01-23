@@ -51,11 +51,10 @@ return [
         }
         
         // кладём активные языки в параметры
-        $languages = Langs::getDb()->cache(
-            fn() => Langs::findAll([
-                'publish' => 1
-            ])
-        );
+        $languages = Langs::findAll([
+            'active' => 1,
+            'available' => 1,
+        ]);
         Yii::$app->params['languages'] = ArrayHelper::map($languages, 'code', 'code');
         
         // добавляем активные языки из базы в модуль переключения языков
