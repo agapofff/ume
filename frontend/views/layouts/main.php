@@ -583,7 +583,7 @@
                         </ul>
                     </div>
                     
-                    <div class="modal-footer justify-content-start d-none">
+                    <div class="modal-footer justify-content-start">
                 <?php
                     if ($langs) {
                         foreach ($langs as $key => $lang) {
