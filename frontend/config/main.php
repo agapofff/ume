@@ -1,9 +1,22 @@
 <?php
+use yii\db\Query;
+use yii\web\Cookie;
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
+use backend\models\Langs;
+use backend\models\Stores;
+use backend\models\MetaTags;
+use backend\models\Promocodes;
+use backend\models\Redirects;
+use backend\models\Addresses;
+use frontend\models\PhoneCodes;
+use dvizh\filter\models\Product;
+use dvizh\filter\models\FilterVariant;
 use dektrium\user\models\User;
 use dektrium\user\controllers\RegistrationController;
 use dektrium\user\controllers\SecurityController;
 use backend\models\Bonus;
-use yii\helpers\Url;
 
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
@@ -38,10 +51,12 @@ return [
         }
         
         // кладём активные языки в параметры
-        $languages = backend\models\Langs::findAll([
-            'active' => 1
-        ]);
-        Yii::$app->params['languages'] = yii\helpers\ArrayHelper::map($languages, 'code', 'code');
+        $languages = Langs::getDb()->cache(
+            fn() => Langs::findAll([
+                'publish' => 1
+            ])
+        );
+        Yii::$app->params['languages'] = ArrayHelper::map($languages, 'code', 'code');
         
         // добавляем активные языки из базы в модуль переключения языков
         // $langs = Yii::$app->db
@@ -53,24 +68,26 @@ return [
         
         // 301-е редиректы
         if (Yii::$app->request->pathInfo) {
-
-            $query = (new \Yii\db\Query())
-                ->select('*')
-                ->from('{{%redirects}}')
-                ->where([
-                    'active' => '1',
-                    'link_from' => Yii::$app->request->absoluteUrl
-                ])
-                ->one();
-            if (!$query) {
-                $query = (new \Yii\db\Query())
-                    ->select('*')
-                    ->from('{{%redirects}}')
-                    ->where(['active' => '1'])
-                    ->andWhere([
-                        'like', 'link_from', Yii::$app->request->pathInfo
+            $query = Redirects::getDb()->cache(
+                fn() => Redirects::find()
+                    ->where([
+                        'active' => 1,
+                        'link_from' => Yii::$app->request->absoluteUrl
                     ])
-                    ->one();
+                    ->one()
+            );
+                
+            if (!$query) {
+                $query = Redirects::getDb()->cache(
+                    fn() => Redirects::find()
+                        ->where([
+                            'active' => 1
+                        ])
+                        ->andWhere([
+                            'like', 'link_from', Yii::$app->request->pathInfo
+                        ])
+                        ->one()
+                );
             }
             
             if ($query) {
@@ -78,30 +95,7 @@ return [
                 Yii::$app->end();
             }
         }
-        
-        
-        // редиректы товаров на новые адреса с ЧПУ
-        if (strpos(Yii::$app->request->pathInfo, 'product') !== false) {
-            $link = explode('product/', Yii::$app->request->pathInfo);
-            if (count($link) > 1) {
-                $productId = explode('/', $link[1])[0];
-                if (is_numeric($productId)) {
-                    $query = (new \Yii\db\Query())
-                        ->select('*')
-                        ->from('{{%shop_product}}')
-                        ->where([
-                            'like', 'sku', $productId
-                        ])
-                        ->one();
-                    if ($query) {
-                        $linkTo = str_replace($productId, $query['slug'], Yii::$app->request->absoluteUrl);
-                        Yii::$app->getResponse()->redirect($linkTo, 301);
-                        Yii::$app->end();
-                    }
-                }
-            }
-        }
-        
+
         $redirect = false;
         
         // кладём валюту магазина в параметры 
@@ -126,7 +120,7 @@ return [
         // кладём дефолтный тип магазина в куки
         
         if (!Yii::$app->request->cookies->has('store_type')) {
-            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+            Yii::$app->response->cookies->add(new Cookie([
                 'name' => 'store_type',
                 'value' => $store_type,
             ]));
@@ -139,7 +133,7 @@ return [
         
         // кладём промокод в куки
         if ($promo && Yii::$app->request->cookies->getValue('promo') != $promo) {
-            Yii::$app->response->cookies->add(new \yii\web\Cookie([
+            Yii::$app->response->cookies->add(new Cookie([
                 'name' => 'promo',
                 'value' => $promo,
             ]));
@@ -148,19 +142,18 @@ return [
         
         // переключение магазина
         if ($promo) {
-            // $store = Yii::$app->db
-                // ->createCommand('SELECT * FROM {{%promocodes}} WHERE code = :code')
-                // ->bindValue(':code', $promo)
-                // ->queryOne();
-            $store = \backend\models\Promocodes::find()
-                ->where('code = :code', [
-                    ':code' => $promo
-                ])
-                ->one();
+            $store = Promocodes::getDb()->cache(
+                fn() => Promocodes::find()
+                    ->where('code = :code', [
+                        ':code' => $promo
+                    ])
+                    ->one()
+            );
+            
             if ($store) {
                 $store_type = $store->type;
                 if (Yii::$app->request->cookies->getValue('store_type') != $store_type) {
-                    Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                    Yii::$app->response->cookies->add(new Cookie([
                         'name' => 'store_type',
                         'value' => $store_type,
                     ]));
@@ -173,15 +166,18 @@ return [
         
         // обработка ссылок из приложения
         if ($storeId = Yii::$app->request->get('store')) {
-            $store = \backend\models\Stores::find()
-                ->where('store_id = :store_id', [
-                    ':store_id' => $storeId
-                ])
-                ->one();
+            $store = Stores::getDb()->cache(
+                fn() => Stores::find()
+                    ->where('store_id = :store_id', [
+                        ':store_id' => $storeId
+                    ])
+                    ->one()
+            );
+                
             if ($store) {
                 $store_type = $store->type;
                 if (Yii::$app->request->cookies->getValue('store_type') != $store_type) {
-                    Yii::$app->response->cookies->add(new \yii\web\Cookie([
+                    Yii::$app->response->cookies->add(new Cookie([
                         'name' => 'store_type',
                         'value' => $store_type,
                     ]));
@@ -190,8 +186,7 @@ return [
                 }
             }
         }
-
-        
+       
         
         if ($redirect) {
             Yii::$app->response->redirect(Yii::$app->request->absoluteUrl, 301)->send();
@@ -202,17 +197,17 @@ return [
         Yii::$app->params['store_type'] = Yii::$app->request->cookies->getValue('store_type', $store_type);
         
         
-        
-        
         // МЕТА-параметры
-        $meta = \backend\models\MetaTags::find()
-            ->where('link = :link', [
-                ':link' => Yii::$app->request->absoluteUrl
-            ])
-            ->andWhere([
-                'active' => 1
-            ])
-            ->one();
+        $meta = MetaTags::getDb()->cache(
+            fn() => MetaTags::find()
+                ->where('link = :link', [
+                    ':link' => Yii::$app->request->absoluteUrl
+                ])
+                ->andWhere([
+                    'active' => 1
+                ])
+                ->one()
+        );
             
         if ($meta) {
             if ($meta->title) {
@@ -226,16 +221,22 @@ return [
             }
         }
 
+
+        // кладём валюту магазина в параметры
+        $currency = Langs::findOne([
+            'code' => $langCode,
+        ])->currency;
         
+        if ($currency) {
+            Yii::$app->params['currency'] = $currency;
+        }
     },
             
 
     'on afterAction' => function () {
-        
         // переадресация главных страниц на языковую локаль
-        
         if (strpos(Yii::$app->request->absoluteUrl, Yii::$app->language) === false) {
-            $homeUrl = \yii\helpers\Url::home(true);
+            $homeUrl = Url::home(true);
             $localeUrl = preg_replace("#/$#", "", str_replace($homeUrl, $homeUrl . Yii::$app->language . '/', Yii::$app->request->absoluteUrl));
 
             Yii::$app->response->redirect($localeUrl, 301);
@@ -266,14 +267,19 @@ return [
         
         
         // транкейт корзины при несовпадении языка или типа магазина
-        $lang = dvizh\filter\models\FilterVariant::findOne([
-            'filter_id' => 3,
-            'value' => Yii::$app->language
-        ])->id;
-        $store_type = dvizh\filter\models\FilterVariant::findOne([
-            'filter_id' => 4,
-            'value' => Yii::$app->params['store_types'][Yii::$app->params['store_type']]
-        ])->id;
+        $lang = FilterVariant::getDb()->cache(
+            fn() => FilterVariant::findOne([
+                'filter_id' => 3,
+                'value' => Yii::$app->language
+            ])->id
+        );
+        
+        $store_type = FilterVariant::getDb()->cache(
+            fn() => FilterVariant::findOne([
+                'filter_id' => 4,
+                'value' => Yii::$app->params['store_types'][Yii::$app->params['store_type']]
+            ])->id
+        );
 
         if ($cartElements = Yii::$app->cart->elements) {
             foreach ($cartElements as $element) {
@@ -290,11 +296,12 @@ return [
         
         // кладём язык в базу
         if (!Yii::$app->user->isGuest) {
-            $user = \dektrium\user\models\User::findOne(Yii::$app->user->identity->id);
-            $user->lang = Yii::$app->language;
-            $user->save();
+            $user = User::getDb()->cache(fn() => User::findOne(Yii::$app->user->identity->id));
+            if ($user->lang != Yii::$app->language) {
+                $user->lang = Yii::$app->language;
+                $user->save();
+            }
         }
-        
     },
     
     'modules' => [
@@ -413,7 +420,7 @@ return [
         'languagesDispatcher' => [
             'class' => 'cetver\LanguagesDispatcher\Component',
             'languages' => function () {
-                return \backend\models\Langs::find()->select('code')->column();
+                return Yii::$app->urlManager->languages;
             },
             // Order is important
             'handlers' => [
@@ -422,10 +429,10 @@ return [
                     'class' => 'cetver\LanguagesDispatcher\handlers\HostNameHandler',
                     'request' => 'request', // optional, the Request component ID.                    
                     'hostMap' => function () {
-                        $langs = \backend\models\Langs::find()->select('code')->column();
+                        $langs = Yii::$app->urlManager->languages;
                         $hostMap = [];
                         foreach ($langs as $lang) {
-                            $hostMap[yii\helpers\Url::to(['/'], true) . $lang] = $lang;
+                            $hostMap[Url::to(['/'], true) . $lang] = $lang;
                         }
                         return $hostMap;
                     }
@@ -530,7 +537,13 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'languages' => function () {
-                return \backend\models\Langs::find()->select('code')->column();
+                return Langs::find()
+                    ->select('code')
+                    ->where([
+                        'active' => 1,
+                        'available' => 1,
+                    ])
+                    ->column();
             },
             'existsLanguageSubdomain' => false,
             'blacklist' => [
