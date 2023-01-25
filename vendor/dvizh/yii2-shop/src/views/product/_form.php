@@ -250,7 +250,7 @@ $store_types = Yii::$app->params['store_types'];
                     'editButtonText' => Html::tag('i', '', ['class' => 'fa fa-edit']),
                 ]);
             ?>
-            <p><small>Первое изображение - 600*800px, вертикальное (основное).<br>Все дальнейшие изображения - 800*600px (горизонтальные) - для самой картички товара</small></p>
+            <p><small>800*600px, с прозрачным фоном</small></p>
         <?php Pjax::end(); ?>
     
     
