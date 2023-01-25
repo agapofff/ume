@@ -696,10 +696,8 @@ $store_types = Yii::$app->params['store_types'];
                                 // 'mode' => 'inline',
                                 'source' => ArrayHelper::map($stores, 'store_id', 'name'),
                             ],
-                            'value' => function ($price) use ($stores) {
-                                return array_filter($stores, function ($store) use ($price) {
-                                    return $store['store_id'] === $price->name;
-                                })[0]['name'];
+                            'value' => function ($price) {
+                                return $price->name;
                             },
                             'headerOptions' => [
                                 'class' => 'text-center',
