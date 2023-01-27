@@ -112,7 +112,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     <?php
         if ($product->howtouse){
     ?>
-            <div id="product-howtouse">
+            <div id="product-howtouse" class="mb-3">
                 <?= json_decode($product->howtouse)->{Yii::$app->language} ?>
             </div>
     <?php
