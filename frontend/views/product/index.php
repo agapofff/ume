@@ -106,9 +106,19 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     
     <div class="row justify-content-center mt-3 mt-lg-4">
         <div class="col-12 col-lg-11 col-xl-10">
-            <h3 class="font-weight-light text-uppercase mb-2">
+            <h3 class="font-weight-light text-uppercase mb-2 d-none">
                 <?= Yii::t('front', 'Описание') ?>
             </h3>
+    <?php
+        if ($product->howtouse){
+    ?>
+            <div id="product-howtouse">
+                <?= json_decode($product->howtouse)->{Yii::$app->language} ?>
+            </div>
+    <?php
+        }
+    ?>
+    
     <?php
         if ($product->short_text){
     ?>
@@ -148,16 +158,7 @@ $this->title = Yii::$app->params['title'] ?: $productName . ' - ' . Yii::t('fron
     <?php
         }
     ?>
-    
-    <?php
-        if ($product->howtouse){
-    ?>
-            <div id="product-howtouse">
-                <?= json_decode($product->howtouse)->{Yii::$app->language} ?>
-            </div>
-    <?php
-        }
-    ?>
+
         </div>
     </div>
 </div>
