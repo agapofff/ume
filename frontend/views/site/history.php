@@ -108,7 +108,7 @@ $this->title = Yii::t('front', 'История') . ' - ' . Yii::$app->name;
             <h4 class="h3 font-weight-light text-center text-uppercase">
                 <?= Yii::t('front', 'А значит, мы найдем друг друга. Потому что каждый сможет жить с ощущением:') ?>
             </h4>
-            <h4 class="h1 text-uppercase font-weight-light mt-2 mt-lg-3">
+            <h4 class="h1 text-uppercase font-weight-light text-center mt-2 mt-lg-3">
                 <?= Yii::t('front', '«я тебя понимаю,{0} я совсем как ты»', ['<br>&nbsp;']) ?>
             </h4>
         </div>
