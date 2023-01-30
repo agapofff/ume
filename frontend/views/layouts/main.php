@@ -360,6 +360,9 @@
                                 <?php
                                     if ($langs) {
                                         foreach ($langs as $key => $lang) {
+                                            if (Yii::$app->language != 'ru' && $lang['label'] == 'ru') {
+                                                continue;
+                                            }
                                             if ($lang['label'] !== Yii::$app->language) {
                                                 echo Html::a($lang['label'], $lang['url'], [
                                                     'class' => 'd-block text-uppercase text-decoration-none px-0_5 text-secondary font-weight-bold'
@@ -587,13 +590,16 @@
                 <?php
                     if ($langs) {
                         foreach ($langs as $key => $lang) {
+                            if (Yii::$app->language != 'ru' && $lang['label'] == 'ru') {
+                                continue;
+                            }
                 ?>
-                        <div class="col-auto">
-                            <?= Html::a($lang['label'], $lang['url'], [
-                                    'class' => 'text-uppercase text-white ml-0_5 text-' . ($lang['active'] ? 'underline' : 'decoration-none')
-                                ]);
-                            ?>
-                        </div>
+                            <div class="col-auto">
+                                <?= Html::a($lang['label'], $lang['url'], [
+                                        'class' => 'text-uppercase text-white ml-0_5 text-' . ($lang['active'] ? 'underline' : 'decoration-none')
+                                    ]);
+                                ?>
+                            </div>
                 <?php
                         }
                     }
