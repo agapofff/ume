@@ -221,6 +221,7 @@
         }
     }
 
+Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
 ?>
 
 <?php $this->beginPage() ?>
