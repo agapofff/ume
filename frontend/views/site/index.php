@@ -192,13 +192,13 @@ $this->title = Yii::$app->name;
                 <div class="col-auto">
                     <div class="owl-carousel-stacked d-none row" data-related="#app-slider-description-1">
                         <div class="col-auto pr-0 pr-sm-1">
-                            <img src="/images/main/app-1.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-1_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                         <div class="col-auto pr-0 pr-sm-1">
-                            <img src="/images/main/app-2.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-2_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                         <div class="col-auto pr-0 pr-sm-1">
-                            <img src="/images/main/app-3.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-3_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                     </div>
                     <hr class="border-gray-800 my-2">
@@ -339,16 +339,16 @@ $this->title = Yii::$app->name;
                 <div class="col-auto">
                     <div class="owl-carousel-stacked d-none row" data-related="#app-slider-description-2">
                         <div class="col-auto pr-0 pr-sm-1 max-vw-75">
-                            <img src="/images/main/app-4.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-4_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                         <div class="col-auto pr-0 pr-sm-1 max-vw-75">
-                            <img src="/images/main/app-5.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-5_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                         <div class="col-auto pr-0 pr-sm-1 max-vw-75">
-                            <img src="/images/main/app-6.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-6_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                         <div class="col-auto pr-0 pr-sm-1 max-vw-75">
-                            <img src="/images/main/app-7.png" alt="<?= $this->title ?>" class="img-fluid">
+                            <img src="/images/main/app-7_<?= Yii::$app->language ?>.png" alt="<?= $this->title ?>" class="img-fluid">
                         </div>
                     </div>
                     <hr class="border-gray-800 my-2">
