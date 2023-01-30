@@ -195,6 +195,11 @@ return [
 
         Yii::$app->params['store_type'] = Yii::$app->request->cookies->getValue('store_type', $store_type);
         
+        // $store = Stores::findOne([
+            // 'type' => Yii::$app->params['store_type'],
+            // 'lang' => Yii::$app->params['language']
+        // ]);
+        Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
         
         // МЕТА-параметры
         $meta = MetaTags::getDb()->cache(
