@@ -272,24 +272,11 @@ return [
         
         
         // транкейт корзины при несовпадении языка или типа магазина
-        $lang = FilterVariant::getDb()->cache(
-            fn() => FilterVariant::findOne([
-                'filter_id' => 3,
-                'value' => Yii::$app->language
-            ])->id
-        );
-        
-        $store_type = FilterVariant::getDb()->cache(
-            fn() => FilterVariant::findOne([
-                'filter_id' => 4,
-                'value' => Yii::$app->params['store_types'][Yii::$app->params['store_type']]
-            ])->id
-        );
-
         if ($cartElements = Yii::$app->cart->elements) {
             foreach ($cartElements as $element) {
                 $productID = $element->comment;
                 $cartElementStoreId = Price::findOne(['code' => $element->comment])->name;
+echo $cartElementStoreId; exit;
                 if ($cartElementStoreId != $store->store_id) {
                     Yii::$app->cart->truncate();
                     Yii::$app->response->redirect('/catalog')->send();
