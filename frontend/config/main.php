@@ -276,8 +276,7 @@ return [
             foreach ($cartElements as $element) {
                 $productID = $element->comment;
                 $cartElementStoreId = Price::findOne(['code' => $element->comment])->name;
-echo $cartElementStoreId; exit;
-                if ($cartElementStoreId != $store->store_id) {
+                if ((float)$cartElementStoreId != (float)$store->store_id) {
                     Yii::$app->cart->truncate();
                     Yii::$app->response->redirect('/catalog')->send();
                 }
