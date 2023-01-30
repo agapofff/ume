@@ -236,7 +236,7 @@ return [
     'on afterAction' => function () {
         $store = Stores::findOne([
             'type' => Yii::$app->params['store_type'],
-            'lang' => Yii::$app->params['language']
+            'lang' => Yii::$app->language
         ]);
         
         // переадресация главных страниц на языковую локаль
@@ -276,7 +276,6 @@ return [
             foreach ($cartElements as $element) {
                 $productID = $element->comment;
                 $cartElementStoreId = Price::findOne(['code' => $element->comment])->name;
-echo $cartElementStoreId . ' - ' . $store->store_id; exit;
                 if ((float)$cartElementStoreId != (float)$store->store_id) {
                     Yii::$app->cart->truncate();
                     Yii::$app->response->redirect('/catalog')->send();
