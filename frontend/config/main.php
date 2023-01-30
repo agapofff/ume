@@ -247,7 +247,7 @@ return [
             Yii::$app->end();
         }
         
-        Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
+        // Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
         
         // $langs = \backend\models\Langs::find()->select('code')->column();
         // if (empty(array_intersect(explode('/', Yii::$app->request->absoluteUrl), $langs))) {
