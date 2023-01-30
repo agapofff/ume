@@ -199,7 +199,7 @@ return [
             // 'type' => Yii::$app->params['store_type'],
             // 'lang' => Yii::$app->params['language']
         // ]);
-        Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
+        
         
         // МЕТА-параметры
         $meta = MetaTags::getDb()->cache(
@@ -246,6 +246,8 @@ return [
             Yii::$app->response->redirect($localeUrl, 301);
             Yii::$app->end();
         }
+        
+        Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' . strtoupper(Yii::$app->params['language']);
         
         // $langs = \backend\models\Langs::find()->select('code')->column();
         // if (empty(array_intersect(explode('/', Yii::$app->request->absoluteUrl), $langs))) {
