@@ -17,6 +17,7 @@ use dektrium\user\models\User;
 use dektrium\user\controllers\RegistrationController;
 use dektrium\user\controllers\SecurityController;
 use backend\models\Bonus;
+use dvizh\shop\models\Price;
 
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
@@ -194,12 +195,7 @@ return [
 
 
         Yii::$app->params['store_type'] = Yii::$app->request->cookies->getValue('store_type', $store_type);
-        
-        // $store = Stores::findOne([
-            // 'type' => Yii::$app->params['store_type'],
-            // 'lang' => Yii::$app->params['language']
-        // ]);
-        
+
         
         // МЕТА-параметры
         $meta = MetaTags::getDb()->cache(
@@ -238,6 +234,11 @@ return [
             
 
     'on afterAction' => function () {
+        $store = Stores::findOne([
+            'type' => Yii::$app->params['store_type'],
+            'lang' => Yii::$app->params['language']
+        ]);
+        
         // переадресация главных страниц на языковую локаль
         if (strpos(Yii::$app->request->absoluteUrl, Yii::$app->language) === false) {
             $homeUrl = Url::home(true);
@@ -287,14 +288,11 @@ return [
 
         if ($cartElements = Yii::$app->cart->elements) {
             foreach ($cartElements as $element) {
-print_r($element); exit;
-                if ($options = $element->getOptions()) {
-
-                    if ($options[3] != $lang || $options[4] != $store_type) {
-                        Yii::$app->cart->truncate();
-                        Yii::$app->response->redirect(Yii::$app->request->absoluteUrl, 301);
-                        // Yii::$app->end();
-                    }
+                $productID = $element->comment;
+                $cartElementStoreId = Price::findOne(['code' => $element->comment])->name;
+                if ($cartElementStoreId != $store->store_id) {
+                    Yii::$app->cart->truncate();
+                    Yii::$app->response->redirect('/catalog')->send();
                 }
             }
         }
