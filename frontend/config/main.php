@@ -287,7 +287,9 @@ return [
 
         if ($cartElements = Yii::$app->cart->elements) {
             foreach ($cartElements as $element) {
+print_r($element); exit;
                 if ($options = $element->getOptions()) {
+
                     if ($options[3] != $lang || $options[4] != $store_type) {
                         Yii::$app->cart->truncate();
                         Yii::$app->response->redirect(Yii::$app->request->absoluteUrl, 301);
