@@ -1,8 +1,8 @@
 <?php
 return [
-    'adminEmail' => 'info@ume.tech',
-    'supportEmail' => 'info@ume.tech',
-    'senderEmail' => 'info@ume.tech',
+    'adminEmail' => 'info@ume.pet',
+    'supportEmail' => 'info@ume.pet',
+    'senderEmail' => 'info@ume.pet',
     'senderName' => 'UME',
     'phone' => '8 800 555 27 21',
     'user.passwordResetTokenExpire' => 3600,
@@ -39,6 +39,7 @@ return [
         'ok' => '#',
         'vk' => '#',
         'tg' => 'https://t.me/ume_petpoint',
+        'yt' => 'https://www.youtube.com/@ume_petpoint',
     ],
     
     'actionsTypes' => [

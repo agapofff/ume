@@ -104,7 +104,7 @@ $config = [
             'class' => 'dvizh\order\Module',
             'layoutPath' => 'frontend\views\layouts',
             'successUrl' => '/checkout/pay',
-            'adminNotificationEmail' => 'info@ume.tech',
+            'adminNotificationEmail' => 'info@ume.pet',
             'as order_filling' => 'dvizh\order\behaviors\OrderFilling',
             'showCountColumn' => false,
             'orderStatuses' => [
@@ -122,7 +122,7 @@ $config = [
                 'email',
                 'shipping_type_id',
             ],
-            'robotEmail' => 'info@nrk1987.com',
+            'robotEmail' => 'info@ume.pet',
             'robotName' => 'UME',
             'adminNotificationEmail' => true,
             'clientEmailNotification' => true,
