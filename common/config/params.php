@@ -36,8 +36,8 @@ return [
     'store_type' => 0,
     'currency' => 'RUB',
     'socials' => [
-        'ok' => '#',
-        'vk' => '#',
+        // 'ok' => '#',
+        // 'vk' => '#',
         'tg' => 'https://t.me/ume_petpoint',
         'yt' => 'https://www.youtube.com/@ume_petpoint',
     ],
