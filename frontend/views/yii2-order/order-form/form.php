@@ -151,7 +151,7 @@
                                 'language' => Yii::$app->language,
                                 'theme' => Select2::THEME_BOOTSTRAP,
                                 'data' => $citiesList,
-                                // 'disabled' => true,
+                                'disabled' => true,
                                 'options' => [
                                     'class' => 'form-control form-control-lg',
                                     'placeholder' => ' ',
