@@ -229,9 +229,9 @@ $this->title = Yii::t('front', 'О нас') . ' - ' . Yii::$app->name;
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-7 col-xl-8 wow fadeIn">
                     <video autoplay loop muted playsinline class="d-block w-100">
-                        <source src="/video/ginseng_small_<?= Yii::$app->language ?>.mp4" type="video/mp4">
-                        <source src="/video/ginseng_small_<?= Yii::$app->language ?>.ogv" type="video/ogv">
-                        <source src="/video/ginseng_small_<?= Yii::$app->language ?>.webm" type="video/webm">
+                        <source src="/video/ginseng-<?= Yii::$app->language ?>.mp4" type="video/mp4">
+                        <source src="/video/ginseng-<?= Yii::$app->language ?>.ogv" type="video/ogv">
+                        <source src="/video/ginseng-<?= Yii::$app->language ?>.webm" type="video/webm">
                     </video>
                 </div>
                 <div class="col-11 col-lg-5 col-xl-4">
