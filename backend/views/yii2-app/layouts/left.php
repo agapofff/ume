@@ -510,6 +510,13 @@
                 ];
             }
             
+            $menuItems[] = [
+                'label' => Yii::t('back', 'Выйти'),
+                'icon' => 'sign-out',
+                'url' => ['/site/logout'],
+                'data-method' => 'post',
+            ];            
+            
         }
     ?>
 
