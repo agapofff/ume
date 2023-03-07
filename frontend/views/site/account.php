@@ -117,11 +117,74 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
         </a>
     </p>
     
-    <hr class="my-3">
-    
-    <h3 class="text-uppercase font-weight-light mb-1">
-        <?= Yii::t('front', 'Мои заказы') ?>
-    </h3>
-    
+<?php
+    if ($orders) {
+?>
+        <hr class="my-3">
+        
+        <h3 class="text-uppercase font-weight-light mb-1">
+            <?= Yii::t('front', 'Мои заказы') ?>
+        </h3>
+        
+    <?php
+        foreach ($orders as $order) {
+    ?>
+            <div class="row">
+                <div class="col-12 bg-gray-200 py-1">
+                    <div class="row justify-content-center">
+                        <div class="col-12 mx-md-1 mx-lg-2 mx-xl-3">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">
+                                    <h5>
+                                        <span class="font-weight-bolder"><?= Yii::t('front', 'Заказ') ?></span> №<?= $order->id ?>
+                                    </h5>
+                                    <p class="font-weight-light">
+                                        <?= Yii::$app->formatter->asDate($order->date) ?>
+                                    </p>
+                                </div>
+                                <div class="col-auto text-right">
+                                    <?= Yii::$app->formatter->asCurrency($order->cost, Yii::$app->params['currency']) ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 py-1_5">
+                    <div class="row justify-content-center">
+                        <div class="col-12 mx-md-1 mx-lg-2 mx-xl-3">
+                            <div class="row justify-content-between">
+                                <div class="col-auto">
+                                    <h5>
+                                        <span class="font-weight-bolder"><?= Yii::t('front', ArrayHelper::getValue(ArrayHelper::map($shippingTypes, 'id', 'name'), $order->shipping_type_id)) ?></span>
+                                    </h5>
+                                    <div class="mt-1">
+                                        <span class="btn btn-sm btn-<?= $order-status == 'done' ? 'primary' : 'secondary' ?>">
+                                            <?= Yii::t('front', Yii::$app->getModule('order')->orderStatuses[$order->status]) ?>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-auto text-right">
+                                <?php
+                                    foreach ($order->elements as $product) {
+                                ?>
+                                        <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
+                                            <img src="<?= $product->getImage()->getUrl('100x100') ?>">
+                                        </a>
+                                <?php
+                                    }
+                                ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <hr>
+    <?php
+        }
+    ?>
+<?php
+    }
+?>
 
 </div>

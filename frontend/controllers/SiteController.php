@@ -16,6 +16,12 @@ use dvizh\shop\models\Category;
 use dvizh\shop\models\Price;
 use dvizh\shop\models\Product;
 use dvizh\shop\models\product\ProductSearch;
+use dvizh\order\models\Order;
+use dvizh\order\models\Element;
+use dvizh\order\models\ShippingType;
+use dvizh\order\models\Field;
+use dvizh\order\models\FieldValue;
+use dvizh\shop\models\Modification;
 use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\helpers\VarDumper;
@@ -189,43 +195,57 @@ class SiteController extends Controller
         $userBonus = Bonus::getUserBonus(Yii::$app->user->id);
         $profile = Yii::$app->user->identity->profile;
         
-        $breed = $profile->breed ? Breeds::findOne($profile->breed)->name : null;
+        // $breed = $profile->breed ? Breeds::findOne($profile->breed)->name : null;
         
-        $breeds = Breeds::find()
-            ->where([
-                'active' => 1
-            ])
-            ->indexBy('id')
-            ->asArray()
-            ->all();
+        // $breeds = Breeds::find()
+            // ->where([
+                // 'active' => 1
+            // ])
+            // ->indexBy('id')
+            // ->asArray()
+            // ->all();
         
-        $actions = Actions::find()
+        // $actions = Actions::find()
+            // ->where([
+                // 'active' => 1
+            // ])
+            // ->orderBy([
+                // 'published' => SORT_DESC
+            // ])
+            // ->limit(4)
+            // ->all();
+            
+        // $friends = User::find()
+            // ->where([
+                // 'referal' => base64_encode(Yii::$app->user->id),
+            // ])
+            // ->orWhere([
+                // 'id' => base64_decode(Yii::$app->user->identity->referal),
+            // ])
+            // ->all();
+            
+        $orders = Order::find()
             ->where([
-                'active' => 1
+                'user_id' => Yii::$app->user->id,
+                'is_deleted' => 0,
             ])
             ->orderBy([
-                'published' => SORT_DESC
+                'id' => SORT_DESC,
             ])
-            ->limit(4)
             ->all();
             
-        $friends = User::find()
-            ->where([
-                'referal' => base64_encode(Yii::$app->user->id),
-            ])
-            ->orWhere([
-                'id' => base64_decode(Yii::$app->user->identity->referal),
-            ])
-            ->all();
+        $shippingTypes = ShippingType::find()->all();
         
         return $this->render('account', [
             'user' => $user,
             'profile' => $profile,
-            'breed' => $breed,
-            'breeds' => $breeds,
-            'actions' => $actions,
-            'friends' => $friends,
+            // 'breed' => $breed,
+            // 'breeds' => $breeds,
+            // 'actions' => $actions,
+            // 'friends' => $friends,
             'userBonus' => $userBonus,
+            'orders' => $orders,
+            'shippingTypes' => $shippingTypes,
         ]);
     }
     
