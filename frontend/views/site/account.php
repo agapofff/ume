@@ -129,7 +129,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
     <?php
         foreach ($orders as $order) {
     ?>
-            <div class="row cursor-pointer" data-toggle="lightbox" data-remote="<?= Url::to(['/orders/' . $order->id], true) ?> #order-content" data-title="<?= Yii::t('front', 'Заказ') ?> №<?= $order->id ?>">
+            <div class="row cursor-pointer" data-toggle="lightbox" data-remote="<?= Url::to(['/orders/' . $order->id], true) ?> #order-content" data-title="<?= Yii::t('front', 'Заказ') ?> №<?= $order->id ?>" data-modal-dialog-class="modal-dialog-scrollable">
                 <div class="col-12 bg-gray-200 py-1">
                     <div class="row justify-content-center">
                         <div class="col mx-md-1 mx-lg-2 mx-xl-3">
