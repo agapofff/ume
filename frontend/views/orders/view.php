@@ -18,7 +18,7 @@
 <?php
     if ($order) {
 ?>
-        <div id="order-content" class="row <?= Yii::$app->request->isAjax ? 'my-2 my-lg-3' : 'my-4 my-lg-5' ?>">
+        <div id="order-content" class="row <?= Yii::$app->request->isAjax ? 'my-1 my-lg-2' : 'my-4 my-lg-5' ?>">
             <div class="col-12 <?= Yii::$app->request->isAjax ? '' : 'col-md-6' ?>">
                 <div class="dl-horizontal">
                     <dt>
@@ -102,7 +102,7 @@
                                 <?= Yii::t('front', 'Товар') ?>
                             </th>
                             <th class="text-center">
-                                <?= Yii::t('front', 'Количество') ?>
+                                <?= Yii::t('front', 'Кол-во') ?>
                             </th>
                             <th class="text-center">
                                 <?= Yii::t('front', 'Цена') ?>
