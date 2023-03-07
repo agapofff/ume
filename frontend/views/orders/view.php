@@ -102,7 +102,7 @@
                                 <?= Yii::t('front', 'Товар') ?>
                             </th>
                             <th class="text-center">
-                                <?= Yii::t('front', 'Кол-во') ?>
+                                <?= Yii::t('front', 'шт.') ?>
                             </th>
                             <th class="text-center">
                                 <?= Yii::t('front', 'Цена') ?>
