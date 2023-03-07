@@ -166,7 +166,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     </div>
                                 </div>
                                 <div class="col-auto text-right">
-                                    <div class="row align-items-end">
+                                    <div class="row justify-content-end">
                                 <?php
                                     foreach ($order->elements as $element) {
                                         $product = $element->model;
