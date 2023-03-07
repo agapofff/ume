@@ -133,7 +133,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                 <div class="col-12 bg-gray-200 py-1">
                     <div class="row justify-content-center">
                         <div class="col mx-md-1 mx-lg-2 mx-xl-3">
-                            <div class="row justify-content-between">
+                            <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
                                     <h5>
                                         <span class="font-weight-bolder"><?= Yii::t('front', 'Заказ') ?></span> №<?= $order->id ?>
@@ -153,8 +153,8 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                 </div>
                 <div class="col-12 py-1_5">
                     <div class="row justify-content-center">
-                        <div class="col-12 mx-md-1 mx-lg-2 mx-xl-3">
-                            <div class="row justify-content-between">
+                        <div class="col mx-md-1 mx-lg-2 mx-xl-3">
+                            <div class="row justify-content-between align-items-center">
                                 <div class="col-auto">
                                     <h5>
                                         <span class="font-weight-bolder"><?= Yii::t('front', ArrayHelper::getValue(ArrayHelper::map($shippingTypes, 'id', 'name'), $order->shipping_type_id)) ?></span>
