@@ -591,7 +591,7 @@ return [
                 'bonus' => 'site/bonus',
 
                 // 'orders' => 'orders/index',
-                // 'orders/<id>' => 'orders/view',
+                'orders/<id>' => 'orders/view',
                 // 'blog' => 'site/blog',
                 'news' => 'news/index',
                 'news/<slug>' => 'news/post',
