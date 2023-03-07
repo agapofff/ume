@@ -78,6 +78,7 @@ return [
         ]
     ],
     'referalBonus' => 5,
+    'orderBonus' => 1,
     
     'apps' => [
         'google' => '#',
