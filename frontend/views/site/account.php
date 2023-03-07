@@ -138,7 +138,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     <h5>
                                         <span class="font-weight-bolder"><?= Yii::t('front', 'Заказ') ?></span> №<?= $order->id ?>
                                     </h5>
-                                    <p class="font-weight-light">
+                                    <p class="font-weight-light mb-0">
                                         <?= Yii::$app->formatter->asDate($order->date) ?>
                                     </p>
                                 </div>
@@ -185,7 +185,9 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         </div>
                     </div>
                 </div>                
-                <hr>
+                <div class="col-12">
+                    <hr class="my-1_5">
+                </div>
             </div>
     <?php
         }
