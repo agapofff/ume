@@ -151,7 +151,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         </div>
                     </div>
                 </div>
-                <div class="col-12 py-1_5">
+                <div class="col-12 py-0">
                     <div class="row justify-content-center">
                         <div class="col mx-md-1 mx-lg-2 mx-xl-3">
                             <div class="row justify-content-between align-items-center">
@@ -166,16 +166,20 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     </div>
                                 </div>
                                 <div class="col-auto text-right">
+                                    <div class="row align-items-end">
                                 <?php
                                     foreach ($order->elements as $element) {
                                         $product = $element->model;
                                 ?>
-                                        <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
-                                            <img src="<?= $product->getImage()->getUrl('100x100') ?>">
-                                        </a>
+                                        <div class="col">
+                                            <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
+                                                <img src="<?= $product->getImage()->getUrl('100x100') ?>" class="img-thumbnail">
+                                            </a>
+                                        </div>
                                 <?php
                                     }
                                 ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
