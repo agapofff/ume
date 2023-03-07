@@ -95,7 +95,7 @@
                     </div>
                 </div>
 
-                <div class="col-12 my-4 my-lg-5 table-responsive">
+                <div class="col-12 table-responsive <?= Yii::$app->request->isAjax ? 'my-1 my-lg-2' : 'my-4 my-lg-5' ?>">
                     <table class="table">
                         <thead>
                             <tr>
