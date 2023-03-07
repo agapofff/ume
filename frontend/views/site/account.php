@@ -151,7 +151,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         </div>
                     </div>
                 </div>
-                <div class="col-12 py-0">
+                <div class="col-12 py-0_5">
                     <div class="row justify-content-center">
                         <div class="col mx-md-1 mx-lg-2 mx-xl-3">
                             <div class="row justify-content-between align-items-center">
