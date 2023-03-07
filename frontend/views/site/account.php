@@ -165,7 +165,8 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                 </div>
                                 <div class="col-auto text-right">
                                 <?php
-                                    foreach ($order->elements as $product) {
+                                    foreach ($order->elements as $element) {
+                                        $product = $element->model;
                                 ?>
                                         <a href="<?= Url::to(['/product/' . $product->slug]) ?>">
                                             <img src="<?= $product->getImage()->getUrl('100x100') ?>">
