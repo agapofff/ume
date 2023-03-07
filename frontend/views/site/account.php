@@ -132,7 +132,7 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
             <div class="row">
                 <div class="col-12 bg-gray-200 py-1">
                     <div class="row justify-content-center">
-                        <div class="col-12 mx-md-1 mx-lg-2 mx-xl-3">
+                        <div class="col mx-md-1 mx-lg-2 mx-xl-3">
                             <div class="row justify-content-between">
                                 <div class="col-auto">
                                     <h5>
@@ -143,7 +143,9 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                                     </p>
                                 </div>
                                 <div class="col-auto text-right">
-                                    <?= Yii::$app->formatter->asCurrency($order->cost, Yii::$app->params['currency']) ?>
+                                    <h5>
+                                        <?= Yii::$app->formatter->asCurrency($order->cost, Yii::$app->params['currency']) ?>
+                                    </h5>
                                 </div>
                             </div>
                         </div>
