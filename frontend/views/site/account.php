@@ -185,8 +185,8 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         </div>
                     </div>
                 </div>                
+                <hr>
             </div>
-            <hr>
     <?php
         }
     ?>
