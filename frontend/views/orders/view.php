@@ -18,7 +18,7 @@
 <?php
     if ($order) {
 ?>
-    <div class="row my-4 my-lg-5">
+    <div id="order-content" class="row my-4 my-lg-5">
         <div class="col-12 col-md-6">
             <div class="dl-horizontal">
                 <dt>

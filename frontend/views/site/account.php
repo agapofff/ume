@@ -122,14 +122,14 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
 ?>
         <hr class="my-3">
         
-        <h3 class="text-uppercase font-weight-light mb-1">
+        <h3 class="text-uppercase font-weight-light mb-2">
             <?= Yii::t('front', 'Мои заказы') ?>
         </h3>
         
     <?php
         foreach ($orders as $order) {
     ?>
-            <div class="row">
+            <div class="row cursor-pointer" data-toggle="lightbox" data-target="<?= Url::to(['/orders/' . $order->id]) ?> #order-content">
                 <div class="col-12 bg-gray-200 py-1">
                     <div class="row justify-content-center">
                         <div class="col mx-md-1 mx-lg-2 mx-xl-3">
@@ -185,8 +185,8 @@ $inviteLink = Url::to(['/join/' . base64_encode(Yii::$app->user->id)], true);
                         </div>
                     </div>
                 </div>                
-                <div class="col-12">
-                    <hr class="my-1_5">
+                <div class="col-12 px-0">
+                    <hr class="my-2">
                 </div>
             </div>
     <?php
