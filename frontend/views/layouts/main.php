@@ -467,18 +467,37 @@ Yii::$app->formatter->locale = strtolower(Yii::$app->params['language']) . '-' .
         <footer class="bg-gray-900 text-white pt-4 pb-1 mt-5">
             <div class="container-xl">
                 <div class="row justify-content-between">
-                    <div class="col-12 col-md-auto mb-1">
-                        <div class="mb-2">
-                            <?= Html::img('/images/logo/small_light.svg', [
-                                    'id' => 'logo-small',
-                                ])
+                    <div class="col-12 col-sm-7 mb-1">
+                        <div class="row justify-content-between">
+                            <div class="col-auto col-sm-12 col-md-8 col-lg-6 col-xl-5">
+                                <div class="mb-2">
+                                    <?= Html::img('/images/logo/small_light.svg', [
+                                            'id' => 'logo-small',
+                                        ])
+                                    ?>
+                                </div>
+                                <p class="h6 text-uppercase font-weight-light">
+                                    <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
+                                </p>
+                            </div>
+                            <div class="col-auto col-md-4 col-lg-6 px-xl-0">
+                                <div class="row h-100 align-items-end justify-content-center">
+                            <?php
+                                foreach (Yii::$app->params['apps'] as $name => $link) {
                             ?>
+                                    <div class="col-auto mt-1 mt-md-0 mb-0_5 text-center">
+                                        <a href="<?= $link ?>" target="_blank">
+                                            <img src="/images/<?= $name ?>_white.png" class="img-fluid mb-0_25" style="width:150px">
+                                        </a>
+                                    </div>
+                            <?php
+                                }
+                            ?>
+                                </div>
+                            </div>
                         </div>
-                        <p class="h6 text-uppercase font-weight-light">
-                            <?= Yii::t('front', 'For ultra{0}high-net-worth{1}dogs', ['<br>', ' ']) ?>
-                        </p>
                     </div>
-                    <div class="col-12 col-md-auto col-lg-7 col-xl-6 col-xxl-5">
+                    <div class="col-12 col-sm-auto col-md-auto col-lg-auto col-xl-4">
                         <div class="row justify-content-between">
                             <div class="col-auto">
                         <?php

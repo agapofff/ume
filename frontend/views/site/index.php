@@ -156,15 +156,22 @@ $this->title = Yii::$app->name;
                     </h2>
                     <div class="row">
                         <div class="col-md-11 col-lg-10 col-xl-9 mb-2 mb-lg-4">
-                            <h5 class="font-weight-bolder mb-1_5">
-                                <?= Yii::t('front', 'Скоро в App Store и Google Play') ?>
-                            </h5>
                             <p class="font-weight-bolder mb-1_5">
                                 <?= Yii::t('front', 'Быстрый доступ к покупке премиальной продукции UME, и специализированные услуги для вашего питомца.') ?>
                             </p>
-                            <p class="font-weight-bolder mb-1_5">
-                                <?= Yii::t('front', 'Официальный релиз － февраль 2023г') ?>
-                            </p>
+                            <div class="row mt-2">
+                        <?php
+                            foreach (Yii::$app->params['apps'] as $name => $link) {
+                        ?>
+                                <div class="col-auto">
+                                    <a href="<?= $link ?>" target="_blank">
+                                        <img src="/images/<?= $name ?>_black.png" class="img-fluid" style="width:170px">
+                                    </a>
+                                </div>
+                        <?php
+                            }
+                        ?>
+                            </div>
                         </div>
                         <div class="col-12 d-none">
                             <div class="row">

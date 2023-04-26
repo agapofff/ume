@@ -81,8 +81,8 @@ return [
     'orderBonus' => 1,
     
     'apps' => [
-        'google' => '#',
-        'apple' => '#',
+        'google' => 'https://play.google.com/store/apps/details?id=com.sessia.ume ',
+        'apple' => 'https://apps.apple.com/ru/app/ume/id1669741520',
     ],
     
     'productImageSizes' => [
@@ -92,6 +92,10 @@ return [
         'M' => 700,
         'L' => 2000,
         'XL' => 3500,
+    ],
+    
+    'sessia' => [
+        'url' => 'https://api.sessia.com/api',
     ],
 
     // 'hideNotAvailable' => false, // скрывать недоступные товары
